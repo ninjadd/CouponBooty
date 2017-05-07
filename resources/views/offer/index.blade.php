@@ -33,6 +33,9 @@
                                     <th>
                                         Updated At
                                     </th>
+                                    <th>
+                                        Archived
+                                    </th>
                                 </tr>
                             </thead>
                             @if(!empty($offers))
@@ -56,6 +59,13 @@
                                             </td>
                                             <td>
                                                 {{ $offer->updated_at->diffForHumans() }}
+                                            </td>
+                                            <td>
+                                                @if($offer->archive == 0)
+                                                    No
+                                                @else
+                                                    Yes
+                                                @endif
                                             </td>
                                         </tr>
                                     @endforeach

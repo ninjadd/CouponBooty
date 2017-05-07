@@ -19,6 +19,7 @@ class CreateOffersTable extends Migration
             $table->integer('type_id');
             $table->string('title');
             $table->text('body');
+            $table->integer('archive')->default(0);
             $table->softDeletes();
             $table->timestamps();
         });

@@ -9,10 +9,9 @@ use Illuminate\Support\Facades\Auth;
 
 class OfferController extends Controller
 {
+
     /**
-     * Create a new controller instance.
-     *
-     * @return void
+     * OfferController constructor.
      */
     public function __construct()
     {
@@ -76,7 +75,7 @@ class OfferController extends Controller
      */
     public function show(Offer $offer)
     {
-        //
+        return view('offer.show', compact('offer'));
     }
 
     /**
@@ -102,6 +101,26 @@ class OfferController extends Controller
         //
     }
 
+
+    /**
+     * @param Offer $offer
+     * @return \Illuminate\Http\RedirectResponse
+     */
+    public function archive(Offer $offer)
+    {
+        $archive = $offer->archive;
+
+        if ($archive == 0) {
+            $offer->archive = 1;
+            $offer->save();
+        } elseif ($archive == 1) {
+            $offer->archive = 0;
+            $offer->save();
+        }
+
+        return back();
+    }
+
     /**
      * Remove the specified resource from storage.
      *
@@ -110,6 +129,8 @@ class OfferController extends Controller
      */
     public function destroy(Offer $offer)
     {
-        //
+        Offer::find($offer)->delete();
+
+        return back();
     }
 }

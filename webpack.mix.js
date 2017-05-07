@@ -30,4 +30,3 @@ mix.sass('node_modules/datatables.net-dt/css/jquery.dataTables.css', 'public/css
 
 mix.js('node_modules/datatables.net-bs/js/dataTables.bootstrap.js', 'public/js')
     .sass('node_modules/datatables.net-bs/css/dataTables.bootstrap.css', 'public/css');
-

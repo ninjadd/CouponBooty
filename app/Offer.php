@@ -44,4 +44,9 @@ class Offer extends Model
     {
         return $this->belongsTo('App\User');
     }
+
+    public function scopeArchive($query, $val=0)
+    {
+        return $query->where('archive', $val);
+    }
 }

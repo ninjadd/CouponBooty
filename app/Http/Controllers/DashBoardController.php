@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Offer;
 
 class DashBoardController extends Controller
 {
@@ -21,8 +22,20 @@ class DashBoardController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        return view('dashboard.index');
+        $archive = $request->archive;
+
+        if (empty($archive)) {
+            $offers = Offer::all();
+        }
+
+        if ($archive == 1) {
+            $offers = Offer::archive($archive)->get();
+        }
+
+        $archived = Offer::archive(1)->get();
+
+        return view('dashboard.index', compact('offers', 'archived'));
     }
 }

@@ -25,3 +25,9 @@ Route::get('offer/create', 'OfferController@create');
 Route::post('offer', 'OfferController@store');
 
 Route::get('offer', 'OfferController@index');
+
+Route::get('offer/{offer}', 'OfferController@show');
+
+Route::get('offer/archive/{offer}', 'OfferController@archive');
+
+Route::delete('offer/{offer}', 'OfferController@destroy');
