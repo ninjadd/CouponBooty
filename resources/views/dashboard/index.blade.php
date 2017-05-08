@@ -18,11 +18,17 @@
     <div class="container">
         <div class="row">
             <div class="col-md-12">
+
+                @include('shared.session')
+
                 <div class="panel panel-default">
                     <div class="panel-heading">
                         <h3>
                             Dashboard
-                            <a class="btn btn-primary pull-right" href="/offer/create">New Offer</a>
+                            <a href="/offer/create" class="btn btn-primary pull-right" aria-label="Left Align">
+                                <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
+                                New Offer
+                            </a>
                         </h3>
                     </div>
 
@@ -112,9 +118,11 @@
                                         </td>
                                         <td>
                                             <form action="/offer/{{ $offer->id }}" method="POST">
-                                                <a href="/offer/{{ $offer->id }}" class="btn btn-info btn-xs"  data-toggle="tooltip" title="View Offer">
+                                                <button type="button" class="btn btn-default btn-xs"  data-toggle="modal" data-target="#myModal{{ $offer->id }}">
                                                     <span class="glyphicon glyphicon-eye-open" aria-hidden="true"></span>
-                                                </a>
+                                                </button>
+
+                                                @include('offer.show')
 
                                                 <a href="/offer/{{ $offer->id }}/edit" class="btn btn-success btn-xs"  data-toggle="tooltip" title="Edit Offer">
                                                     <span class="glyphicon glyphicon-pencil" aria-hidden="true"></span>

@@ -3,9 +3,11 @@
 namespace App\Http\Controllers;
 
 use App\Offer;
-use Illuminate\Http\Request;
 use App\Type;
+use App\Category;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+
 
 class OfferController extends Controller
 {
@@ -57,14 +59,35 @@ class OfferController extends Controller
         ]);
 
         $offer = new Offer();
-        $offer->create([
-            'title' => $request->title,
-            'body' => $request->body,
-            'type_id' => $request->type_id,
-            'user_id' => Auth::user()->id
-        ]);
+        $offer->title = $request->title;
+        $offer->body = $request->body;
+        $offer->type_id = $request->type_id;
+        $offer->user_id = Auth::user()->id;
 
-        return redirect('dashboard');
+        $offer->save();
+
+        if (!empty($request->categories)) {
+            $categories = $request->categories;
+            if (str_contains($categories, ',')) {
+                $cats = explode(',', $categories);
+                foreach ($cats as $cat) {
+                    $cat = trim($cat);
+                    if (!empty($cat)) {
+                        $category = new Category();
+                        $category->offer_id = $offer->id;
+                        $category->name = $cat;
+                        $category->save();
+                    }
+                }
+            } else {
+                $category = new Category();
+                $category->offer_id = $offer->id;
+                $category->name = $categories;
+                $category->save();
+            }
+        }
+
+        return redirect('dashboard')->with('status', 'Offer created!');
     }
 
     /**
@@ -75,7 +98,8 @@ class OfferController extends Controller
      */
     public function show(Offer $offer)
     {
-        return view('offer.show', compact('offer'));
+        // handled by modal
+        // return view('offer.show', compact('offer'));
     }
 
     /**
@@ -84,9 +108,12 @@ class OfferController extends Controller
      * @param  \App\Offer  $offer
      * @return \Illuminate\Http\Response
      */
-    public function edit(Offer $offer)
+    public function edit(Offer $offer, Type $type)
     {
-        //
+        $types = $type->all();
+        $categories = Category::byOffer($offer->id)->get();
+
+        return view('offer.edit', compact('offer', 'types', 'categories'));
     }
 
     /**
@@ -98,7 +125,20 @@ class OfferController extends Controller
      */
     public function update(Request $request, Offer $offer)
     {
-        //
+        $this->validate($request, [
+            'title' => 'required',
+            'body' => 'required',
+            'type_id' => 'required|integer'
+        ]);
+
+        $offer->update([
+            'title' => $request->title,
+            'body' => $request->body,
+            'type_id' => $request->type_id,
+            'user_id' => Auth::user()->id
+        ]);
+
+        return redirect('dashboard')->with('status', 'Offer #'. $offer->id . ' updated!');
     }
 
 
@@ -113,12 +153,13 @@ class OfferController extends Controller
         if ($archive == 0) {
             $offer->archive = 1;
             $offer->save();
+            return redirect('dashboard')->with('status', 'Offer #'. $offer->id . ' archived!');
         } elseif ($archive == 1) {
             $offer->archive = 0;
             $offer->save();
+            return redirect('dashboard')->with('status', 'Offer #'. $offer->id . ' un-archived!');
         }
 
-        return back();
     }
 
     /**
@@ -129,8 +170,8 @@ class OfferController extends Controller
      */
     public function destroy(Offer $offer)
     {
-        Offer::find($offer)->delete();
+        $offer->delete();
 
-        return back();
+        return redirect('dashboard')->with('status', 'Offer #'. $offer->id . ' deleted!');
     }
 }

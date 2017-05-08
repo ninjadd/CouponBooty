@@ -26,8 +26,15 @@ Route::post('offer', 'OfferController@store');
 
 Route::get('offer', 'OfferController@index');
 
-Route::get('offer/{offer}', 'OfferController@show');
+//Route::get('offer/{offer}', 'OfferController@show'); handled by modal
+
+Route::get('offer/{offer}/edit', 'OfferController@edit');
+
+Route::put('offer/{offer}', 'OfferController@update');
 
 Route::get('offer/archive/{offer}', 'OfferController@archive');
 
 Route::delete('offer/{offer}', 'OfferController@destroy');
+
+// Category Routes
+Route::delete('category/{category}', 'CategoryController@destroy');
