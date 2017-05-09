@@ -2,14 +2,14 @@
 
 namespace App\Http\Controllers;
 
-use App\Type;
 use Illuminate\Http\Request;
+use App\User;
 
-class TypeController extends Controller
+class UsersController extends Controller
 {
 
     /**
-     * TypeController constructor.
+     * UsersController constructor.
      */
     public function __construct()
     {
@@ -23,8 +23,7 @@ class TypeController extends Controller
      */
     public function index()
     {
-        $types = Type::all();
-        return view('type.index', compact('types'));
+        //
     }
 
     /**
@@ -34,7 +33,7 @@ class TypeController extends Controller
      */
     public function create()
     {
-        return view('type.create');
+        //
     }
 
     /**
@@ -45,25 +44,16 @@ class TypeController extends Controller
      */
     public function store(Request $request)
     {
-        $this->validate($request, [
-            'label' => 'required|unique:types'
-        ]);
-
-        $type = new Type();
-        $type->label = $request->label;
-
-        $type->save();
-
-        return redirect('type')->with('status', 'Type ' . $request->label .' created!');
+        //
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  \App\Type  $type
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show(Type $type)
+    public function show($id)
     {
         //
     }
@@ -71,44 +61,34 @@ class TypeController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Type  $type
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit(Type $type)
+    public function edit($id)
     {
-        return view('type.edit', compact('type'));
+        //
     }
 
     /**
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Type  $type
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Type $type)
+    public function update(Request $request, $id)
     {
-        $this->validate($request, [
-            'label' => 'required'
-        ]);
-
-        $type->label = $request->label;
-
-        $type->save();
-
-        return redirect('type')->with('status', 'Type ' . $request->label .' updated!');
+        //
     }
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Type  $type
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Type $type)
+    public function destroy($id)
     {
-        $type->delete();
-
-        return redirect('type')->with('status', 'Type deleted!');
+        //
     }
 }
