@@ -38,3 +38,16 @@ Route::delete('offer/{offer}', 'OfferController@destroy');
 
 // Category Routes
 Route::delete('category/{category}', 'CategoryController@destroy');
+
+// Type Routes
+Route::get('type', 'TypeController@index');
+
+Route::get('type/create', 'TypeController@create');
+
+Route::post('type', 'TypeController@store');
+
+Route::get('type/{type}/edit', 'TypeController@edit');
+
+Route::put('type/{type}', 'TypeController@update');
+
+Route::delete('type/{type}', 'TypeController@destroy');

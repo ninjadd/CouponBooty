@@ -4,13 +4,13 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Offer;
+use App\Type;
 
 class DashBoardController extends Controller
 {
+
     /**
-     * Create a new controller instance.
-     *
-     * @return void
+     * DashBoardController constructor.
      */
     public function __construct()
     {
@@ -27,7 +27,7 @@ class DashBoardController extends Controller
         $archive = $request->archive;
 
         if (empty($archive)) {
-            $offers = Offer::all();
+            $offers = Offer::archive(0)->get();
         }
 
         if ($archive == 1) {
@@ -36,6 +36,8 @@ class DashBoardController extends Controller
 
         $archived = Offer::archive(1)->get();
 
-        return view('dashboard.index', compact('offers', 'archived'));
+        $types = Type::all();
+
+        return view('dashboard.index', compact('offers', 'archived', 'types'));
     }
 }

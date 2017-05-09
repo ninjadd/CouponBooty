@@ -25,51 +25,12 @@
                     <div class="panel-heading">
                         <h3>
                             Dashboard
-                            <a href="/offer/create" class="btn btn-primary pull-right" aria-label="Left Align">
-                                <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
-                                New Offer
-                            </a>
                         </h3>
                     </div>
 
                     <div class="panel-body">
 
-                        <nav class="navbar navbar-default">
-                            <div class="container-fluid">
-                                <!-- Brand and toggle get grouped for better mobile display -->
-                                <div class="navbar-header">
-                                    <a class="navbar-brand" href="/">CouponBooty</a>
-                                </div>
-
-                                <!-- Collect the nav links, forms, and other content for toggling -->
-                                <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-                                    <ul class="nav navbar-nav">
-                                        <li class="dropdown">
-                                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
-                                                Offers <span class="badge">{{ $offers->count() }}</span>
-                                                <span class="caret"></span>
-                                            </a>
-                                            <ul class="dropdown-menu">
-                                                <li><a href="/offer">All Offers</a></li>
-                                                <li><a href="/offer/create">New Offer</a></li>
-                                                <li role="separator" class="divider"></li>
-                                                <li>
-                                                    <a href="/dashboard">
-                                                        Un-Archived Offers
-                                                    </a>
-                                                </li>
-                                                <li>
-                                                    <a href="/dashboard?archive=1">
-                                                        Archived Offers
-                                                        <span class="badge">{{ $archived->count() }}</span>
-                                                    </a>
-                                                </li>
-                                            </ul>
-                                        </li>
-                                    </ul>
-                                </div><!-- /.navbar-collapse -->
-                            </div><!-- /.container-fluid -->
-                        </nav>
+                        @include('shared.navbar')
 
                         <table class="table table-striped table-bordered" cellspacing="0" width="100%">
                             <thead>
@@ -114,7 +75,7 @@
                                             {{ $offer->created_at->diffForHumans() }}
                                         </td>
                                         <td>
-                                            {{ $offer->updated_at->diffForHumans() }}
+                                            {{ $offer->updated_at }}
                                         </td>
                                         <td>
                                             <form action="/offer/{{ $offer->id }}" method="POST">

@@ -1,5 +1,19 @@
 @extends('layouts.app')
 
+@section('head')
+    <link href="{{ asset('css/dataTables.bootstrap.css') }}" rel="stylesheet">
+    <script src="{{ asset('js/dataTables.bootstrap.js') }}"></script>
+    <script src="{{ asset('js/jquery.dataTables.bootstrap.js') }}"></script>
+    <script>
+        $(document).ready(function() {
+            $('.table').DataTable({
+                "order": [[ 5, "desc" ]],
+                "lengthMenu": [[10, 25, 50, 75, 100, -1], [10, 25, 50, 75, 100, "All"]]
+            });
+        } );
+    </script>
+@endsection
+
 @section('content')
     <div class="container">
         <div class="row">
@@ -12,6 +26,9 @@
                     </div>
 
                     <div class="panel-body">
+
+                        @include('shared.navbar')
+
                         <table class="table table-bordered table-hover">
                             <thead>
                                 <tr class="info">
@@ -72,8 +89,6 @@
                                 </tbody>
                             @endif
                         </table>
-
-                        {{ $offers->links() }}
 
                     </div>
                 </div>

@@ -24,7 +24,8 @@ class TypeController extends Controller
      */
     public function index()
     {
-        //
+        $types = Type::all();
+        return view('type.index', compact('types'));
     }
 
     /**
@@ -34,7 +35,7 @@ class TypeController extends Controller
      */
     public function create()
     {
-        //
+        return view('type.create');
     }
 
     /**
@@ -45,7 +46,16 @@ class TypeController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $this->validate($request, [
+            'label' => 'required|unique:types'
+        ]);
+
+        $type = new Type();
+        $type->label = $request->label;
+
+        $type->save();
+
+        return redirect('type')->with('status', 'Type ' . $request->label .' created!');
     }
 
     /**
@@ -67,7 +77,7 @@ class TypeController extends Controller
      */
     public function edit(Type $type)
     {
-        //
+        return view('type.edit', compact('type'));
     }
 
     /**
@@ -79,7 +89,15 @@ class TypeController extends Controller
      */
     public function update(Request $request, Type $type)
     {
-        //
+        $this->validate($request, [
+            'label' => 'required'
+        ]);
+
+        $type->label = $request->label;
+
+        $type->save();
+
+        return redirect('type')->with('status', 'Type ' . $request->label .' updated!');
     }
 
     /**
@@ -90,6 +108,8 @@ class TypeController extends Controller
      */
     public function destroy(Type $type)
     {
-        //
+        $type->delete();
+
+        return redirect('type')->with('status', 'Type deleted!');
     }
 }
