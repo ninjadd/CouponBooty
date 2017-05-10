@@ -19,8 +19,8 @@ class OffersTableSeeder extends Seeder
             $offer = new Offer();
             $offer->user_id = $faker->numberBetween(1, 3);
             $offer->type_id = $faker->numberBetween(1, 4);
-            $offer->title = $faker->sentence(4, true);
-            $offer->body = $faker->paragraph(7, true);
+            $offer->title = $faker->sentence(1, false);
+            $offer->body = $faker->paragraph(2, true);
             $offer->save();
         }
     }
