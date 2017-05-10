@@ -51,3 +51,6 @@ Route::get('type/{type}/edit', 'TypeController@edit');
 Route::put('type/{type}', 'TypeController@update');
 
 Route::delete('type/{type}', 'TypeController@destroy');
+
+// User Routes
+Route::get('user', 'UserController@index');

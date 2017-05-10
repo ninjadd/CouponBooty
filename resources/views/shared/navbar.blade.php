@@ -45,18 +45,18 @@
                 </li>
             </ul>
             {{-- users --}}
-            <ul class="nav navbar-nav">
-                <li class="dropdown">
-                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
-                        Users
-                        <span class="caret"></span>
-                    </a>
-                    <ul class="dropdown-menu">
-                        <li><a href="/user">All Users</a></li>
-                        <li><a href="/user/create">New User</a></li>
-                    </ul>
-                </li>
-            </ul>
+            {{--<ul class="nav navbar-nav">--}}
+                {{--<li class="dropdown">--}}
+                    {{--<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">--}}
+                        {{--Users--}}
+                        {{--<span class="caret"></span>--}}
+                    {{--</a>--}}
+                    {{--<ul class="dropdown-menu">--}}
+                        {{--<li><a href="/user">All Users</a></li>--}}
+                        {{--<li><a href="/user/create">New User</a></li>--}}
+                    {{--</ul>--}}
+                {{--</li>--}}
+            {{--</ul>--}}
 
             <ul class="nav navbar-nav navbar-right">
                 <li>
