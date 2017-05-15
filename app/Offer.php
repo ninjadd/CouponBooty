@@ -40,6 +40,11 @@ class Offer extends Model
         return $this->belongsTo('App\Type');
     }
 
+    public function categories()
+    {
+        return $this->hasMany('App\Category');
+    }
+
     public function user()
     {
         return $this->belongsTo('App\User');
@@ -48,5 +53,11 @@ class Offer extends Model
     public function scopeArchive($query, $val=0)
     {
         return $query->where('archive', $val);
+    }
+
+    public function scopeSearch($query, $search_text)
+    {
+        return $query->where('body', 'like', '%'.$search_text.'%')
+            ->orWhere('title', 'like', '%'.$search_text.'%');
     }
 }

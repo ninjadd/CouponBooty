@@ -1,8 +1,7 @@
 @extends('layouts.pages')
 
-@include('shared.menu')
-
 @section('content')
+    @include('shared.menu')
 <div class="container">
     <div class="row">
         <div class="col-md-12">

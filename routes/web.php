@@ -13,6 +13,8 @@
 
 Route::get('/', 'PageController@welcome');
 
+Route::post('/results', 'PageController@results');
+
 Auth::routes();
 
 Route::get('dashboard', 'DashBoardController@index')->name('dashboard');

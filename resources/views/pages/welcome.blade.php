@@ -1,12 +1,11 @@
 @extends('layouts.pages')
 
-@include('shared.menu')
-
-@include('shared.slider')
-
-@include('shared.search')
-
 @section('content')
+    @include('shared.menu')
+
+    @include('shared.slider')
+
+    @include('shared.search')
 <!-- Start Filter Menu -->
 <div class="rs_graybg rs_toppadder100">
     <div class="container">

@@ -10,4 +10,9 @@ class Category extends Model
     {
         $query->where('offer_id', $id);
     }
+
+    public function offer()
+    {
+        return $this->belongsTo('App\Offer');
+    }
 }

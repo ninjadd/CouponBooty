@@ -9,11 +9,13 @@
                     <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
                         <div class="rs_search_form">
                             <form action="/results" class="form-inline" method="POST">
+
                                 {{ csrf_field() }}
+
                                 <div class="form-group">
-                                    <input type="text" class="form-control" placeholder="Search Coupons &amp; Booty">
+                                    <input type="text" name="search_text" value="{{ $request->search_text }}" class="form-control" placeholder="Search Coupons &amp; Booty">
                                 </div>
-                                <button class="btn rs_search_btn">Search</button>
+                                <input type="submit" class="btn rs_search_btn" value="Search">
                             </form>
                         </div>
                     </div>
