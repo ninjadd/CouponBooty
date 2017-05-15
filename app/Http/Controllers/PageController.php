@@ -8,7 +8,7 @@ class PageController extends Controller
 {
     public function welcome(Request $request)
     {
-        $offers = Offer::paginate(6);
+        $offers = Offer::paginate(12);
 
         return view('pages.welcome', compact('offers'));
     }

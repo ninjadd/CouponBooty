@@ -1,9 +1,12 @@
-@extends('layouts.app')
+@extends('layouts.pages')
+
+@include('shared.menu')
 
 @section('content')
 <div class="container">
     <div class="row">
         <div class="col-md-12">
+            <br>
             <div class="panel panel-default">
                 <div class="panel-heading">Reset Password</div>
 
@@ -62,7 +65,7 @@
 
                         <div class="form-group">
                             <div class="col-md-6 col-md-offset-4">
-                                <button type="submit" class="btn btn-primary">
+                                <button type="submit" class="rs_button rs_button_orange">
                                     Reset Password
                                 </button>
                             </div>
