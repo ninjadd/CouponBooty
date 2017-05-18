@@ -13,7 +13,7 @@
                                 {{ csrf_field() }}
 
                                 <div class="form-group">
-                                    <input type="text" name="search_text" value="{{ $request->search_text }}" class="form-control" placeholder="Search Coupons &amp; Booty">
+                                    <input type="text" name="search_text" value="{{ old('search_text') }}" class="form-control" placeholder="Search Coupons &amp; Booty">
                                 </div>
                                 <input type="submit" class="btn rs_search_btn" value="Search">
                             </form>
