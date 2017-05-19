@@ -10,12 +10,19 @@
         <div class="row">
             @if(count($offers))
                 @foreach($offers as $offer)
-                    <div class="col-lg-4">
-                        <h2>{{ $offer->title }}</h2>
-                        <p>{!! $offer->body !!}</p>
-                        <p><a class="btn btn-default" href="#" role="button">View Coupon &raquo;</a></p>
+                    <div class="col-md-3">
+                        <div class="panel panel-info">
+                            <div class="panel-heading">
+                                <h4 class="panel-title">{{ $offer->title }}</h4>
+                            </div>
+                            <div class="panel-body">
+                                {!! $offer->body !!}
+                            </div>
+                            <div class="panel-footer">
+                                <a class="btn btn-primary" href="#" role="button">View Coupon &raquo;</a>
+                            </div>
+                        </div>
                     </div>
-                    <br>
                 @endforeach
             @endif
         </div><!--/row-->
