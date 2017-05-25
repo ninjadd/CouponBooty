@@ -18,6 +18,7 @@ class PageController extends Controller
     {
         $offers = Offer::search($request->search_text)->get();
 
+
         return view('pages.results', compact('offers', 'request'));
     }
 
