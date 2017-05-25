@@ -8,7 +8,7 @@
 
                 </div>
                 <div class="rs_topheader_center">
-                    <a href="index.html"><img src="images/small_logo.png" alt=""></a>
+                    
                 </div>
                 <div class="rs_topheader_right">
                     <div class="rs_user_pic">
