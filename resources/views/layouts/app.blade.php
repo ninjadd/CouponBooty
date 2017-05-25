@@ -12,7 +12,7 @@
 
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
-    <link href="{{ asset('css/cerulean.bootstrap.min.css') }}" rel="stylesheet">
+    <link href="{{ asset('css/bootswatch.bootstrap.min.css') }}" rel="stylesheet">
     <!-- Scripts -->
     <script src="{{ asset('js/app.js') }}"></script>
 
@@ -47,9 +47,11 @@
 
                 <div class="collapse navbar-collapse" id="app-navbar-collapse">
                     <!-- Left Side Of Navbar -->
-                    <ul class="nav navbar-nav">
-
-                    </ul>
+                    @if(Auth::user())
+                        <ul class="nav navbar-nav">
+                            <li><a href="/dashboard">Dasboard</a></li>
+                        </ul>
+                    @endif
                     <!-- Right Side Of Navbar -->
                     <ul class="nav navbar-nav navbar-right">
                         @if(Auth::guest())
@@ -63,8 +65,8 @@
                         @endif
                         <!-- Authentication Links -->
                         @if (Auth::guest())
-                            <li><a href="{{ route('login') }}">Login</a></li>
-                            <li><a href="{{ route('register') }}">Register</a></li>
+                            {{--<li><a href="{{ route('login') }}">Login</a></li>--}}
+                            {{--<li><a href="{{ route('register') }}">Register</a></li>--}}
                         @else
                             <li class="dropdown">
                                 <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">

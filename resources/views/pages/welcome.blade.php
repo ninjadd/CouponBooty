@@ -13,7 +13,7 @@
 
                     @foreach($offers as $offer)
                         <div class="col-md-6">
-                            <div class="panel panel-info">
+                            <div class="panel panel-primary">
                                 <div class="panel-heading">
                                     <h4 class="panel-title">{{ $offer->title }}</h4>
                                 </div>
@@ -21,7 +21,7 @@
                                     {!! $offer->body !!}
                                 </div>
                                 <div class="panel-footer">
-                                    <a class="btn btn-primary" href="#" role="button">View Coupon &raquo;</a>
+                                    <a class="btn btn-primary" href="#" role="button">View Coupon ></a>
                                 </div>
                             </div>
                         </div>
