@@ -79,23 +79,25 @@
                                         </td>
                                         <td>
                                             <form action="/offer/{{ $offer->id }}" method="POST">
-                                                <button type="button" class="btn btn-default btn-xs"  data-toggle="modal" title="View Offer" data-target="#myModal{{ $offer->id }}">
-                                                    <span class="glyphicon glyphicon-eye-open" aria-hidden="true"></span>
-                                                </button>
+                                                <div class="btn-group">
+                                                    <button type="button" class="btn btn-default btn-xs"  data-toggle="modal" title="View Offer" data-target="#myModal{{ $offer->id }}">
+                                                        <span class="glyphicon glyphicon-eye-open" aria-hidden="true"></span>
+                                                    </button>
 
-                                                @include('offer.show')
+                                                    @include('offer.show')
 
-                                                <a href="/offer/{{ $offer->id }}/edit" class="btn btn-success btn-xs"  data-toggle="tooltip" title="Edit Offer">
-                                                    <span class="glyphicon glyphicon-pencil" aria-hidden="true"></span>
-                                                </a>
+                                                    <a href="/offer/{{ $offer->id }}/edit" class="btn btn-success btn-xs"  data-toggle="tooltip" title="Edit Offer">
+                                                        <span class="glyphicon glyphicon-pencil" aria-hidden="true"></span>
+                                                    </a>
 
-                                                <a href="/offer/archive/{{ $offer->id }}" class="btn btn-warning btn-xs"  data-toggle="tooltip" title="Archive Offer">
-                                                    <span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
-                                                </a>
+                                                    <a href="/offer/archive/{{ $offer->id }}" class="btn btn-warning btn-xs"  data-toggle="tooltip" title="Archive Offer">
+                                                        <span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
+                                                    </a>
 
-                                                <button type="submit" class="btn btn-danger btn-xs"  data-toggle="tooltip" title="Delete Offer">
-                                                    <span class="glyphicon glyphicon-trash" aria-hidden="true"></span>
-                                                </button>
+                                                    <button type="submit" class="btn btn-danger btn-xs"  data-toggle="tooltip" title="Delete Offer">
+                                                        <span class="glyphicon glyphicon-trash" aria-hidden="true"></span>
+                                                    </button>
+                                                </div>
                                                 {{ method_field('DELETE') }}
                                                 {{ csrf_field() }}
                                             </form>
