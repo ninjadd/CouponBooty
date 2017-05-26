@@ -15,6 +15,10 @@ Route::get('/', 'PageController@welcome');
 
 Route::post('/results', 'PageController@results');
 
+Route::get('blog', 'PageController@indexBlog');
+
+Route::get('blog/{slug}', 'PageController@viewBlog');
+
 Auth::routes();
 
 Route::get('dashboard', 'DashBoardController@index')->name('dashboard');

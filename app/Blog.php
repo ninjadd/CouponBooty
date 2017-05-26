@@ -53,8 +53,23 @@ class Blog extends Model
         return $query->where('archive', 1);
     }
 
+    /**
+     * @param $query
+     * @return mixed
+     */
     public function scopeUnarchived($query)
     {
         return $query->where('archive', 0);
     }
+
+    /**
+     * @param $query
+     * @param $slug
+     * @return mixed
+     */
+    public function scopeSlug($query, $slug)
+    {
+        return $query->where('title_slug', $slug);
+    }
+
 }

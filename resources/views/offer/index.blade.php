@@ -20,7 +20,7 @@
             <div class="col-md-12">
                 <div class="panel panel-info">
                     <div class="panel-heading">
-                        <h3>
+                        <h3 class="panel-title">
                             Offers
                         </h3>
                     </div>
