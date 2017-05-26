@@ -12,16 +12,30 @@
                 @if(count($offers))
 
                     @foreach($offers as $offer)
-                        <div class="col-md-6">
+                        @include('shared.view')
+                        <div class="col-md-12" style="margin-bottom: -15px;">
                             <div class="panel panel-primary">
-                                <div class="panel-heading">
-                                    <h4 class="panel-title">{{ $offer->title }}</h4>
+                                <div class="panel-heading clearfix">
+                                    <h4 class="pull-left panel-title">
+                                        {{ $offer->title }}
+                                    </h4>
+                                    <a class="btn btn-default btn-xs pull-right" data-toggle="modal" title="View {{ $offer->title }}" data-target="#myModal{{ $offer->id }}">View Coupon</a>
                                 </div>
-                                <div class="panel-body" style="min-height: 100; max-height: 100;">
+                                <div class="panel-body">
+                                    <p class="lead text-primary">{{ $offer->type->label }}</p>
                                     {!! $offer->body !!}
                                 </div>
                                 <div class="panel-footer">
-                                    <a class="btn btn-primary" href="#" role="button">View Coupon ></a>
+                                    Uploaded at: {{ $offer->created_at->diffForHumans() }}
+                                    Uploaded by: {{ $offer->user->name }}
+                                    <br>
+                                    <div>
+                                        @if(count($offer->categories->count()) > 0)
+                                            @foreach($offer->categories as $category)
+                                                <span class="label label-primary">{{ $category->name }}</span>
+                                            @endforeach
+                                        @endif
+                                    </div>
                                 </div>
                             </div>
                         </div>

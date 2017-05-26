@@ -52,17 +52,24 @@
                             <li><a href="/dashboard">Dasboard</a></li>
                         </ul>
                     @endif
+
+                    <ul class="nav navbar-nav">
+                        <li><a href="/blog">Blog</a></li>
+                        <li><a href="/about">About Us</a></li>
+                        <li><a href="/contact">Contact</a></li>
+                    </ul>
+
                     <!-- Right Side Of Navbar -->
                     <ul class="nav navbar-nav navbar-right">
-                        @if(Auth::guest())
-                            <form class="navbar-form navbar-left" action="/results" method="POST">
-                                {{ csrf_field() }}
-                                <div class="form-group">
-                                    <input type="text" name="search_text" class="form-control" placeholder="Search">
-                                </div>
-                                <button type="submit" class="btn btn-default">Submit</button>
-                            </form>
-                        @endif
+
+                        <form class="navbar-form navbar-left" action="/results" method="POST">
+                            {{ csrf_field() }}
+                            <div class="form-group">
+                                <input type="text" name="search_text" class="form-control" placeholder="Search">
+                            </div>
+                            <button type="submit" class="btn btn-default">Submit</button>
+                        </form>
+
                         <!-- Authentication Links -->
                         @if (Auth::guest())
                             {{--<li><a href="{{ route('login') }}">Login</a></li>--}}
@@ -74,6 +81,8 @@
                                 </a>
 
                                 <ul class="dropdown-menu" role="menu">
+                                    <li><a href="/blogger">Blog Administration</a></li>
+                                    <li class="divider"></li>
                                     <li>
                                         <a href="{{ route('logout') }}"
                                             onclick="event.preventDefault();
@@ -95,5 +104,13 @@
 
         @yield('content')
     </div>
+
+    <footer class="footer">
+        <div class="container">
+            <span class="text">CouponBooty &copy; <span class="text-warning">{{ date('Y') }}</span></span>
+            <a class="pull-right" href="#"><i class="fa fa-facebook"></i></a>
+            <a class="pull-right" href="#"><i class="fa fa-twitter"></i></a>
+        </div>
+    </footer>
 </body>
 </html>

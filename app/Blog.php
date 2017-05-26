@@ -5,7 +5,7 @@ namespace App;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
-class Offer extends Model
+class Blog extends Model
 {
     use SoftDeletes;
 
@@ -23,9 +23,10 @@ class Offer extends Model
      */
     protected $fillable = [
         'user_id',
-        'type_id',
         'title',
-        'body'
+        'title_slug',
+        'body',
+        'archive'
     ];
 
     /**
@@ -38,22 +39,6 @@ class Offer extends Model
     /**
      * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
      */
-    public function type()
-    {
-        return $this->belongsTo('App\Type');
-    }
-
-    /**
-     * @return \Illuminate\Database\Eloquent\Relations\HasMany
-     */
-    public function categories()
-    {
-        return $this->hasMany('App\Category');
-    }
-
-    /**
-     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
-     */
     public function user()
     {
         return $this->belongsTo('App\User');
@@ -61,22 +46,15 @@ class Offer extends Model
 
     /**
      * @param $query
-     * @param int $val
      * @return mixed
      */
-    public function scopeArchive($query, $val=0)
+    public function scopeArchived($query)
     {
-        return $query->where('archive', $val);
+        return $query->where('archive', 1);
     }
 
-    /**
-     * @param $query
-     * @param $search_text
-     * @return mixed
-     */
-    public function scopeSearch($query, $search_text)
+    public function scopeUnarchived($query)
     {
-        return $query->where('body', 'like', '%'.$search_text.'%')
-            ->orWhere('title', 'like', '%'.$search_text.'%');
+        return $query->where('archive', 0);
     }
 }

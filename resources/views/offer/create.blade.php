@@ -9,6 +9,9 @@
     <div class="container">
         <div class="row">
             <div class="col-md-12">
+
+                @include('shared.errors')
+
                 <div class="panel panel-primary">
                     <div class="panel-heading">
                         <h3 class="panel-title">
@@ -46,9 +49,6 @@
 
                             <button type="submit" class="btn btn-primary pull-right">Save</button>
                         </form>
-
-                        @include('shared.errors')
-
                     </div>
                 </div>
             </div>

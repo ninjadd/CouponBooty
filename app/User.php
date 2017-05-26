@@ -37,8 +37,16 @@ class User extends Authenticatable
         'password', 'remember_token',
     ];
 
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
     public function offer()
     {
         return $this->hasMany('App\Offer');
+    }
+
+    public function blog()
+    {
+        return $this->hasMany('App\Blog');
     }
 }

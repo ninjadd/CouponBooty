@@ -54,3 +54,20 @@ Route::delete('type/{type}', 'TypeController@destroy');
 
 // User Routes
 Route::get('user', 'UserController@index');
+
+// Blogs Routes
+Route::get('blogger', 'BlogController@index');
+
+Route::get('blogger/create', 'BlogController@create');
+
+Route::post('blogger', 'BlogController@store');
+
+Route::get('blogger/{blog}', 'BlogController@show');
+
+Route::get('blogger/{blog}/edit', 'BlogController@edit');
+
+Route::put('blogger/{blog}', 'BlogController@update');
+
+Route::get('blogger/archive/{blog}', 'BlogController@archive');
+
+Route::delete('blogger/{blog}', 'BlogController@destroy');

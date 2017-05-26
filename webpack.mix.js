@@ -22,6 +22,8 @@ mix.webpackConfig({
     }
 });
 
+mix.copy('node_modules/font-awesome/fonts/', 'public/fonts');
+
 mix.copy('node_modules/bootstrap-sass/assets/fonts/bootstrap/','public/build/fonts/bootstrap');
 
 mix.js('node_modules/datatables.net/js/jquery.dataTables.js', 'public/js');
