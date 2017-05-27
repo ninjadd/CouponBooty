@@ -13,7 +13,7 @@
                     @foreach($offers as $offer)
                         @include('shared.view')
                         <div class="col-md-12" style="margin-bottom: -16px;">
-                            <div class="panel panel-info">
+                            <div class="panel panel-primary">
                                 <div class="panel-heading clearfix">
                                     <h4 class="pull-left panel-title">
                                         {{ $offer->title }}
