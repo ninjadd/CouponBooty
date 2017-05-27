@@ -26,7 +26,7 @@
                         <h3 class="panel-title pull-left">
                             Blog Posts
                         </h3>
-                        <div class="btn-group pull-right">
+                        <div class="btn-group btn-group-lg pull-right">
                             <a class="btn btn-info" href="/blogger?filter=all">
                                 All Posts
                                 <span class="badge">{{ $all->count() }}</span>

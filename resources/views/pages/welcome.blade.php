@@ -4,17 +4,16 @@
 
     <div class="container">
         <div class="col-md-12">
-            <div class="jumbotron">
-                <h1>CouponBooty</h1>
-                <p>This is an example to show the potential of how awesome coupons can be in your booty.</p>
-            </div>
+
+                {{--<img class="thumbnail" src="{{ asset('storage/images/CouponBooty_Logo_Horizontal.png') }}">--}}
+
             <div class="row">
                 @if(count($offers))
 
                     @foreach($offers as $offer)
                         @include('shared.view')
-                        <div class="col-md-12" style="margin-bottom: -15px;">
-                            <div class="panel panel-primary">
+                        <div class="col-md-12" style="margin-bottom: -16px;">
+                            <div class="panel panel-info">
                                 <div class="panel-heading clearfix">
                                     <h4 class="pull-left panel-title">
                                         {{ $offer->title }}
@@ -22,7 +21,7 @@
                                     <a class="btn btn-default btn-xs pull-right" data-toggle="modal" title="View {{ $offer->title }}" data-target="#myModal{{ $offer->id }}">View Coupon</a>
                                 </div>
                                 <div class="panel-body">
-                                    <p class="lead text-primary">{{ $offer->type->label }}</p>
+                                    <p class="lead text-danger">{{ $offer->type->label }}</p>
                                     {!! $offer->body !!}
                                 </div>
                                 <div class="panel-footer">
@@ -32,7 +31,7 @@
                                     <div>
                                         @if(count($offer->categories->count()) > 0)
                                             @foreach($offer->categories as $category)
-                                                <span class="label label-primary">{{ $category->name }}</span>
+                                                <span class="label label-warning">{{ $category->name }}</span>
                                             @endforeach
                                         @endif
                                     </div>
