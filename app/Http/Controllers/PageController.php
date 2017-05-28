@@ -52,8 +52,24 @@ class PageController extends Controller
         return view('pages.blog-page', compact('blog'));
     }
 
+    /**
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     */
     public function viewAbout()
     {
         return view('pages.about');
+    }
+
+    /**
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     */
+    public function viewPrivacy()
+    {
+        return view('pages.privacy');
+    }
+
+    public function viewTerms()
+    {
+        return view('pages.terms');
     }
 }

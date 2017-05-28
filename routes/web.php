@@ -21,6 +21,10 @@ Route::get('blog/{slug}', 'PageController@viewBlog');
 
 Route::get('about', 'PageController@viewAbout');
 
+Route::get('privacy', 'PageController@viewPrivacy');
+
+Route::get('terms', 'PageController@viewTerms');
+
 Auth::routes();
 
 Route::get('dashboard', 'DashBoardController@index')->name('dashboard');
