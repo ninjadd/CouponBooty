@@ -41,10 +41,19 @@ class PageController extends Controller
         return view('pages.blog', compact('blogs'));
     }
 
+    /**
+     * @param $slug
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     */
     public function viewBlog($slug)
     {
         $blog = Blog::slug($slug)->first();
 
         return view('pages.blog-page', compact('blog'));
+    }
+
+    public function viewAbout()
+    {
+        return view('pages.about');
     }
 }

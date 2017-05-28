@@ -30,15 +30,6 @@
         <nav class="navbar navbar-inverse navbar-static-top">
             <div class="container">
                 <div class="navbar-header">
-
-                    <!-- Collapsed Hamburger -->
-                    <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#app-navbar-collapse">
-                        <span class="sr-only">Toggle Navigation</span>
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                    </button>
-
                     <!-- Branding Image -->
                     <a class="navbar-brand" href="{{ url('/') }}">
                         {{ config('app.name') }}
@@ -47,16 +38,24 @@
 
                 <div class="collapse navbar-collapse" id="app-navbar-collapse">
                     <!-- Left Side Of Navbar -->
-                    @if(Auth::user())
-                        <ul class="nav navbar-nav">
-                            <li><a href="/dashboard">Dasboard</a></li>
-                        </ul>
-                    @endif
-
                     <ul class="nav navbar-nav">
-                        <li><a href="/blog">Blog</a></li>
-                        <li><a href="/about">About Us</a></li>
-                        <li><a href="/contact">Contact</a></li>
+                        @if(Auth::user())
+                                <li><a href="/dashboard">Dasboard</a></li>
+                        @endif
+                        <li class="dropdown">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+                                <span class="fa fa-tags"></span>
+                            </a>
+                            <ul class="dropdown-menu" role="menu">
+                                <li><a href="/blog">Blog</a></li>
+                                <li><a href="/about">About Us</a></li>
+                                <li><a href="/contact">Contact</a></li>
+                                <li class="divider"></li>
+                                <li><a href="#">Terms</a></li>
+                                <li><a href="#">Privacy Policy</a></li>
+
+                            </ul>
+                        </li>
                     </ul>
 
                     <!-- Right Side Of Navbar -->
@@ -69,6 +68,12 @@
                             </div>
                             <button type="submit" class="btn btn-default">Submit</button>
                         </form>
+                        <li>
+                            <a class="fa fa-facebook-square" aria-hidden="true" href="https://www.facebook.com/CouponBooty/" target="_blank"></a>
+                        </li>
+                        <li>
+                            <a class="fa fa-twitter-square" aria-hidden="true" href="https://twitter.com/couponbooty" target="_blank"></a>
+                        </li>
 
                         <!-- Authentication Links -->
                         @if (Auth::guest())
@@ -104,13 +109,5 @@
 
         @yield('content')
     </div>
-
-    <footer class="footer">
-        <div class="container">
-            <span class="text">CouponBooty &copy; <span class="text-warning">{{ date('Y') }}</span></span>
-            <a class="pull-right" href="#"><i class="fa fa-facebook"></i></a>
-            <a class="pull-right" href="#"><i class="fa fa-twitter"></i></a>
-        </div>
-    </footer>
 </body>
 </html>
