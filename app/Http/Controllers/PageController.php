@@ -24,10 +24,18 @@ class PageController extends Controller
      */
     public function results(Request $request)
     {
-        $offers = Offer::search($request->search_text)->get();
+        if (!empty($request->search_text)) {
+            $offers = Offer::search($request->search_text)->get();
 
-
-        return view('pages.results', compact('offers', 'request'));
+            if (empty($offers)) {
+                return redirect('/');
+            } elseif (!empty($offers)) {
+                return view('pages.results', compact('offers', 'request'));
+            }
+            
+        } else {
+            return redirect('/');
+        }
     }
 
     /**
