@@ -62,7 +62,7 @@
                         <form class="navbar-form navbar-left" action="/results" method="POST">
                             {{ csrf_field() }}
                             <div class="form-group">
-                                <input type="text" name="search_text" class="form-control" placeholder="Search">
+                                <input type="text" name="search_text" required="required" class="form-control" placeholder="Search">
                             </div>
                             <button type="submit" class="btn btn-default">Submit</button>
                         </form>
