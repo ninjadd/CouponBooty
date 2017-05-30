@@ -12,13 +12,13 @@
 
                     @foreach($offers as $offer)
                         @include('shared.view')
-                        <div class="col-md-12" style="margin-bottom: -16px;">
+                        <div class="col-md-12">
                             <div class="panel panel-primary">
                                 <div class="panel-heading clearfix">
                                     <h4 class="pull-left panel-title">
                                         {{ $offer->title }}
                                     </h4>
-                                    <a class="btn btn-default btn-xs pull-right" data-toggle="modal" title="View {{ $offer->title }}" data-target="#myModal{{ $offer->id }}">View Coupon</a>
+                                    <a class="btn btn-default btn-xs pull-right" data-toggle="modal" title="View {{ $offer->title }}" data-target="#myModal{{ $offer->id }}">{{ $offer->type->label }} &raquo;</a>
                                 </div>
                                 <div class="panel-body">
                                     <p class="lead text-danger">{{ $offer->type->label }}</p>

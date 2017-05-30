@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Offer;
 use App\Blog;
+use Symfony\Component\Yaml\Tests\B;
 
 class PageController extends Controller
 {
@@ -42,9 +43,9 @@ class PageController extends Controller
      * @param Blog $blog
      * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
-    public function indexBlog(Blog $blog)
+    public function indexBlog(Request $request, Blog $blog)
     {
-        $blogs = $blog->unarchived()->orderBy('updated_at', 'desc')->get();
+        $blogs = $blog->unarchived()->blogFilter($request)->orderBy('updated_at', 'desc')->paginate(3);
 
         return view('pages.blog', compact('blogs'));
     }

@@ -17,6 +17,8 @@ class BlogsTableSeeder extends Seeder
 
         foreach (range(1, 100) as $index) {
             $blog = new Blog();
+            $blog->created_at = $faker->dateTimeThisYear();
+            $blog->updated_at = $faker->dateTimeThisYear();
             $blog->user_id = $faker->numberBetween(1, 3);
             $title = $faker->sentence(5, true);
             $blog->title = $title;

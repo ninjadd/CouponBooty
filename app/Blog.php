@@ -4,6 +4,7 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
+use Carbon\Carbon;
 
 class Blog extends Model
 {
@@ -70,6 +71,29 @@ class Blog extends Model
     public function scopeSlug($query, $slug)
     {
         return $query->where('title_slug', $slug);
+    }
+
+    /**
+     * @param $query
+     * @param $filter
+     */
+    public function scopeBlogFilter($query, $filter)
+    {
+        if ($month = $filter['month']) {
+            $query->whereMonth('created_at', Carbon::parse($month)->month);
+        }
+
+        if ($year = $filter['year']) {
+            $query->whereYear('created_at', $year);
+        }
+    }
+
+    public static function sideBar()
+    {
+        return static::selectRaw('year(created_at) year, monthname(created_at) month, count(*) posts')
+            ->groupBy('year','month')
+            ->orderByRaw('min(created_at) desc')
+            ->get();
     }
 
 }

@@ -107,5 +107,19 @@
 
         @yield('content')
     </div>
+    <hr>
+
+    <!-- Footer -->
+    <div class="container"
+    <footer>
+        <div class="row">
+            <div class="col-lg-12">
+                <p>Copyright &copy; {{ config('app.name') }} {{ date('Y') }}</p>
+            </div>
+            <!-- /.col-lg-12 -->
+        </div>
+        <!-- /.row -->
+    </footer>
+    </div>
 </body>
 </html>

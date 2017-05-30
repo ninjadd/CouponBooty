@@ -2,29 +2,45 @@
 
 @section('content')
 
+    <!-- Page Content -->
     <div class="container">
+
         <div class="row">
-            <div class="col-md-12">
 
-                <div class="panel panel-info">
-                    <div class="panel-heading">
-                        <h3 class="panel-title">
-                            {{ $blog->title }}
-                        </h3>
-                    </div>
+            <!-- Blog Post Content Column -->
+            <div class="col-lg-8">
 
-                    <div class="panel-body">
-                        {!! $blog->body !!}
-                    </div>
+                <!-- Blog Post -->
 
-                    <div class="panel-footer">
-                        <strong>Posted by:</strong> {{ $blog->user->name }}
-                        <strong>Posted:</strong> {{ $blog->updated_at->diffForHumans()}}
-                    </div>
-                </div>
+                <!-- Title -->
+                <h1>{{ $blog->title }}</h1>
+
+                <!-- Author -->
+                <p class="lead">
+                    by {{ $blog->user->name }}
+                </p>
+
+                <hr>
+
+                <!-- Date/Time -->
+                <p><span class="glyphicon glyphicon-time"></span> Posted {{ $blog->created_at->diffForHumans() }}</p>
+
+                <hr>
+
+                <!-- Preview Image -->
+                {{--<img class="img-responsive" src="http://placehold.it/900x300" alt="">--}}
+
+                {{--<hr>--}}
+
+                <!-- Post Content -->
+                {!! $blog->body !!}
+                <hr>
 
             </div>
+
+            @include('shared.blog-sidebar')
+
         </div>
-    </div>
+        <!-- /.row -->
 
 @endsection

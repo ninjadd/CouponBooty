@@ -13,7 +13,9 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        //
+        view()->composer('shared.blog-sidebar', function ($view) {
+            $view->with('side_blogs', \App\Blog::sideBar());
+        });
     }
 
     /**
