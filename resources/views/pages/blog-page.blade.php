@@ -16,9 +16,9 @@
                 <h1>{{ $blog->title }}</h1>
 
                 <!-- Author -->
-                <p class="lead">
-                    by {{ $blog->user->name }}
-                </p>
+                {{--<p class="lead">--}}
+                    {{--by {{ $blog->user->name }}--}}
+                {{--</p>--}}
 
                 <hr>
 

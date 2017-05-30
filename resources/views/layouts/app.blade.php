@@ -40,11 +40,11 @@
                     <!-- Left Side Of Navbar -->
                     <ul class="nav navbar-nav">
                         @if(Auth::user())
-                                <li><a href="/dashboard">Dasboard</a></li>
+                            <li><a href="/dashboard">Dasboard</a></li>
                         @endif
                         <li class="dropdown">
                             <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
-                                <span class="fa fa-tags"></span>
+                                More <span class="caret"></span>
                             </a>
                             <ul class="dropdown-menu" role="menu">
                                 <li><a href="/blog">Blog</a></li>

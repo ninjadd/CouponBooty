@@ -13,7 +13,7 @@
 
                 <h1 class="page-header">
                     {{ config('app.name') }}
-                    <small>Blog</small>
+                    <small></small>
                 </h1>
 
                 <!-- Blog Posts -->
@@ -22,9 +22,9 @@
                         <h2>
                             <a href="/blog/{{ $blog->title_slug }}">{{ $blog->title }}</a>
                         </h2>
-                        <p class="lead">
-                            by {{ $blog->user->name }}
-                        </p>
+                        {{--<p class="lead">--}}
+                            {{--by {{ $blog->user->name }}--}}
+                        {{--</p>--}}
                         <p><span class="glyphicon glyphicon-time"></span> Posted {{ $blog->created_at->diffForHumans() }}</p>
                         <hr>
                         {{--<img class="img-responsive" src="http://placehold.it/900x300" alt="">--}}

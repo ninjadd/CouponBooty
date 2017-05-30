@@ -18,9 +18,6 @@
             </div>
             <div class="modal-footer">
                 <p class="pull-left">
-                    <strong>Created By:</strong>
-                    {{ $offer->user->name }}
-
                     <strong>Created At:</strong>
                     {{ $offer->created_at }}
 

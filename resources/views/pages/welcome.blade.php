@@ -3,47 +3,44 @@
 @section('content')
 
     <div class="container">
-        <div class="col-md-12">
+{{--        <img class="img-thumbnail" src="{{ asset('storage/images/CouponBooty_Logo_Horizontal.png') }}">--}}
 
-                {{--<img class="thumbnail" src="{{ asset('storage/images/CouponBooty_Logo_Horizontal.png') }}">--}}
+        @if(count($offers) > 0)
 
-            <div class="row">
-                @if(count($offers))
+            <div class="col-md-12">
+                <h2>{{ config('app.name') }}</h2>
+                <h3 class="lead">
+                    Most Recent Offerings
+                </h3>
+                <hr>
+            </div>
 
-                    @foreach($offers as $offer)
-                        @include('shared.view')
-                        <div class="col-md-12">
-                            <div class="panel panel-primary">
-                                <div class="panel-heading clearfix">
-                                    <h4 class="pull-left panel-title">
-                                        {{ $offer->title }}
-                                    </h4>
-                                    <a class="btn btn-default btn-xs pull-right" data-toggle="modal" title="View {{ $offer->title }}" data-target="#myModal{{ $offer->id }}">{{ $offer->type->label }} &raquo;</a>
-                                </div>
-                                <div class="panel-body">
-                                    <p class="lead text-danger">{{ $offer->type->label }}</p>
-                                    {!! $offer->body !!}
-                                </div>
-                                <div class="panel-footer">
-                                    Uploaded at: {{ $offer->created_at->diffForHumans() }}
-                                    Uploaded by: {{ $offer->user->name }}
-                                    <br>
-                                    <div>
-                                        @if(count($offer->categories->count()) > 0)
-                                            @foreach($offer->categories as $category)
-                                                <span class="label label-warning">{{ $category->name }}</span>
-                                            @endforeach
-                                        @endif
-                                    </div>
-                                </div>
-                            </div>
+            <section class="col-xs-12 col-sm-6 col-md-12">
+
+                @foreach($offers as $offer)
+                    @include('shared.view')
+                    <article class="search-result row">
+                        <div class="col-xs-12 col-sm-12 col-md-2">
+                            <ul class="list-unstyled">
+                                <li><i class="glyphicon glyphicon-calendar"></i> <span>{{ $offer->created_at->diffForHumans() }}</span></li>
+                                <li><i class="glyphicon glyphicon-time"></i> <span>{{ $offer->created_at }}</span></li>
+                                <li><i class="glyphicon glyphicon-tags"></i> <span class="badge">{{ $offer->categories->count() }}</span></li>
+                            </ul>
                         </div>
-                    @endforeach
+                        <div class="col-xs-12 col-sm-12 col-md-10 excerpet">
+                            <h3><a href="#" title="">{{ $offer->title }}</a></h3>
+                            <p>{!! $offer->body !!}</p>
+                            <a class="btn btn-primary btn-xs pull-right"
+                               data-toggle="modal" title="View {{ $offer->title }}"
+                               data-target="#myModal{{ $offer->id }}">View Coupon &raquo;</a>
+                        </div>
+                    </article>
+                @endforeach
 
-                @endif
-            </div><!--/row-->
-            {{ $offers->links() }}
-        </div>
+            </section>
+
+        @endif
+
     </div>
 
 @endsection
