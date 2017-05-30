@@ -45,7 +45,7 @@ class PageController extends Controller
      */
     public function indexBlog(Request $request, Blog $blog)
     {
-        $blogs = $blog->unarchived()->blogFilter($request)->orderBy('updated_at', 'desc')->paginate(3);
+        $blogs = $blog->unarchived()->blogFilter($request)->orderBy('updated_at', 'desc')->paginate(15);
 
         return view('pages.blog', compact('blogs'));
     }
