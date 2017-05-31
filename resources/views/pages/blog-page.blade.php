@@ -36,6 +36,39 @@
                 {!! $blog->body !!}
                 <hr>
 
+                <!-- Comments Form -->
+                <div class="well">
+                    <h4>Leave a Comment:</h4>
+                    <form role="form">
+                        <div class="form-group">
+                            <textarea class="form-control" rows="3"></textarea>
+                        </div>
+                        <button type="submit" class="btn btn-primary">Submit</button>
+                    </form>
+                </div>
+
+                <hr>
+
+                <!-- Posted Comments -->
+
+                <!-- Comment -->
+                @if(count($blog->comments) > 0)
+                    @foreach($blog->comments as $blog_comment)
+
+                        <div class="media">
+                            <div class="media-body">
+                                <h4 class="media-heading">Comment Posted
+                                    <small>{{ $blog_comment->created_at->toDayDateTimeString() }}</small>
+                                </h4>
+                                <p class="well well-sm">
+                                    {{ $blog_comment->body }}
+                                </p>
+                            </div>
+                        </div>
+
+                    @endforeach
+                @endif
+
             </div>
 
             @include('shared.blog-sidebar')

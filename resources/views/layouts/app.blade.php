@@ -16,9 +16,9 @@
     <!-- Scripts -->
     <script src="{{ asset('js/app.js') }}"></script>
 
-    @yield('head')
+@yield('head')
 
-    <!-- Scripts -->
+<!-- Scripts -->
     <script>
         window.Laravel = {!! json_encode([
             'csrfToken' => csrf_token(),
@@ -26,100 +26,100 @@
     </script>
 </head>
 <body>
-    <div id="app">
-        <nav class="navbar navbar-inverse navbar-static-top">
-            <div class="container">
-                <div class="navbar-header">
-                    <!-- Branding Image -->
-                    <a class="navbar-brand" href="{{ url('/') }}">
-                        {{ config('app.name') }}
-                    </a>
-                </div>
+<div id="app">
+    <nav class="navbar navbar-inverse navbar-static-top">
+        <div class="container">
+            <div class="navbar-header">
+                <!-- Branding Image -->
+                <a class="navbar-brand" href="{{ url('/') }}">
+                    {{ config('app.name') }}
+                </a>
+            </div>
 
-                <div class="collapse navbar-collapse" id="app-navbar-collapse">
-                    <!-- Left Side Of Navbar -->
-                    <ul class="nav navbar-nav">
-                        @if(Auth::user())
-                            <li><a href="/dashboard">Dasboard</a></li>
-                        @endif
+            <div class="collapse navbar-collapse" id="app-navbar-collapse">
+                <!-- Left Side Of Navbar -->
+                <ul class="nav navbar-nav">
+                    @if(Auth::user())
+                        <li><a href="/dashboard">Dasboard</a></li>
+                    @endif
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+                            More <span class="caret"></span>
+                        </a>
+                        <ul class="dropdown-menu" role="menu">
+                            <li><a href="/blog">Blog</a></li>
+                            <li><a href="/about">About Us</a></li>
+                            <li class="divider"></li>
+                            <li><a href="/terms">Terms</a></li>
+                            <li><a href="/privacy">Privacy Policy</a></li>
+                        </ul>
+                    </li>
+                </ul>
+
+                <!-- Right Side Of Navbar -->
+                <ul class="nav navbar-nav navbar-right">
+
+                    <form class="navbar-form navbar-left" action="/results" method="POST">
+                        {{ csrf_field() }}
+                        <div class="form-group">
+                            <input type="text" name="search_text" required="required" class="form-control" placeholder="Search">
+                        </div>
+                        <button type="submit" class="btn btn-default">Submit</button>
+                    </form>
+                    <li>
+                        <a class="fa fa-facebook-square" aria-hidden="true" href="https://www.facebook.com/CouponBooty/" target="_blank"></a>
+                    </li>
+                    <li>
+                        <a class="fa fa-twitter-square" aria-hidden="true" href="https://twitter.com/couponbooty" target="_blank"></a>
+                    </li>
+
+                    <!-- Authentication Links -->
+                    @if (Auth::guest())
+                        {{--<li><a href="{{ route('login') }}">Login</a></li>--}}
+                        {{--<li><a href="{{ route('register') }}">Register</a></li>--}}
+                    @else
                         <li class="dropdown">
                             <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
-                                More <span class="caret"></span>
+                                {{ Auth::user()->name }} <span class="caret"></span>
                             </a>
+
                             <ul class="dropdown-menu" role="menu">
-                                <li><a href="/blog">Blog</a></li>
-                                <li><a href="/about">About Us</a></li>
+                                <li><a href="/blogger">Blog Administration</a></li>
                                 <li class="divider"></li>
-                                <li><a href="/terms">Terms</a></li>
-                                <li><a href="/privacy">Privacy Policy</a></li>
+                                <li>
+                                    <a href="{{ route('logout') }}"
+                                       onclick="event.preventDefault();
+                                                     document.getElementById('logout-form').submit();">
+                                        Logout
+                                    </a>
+
+                                    <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                                        {{ csrf_field() }}
+                                    </form>
+                                </li>
                             </ul>
                         </li>
-                    </ul>
-
-                    <!-- Right Side Of Navbar -->
-                    <ul class="nav navbar-nav navbar-right">
-
-                        <form class="navbar-form navbar-left" action="/results" method="POST">
-                            {{ csrf_field() }}
-                            <div class="form-group">
-                                <input type="text" name="search_text" required="required" class="form-control" placeholder="Search">
-                            </div>
-                            <button type="submit" class="btn btn-default">Submit</button>
-                        </form>
-                        <li>
-                            <a class="fa fa-facebook-square" aria-hidden="true" href="https://www.facebook.com/CouponBooty/" target="_blank"></a>
-                        </li>
-                        <li>
-                            <a class="fa fa-twitter-square" aria-hidden="true" href="https://twitter.com/couponbooty" target="_blank"></a>
-                        </li>
-
-                        <!-- Authentication Links -->
-                        @if (Auth::guest())
-                            {{--<li><a href="{{ route('login') }}">Login</a></li>--}}
-                            {{--<li><a href="{{ route('register') }}">Register</a></li>--}}
-                        @else
-                            <li class="dropdown">
-                                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
-                                    {{ Auth::user()->name }} <span class="caret"></span>
-                                </a>
-
-                                <ul class="dropdown-menu" role="menu">
-                                    <li><a href="/blogger">Blog Administration</a></li>
-                                    <li class="divider"></li>
-                                    <li>
-                                        <a href="{{ route('logout') }}"
-                                            onclick="event.preventDefault();
-                                                     document.getElementById('logout-form').submit();">
-                                            Logout
-                                        </a>
-
-                                        <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
-                                            {{ csrf_field() }}
-                                        </form>
-                                    </li>
-                                </ul>
-                            </li>
-                        @endif
-                    </ul>
-                </div>
+                    @endif
+                </ul>
             </div>
-        </nav>
-
-        @yield('content')
-    </div>
-    <hr>
-
-    <!-- Footer -->
-    <div class="container"
-    <footer>
-        <div class="row">
-            <div class="col-lg-12">
-                <p>Copyright &copy; {{ config('app.name') }} {{ date('Y') }}</p>
-            </div>
-            <!-- /.col-lg-12 -->
         </div>
-        <!-- /.row -->
-    </footer>
+    </nav>
+
+    @yield('content')
+</div>
+<hr>
+
+<!-- Footer -->
+<div class="container"
+<footer>
+    <div class="row">
+        <div class="col-lg-12">
+            <p>Copyright &copy; {{ config('app.name') }} {{ date('Y') }}</p>
+        </div>
+        <!-- /.col-lg-12 -->
     </div>
+    <!-- /.row -->
+</footer>
+</div>
 </body>
 </html>

@@ -33,7 +33,7 @@
                         </ul>
                     </div>
                     <div class="col-xs-12 col-sm-12 col-md-10 excerpet">
-                        <h3><a href="#" title="">{{ $offer->title }}</a></h3>
+                        <h3 class="text-primary">{{ $offer->title }}</h3>
                         <p>{!! $offer->body !!}</p>
                         <a class="btn btn-primary btn-xs pull-right"
                            data-toggle="modal" title="View {{ $offer->title }}"
