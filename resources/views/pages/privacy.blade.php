@@ -5,7 +5,7 @@
     <div class="container">
         <div class="row">
 
-            <div class="panel panel-info">
+            <div class="panel panel-success">
                 <div class="panel-heading">
                     <h3 class="panel-title">
                         Privacy Policy
@@ -158,8 +158,7 @@
                 </div>
 
                 <div class="panel-footer">
-                    <span class="text-warning">{{ config('app.name') }}</span>
-                    <span class="text-primary">&copy; {{ date('Y') }}</span>
+
                 </div>
             </div>
 

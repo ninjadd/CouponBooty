@@ -2,13 +2,13 @@
 
 namespace App\Http\Controllers;
 
+use App\Message;
 use Illuminate\Http\Request;
-use App\BlogComment;
 
-class BlogCommentController extends Controller
+class MessageController extends Controller
 {
     /**
-     * BlogCommentController constructor.
+     * MessageController constructor.
      */
     public function __construct()
     {
@@ -49,10 +49,10 @@ class BlogCommentController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\BlogComment  $blogComment
+     * @param  \App\Message  $message
      * @return \Illuminate\Http\Response
      */
-    public function show(BlogComment $blogComment)
+    public function show(Message $message)
     {
         //
     }
@@ -60,10 +60,10 @@ class BlogCommentController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\BlogComment  $blogComment
+     * @param  \App\Message  $message
      * @return \Illuminate\Http\Response
      */
-    public function edit(BlogComment $blogComment)
+    public function edit(Message $message)
     {
         //
     }
@@ -72,10 +72,10 @@ class BlogCommentController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\BlogComment  $blogComment
+     * @param  \App\Message  $message
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, BlogComment $blogComment)
+    public function update(Request $request, Message $message)
     {
         //
     }
@@ -83,13 +83,11 @@ class BlogCommentController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\BlogComment  $blogComment
+     * @param  \App\Message  $message
      * @return \Illuminate\Http\Response
      */
-    public function destroy(BlogComment $blogComment)
+    public function destroy(Message $message)
     {
-        $blogComment->delete();
-
-        return back();
+        //
     }
 }

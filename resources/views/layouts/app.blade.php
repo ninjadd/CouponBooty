@@ -48,8 +48,8 @@
                         </a>
                         <ul class="dropdown-menu" role="menu">
                             <li><a href="/blog">Blog</a></li>
-                            <li><a href="/about">About Us</a></li>
                             <li class="divider"></li>
+                            <li><a href="/about">About Us</a></li>
                             <li><a href="/terms">Terms</a></li>
                             <li><a href="/privacy">Privacy Policy</a></li>
                         </ul>
@@ -114,7 +114,10 @@
 <footer>
     <div class="row">
         <div class="col-lg-12">
-            <p>Copyright &copy; {{ config('app.name') }} {{ date('Y') }}</p>
+            <p class="text-warning">
+                {{ config('app.name') }}
+                <span class="text-primary">&copy; {{ date('Y') }}</span>
+            </p>
         </div>
         <!-- /.col-lg-12 -->
     </div>

@@ -101,8 +101,7 @@
                 </div>
 
                 <div class="panel-footer">
-                    <span class="text-warning">{{ config('app.name') }}</span>
-                    <span class="text-primary">&copy; {{ date('Y') }}</span>
+
                 </div>
 
             </div>
