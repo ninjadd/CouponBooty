@@ -3,11 +3,13 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Mail;
 use App\Offer;
 use App\Blog;
 use App\BlogComment;
 use App\Contact;
 use App\Message;
+use App\Mail\ContactUs;
 
 class PageController extends Controller
 {
@@ -124,6 +126,8 @@ class PageController extends Controller
         $message->contact_id = $contact->id;
         $message->body = $request->body;
         $message->save();
+
+        Mail::to('contact@couponbooty.com')->send(new ContactUs($message));
 
         return back()->with('message', 'You message has been sent');
     }
