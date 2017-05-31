@@ -6,6 +6,8 @@ use Illuminate\Http\Request;
 use App\Offer;
 use App\Blog;
 use App\BlogComment;
+use App\Contact;
+use App\Message;
 
 class PageController extends Controller
 {
@@ -97,8 +99,32 @@ class PageController extends Controller
         return view('pages.privacy');
     }
 
+    /**
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     */
     public function viewTerms()
     {
         return view('pages.terms');
+    }
+
+    public function sendMessage(Request $request)
+    {
+        $this->validate($request, [
+           'name' => 'required',
+           'email' => 'required|email',
+           'body' => 'required'
+        ]);
+
+        $contact = Contact::updateOrCreate([
+           'name' => $request->name,
+           'email' => $request->email
+        ]);
+
+        $message = new Message();
+        $message->contact_id = $contact->id;
+        $message->body = $request->body;
+        $message->save();
+
+        return back()->with('message', 'You message has been sent');
     }
 }

@@ -1,17 +1,20 @@
-<form class="form-horizontal">
+@include('shared.errors')
+@include('shared.session')
+<form action="/contact" method="POST" class="form-horizontal">
+    {{ csrf_field() }}
     <fieldset>
-        <legend></legend>
+        <legend>Let us know if there is anything you need</legend>
         <div class="form-group">
             <label for="inputName" class="col-lg-2 control-label">Your Name</label>
             <div class="col-lg-10">
-                <input name="name" type="text" class="form-control" id="inputName" placeholder="Who are you?">
+                <input name="name" type="text" required="required" class="form-control" id="inputName" placeholder="Who are you?">
             </div>
         </div>
 
         <div class="form-group">
             <label for="inputEmail" class="col-lg-2 control-label">Your Email</label>
             <div class="col-lg-10">
-                <input name="email" type="email" class="form-control" id="inputEmail" placeholder="Email address">
+                <input name="email" type="email" required="required" class="form-control" id="inputEmail" placeholder="Email address">
             </div>
         </div>
 
@@ -21,7 +24,7 @@
                 Message
             </label>
             <div class="col-lg-10">
-                <textarea class="form-control" placeholder="Message... In a bottle? No, Just a message to {{ config('app.name') }}." rows="4" id="textContent"></textarea>
+                <textarea class="form-control" name="body" required="required" placeholder="Message... In a bottle? No, Just a message to {{ config('app.name') }}." rows="4" id="textContent"></textarea>
             </div>
         </div>
 

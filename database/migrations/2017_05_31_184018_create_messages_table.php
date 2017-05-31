@@ -16,7 +16,7 @@ class CreateMessagesTable extends Migration
         Schema::create('messages', function (Blueprint $table) {
             $table->increments('id');
             $table->integer('contact_id')->unsigned()->index('idx_id_contact_id', ['id', 'contact_id']);
-            $table->text('message');
+            $table->text('body');
             $table->softDeletes();
             $table->timestamps();
         });

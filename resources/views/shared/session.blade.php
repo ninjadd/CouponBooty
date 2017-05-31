@@ -7,3 +7,13 @@
     </div>
 
 @endif
+
+@if (session('message'))
+
+    <div class="alert alert-dismissible alert-success">
+        <button type="button" class="close" data-dismiss="alert">&times;</button>
+        <h4>Alright!</h4>
+        <p>{{ session('message') }}</p>
+    </div>
+
+@endif

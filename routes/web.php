@@ -27,6 +27,8 @@ Route::get('privacy', 'PageController@viewPrivacy');
 
 Route::get('terms', 'PageController@viewTerms');
 
+Route::post('contact', 'PageController@sendMessage');
+
 Auth::routes();
 
 Route::get('dashboard', 'DashBoardController@index')->name('dashboard');

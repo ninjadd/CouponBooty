@@ -23,7 +23,7 @@ class Message extends Model
      */
     protected $fillable = [
         'contact_id',
-        'message'
+        'body'
     ];
 
     /**
@@ -32,4 +32,12 @@ class Message extends Model
      * @var array
      */
     protected $hidden = [];
+
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+     */
+    public function contact()
+    {
+        return $this->belongsTo('App\Contact');
+    }
 }
