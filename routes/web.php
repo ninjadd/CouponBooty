@@ -19,6 +19,8 @@ Route::get('blog', 'PageController@indexBlog');
 
 Route::get('blog/{slug}', 'PageController@viewBlog');
 
+Route::post('blog/{blog}', 'PageController@insertComment');
+
 Route::get('about', 'PageController@viewAbout');
 
 Route::get('privacy', 'PageController@viewPrivacy');
@@ -81,3 +83,5 @@ Route::put('blogger/{blog}', 'BlogController@update');
 Route::get('blogger/archive/{blog}', 'BlogController@archive');
 
 Route::delete('blogger/{blog}', 'BlogController@destroy');
+
+Route::delete('blog/comment/{blogComment}', 'BlogCommentController@destroy');

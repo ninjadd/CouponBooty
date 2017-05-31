@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Offer;
 use App\Blog;
-use Symfony\Component\Yaml\Tests\B;
+use App\BlogComment;
 
 class PageController extends Controller
 {
@@ -59,6 +59,26 @@ class PageController extends Controller
         $blog = Blog::slug($slug)->first();
 
         return view('pages.blog-page', compact('blog'));
+    }
+
+    /**
+     * @param Request $request
+     * @param Blog $blog
+     * @return \Illuminate\Http\RedirectResponse
+     */
+    public function insertComment(Request $request, Blog $blog)
+    {
+        $this->validate($request, [
+           'body' => 'required'
+        ]);
+
+        $blogComment = new BlogComment();
+
+        $blogComment->blog_id = $blog->id;
+        $blogComment->body = $request->body;
+        $blogComment->save();
+
+        return back();
     }
 
     /**

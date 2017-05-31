@@ -17,7 +17,6 @@ class CreateBlogCommentsTable extends Migration
             $table->increments('id');
             $table->integer('blog_id')->unsigned()->index('idx_id_blog_id', ['id', 'blog_id']);
             $table->text('body');
-            $table->integer('archive')->default(0)->index('idx_id_archive', ['id', 'archive']);
             $table->softDeletes();
             $table->timestamps();
         });

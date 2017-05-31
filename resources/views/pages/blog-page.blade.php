@@ -7,6 +7,8 @@
 
         <div class="row">
 
+            @include('shared.errors')
+
             <!-- Blog Post Content Column -->
             <div class="col-lg-8">
 
@@ -38,10 +40,11 @@
 
                 <!-- Comments Form -->
                 <div class="well">
-                    <h4>Leave a Comment:</h4>
-                    <form role="form">
+                    <h5>Leave a Comment:</h5>
+                    <form action="/blog/{{ $blog->id }}" method="POST" role="form">
+                        {{ csrf_field() }}
                         <div class="form-group">
-                            <textarea class="form-control" rows="3"></textarea>
+                            <textarea name="body" required="required" class="form-control" rows="3"></textarea>
                         </div>
                         <button type="submit" class="btn btn-primary">Submit</button>
                     </form>
@@ -57,9 +60,9 @@
 
                         <div class="media">
                             <div class="media-body">
-                                <h4 class="media-heading">Comment Posted
+                                <p class="media-heading"><strong>Posted</strong>
                                     <small>{{ $blog_comment->created_at->toDayDateTimeString() }}</small>
-                                </h4>
+                                </p>
                                 <p class="well well-sm">
                                     {{ $blog_comment->body }}
                                 </p>

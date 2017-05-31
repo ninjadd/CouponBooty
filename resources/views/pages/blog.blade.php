@@ -12,7 +12,7 @@
             <div class="col-md-8">
 
                 <h1 class="page-header">
-                    {{ config('app.name') }}
+                    <a class="text-muted" href="/blog">{{ config('app.name') }}</a>
                     <small></small>
                 </h1>
 

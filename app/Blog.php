@@ -91,6 +91,11 @@ class Blog extends Model
         if ($year = $filter['year']) {
             $query->whereYear('created_at', $year);
         }
+
+        if ($q = $filter['6']) {
+            $query->where('body', 'like', '%'.$q.'%');
+            $query->where('title', 'like', '%'.$q.'%');
+        }
     }
 
     public static function sideBar()

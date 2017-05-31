@@ -67,6 +67,9 @@
                                     Updated At
                                 </th>
                                 <th>
+                                    Comments
+                                </th>
+                                <th>
 
                                 </th>
                             </tr>
@@ -89,6 +92,9 @@
                                         </td>
                                         <td>
                                             {{ $blog->updated_at->diffForHumans() }}
+                                        </td>
+                                        <td>
+                                            {{ $blog->comments->count() }}
                                         </td>
                                         <td>
                                             <form action="/blogger/{{ $blog->id }}" method="POST">

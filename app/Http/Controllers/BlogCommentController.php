@@ -85,6 +85,8 @@ class BlogCommentController extends Controller
      */
     public function destroy(BlogComment $blogComment)
     {
-        //
+        $blogComment->delete();
+
+        return back();
     }
 }

@@ -37,8 +37,38 @@
 
                             <button type="submit" class="btn btn-info pull-right">Update</button>
                         </form>
-
                     </div>
+
+                    @if(count($blog->comments->count()) > 0)
+                        <ul class="list-group">
+                            <li class="list-group-item active">
+                                Comments
+                                <span class="badge">
+                                    {{ $blog->comments->count() }}
+                                </span>
+                            </li>
+                            @foreach($blog->comments as $blog_comment)
+                                <li class="list-group-item">
+
+                                    {{ $blog_comment->body }}
+
+                                    <form class="pull-right" method="POST" action="/blog/comment/{{ $blog_comment->id }}">
+                                        {{ csrf_field() }}
+                                        {{ method_field('DELETE') }}
+                                        <button type="submit" class="btn btn-xs btn-danger">
+                                            Delete
+                                        </button>
+                                    </form>
+
+                                    <p class="text-muted">
+                                        <em>Created:</em> {{ $blog_comment->created_at->toDayDateTimeString() }}
+                                    </p>
+
+                                </li>
+                            @endforeach
+                        </ul>
+                    @endif
+
                 </div>
             </div>
         </div>

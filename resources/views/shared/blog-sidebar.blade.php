@@ -2,17 +2,20 @@
 <div class="col-md-4">
 
     <!-- Blog Search Well -->
-    <div class="well">
+    <div class="form-group">
         <h4>Blog Search</h4>
-        <div class="input-group">
-            <input type="text" class="form-control">
-            <span class="input-group-btn">
-                <button class="btn btn-primary" type="button">
-                    <span class="glyphicon glyphicon-search"></span>
-            </button>
-            </span>
-        </div>
-        <!-- /.input-group -->
+        <label class="control-label">
+            Search Bloggy Goodness
+        </label>
+        <form action="/blog" method="GET">
+            {{ csrf_field() }}
+            <div class="input-group">
+                <input required="required" name="q" type="text" class="form-control">
+                <span class="input-group-btn">
+                    <button class="btn btn-primary glyphicon glyphicon-search" type="submit"></button>
+                </span>
+            </div>
+        </form>
     </div>
 
     <div class="sidebar-module">
