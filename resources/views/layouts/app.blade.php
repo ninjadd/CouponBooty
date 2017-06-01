@@ -86,6 +86,8 @@
                             <ul class="dropdown-menu" role="menu">
                                 <li><a href="/blogger">Blog Administration</a></li>
                                 <li class="divider"></li>
+                                <li><a href="/contact">Contact Administration</a></li>
+                                <li class="divider"></li>
                                 <li>
                                     <a href="{{ route('logout') }}"
                                        onclick="event.preventDefault();

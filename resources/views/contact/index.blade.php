@@ -24,26 +24,8 @@
                 <div class="panel panel-info">
                     <div class="panel-heading clearfix">
                         <h3 class="panel-title pull-left">
-                            Blog Posts
+                            Contacts
                         </h3>
-                        <div class="btn-group btn-group-lg pull-right">
-                            <a class="btn btn-info" href="/blogger?filter=all">
-                                All Posts
-                                <span class="badge">{{ $all->count() }}</span>
-                            </a>
-                            <a class="btn btn-info" href="/blogger?filter=archived">
-                                Archived Posts
-                                <span class="badge">{{ $archived->count() }}</span>
-                            </a>
-                            <a class="btn btn-info" href="/blogger?filter=unarchived">
-                                Unarchived Posts
-                                <span class="badge">{{ $unarchived->count() }}</span>
-                            </a>
-                            <a class="btn btn-info" href="/blogger/create">
-                                New Blog Post
-                                <span class="glyphicon glyphicon-plus"></span>
-                            </a>
-                        </div>
                     </div>
 
                     <div class="panel-body">
@@ -52,22 +34,19 @@
                             <thead>
                             <tr class="info">
                                 <th>
-                                    ID
+                                    Name
                                 </th>
                                 <th>
-                                    Title
+                                    Email
                                 </th>
                                 <th>
-                                    Created By
+                                    First Added
                                 </th>
                                 <th>
-                                    Created At
+                                    Last message
                                 </th>
                                 <th>
-                                    Updated At
-                                </th>
-                                <th>
-                                    Comments
+                                    Messages
                                 </th>
                                 <th>
 
@@ -75,41 +54,30 @@
                             </tr>
                             </thead>
                             <tbody>
-                            @if(!empty($blogs))
-                                @foreach($blogs as $blog)
+                            @if(!empty($contacts))
+                                @foreach($contacts as $contact)
                                     <tr>
                                         <td>
-                                            {{ $blog->id }}
+                                            {{ $contact->name }}
                                         </td>
                                         <td>
-                                            {{ str_limit($blog->title, 40, ' . . .') }}
+                                            {{ $contact->email }}
                                         </td>
                                         <td>
-                                            {{ $blog->user->name }}
+                                            {{ $contact->created_at->diffForHumans() }}
                                         </td>
                                         <td>
-                                            {{ $blog->created_at->diffForHumans() }}
+                                            {{ $contact->messages->last()->created_at->diffForHumans() }}
                                         </td>
                                         <td>
-                                            {{ $blog->updated_at->diffForHumans() }}
+                                            {{ $contact->messages->count() }}
                                         </td>
                                         <td>
-                                            {{ $blog->comments->count() }}
-                                        </td>
-                                        <td>
-                                            <form action="/blogger/{{ $blog->id }}" method="POST">
+                                            <form action="/contact/{{ $contact->id }}" method="POST">
                                                 <div class="btn-group btn-group-sm pull-right">
 
-                                                    <a href="/blogger/{{ $blog->id }}" class="btn btn-default btn-xs"  data-toggle="tooltip" title="View Blog Post">
+                                                    <a href="/contact/{{ $contact->id }}" class="btn btn-default btn-xs"  data-toggle="tooltip" title="View Blog Post">
                                                         <span class="glyphicon glyphicon-eye-open" aria-hidden="true"></span>
-                                                    </a>
-
-                                                    <a href="/blogger/{{ $blog->id }}/edit" class="btn btn-success btn-xs"  data-toggle="tooltip" title="Edit Blog Post">
-                                                        <span class="glyphicon glyphicon-pencil" aria-hidden="true"></span>
-                                                    </a>
-
-                                                    <a href="/blogger/archive/{{ $blog->id }}" class="btn btn-warning btn-xs"  data-toggle="tooltip" title="Archive Blog Post">
-                                                        <span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
                                                     </a>
 
                                                     <button type="submit" class="btn btn-danger btn-xs"  data-toggle="tooltip" title="Delete Blog Post">

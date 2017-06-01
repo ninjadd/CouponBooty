@@ -27,7 +27,7 @@ Route::get('privacy', 'PageController@viewPrivacy');
 
 Route::get('terms', 'PageController@viewTerms');
 
-Route::post('contact', 'PageController@sendMessage');
+Route::post('send', 'PageController@sendMessage');
 
 Auth::routes();
 
@@ -87,3 +87,10 @@ Route::get('blogger/archive/{blog}', 'BlogController@archive');
 Route::delete('blogger/{blog}', 'BlogController@destroy');
 
 Route::delete('blog/comment/{blogComment}', 'BlogCommentController@destroy');
+
+// Contact Routes
+Route::get('contact', 'ContactController@index');
+
+Route::get('contact/{contact}', 'ContactController@show');
+
+Route::delete('contact/{contact}', 'ContactController@destroy');

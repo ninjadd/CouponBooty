@@ -22,7 +22,9 @@ class ContactController extends Controller
      */
     public function index()
     {
-        //
+        $contacts = Contact::all();
+
+        return view('contact.index', compact('contacts'));
     }
 
     /**
@@ -54,7 +56,7 @@ class ContactController extends Controller
      */
     public function show(Contact $contact)
     {
-        //
+        return view('contact.show', compact('contact'));
     }
 
     /**
@@ -88,6 +90,8 @@ class ContactController extends Controller
      */
     public function destroy(Contact $contact)
     {
-        //
+        $contact->delete();
+
+        return redirect('contact')->with('status',  $contact->name.' deleted!');
     }
 }

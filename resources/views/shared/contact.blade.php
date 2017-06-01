@@ -1,6 +1,6 @@
 @include('shared.errors')
 @include('shared.session')
-<form action="/contact" method="POST" class="form-horizontal">
+<form action="/send" method="POST" class="form-horizontal">
     {{ csrf_field() }}
     <fieldset>
         <legend>Let us know if there is anything you need</legend>
