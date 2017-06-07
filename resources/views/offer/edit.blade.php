@@ -1,8 +1,7 @@
 @extends('layouts.app')
 
 @section('head')
-    <link href="{{ asset('summernote/summernote.css') }}" rel="stylesheet">
-    <script src="{{ asset('summernote/summernote.min.js') }}"></script>
+    @include('shared.summernote')
 @endsection
 
 @section('content')
