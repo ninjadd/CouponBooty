@@ -1,3 +1,8 @@
+<script>
+    $("input[type='text']").click(function () {
+        $(this).select();
+    });
+</script>
 <!-- Modal -->
 <div class="modal fade bs-example-modal-lg" id="myModal{{ $offer->id }}" tabindex="-1" role="dialog" aria-labelledby="myModalLabel{{ $offer->id }}">
     <div class="modal-dialog modal-lg" role="document">
@@ -9,29 +14,17 @@
                 </h4>
             </div>
             <div class="modal-body">
-                <p class="lead">
+                <p>
                     {{ $offer->type->label }}
                 </p>
                 <p>
-                    {!! $offer->body !!}
+                    Coupon
+                    <br>
+                    <input class="input-sm" type="text" value="{{ $offer->coupon }}">
                 </p>
             </div>
             <div class="modal-footer">
-                <p class="pull-left">
-                    <strong>Created At:</strong>
-                    {{ $offer->created_at }}
-
-                    <strong>Updated At:</strong>
-                    {{ $offer->updated_at }}
-
-                    <strong>Archived:</strong>
-                    @if ($offer->archive == 0)
-                        No
-                    @elseif ($offer->archive == 1)
-                        Yes
-                    @endif
-                </p>
-                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                <a class="btn btn-primary pull-left" href="{{ $offer->url }}" target="_blank">Go To Site</a>
             </div>
         </div>
     </div>

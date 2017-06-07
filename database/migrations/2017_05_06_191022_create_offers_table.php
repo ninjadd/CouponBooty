@@ -18,7 +18,10 @@ class CreateOffersTable extends Migration
             $table->integer('user_id')->unsigned()->index('idx_id_user_id', ['id', 'user_id']);
             $table->integer('type_id')->index('idx_id_type_id', ['id', 'type_id']);
             $table->string('title');
+            $table->string('url');
+            $table->string('image_url');
             $table->text('body');
+            $table->string('coupon')->nullable();
             $table->integer('archive')->default(0)->index('idx_id_archive', ['id', 'archive']);
             $table->softDeletes();
             $table->timestamps();

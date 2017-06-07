@@ -53,17 +53,21 @@ class OfferController extends Controller
     public function store(Request $request)
     {
         $this->validate($request, [
-            'title' => 'required|unique:offers',
+            'title' => 'required',
             'body' => 'required',
+            'url' => 'required|url',
+            'image_url' => 'required|url',
             'type_id' => 'required|integer'
         ]);
 
         $offer = new Offer();
-        $offer->title = $request->title;
-        $offer->body = $request->body;
-        $offer->type_id = $request->type_id;
         $offer->user_id = Auth::user()->id;
-
+        $offer->type_id = $request->type_id;
+        $offer->title = $request->title;
+        $offer->url = $request->url;
+        $offer->image_url = $request->image_url;
+        $offer->body = $request->body;
+        $offer->coupon = $request->coupon;
         $offer->save();
 
         if (!empty($request->categories)) {
@@ -128,15 +132,40 @@ class OfferController extends Controller
         $this->validate($request, [
             'title' => 'required',
             'body' => 'required',
+            'url' => 'required|url',
+            'image_url' => 'required|url',
             'type_id' => 'required|integer'
         ]);
 
-        $offer->update([
-            'title' => $request->title,
-            'body' => $request->body,
-            'type_id' => $request->type_id,
-            'user_id' => Auth::user()->id
-        ]);
+        $offer->user_id = Auth::user()->id;
+        $offer->type_id = $request->type_id;
+        $offer->title = $request->title;
+        $offer->url = $request->url;
+        $offer->image_url = $request->image_url;
+        $offer->body = $request->body;
+        $offer->coupon = $request->coupon;
+        $offer->save();
+
+        if (!empty($request->categories)) {
+            $categories = $request->categories;
+            if (str_contains($categories, ',')) {
+                $cats = explode(',', $categories);
+                foreach ($cats as $cat) {
+                    $cat = trim($cat);
+                    if (!empty($cat)) {
+                        $category = new Category();
+                        $category->offer_id = $offer->id;
+                        $category->name = $cat;
+                        $category->save();
+                    }
+                }
+            } else {
+                $category = new Category();
+                $category->offer_id = $offer->id;
+                $category->name = $categories;
+                $category->save();
+            }
+        }
 
         return redirect('dashboard')->with('status', 'Offer #'. $offer->id . ' updated!');
     }

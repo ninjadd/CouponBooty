@@ -10,6 +10,7 @@
             <div class="col-md-12">
 
                 @include('shared.session')
+                @include('shared.errors')
 
                 <div class="panel panel-success">
                     <div class="panel-heading">
@@ -22,46 +23,134 @@
                         <form action="/offer/{{ $offer->id }}" method="POST">
                             {{ method_field('PUT') }}
                             {{ csrf_field() }}
-                            <div class="form-group">
-                                <label for="titleInput">Offer Title</label>
-                                <input value="{{ $offer->title }}" class="form-control" type="text" name="title" id="titleInput" required="required" placeholder="Make this title count">
-                            </div>
+                            <fieldset>
+                                <legend>Edit Offer Form</legend>
 
-                            <div class="form-group">
-                                <label for="bodyTextarea">Offer Body</label>
-                                <textarea id="summernote" class="form-control" rows="10" name="body" required="required" id="bodyTextarea">{{ $offer->body }}</textarea>
-                            </div>
-
-                            <div class="form-group">
-                                @foreach($types as $type)
-                                    <label class="radio-inline">
-                                        @if($offer->type_id == $type->id)
-                                            <input type="radio" name="type_id" value="{{ $type->id }}" checked="checked">
-                                        @else
-                                            <input type="radio" name="type_id" value="{{ $type->id }}">
-                                        @endif
-
-                                        {{ $type->label }}
-                                    </label>
-                                @endforeach
-                            </div>
-
-                            <button type="submit" class="btn btn-success pull-right">Update</button>
-                        </form>
-                        @if(count($categories) > 0)
-                            @foreach($categories as $category)
-                                <div class="pull-left">
-                                    <form action="/category/{{ $category->id }}" method="POST">
-                                        <button type="submit" class="btn btn-default btn-sm">
-                                            {{ $category->name }} <span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
-                                        </button>
-                                        {{ method_field('DELETE') }}
-                                        {{ csrf_field() }}
-                                    </form>
+                                <div class="form-group">
+                                    <label for="offerTitle" class="col-lg-2 control-label">Title</label>
+                                    <div class="col-lg-10">
+                                        <input required="required"
+                                               name="title"
+                                               type="text"
+                                               class="form-control"
+                                               id="offerTitle"
+                                               value="{{ $offer->title }}"
+                                               placeholder="All great offers start with great title">
+                                        <span class="help-block">This is a required field so don't mess it up</span>
+                                    </div>
                                 </div>
-                            @endforeach
-                        @endif
-                        @include('shared.errors')
+
+                                <div class="form-group">
+                                    <label for="offerUrl" class="col-lg-2 control-label">Offer URL</label>
+                                    <div class="col-lg-10">
+                                        <input required="required"
+                                               name="url"
+                                               type="url"
+                                               class="form-control"
+                                               id="offerUrl"
+                                               value="{{ $offer->url }}"
+                                               placeholder="This is where the advertiser URL goes">
+                                        <span class="help-block">This one is also required</span>
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="imageUrl" class="col-lg-2 control-label">Image URL</label>
+                                    <div class="col-lg-10">
+                                        <input required="required"
+                                               name="image_url"
+                                               type="url"
+                                               class="form-control"
+                                               id="imageUrl"
+                                               value="{{ $offer->image_url }}"
+                                               placeholder="This is where the URL for the Advertiser's image goes">
+                                        <span class="help-block">This is also required</span>
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="offerBody" class="col-lg-2 control-label">Offer Text</label>
+                                    <div class="col-lg-10">
+                                        <textarea required="required"
+                                                  name="body"
+                                                  class="form-control"
+                                                  rows="3"
+                                                  id="summernote">{!! $offer->body !!}</textarea>
+                                        <span class="help-block">You guessed it, this one is required</span>
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="offerBody" class="col-lg-2 control-label">Type</label>
+                                    <div class="col-lg-10">
+                                        @foreach($types as $type)
+                                            <label class="radio-inline">
+                                                @if($offer->type_id == $type->id)
+                                                    <input type="radio" name="type_id" value="{{ $type->id }}" checked="checked">
+                                                @else
+                                                    <input type="radio" name="type_id" value="{{ $type->id }}">
+                                                @endif
+
+                                                {{ $type->label }}
+                                            </label>
+                                        @endforeach
+                                        <span class="help-block">Select one please these are required as well</span>
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="coupon" class="col-lg-2 control-label">Coupon</label>
+                                    <div class="col-lg-10">
+                                        <input
+                                                name="coupon"
+                                                type="text"
+                                                class="form-control"
+                                                id="coupon"
+                                                value="{{ $offer->coupon }}"
+                                                placeholder="This is the Coupon or Code or whatever you want to call it">
+                                        <span class="help-block">This is not required so you could call it optional if you like</span>
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="offerCategories" class="col-lg-2 control-label">Offer Text</label>
+                                    <div class="col-lg-10">
+                                        <textarea
+                                                name="categories"
+                                                class="form-control"
+                                                rows="3"
+                                                placeholder="Add more here delete them below still comma separated please"
+                                                id="offerCategories"></textarea>
+                                        <span class="help-block">This will help with search and filtering later on</span>
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    <div class="col-lg-10 col-lg-offset-2">
+                                        <button type="submit" class="btn btn-success">Update</button>
+                                    </div>
+                                </div>
+                            </fieldset>
+                        </form>
+                        <br>
+                        <div class="col-lg-10 col-lg-offset-2">
+                            <p class="text-muted">
+                                Current Categories
+                            </p>
+                            @if(count($categories) > 0)
+                                @foreach($categories as $category)
+                                    <div class="pull-left">
+                                        <form action="/category/{{ $category->id }}" method="POST">
+                                            <button type="submit" class="btn btn-default btn-sm">
+                                                {{ $category->name }} <span aria-hidden="true">&times;</span>
+                                            </button>
+                                            {{ method_field('DELETE') }}
+                                            {{ csrf_field() }}
+                                        </form>
+                                    </div>
+                                @endforeach
+                            @endif
+                        </div>
 
                     </div>
                 </div>

@@ -25,7 +25,11 @@ class Offer extends Model
         'user_id',
         'type_id',
         'title',
-        'body'
+        'url',
+        'image_url',
+        'body',
+        'coupon',
+        'archive'
     ];
 
     /**

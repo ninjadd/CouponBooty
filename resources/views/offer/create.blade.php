@@ -19,35 +19,111 @@
                     </div>
 
                     <div class="panel-body">
+
                         <form action="/offer" method="POST">
                             {{ csrf_field() }}
-                            <div class="form-group">
-                                <label for="titleInput">Offer Title</label>
-                                <input class="form-control" type="text" name="title" id="titleInput" required="required" placeholder="Make this title count">
-                            </div>
+                            <fieldset>
+                                <legend>New Offer Form</legend>
 
-                            <div class="form-group">
-                                <label for="bodyTextarea">Offer Body</label>
-                                <textarea id="summernote" class="form-control" rows="10" name="body" required="required" id="bodyTextarea"></textarea>
-                            </div>
+                                <div class="form-group">
+                                    <label for="offerTitle" class="col-lg-2 control-label">Title</label>
+                                    <div class="col-lg-10">
+                                        <input required="required"
+                                                name="title"
+                                                type="text"
+                                                class="form-control"
+                                                id="offerTitle"
+                                                placeholder="All great offers start with great title">
+                                        <span class="help-block">This is a required field so don't mess it up</span>
+                                    </div>
+                                </div>
 
-                            <div class="form-group">
-                                @foreach($types as $type)
-                                    <label class="radio-inline">
-                                        <input type="radio" name="type_id" value="{{ $type->id }}">
-                                        {{ $type->label }}
-                                    </label>
-                                @endforeach
-                            </div>
+                                <div class="form-group">
+                                    <label for="offerUrl" class="col-lg-2 control-label">Offer URL</label>
+                                    <div class="col-lg-10">
+                                        <input required="required"
+                                               name="url"
+                                               type="url"
+                                               class="form-control"
+                                               id="offerUrl"
+                                               placeholder="This is where the advertiser URL goes">
+                                        <span class="help-block">This one is also required</span>
+                                    </div>
+                                </div>
 
-                            <div class="form-group">
-                                <label for="categoryTextarea">Offer Categories</label>
-                                <textarea class="form-control" placeholder="Comma separated for more than one"
-                                          name="categories" id="categoryTextarea"></textarea>
-                            </div>
+                                <div class="form-group">
+                                    <label for="imageUrl" class="col-lg-2 control-label">Image URL</label>
+                                    <div class="col-lg-10">
+                                        <input required="required"
+                                               name="image_url"
+                                               type="url"
+                                               class="form-control"
+                                               id="imageUrl"
+                                               placeholder="This is where the URL for the Advertiser's image goes">
+                                        <span class="help-block">This is also required</span>
+                                    </div>
+                                </div>
 
-                            <button type="submit" class="btn btn-primary pull-right">Save</button>
+                                <div class="form-group">
+                                    <label for="offerBody" class="col-lg-2 control-label">Offer Text</label>
+                                    <div class="col-lg-10">
+                                        <textarea required="required"
+                                                  name="body"
+                                                  class="form-control"
+                                                  rows="3"
+                                                  id="summernote"></textarea>
+                                        <span class="help-block">You guessed it, this one is required</span>
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="offerBody" class="col-lg-2 control-label">Type</label>
+                                    <div class="col-lg-10">
+                                        @foreach($types as $type)
+                                            <label class="radio-inline">
+                                                <input type="radio" name="type_id" value="{{ $type->id }}">
+                                                {{ $type->label }}
+                                            </label>
+                                        @endforeach
+                                        <span class="help-block">Select one please these are required as well</span>
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="coupon" class="col-lg-2 control-label">Coupon</label>
+                                    <div class="col-lg-10">
+                                        <input
+                                               name="coupon"
+                                               type="text"
+                                               class="form-control"
+                                               id="coupon"
+                                               placeholder="This is the Coupon or Code or whatever you want to call it">
+                                        <span class="help-block">This is not required so you could call it optional if you like</span>
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="offerCategories" class="col-lg-2 control-label">Offer Text</label>
+                                    <div class="col-lg-10">
+                                        <textarea
+                                                  name="categories"
+                                                  class="form-control"
+                                                  rows="3"
+                                                  placeholder="Comma separated for more than one"
+                                                  id="offerCategories"></textarea>
+                                        <span class="help-block">This will help with search and filtering later on</span>
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    <div class="col-lg-10 col-lg-offset-2">
+                                        <button type="submit" class="btn btn-primary">Save</button>
+                                        <button type="reset" class="btn btn-default">Cancel</button>
+                                    </div>
+                                </div>
+                            </fieldset>
                         </form>
+
                     </div>
                 </div>
             </div>

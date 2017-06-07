@@ -40,7 +40,7 @@
                 <!-- Left Side Of Navbar -->
                 <ul class="nav navbar-nav">
                     @if(Auth::user())
-                        <li><a href="/dashboard">Dasboard</a></li>
+                        <li><a href="/dashboard">Das board</a></li>
                     @endif
                     <li class="dropdown">
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
