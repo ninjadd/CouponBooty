@@ -44,12 +44,12 @@
                         <h4 class="bg-primary" style="padding: 5px;">{{ $offer->title }}</h4>
                         <p>{!! $offer->body !!}</p>
                         @if($offer->coupon)
-                            <a class="btn btn-primary btn-xs pull-right"
+                            <a class="btn btn-primary pull-right"
                                data-toggle="modal" title="View {{ $offer->title }}"
                                data-target="#myModal{{ $offer->id }}">Use Coupon</a>
                             @include('shared.view')
                         @else
-                            <a class="btn btn-primary btn-xs pull-right" href="{{ $offer->url }}" target="_blank">Get Deal</a>
+                            <a class="btn btn-primary pull-right" href="{{ $offer->url }}" target="_blank">Get Deal</a>
                         @endif
                     </div>
                 </article>
