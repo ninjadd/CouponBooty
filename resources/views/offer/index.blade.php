@@ -1,17 +1,7 @@
 @extends('layouts.app')
 
 @section('head')
-    <link href="{{ asset('css/dataTables.bootstrap.css') }}" rel="stylesheet">
-    <script src="{{ asset('js/dataTables.bootstrap.js') }}"></script>
-    <script src="{{ asset('js/jquery.dataTables.bootstrap.js') }}"></script>
-    <script>
-        $(document).ready(function() {
-            $('.table').DataTable({
-                "order": [[ 5, "desc" ]],
-                "lengthMenu": [[10, 25, 50, 75, 100, -1], [10, 25, 50, 75, 100, "All"]]
-            });
-        } );
-    </script>
+    @include('shared.datatables')
 @endsection
 
 @section('content')

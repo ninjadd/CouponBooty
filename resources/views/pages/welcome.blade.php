@@ -56,7 +56,11 @@
 
         @endif
 
-        {{ $offers->links('shared.simple-pager') }}
+        <div class="row">
+            <div class="col-md-12">
+                {{ $offers->links('shared.simple-pager') }}
+            </div>
+        </div>
 
     </div>
 

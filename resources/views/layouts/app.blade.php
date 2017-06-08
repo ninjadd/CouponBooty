@@ -84,6 +84,8 @@
                             </a>
 
                             <ul class="dropdown-menu" role="menu">
+                                <li><a href="/dashboard">Das boart</a></li>
+                                <li class="divider"></li>
                                 <li><a href="/blogger">Blog Administration</a></li>
                                 <li class="divider"></li>
                                 <li><a href="/contact">Contact Administration</a></li>
