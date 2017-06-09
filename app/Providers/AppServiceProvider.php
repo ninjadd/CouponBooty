@@ -16,6 +16,10 @@ class AppServiceProvider extends ServiceProvider
         view()->composer('shared.blog-sidebar', function ($view) {
             $view->with('side_blogs', \App\Blog::sideBar());
         });
+
+        view()->composer('layouts.app', function ($view) {
+            $view->with('keywords', \App\Category::metaKeywords());
+        });
     }
 
     /**
