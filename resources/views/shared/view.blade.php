@@ -18,7 +18,7 @@
                 <div class="well well-lg">
                     Coupon
                     <br>
-                    <input style="font-size: 30px;" type="text" class="input-lg" readonly="readonly" value="{{ $offer->coupon }}">
+                    <input style="font-size: 30px; text-align: center;" type="text" class="input-lg" readonly="readonly" value="{{ $offer->coupon }}">
                     <br>
                     <small>Type <cite title="{{ $offer->type->label }}">{{ $offer->type->label }}</cite></small>
                 </div>
