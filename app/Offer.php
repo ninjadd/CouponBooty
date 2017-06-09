@@ -80,7 +80,10 @@ class Offer extends Model
      */
     public function scopeSearch($query, $search_text)
     {
+        $categories = Category::where('name', 'like', '%'.$search_text.'%')->pluck('offer_id')->unique();
+
         return $query->where('body', 'like', '%'.$search_text.'%')
-            ->orWhere('title', 'like', '%'.$search_text.'%');
+            ->orWhere('title', 'like', '%'.$search_text.'%')
+            ->whereIn('id', $categories);
     }
 }

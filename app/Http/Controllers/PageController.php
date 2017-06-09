@@ -32,7 +32,7 @@ class PageController extends Controller
         if (!empty($request->search_text)) {
             $offers = Offer::search($request->search_text)->get();
 
-            if (empty($offers)) {
+            if ($offers->count() == 0) {
                 return redirect('/');
             } elseif (!empty($offers)) {
                 return view('pages.results', compact('offers', 'request'));
