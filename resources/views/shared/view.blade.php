@@ -13,15 +13,17 @@
                     {{ $offer->title }}
                 </h4>
             </div>
-            <div class="modal-body">
-                <p>
-                    {{ $offer->type->label }}
-                </p>
-                <p>
+            <div class="modal-body text-center">
+
+                <div class="well well-lg">
                     Coupon
                     <br>
-                    <input class="input-sm" type="text" value="{{ $offer->coupon }}">
-                </p>
+                    <input style="font-size: 30px;" type="text" class="input-lg" readonly="readonly" value="{{ $offer->coupon }}">
+                    <br>
+                    <small>Type <cite title="{{ $offer->type->label }}">{{ $offer->type->label }}</cite></small>
+                </div>
+
+
             </div>
             <div class="modal-footer">
                 <a class="btn btn-primary pull-left" href="{{ $offer->url }}" target="_blank">Go To Site</a>
