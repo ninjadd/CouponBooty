@@ -113,7 +113,7 @@
                                 </div>
 
                                 <div class="form-group">
-                                    <label for="offerCategories" class="col-lg-2 control-label">Offer Text</label>
+                                    <label for="offerCategories" class="col-lg-2 control-label">Categories</label>
                                     <div class="col-lg-10">
                                         <textarea
                                                 name="categories"
