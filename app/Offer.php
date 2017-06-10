@@ -14,7 +14,7 @@ class Offer extends Model
      *
      * @var array
      */
-    protected $dates = ['deleted_at'];
+    protected $dates = ['deleted_at', 'start_date', 'end_date'];
 
     /**
      * The attributes that are mass assignable.
@@ -29,7 +29,9 @@ class Offer extends Model
         'image_url',
         'body',
         'coupon',
-        'archive'
+        'archive',
+        'start_date',
+        'end_date'
     ];
 
     /**

@@ -7,6 +7,7 @@ use App\Type;
 use App\Category;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Carbon\Carbon;
 
 
 class OfferController extends Controller
@@ -52,6 +53,7 @@ class OfferController extends Controller
      */
     public function store(Request $request)
     {
+
         $this->validate($request, [
             'title' => 'required',
             'body' => 'required',
@@ -68,6 +70,10 @@ class OfferController extends Controller
         $offer->image_url = $request->image_url;
         $offer->body = $request->body;
         $offer->coupon = $request->coupon;
+
+        $offer->start_date = $request->start_date;
+        $offer->end_date = $request->end_date;
+
         $offer->save();
 
         if (!empty($request->categories)) {
@@ -144,6 +150,11 @@ class OfferController extends Controller
         $offer->image_url = $request->image_url;
         $offer->body = $request->body;
         $offer->coupon = $request->coupon;
+
+
+        $offer->start_date = $request->start_date;
+        $offer->end_date = $request->end_date;
+
         $offer->save();
 
         if (!empty($request->categories)) {

@@ -126,6 +126,32 @@
                                 </div>
 
                                 <div class="form-group">
+                                    <label for="startDate" class="col-lg-2 control-label">Start Date</label>
+                                    <div class="col-lg-10">
+                                        <input name="start_date"
+                                               type="text"
+                                               class="form-control"
+                                               id="startDate"
+                                               placeholder="YYYY-MM-DD"
+                                               value="{{ (!empty($offer->start_date)) ? $offer->start_date->format('Y-m-d') : '' }}">
+                                        <span class="help-block">Not rquired. I think it will help us better manage our coupons so we only have active ones. We don’t want AdAssured coming after us.</span>
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="endDate" class="col-lg-2 control-label">End Date</label>
+                                    <div class="col-lg-10">
+                                        <input name="end_date"
+                                               type="text"
+                                               class="form-control"
+                                               id="endDate"
+                                               placeholder="YYYY-MM-DD"
+                                               value="{{ (!empty($offer->end_date)) ? $offer->end_date->format('Y-m-d') : '' }}">
+                                        <span class="help-block">Not rquired. I think it will help us better manage our coupons so we only have active ones. We don’t want AdAssured coming after us.</span>
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
                                     <div class="col-lg-10 col-lg-offset-2">
                                         <button type="submit" class="btn btn-success">Update</button>
                                     </div>
@@ -161,6 +187,12 @@
         $(document).ready(function() {
             $('#summernote').summernote({
                 height:300
+            });
+            $('#startDate').datepicker({
+                dateFormat: "yy-mm-dd"
+            });
+            $('#endDate').datepicker({
+                dateFormat: "yy-mm-dd"
             });
         });
     </script>

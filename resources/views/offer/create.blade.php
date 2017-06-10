@@ -103,7 +103,7 @@
                                 </div>
 
                                 <div class="form-group">
-                                    <label for="offerCategories" class="col-lg-2 control-label">Offer Text</label>
+                                    <label for="offerCategories" class="col-lg-2 control-label">Categories</label>
                                     <div class="col-lg-10">
                                         <textarea
                                                   name="categories"
@@ -112,6 +112,30 @@
                                                   placeholder="Comma separated for more than one"
                                                   id="offerCategories"></textarea>
                                         <span class="help-block">This will help with search and filtering later on</span>
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="startDate" class="col-lg-2 control-label">Start Date</label>
+                                    <div class="col-lg-10">
+                                        <input name="start_date"
+                                               type="text"
+                                               class="form-control"
+                                               id="startDate"
+                                               placeholder="YYYY-MM-DD">
+                                        <span class="help-block">Not rquired. I think it will help us better manage our coupons so we only have active ones. We don’t want AdAssured coming after us.</span>
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="endDate" class="col-lg-2 control-label">End Date</label>
+                                    <div class="col-lg-10">
+                                        <input name="end_date"
+                                               type="text"
+                                               class="form-control"
+                                               id="endDate"
+                                               placeholder="YYYY-MM-DD">
+                                        <span class="help-block">Not rquired. I think it will help us better manage our coupons so we only have active ones. We don’t want AdAssured coming after us.</span>
                                     </div>
                                 </div>
 
@@ -133,6 +157,12 @@
         $(document).ready(function() {
             $('#summernote').summernote({
                 height:300
+            });
+            $('#startDate').datepicker({
+                dateFormat: "yy-mm-dd"
+            });
+            $('#endDate').datepicker({
+                dateFormat: "yy-mm-dd"
             });
         });
     </script>

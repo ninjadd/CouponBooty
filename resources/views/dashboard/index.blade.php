@@ -31,6 +31,8 @@
                                     <th>Created By</th>
                                     <th>Created</th>
                                     <th>Updated</th>
+                                    <th>Start Date</th>
+                                    <th>End Date</th>
                                     <th></th>
                                 </tr>
                             </thead>
@@ -42,6 +44,8 @@
                                     <th>Created By</th>
                                     <th>Created</th>
                                     <th>Updated</th>
+                                    <th>Start Date</th>
+                                    <th>End Date</th>
                                     <th></th>
                                 </tr>
                             </tfoot>
@@ -66,6 +70,12 @@
                                         </td>
                                         <td>
                                             {{ $offer->updated_at }}
+                                        </td>
+                                        <td>
+                                            {{ (!empty($offer->start_date)) ? $offer->start_date->format('Y-m-d') : '' }}
+                                        </td>
+                                        <td>
+                                            {{ (!empty($offer->end_date)) ? $offer->end_date->format('Y-m-d') : '' }}
                                         </td>
                                         <td>
                                             <form action="/offer/{{ $offer->id }}" method="POST">
