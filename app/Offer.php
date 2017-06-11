@@ -84,11 +84,23 @@ class Offer extends Model
     {
         $categories = Category::where('name', 'like', '%'.$search_text.'%')->pluck('offer_id')->unique();
 
-        if ($categories->count() > 0){
+        if ($categories->count() > 0) {
             $query->whereIn('id', $categories);
         }
 
-        return $query->where('body', 'like', '%'.$search_text.'%')
-            ->orWhere('title', 'like', '%'.$search_text.'%');
+        $types = Type::where('label', 'like', '%'.$search_text.'%')->pluck('id');
+
+        if ($types->count() > 0) {
+            $query->whereIn('type_id', $types);
+        }
+
+        $offers = Offer::where('body', 'like', '%'.$search_text.'%')
+            ->orWhere('title', 'like', '%'.$search_text.'%')->pluck('id');
+
+        if ($offers->count() > 0) {
+            $query->whereIn('id', $offers);
+        }
+
+        return $query;
     }
 }
