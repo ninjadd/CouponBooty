@@ -29,7 +29,7 @@
                                     <th>Title</th>
                                     <th>Type</th>
                                     <th>Created By</th>
-                                    <th>Created</th>
+                                    <th>Updated</th>
                                     <th>Coupon</th>
                                     <th>Start Date</th>
                                     <th>End Date</th>
@@ -41,7 +41,7 @@
                                     <th>ID</th>
                                     <th>Title</th>
                                     <th>Type</th>
-                                    <th>Created By</th>
+                                    <th>Updated</th>
                                     <th>Created</th>
                                     <th>Updated</th>
                                     <th>Start Date</th>
@@ -57,7 +57,7 @@
                                             {{ $offer->id }}
                                         </td>
                                         <td>
-                                            {{ $offer->title }}
+                                            {{ str_limit($offer->title, 25, '...') }}
                                         </td>
                                         <td>
                                             {{ $offer->type->label }}
@@ -66,7 +66,7 @@
                                             {{ $offer->user->name }}
                                         </td>
                                         <td>
-                                            {{ $offer->created_at->diffForHumans() }}
+                                            {{ $offer->updated_at->diffForHumans() }}
                                         </td>
                                         <td>
                                             {{ $offer->coupon }}
