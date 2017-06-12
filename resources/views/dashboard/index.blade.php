@@ -30,7 +30,7 @@
                                     <th>Type</th>
                                     <th>Created By</th>
                                     <th>Created</th>
-                                    <th>Updated</th>
+                                    <th>Coupon</th>
                                     <th>Start Date</th>
                                     <th>End Date</th>
                                     <th></th>
@@ -69,7 +69,7 @@
                                             {{ $offer->created_at->diffForHumans() }}
                                         </td>
                                         <td>
-                                            {{ $offer->updated_at }}
+                                            {{ $offer->coupon }}
                                         </td>
                                         <td>
                                             {{ (!empty($offer->start_date)) ? $offer->start_date->format('Y-m-d') : '' }}
