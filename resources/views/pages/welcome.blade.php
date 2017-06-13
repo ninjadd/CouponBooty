@@ -16,9 +16,6 @@
 @section('content')
 
     <div class="container">
-        {{--<div class="col-md-12">--}}
-            {{--<img class="img-rounded img-thumbnail" src="{{ asset('storage/images/CouponBooty_Logo_Horizontal.png') }}">--}}
-        {{--</div>--}}
 
         @if(count($offers) > 0)
 
