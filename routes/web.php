@@ -50,6 +50,8 @@ Route::get('offer/archive/{offer}', 'OfferController@archive');
 
 Route::delete('offer/{offer}', 'OfferController@destroy');
 
+Route::get('offer/csv', 'OfferController@download');
+
 // Category Routes
 Route::delete('category/{category}', 'CategoryController@destroy');
 

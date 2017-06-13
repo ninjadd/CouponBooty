@@ -214,4 +214,36 @@ class OfferController extends Controller
 
         return redirect('dashboard')->with('status', 'Offer #'. $offer->id . ' deleted!');
     }
+
+    public function download()
+    {
+        header('Content-Type: text/csv; charset=utf-8');
+        header('Content-Disposition: attachment; filename=OfferDownload.csv');
+
+        $output = fopen('php://output', 'w');
+
+        fputcsv($output, ['id', 'created_by', 'type', 'title', 'url', 'image_url', 'body', 'coupon', 'start_date', 'end_date']);
+
+
+        $offers = Offer::archive(0)->get();
+
+        foreach ($offers as $offer) {
+
+            $data = [
+                $offer->id,
+                $offer->user->name,
+                $offer->type->label,
+                $offer->title,
+                $offer->url,
+                $offer->image_url,
+                $offer->body,
+                $offer->coupon,
+                $offer->start_date,
+                $offer->end_date
+            ];
+
+            fputcsv($output, $data);
+        }
+        fclose($output);
+    }
 }

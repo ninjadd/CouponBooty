@@ -14,16 +14,10 @@
                         <li><a href="/offer">All Offers</a></li>
                         <li><a href="/offer/create">New Offer</a></li>
                         <li role="separator" class="divider"></li>
-                        <li>
-                            <a href="/dashboard">
-                                Un-Archived Offers
-                            </a>
-                        </li>
-                        <li>
-                            <a href="/dashboard?archive=1">
-                                Archived Offers
-                            </a>
-                        </li>
+                        <li><a href="/dashboard">Un-Archived Offers</a></li>
+                        <li><a href="/dashboard?archive=1">Archived Offers</a></li>
+                        <li role="separator" class="divider"></li>
+                        <li><a href="/offer/csv">Offer Download</a></li>
                     </ul>
                 </li>
             </ul>
