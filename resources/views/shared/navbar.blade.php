@@ -17,7 +17,7 @@
                         <li><a href="/dashboard">Un-Archived Offers</a></li>
                         <li><a href="/dashboard?archive=1">Archived Offers</a></li>
                         <li role="separator" class="divider"></li>
-                        <li><a href="/offer/csv">Offer Download</a></li>
+                        <li><a href="/offer/csv">Offers Download</a></li>
                     </ul>
                 </li>
             </ul>
