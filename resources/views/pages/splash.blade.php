@@ -176,7 +176,7 @@ Purchase: http://themeforest.net/user/DigiSamaritan
                                     <div class="rs_index3_product_data">
                                         <div class="rs_index3_productdata_left">
                                             <h5><a href="#">{{ $offer->title }}</a></h5>
-                                            <span>Ending on: {{ $offer->end_date->toFormattedDateString() }}</span>
+                                            <span>Ending on: {{ $offer->end_date }}</span>
                                         </div>
                                         @if(!empty($offer->coupon))
                                             <div class="rs_index3_productdata_right">
@@ -231,7 +231,7 @@ Purchase: http://themeforest.net/user/DigiSamaritan
                                         <div class="rs_product_detail">
                                             <h5><a href="product_single.html">{{ $offer->title }}</a></h5>
                                             {{ $offer->body }}
-                                            <span><i class="fa fa-clock-o"></i> Ending on: {{ $offer->end_date->toFormattedDateString() }}</span>
+                                            <span><i class="fa fa-clock-o"></i> Ending on: {{ $offer->end_date }}</span>
                                         </div>
                                         <div class="rs_product_div_footer">
                                             @if(!empty($offer->coupon))
