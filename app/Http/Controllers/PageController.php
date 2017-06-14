@@ -23,6 +23,13 @@ class PageController extends Controller
         return view('pages.welcome', compact('offers'));
     }
 
+    public function splash()
+    {
+        $offers = Offer::orderBy('updated_at', 'desc')->paginate(12);
+
+        return view('pages.splash', compact('offers'));
+    }
+
     /**
      * @param Request $request
      * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View

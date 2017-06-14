@@ -13,6 +13,8 @@
 
 Route::get('/', 'PageController@welcome');
 
+Route::get('/splash', 'PageController@splash');
+
 Route::post('/results', 'PageController@results');
 
 Route::get('blog', 'PageController@indexBlog');

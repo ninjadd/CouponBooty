@@ -19,7 +19,7 @@
 
 @yield('head')
 
-<!-- Scripts -->
+    <!-- Scripts -->
     <script>
         window.Laravel = {!! json_encode([
             'csrfToken' => csrf_token(),
@@ -115,7 +115,7 @@
 <hr>
 
 <!-- Footer -->
-<div class="container"
+<div class="container">
 <footer>
     <div class="row">
         <div class="col-lg-12">
