@@ -24,6 +24,8 @@ class OffersTableSeeder extends Seeder
             $offer->image_url = $faker->imageUrl(300, 300);
             $offer->body = $faker->paragraph(12, true);
             $offer->coupon = $faker->optional()->word();
+            $offer->start_date = $faker->date('Y-m-d');
+            $offer->end_date = $faker->date('Y-m-d');
             $offer->save();
         }
     }

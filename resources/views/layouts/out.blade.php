@@ -34,13 +34,13 @@ Purchase: http://themeforest.net/user/DigiSamaritan
 </head>
 <body>
 <!--Loader Start -->
-<div class="rs_preloaded">
-    <div class="rs_preloader">
-        <div class="lines">
-        </div>
-        <div class="loading-text">LOADING...</div>
-    </div>
-</div>
+{{--<div class="rs_preloaded">--}}
+    {{--<div class="rs_preloader">--}}
+        {{--<div class="lines">--}}
+        {{--</div>--}}
+        {{--<div class="loading-text">LOADING...</div>--}}
+    {{--</div>--}}
+{{--</div>--}}
 <!--Loader End -->
 <header>
     <div class="rs_graybg rs_toppadder20 rs_bottompadder20">

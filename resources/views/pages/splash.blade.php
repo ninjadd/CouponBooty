@@ -12,22 +12,12 @@
                                 <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
                                     <div class="form-group">
                                         <select name="timepass" class="rs-custom-select">
-                                            <option>Browse Coupons</option>
-                                            <option>1</option>
-                                            <option>2</option>
-                                            <option>3</option>
-                                            <option>4</option>
-                                        </select>
-                                    </div>
-                                </div>
-                                <div class="col-lg-2 col-md-2 col-sm-6 col-xs-12">
-                                    <div class="form-group">
-                                        <select name="timepass" class="rs-custom-select">
-                                            <option>category</option>
-                                            <option>1</option>
-                                            <option>2</option>
-                                            <option>3</option>
-                                            <option>4</option>
+                                            <option value="">Browse Categories</option>
+                                            @if($categories->count() > 0)
+                                                @foreach($categories as $category)
+                                                    <option value="{{ $category->name }}">{{ $category->name }}</option>
+                                                @endforeach
+                                            @endif
                                         </select>
                                     </div>
                                 </div>
@@ -53,16 +43,11 @@
                 <div class="col-lg-2 col-md-3 col-sm-12 col-xs-12">
                     <div class="rs_index3_category_list">
                         <ul>
-                            <li><a href="#">Business Cards (216)</a></li>
-                            <li><a href="#">HTML5 Templates (358)</a></li>
-                            <li><a href="#">Icon Fonts (34)</a></li>
-                            <li><a href="#">Illustration Vectors (118)</a></li>
-                            <li><a href="#">Mock-ups (204)</a></li>
-                            <li><a href="#">Logo Sets (84)</a></li>
-                            <li><a href="#">Web Elements (369)</a></li>
-                            <li><a href="#">Backgrounds (651)</a></li>
-                            <li><a href="#">UI & Mobile App (96)</a></li>
-                            <li><a href="#">Retro Badges (53)</a></li>
+                            @if($types->count() > 0)
+                                @foreach($types as $type)
+                                    <li><a href="#">{{ $type->label }} ({{ $type->offer->count() }})</a></li>
+                                @endforeach
+                            @endif
                         </ul>
                     </div>
                 </div>
@@ -74,102 +59,66 @@
                         <div class="col-lg-8 col-md-9 col-sm-12 col-xs-12 rs_toppadder30">
                             <div class="rs_index3_product_slider">
                                 <div class="owl-carousel owl-theme">
-                                    <div class="item">
-                                        <div class="rs_index3_productdiv">
-                                            <div class="rs_index3_product_img">
-                                                <img src="http://placehold.it/555X350" class="img-responsive" alt="">
-                                                <div class="rs_product_price"><h2><small>$</small>45</h2></div>
-                                            </div>
-                                            <div class="rs_index3_product_data">
-                                                <div class="rs_index3_productdata_left">
-                                                    <h5><a href="product_single.html">Multipurpose WP Theme</a></h5>
-                                                    <p>Clean, modern, multi-purpose design can be used for all purposes</p>
-                                                    <span>Ending on: Oct 18, 2015</span>
-                                                </div>
-                                                <div class="rs_index3_productdata_right">
-                                                    <p>Additional <span>30% Off</span> Use this Code</p>
-                                                    <a href="#" class="rs_button rs_button_orange">FOXWP30</a>
-                                                </div>
 
+                                    @foreach($offers->slice(0, 4) as $offer)
+                                        <div class="item">
+                                            <div class="rs_index3_productdiv">
+                                                <div class="rs_index3_product_img">
+                                                    <img src="{{ $offer->image_url }}" class="img-responsive" alt="">
+                                                    <div class="rs_product_price"><h2><small>{{ $offer->type->label }}</small></h2></div>
+                                                </div>
+                                                <div class="rs_index3_product_data">
+                                                    <div class="rs_index3_productdata_left">
+                                                        <h5><a href="#">{{ $offer->title }}</a></h5>
+                                                        {!! $offer->body !!}
+                                                        <span>Ending on: Oct 18, 2015</span>
+                                                    </div>
+                                                    @if(!empty($offer->coupon))
+                                                        <div class="rs_index3_productdata_right">
+                                                            <p>Use Coupon</p>
+                                                            <a href="#" class="rs_button rs_button_orange">{{ $offer->coupon }}</a>
+                                                        </div>
+                                                    @else
+                                                        <div class="rs_index3_productdata_right">
+                                                            <a href="{{ $offer->url }}" target="_blank" class="rs_button rs_button_orange">Get Deal</a>
+                                                        </div>
+                                                    @endif
+
+                                                </div>
                                             </div>
                                         </div>
-                                    </div>
-                                    <div class="item">
-                                        <div class="rs_index3_productdiv">
-                                            <div class="rs_index3_product_img">
-                                                <img src="http://placehold.it/555X350" class="img-responsive" alt="">
-                                                <div class="rs_product_price"><h2><small>$</small>12</h2></div>
-                                            </div>
-                                            <div class="rs_index3_product_data">
-                                                <div class="rs_index3_productdata_left">
-                                                    <h5><a href="product_single.html">Minimal PSD Template</a></h5>
-                                                    <p>Clean, modern, multi-purpose design can be used for all purposes</p>
-                                                    <span>Ending on: Oct 18, 2015</span>
-                                                </div>
-                                                <div class="rs_index3_productdata_right">
-                                                    <p>Additional <span>30% Off</span> Use this Code</p>
-                                                    <a href="#" class="rs_button rs_button_orange">FOXWP30</a>
-                                                </div>
+                                    @endforeach
 
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="item">
-                                        <div class="rs_index3_productdiv">
-                                            <div class="rs_index3_product_img">
-                                                <img src="http://placehold.it/555X350" class="img-responsive" alt="">
-                                                <div class="rs_product_price"><h2><small>$</small>10</h2></div>
-                                            </div>
-                                            <div class="rs_index3_product_data">
-                                                <div class="rs_index3_productdata_left">
-                                                    <h5><a href="product_single.html">20 Device Mock-up</a></h5>
-                                                    <p>Clean, modern, multi-purpose design can be used for all purposes</p>
-                                                    <span>Ending on: Oct 18, 2015</span>
-                                                </div>
-                                                <div class="rs_index3_productdata_right">
-                                                    <p>Additional <span>30% Off</span> Use this Code</p>
-                                                    <a href="#" class="rs_button rs_button_orange">FOXWP30</a>
-                                                </div>
-
-                                            </div>
-                                        </div>
-                                    </div>
                                 </div>
                             </div>
                         </div>
                         <div class="col-lg-4 col-md-3 col-sm-12 col-xs-12 rs_toppadder30">
-                            <div class="rs_index3_productdiv rs_index3_productdiv_small">
-                                <div class="rs_index3_product_img">
-                                    <img src="http://placehold.it/262X130" class="img-responsive" alt="">
-                                    <div class="rs_product_price"><h2><small>$</small>25</h2></div>
-                                </div>
-                                <div class="rs_index3_product_data">
-                                    <div class="rs_index3_productdata_left">
-                                        <h5><a href="product_single.html">40 Hero Images</a></h5>
-                                        <span>Ending on: Oct 18, 2015</span>
+
+                            @foreach($offers->slice(4, 2) as $offer)
+                                <div class="rs_index3_productdiv rs_index3_productdiv_small">
+                                    <div class="rs_index3_product_img">
+                                        <img src="{{ $offer->image_url }}" class="img-responsive" alt="">
+                                        <div class="rs_product_price"><h2><small>{{ $offer->type->label }}</small></h2></div>
                                     </div>
-                                    <div class="rs_index3_productdata_right">
-                                        <p><span>25% Off</span> </p>
-                                        <a href="#" class="rs_button rs_button_orange">Code25</a>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="rs_index3_productdiv rs_index3_productdiv_small">
-                                <div class="rs_index3_product_img">
-                                    <img src="http://placehold.it/262X130" class="img-responsive" alt="">
-                                    <div class="rs_product_price"><h2><small>$</small>25</h2></div>
-                                </div>
-                                <div class="rs_index3_product_data">
-                                    <div class="rs_index3_productdata_left">
-                                        <h5><a href="product_single.html">40 Hero Images</a></h5>
-                                        <span>Ending on: Oct 18, 2015</span>
-                                    </div>
-                                    <div class="rs_index3_productdata_right">
-                                        <p><span>25% Off</span> </p>
-                                        <a href="#" class="rs_button rs_button_orange">Code25</a>
+                                    <div class="rs_index3_product_data">
+                                        <div class="rs_index3_productdata_left">
+                                            <h5><a href="#">{{ $offer->title }}</a></h5>
+                                            <span>Ending on: {{ $offer->end_date->toFormattedDateString() }}</span>
+                                        </div>
+                                        @if(!empty($offer->coupon))
+                                            <div class="rs_index3_productdata_right">
+                                                <p>Use Coupon</p>
+                                                <a href="#" class="rs_button rs_button_orange">{{ $offer->coupon }}</a>
+                                            </div>
+                                        @else
+                                            <div class="rs_index3_productdata_right">
+                                                <a href="{{ $offer->url }}" target="_blank" class="rs_button rs_button_orange">Deal</a>
+                                            </div>
+                                        @endif
                                     </div>
                                 </div>
-                            </div>
+                            @endforeach
+
                         </div>
                     </div>
                 </div>
@@ -183,60 +132,7 @@
             </div>
         </div>
     </div>
-    <div class="rs_top_offer_section rs_toppadder90 rs_bottompadder100">
-        <div class="rs_topoffer_overlay"></div>
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                    <div class="rs_index2_heading rs_bottompadder60">
-                        <h4>Top Offer Of this Week</h4>
-                    </div>
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                    <div class="rs_categori_details">
-                        <ul>
-                            <li>
-                                <div>
-                                    <i class="fa fa-wordpress"></i>
-                                    <p>Wordpress Themes</p>
-                                    <span><a href="#">30% off</a></span>
-                                </div>
-                                <div>
-                                    <i class="fa fa-paint-brush"></i>
-                                    <p>PSD Graphics</p>
-                                    <span><a href="#">40% off</a></span>
-                                </div>
-                                <div>
-                                    <i class="fa fa-paper-plane"></i>
-                                    <p>Icons</p>
-                                    <span><a href="#">50% off</a></span>
-                                </div>
-                            </li>
-                            <li>
-                                <div>
-                                    <i class="fa fa-html5"></i>
-                                    <p>Html Templates</p>
-                                    <span><a href="#">25% off</a></span>
-                                </div>
-                                <div>
-                                    <i class="fa fa-desktop"></i>
-                                    <p>Mock-ups</p>
-                                    <span><a href="#">35% off</a></span>
-                                </div>
-                                <div>
-                                    <i class="fa fa-mobile"></i>
-                                    <p>Mobile App</p>
-                                    <span><a href="#">30% off</a></span>
-                                </div>
-                            </li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
+
     <div class="rs_graybg rs_toppadder100 rs_bottompadder100">
         <div class="container">
             <div class="row">
@@ -249,142 +145,41 @@
                 <div class="col-lg-9 col-md-9 col-sm-12 col-xs-12">
                     <div class="woocommerce_wrapper">
                         <div class="row">
-                            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 rs_toppadder30 rs_hot_coupon">
-                                <div class="rs_product_div">
-                                    <div class="rs_featureddiv"><p>hot</p></div>
-                                    <div class="rs_product_img">
-                                        <img src="http://placehold.it/158X140" class="img-responsive" alt="">
-                                        <div class="rs_product_price"><h2><small>$</small>6</h2></div>
-                                    </div>
 
-                                    <div class="rs_product_detail">
-                                        <h5><a href="product_single.html">Businesscard Mock-up</a></h5>
-                                        <p>Clean, modern, multi-purpose design can be used for any type of website. More than 30 demos available in this theme.</p>
-                                        <span><i class="fa fa-clock-o"></i> Ending on: Oct 18, 2015</span>
-                                    </div>
-                                    <div class="rs_product_div_footer">
-                                        <p>Additional <span> 30% Off </span> Use this Code</p>
-                                        <div class="rs_btn_div">
-                                            <a href="#" class="rs_button rs_button_orange">maygv30</a>
+                            @foreach($offers as $offer)
+
+                                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 rs_toppadder30 rs_hot_coupon">
+                                    <div class="rs_product_div">
+                                        <div class="rs_featureddiv"><p>{{ $offer->type->label }}</p></div>
+                                        <div class="rs_product_img">
+                                            <img src="{{ $offer->image_url }}" class="img-responsive" alt="">
+                                        </div>
+
+                                        <div class="rs_product_detail">
+                                            <h5><a href="product_single.html">{{ $offer->title }}</a></h5>
+                                            {{ $offer->body }}
+                                            <span><i class="fa fa-clock-o"></i> Ending on: {{ $offer->end_date->toFormattedDateString() }}</span>
+                                        </div>
+                                        <div class="rs_product_div_footer">
+                                            @if(!empty($offer->coupon))
+                                                <div class="rs_btn_div">
+                                                    <p>Use Code</p>
+                                                    <a href="#" class="rs_button rs_button_orange">{{ $offer->coupon }}</a>
+                                                </div>
+                                            @else
+                                                <div class="rs_btn_div">
+                                                    <a href="{{ $offer->url }}" target="_blank" class="rs_button rs_button_orange">Get Deal</a>
+                                                </div>
+                                            @endif
                                         </div>
                                     </div>
                                 </div>
-                            </div>
-                            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 rs_toppadder30 rs_hot_coupon">
-                                <div class="rs_product_div">
-                                    <div class="rs_featureddiv"><p>Trend</p></div>
-                                    <div class="rs_product_img">
-                                        <img src="http://placehold.it/158X140" class="img-responsive" alt="">
-                                        <div class="rs_product_price"><h2><small>$</small>12</h2></div>
-                                    </div>
 
-                                    <div class="rs_product_detail">
-                                        <h5><a href="product_single.html">iPhone 6 Mock-up</a></h5>
-                                        <p>Clean, modern, multi-purpose design can be used for any type of website. More than 30 demos available in this theme.</p>
-                                        <span><i class="fa fa-clock-o"></i> Ending on: Oct 18, 2015</span>
-                                    </div>
-                                    <div class="rs_product_div_footer">
-                                        <p>Additional <span> 25% Off </span> Use this Code</p>
-                                        <div class="rs_btn_div">
-                                            <a href="#" class="rs_button rs_button_orange">JunRV25</a>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 rs_toppadder30 rs_hot_coupon">
-                                <div class="rs_product_div">
-                                    <div class="rs_featureddiv"><p>Popular</p></div>
-                                    <div class="rs_product_img">
-                                        <img src="http://placehold.it/158X140" class="img-responsive" alt="">
-                                        <div class="rs_product_price"><h2><small>$</small>45</h2></div>
-                                    </div>
+                            @endforeach
 
-                                    <div class="rs_product_detail">
-                                        <h5><a href="product_single.html">TheFox Multipurpose WP Theme</a></h5>
-                                        <p>Clean, modern, multi-purpose design can be used for any type of website. More than 30 demos available in this theme.</p>
-                                        <span><i class="fa fa-clock-o"></i> Ending on: Oct 18, 2015</span>
-                                    </div>
-                                    <div class="rs_product_div_footer">
-                                        <p>Additional <span> 40% Off </span> Use this Code</p>
-                                        <div class="rs_btn_div">
-                                            <a href="#" class="rs_button rs_button_orange">maygv30</a>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 rs_toppadder30 rs_hot_coupon">
-                                <div class="rs_product_div">
-                                    <div class="rs_featureddiv"><p>Popular</p></div>
-                                    <div class="rs_product_img">
-                                        <img src="http://placehold.it/158X140" class="img-responsive" alt="">
-                                        <div class="rs_product_price"><h2><small>$</small>22</h2></div>
-                                    </div>
-
-                                    <div class="rs_product_detail">
-                                        <h5><a href="product_single.html">200 Premium Fonts Collection</a></h5>
-                                        <p>Clean, modern, multi-purpose design can be used for any type of website. More than 30 demos available in this theme.</p>
-                                        <span><i class="fa fa-clock-o"></i> Ending on: Oct 18, 2015</span>
-                                    </div>
-                                    <div class="rs_product_div_footer">
-                                        <p>Additional <span> 15% Off </span> Use this Code</p>
-                                        <div class="rs_btn_div">
-                                            <a href="#" class="rs_button rs_button_orange">JkENV15</a>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 rs_toppadder30 rs_hot_coupon">
-                                <div class="rs_product_div">
-                                    <div class="rs_featureddiv"><p>hot</p></div>
-                                    <div class="rs_product_img">
-                                        <img src="http://placehold.it/158X140" class="img-responsive" alt="">
-                                        <div class="rs_product_price"><h2><small>$</small>12</h2></div>
-                                    </div>
-
-                                    <div class="rs_product_detail">
-                                        <h5><a href="product_single.html">500 Vector Collection</a></h5>
-                                        <p>Clean, modern, multi-purpose design can be used for any type of website. More than 30 demos available in this theme.</p>
-                                        <span><i class="fa fa-clock-o"></i> Ending on: Oct 18, 2015</span>
-                                    </div>
-                                    <div class="rs_product_div_footer">
-                                        <p>Additional <span> 50% Off </span> Use this Code</p>
-                                        <div class="rs_btn_div">
-                                            <a href="#" class="rs_button rs_button_orange">YESTD50</a>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 rs_toppadder30 rs_hot_coupon">
-                                <div class="rs_product_div">
-                                    <div class="rs_featureddiv"><p>new</p></div>
-                                    <div class="rs_product_img">
-                                        <img src="http://placehold.it/158X140" class="img-responsive" alt="">
-                                        <div class="rs_product_price"><h2><small>$</small>22</h2></div>
-                                    </div>
-
-                                    <div class="rs_product_detail">
-                                        <h5><a href="product_single.html">40 Logo Mock-up Bundle</a></h5>
-                                        <p>Clean, modern, multi-purpose design can be used for any type of website. More than 30 demos available in this theme.</p>
-                                        <span><i class="fa fa-clock-o"></i> Ending on: Oct 18, 2015</span>
-                                    </div>
-                                    <div class="rs_product_div_footer">
-                                        <p>Additional <span> 20% Off </span> Use this Code</p>
-                                        <div class="rs_btn_div">
-                                            <a href="#" class="rs_button rs_button_orange">LOGOM20</a>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 rs_toppadder60">
-                                <div class="rs_more_circle">
-                                    <div class="rs_more_bg">
-                                        <a href="#">
-                                            <span><i class="fa fa-ellipsis-h"></i></span>
-                                            <p>more</p>
-                                        </a>
-                                    </div>
-                                </div>
-                            </div>
+                        </div>
+                        <div class="row">
+                            {{ $offers->links('shared.simple-pager') }}
                         </div>
                     </div>
                 </div>

@@ -9,6 +9,8 @@ use App\Blog;
 use App\BlogComment;
 use App\Contact;
 use App\Message;
+use App\Category;
+use App\Type;
 use App\Mail\ContactUs;
 
 class PageController extends Controller
@@ -26,8 +28,10 @@ class PageController extends Controller
     public function splash()
     {
         $offers = Offer::orderBy('updated_at', 'desc')->paginate(12);
+        $categories = Category::distinct('name')->get();
+        $types = Type::all();
 
-        return view('pages.splash', compact('offers'));
+        return view('pages.splash', compact('offers', 'categories', 'types'));
     }
 
     /**
