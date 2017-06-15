@@ -20,7 +20,7 @@ class PageController extends Controller
      */
     public function welcome()
     {
-        $offers = Offer::orderBy('updated_at', 'desc')->paginate(12);
+        $offers = Offer::orderBy('updated_at', 'desc')->paginate(20);
 
         return view('pages.welcome', compact('offers'));
     }
