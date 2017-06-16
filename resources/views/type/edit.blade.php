@@ -20,7 +20,7 @@
                                 <input class="form-control" value="{{ $type->label }}" type="text" name="label" id="lableInput"  placeholder="A great label for one and all">
                             </div>
 
-                            <button type="submit" class="btn btn-success pull-right">Update</button>
+                            <button type="submit" class="btn btn-success">Update</button>
                         </form>
 
                         @include('shared.errors')

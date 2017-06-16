@@ -98,3 +98,18 @@ Route::get('contact', 'ContactController@index');
 Route::get('contact/{contact}', 'ContactController@show');
 
 Route::delete('contact/{contact}', 'ContactController@destroy');
+
+// Quad Routes
+Route::get('quad', 'QuadController@index');
+
+Route::get('quad/create', 'QuadController@create');
+
+Route::post('quad', 'QuadController@store');
+
+Route::get('quad/{quad}', 'QuadController@show');
+
+Route::get('quad/{quad}/edit', 'QuadController@edit');
+
+Route::put('quad/{quad}', 'QuadController@update');
+
+Route::delete('quad/{quad}', 'QuadController@destroy');

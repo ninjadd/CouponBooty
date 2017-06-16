@@ -19,7 +19,7 @@
                                 <input class="form-control" type="text" name="label" id="lableInput"  placeholder="A great label for one and all">
                             </div>
 
-                            <button type="submit" class="btn btn-primary pull-right">Save</button>
+                            <button type="submit" class="btn btn-primary">Save</button>
                         </form>
 
                         @include('shared.errors')

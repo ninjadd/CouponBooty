@@ -35,7 +35,7 @@
                                 </textarea>
                             </div>
 
-                            <button type="submit" class="btn btn-info pull-right">Update</button>
+                            <button type="submit" class="btn btn-info">Update</button>
                         </form>
                     </div>
 

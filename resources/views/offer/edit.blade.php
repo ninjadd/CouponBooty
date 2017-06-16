@@ -134,7 +134,7 @@
                                                id="startDate"
                                                placeholder="YYYY-MM-DD"
                                                value="{{ (!empty($offer->start_date)) ? $offer->start_date->format('Y-m-d') : '' }}">
-                                        <span class="help-block">Not rquired. I think it will help us better manage our coupons so we only have active ones. We don’t want AdAssured coming after us.</span>
+                                        <span class="help-block">Not required. I think it will help us better manage our coupons so we only have active ones. We don’t want AdAssured coming after us.</span>
                                     </div>
                                 </div>
 
@@ -147,7 +147,7 @@
                                                id="endDate"
                                                placeholder="YYYY-MM-DD"
                                                value="{{ (!empty($offer->end_date)) ? $offer->end_date->format('Y-m-d') : '' }}">
-                                        <span class="help-block">Not rquired. I think it will help us better manage our coupons so we only have active ones. We don’t want AdAssured coming after us.</span>
+                                        <span class="help-block">Not required. I think it will help us better manage our coupons so we only have active ones. We don’t want AdAssured coming after us.</span>
                                     </div>
                                 </div>
 

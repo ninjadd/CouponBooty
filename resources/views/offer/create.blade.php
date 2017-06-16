@@ -123,7 +123,7 @@
                                                class="form-control"
                                                id="startDate"
                                                placeholder="YYYY-MM-DD">
-                                        <span class="help-block">Not rquired. I think it will help us better manage our coupons so we only have active ones. We don’t want AdAssured coming after us.</span>
+                                        <span class="help-block">Not required. I think it will help us better manage our coupons so we only have active ones. We don’t want AdAssured coming after us.</span>
                                     </div>
                                 </div>
 
@@ -135,7 +135,7 @@
                                                class="form-control"
                                                id="endDate"
                                                placeholder="YYYY-MM-DD">
-                                        <span class="help-block">Not rquired. I think it will help us better manage our coupons so we only have active ones. We don’t want AdAssured coming after us.</span>
+                                        <span class="help-block">Not required. I think it will help us better manage our coupons so we only have active ones. We don’t want AdAssured coming after us.</span>
                                     </div>
                                 </div>
 

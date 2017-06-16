@@ -72,13 +72,13 @@ class BlogController extends Controller
         ]);
 
         $blog = new Blog();
-        $blog->user_id = Auth::id();
+        $blog->user_id = auth()->id();
         $blog->title = $request->title;
         $blog->title_slug = str_slug($request->title);
         $blog->body = $request->body;
         $blog->save();
 
-        return redirect('blogger')->with('status', 'New Blog page created!');
+        return redirect('blogger')->with('status', 'New Blog post created!');
     }
 
     /**
@@ -117,7 +117,7 @@ class BlogController extends Controller
             'body' => 'required'
         ]);
 
-        $blog->user_id = Auth::id();
+        $blog->user_id = auth()->id();
         $blog->title = $request->title;
         $blog->body = $request->body;
         $blog->save();

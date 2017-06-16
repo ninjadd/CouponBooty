@@ -63,7 +63,7 @@ class OfferController extends Controller
         ]);
 
         $offer = new Offer();
-        $offer->user_id = Auth::user()->id;
+        $offer->user_id = auth()->id();
         $offer->type_id = $request->type_id;
         $offer->title = $request->title;
         $offer->url = $request->url;
@@ -143,7 +143,7 @@ class OfferController extends Controller
             'type_id' => 'required|integer'
         ]);
 
-        $offer->user_id = Auth::user()->id;
+        $offer->user_id = auth()->id();
         $offer->type_id = $request->type_id;
         $offer->title = $request->title;
         $offer->url = $request->url;

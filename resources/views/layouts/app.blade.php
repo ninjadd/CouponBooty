@@ -91,6 +91,8 @@
                                 <li class="divider"></li>
                                 <li><a href="/contact">Contact Administration</a></li>
                                 <li class="divider"></li>
+                                <li><a href="/quad">The Quad&trade;</a></li>
+                                <li class="divider"></li>
                                 <li>
                                     <a href="{{ route('logout') }}"
                                        onclick="event.preventDefault();

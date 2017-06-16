@@ -40,13 +40,21 @@ class User extends Authenticatable
     /**
      * @return \Illuminate\Database\Eloquent\Relations\HasMany
      */
-    public function offer()
+    public function offers()
     {
         return $this->hasMany('App\Offer');
     }
 
-    public function blog()
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
+    public function blogs()
     {
         return $this->hasMany('App\Blog');
+    }
+
+    public function quads()
+    {
+        return $this->hasMany('App\Quad');
     }
 }
