@@ -22,7 +22,9 @@ class StoreController extends Controller
      */
     public function index()
     {
-        return view('store.index');
+        $stores = Store::all();
+
+        return view('store.index', compact('stores'));
     }
 
     /**
@@ -32,7 +34,7 @@ class StoreController extends Controller
      */
     public function create()
     {
-        //
+        return view('store.create');
     }
 
     /**
@@ -43,7 +45,19 @@ class StoreController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $this->validate($request, [
+           'name' => 'required|string'
+        ]);
+
+        $store = new Store();
+        $store->user_id = auth()->id();
+        $store->name = $request->name;
+        $store->slug = str_slug($request->name);
+        $store->title = $request->title;
+        $store->body = $request->body;
+        $store->save();
+
+        return redirect('store')->with('status', 'New Store created I am so proud!');
     }
 
     /**

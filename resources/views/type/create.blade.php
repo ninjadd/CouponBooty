@@ -16,7 +16,7 @@
                             {{ csrf_field() }}
                             <div class="form-group">
                                 <label for="lableInput">Type Label</label>
-                                <input class="form-control" type="text" name="label" id="lableInput"  placeholder="A great label for one and all">
+                                <input class="form-control" required="required" type="text" name="label" id="lableInput"  placeholder="A great label for one and all">
                             </div>
 
                             <button type="submit" class="btn btn-primary">Save</button>

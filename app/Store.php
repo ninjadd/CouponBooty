@@ -35,4 +35,12 @@ class Store extends Model
      * @var array
      */
     protected $hidden = [];
+
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
+    public function offers()
+    {
+        return $this->hasMany('App\Offer');
+    }
 }

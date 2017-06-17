@@ -30,7 +30,7 @@ class Type extends Model
      */
     protected $hidden = [];
 
-    public function offer()
+    public function offers()
     {
         return $this->hasMany('App\Offer');
     }

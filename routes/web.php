@@ -116,3 +116,7 @@ Route::delete('quad/{quad}', 'QuadController@destroy');
 
 // Store Routes
 Route::get('store', 'StoreController@index');
+
+Route::get('store/create', 'StoreController@create');
+
+Route::post('store', 'StoreController@store');

@@ -58,7 +58,7 @@
                                                 {{ $type->updated_at }}
                                             </td>
                                             <td>
-                                                {{ $type->offer->count() }}
+                                                {{ $type->offers->count() }}
                                             </td>
                                             <td>
                                                 <form action="/type/{{ $type->id }}" method="POST">
