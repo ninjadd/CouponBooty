@@ -4,21 +4,10 @@
             <div class="modal-content">
                 <div class="modal-header">
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                    <h4 class="modal-title" id="myModalLabel">View Offer #{{ $offer->id }}</h4>
+                    <h4 class="modal-title" id="myModalLabel">{{ $offer->title }}</h4>
                 </div>
                 <div class="modal-body">
-                    <p>
-                        <strong>Offer Title:</strong>
-                        {{ $offer->title }}
-                    </p>
-                    <p>
-                        <strong>Offer Body:</strong>
-                        {!! $offer->body !!}
-                    </p>
-                    <p>
-                        <strong>Offer Type:</strong>
-                        {{ $offer->type->label }}
-                    </p>
+                    {!! $offer->body !!}
                 </div>
                 <div class="modal-footer">
                     <p class="pull-left">
@@ -37,6 +26,9 @@
                         @elseif ($offer->archive == 1)
                             Yes
                         @endif
+
+                        <strong>Offer Type:</strong>
+                        {{ $offer->type->label }}
                     </p>
                     <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
                 </div>

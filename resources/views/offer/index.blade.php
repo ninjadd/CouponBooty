@@ -6,6 +6,7 @@
 
 @section('content')
     <div class="container">
+        @include('shared.navbar')
         <div class="row">
             <div class="col-md-12">
                 <div class="panel panel-info">
@@ -16,8 +17,6 @@
                     </div>
 
                     <div class="panel-body">
-
-                        @include('shared.navbar')
 
                         <table class="table table-bordered table-hover">
                             <thead>

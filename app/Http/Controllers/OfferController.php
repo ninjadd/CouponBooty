@@ -59,7 +59,7 @@ class OfferController extends Controller
             'body' => 'required',
             'url' => 'required|url',
             'image_url' => 'required|url',
-            'type_id' => 'required|integer'
+            'type_id' => 'sometimes|required|integer'
         ]);
 
         $offer = new Offer();

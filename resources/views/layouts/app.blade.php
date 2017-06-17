@@ -112,6 +112,8 @@
         </div>
     </nav>
 
+    @yield('sub-nav')
+
     @yield('content')
 </div>
 <hr>

@@ -6,12 +6,12 @@
 
 @section('content')
     <div class="container">
+        @include('shared.session')
+        @include('shared.navbar')
         <div class="row">
             <div class="col-md-12">
 
-                @include('shared.session')
-
-                <div class="panel panel-default">
+                <div class="panel panel-primary">
                     <div class="panel-heading">
                         <h3 class="panel-title">
                             Dashboard
@@ -20,9 +20,7 @@
 
                     <div class="panel-body">
 
-                        @include('shared.navbar')
-
-                        <table class="table table-striped table-bordered" cellspacing="0" width="100%">
+                        <table class="table table-striped table-bordered table-condensed" cellspacing="0" width="100%">
                             <thead>
                                 <tr>
                                     <th>ID</th>
@@ -80,11 +78,11 @@
                                         <td>
                                             <form action="/offer/{{ $offer->id }}" method="POST">
                                                 <div class="btn-group">
-                                                    {{--<button type="button" class="btn btn-default btn-xs"  data-toggle="modal" title="View Offer" data-target="#myModal{{ $offer->id }}">--}}
-                                                        {{--<span class="glyphicon glyphicon-eye-open" aria-hidden="true"></span>--}}
-                                                    {{--</button>--}}
+                                                    <button type="button" class="btn btn-default btn-xs"  data-toggle="modal" title="View Offer" data-target="#myModal{{ $offer->id }}">
+                                                        <span class="glyphicon glyphicon-eye-open" aria-hidden="true"></span>
+                                                    </button>
 
-                                                    {{--@include('offer.show')--}}
+                                                    @include('offer.show')
 
                                                     <a href="/offer/{{ $offer->id }}/edit" class="btn btn-success btn-xs"  data-toggle="tooltip" title="Edit Offer">
                                                         <span class="glyphicon glyphicon-pencil" aria-hidden="true"></span>

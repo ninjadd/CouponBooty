@@ -61,6 +61,12 @@
                         <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
                     </a>
                 </li>
+                <li>
+                    <a href="/store/create">
+                        New Store
+                        <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
+                    </a>
+                </li>
             </ul>
         </div><!-- /.navbar-collapse -->
     </div><!-- /.container-fluid -->

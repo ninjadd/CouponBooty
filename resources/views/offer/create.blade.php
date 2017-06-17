@@ -77,7 +77,7 @@
                                 </div>
 
                                 <div class="form-group">
-                                    <label for="offerBody" class="col-lg-2 control-label">Type</label>
+                                    <label for="typeLabel" class="col-lg-2 control-label">Type</label>
                                     <div class="col-lg-10">
                                         @foreach($types as $type)
                                             <label class="radio-inline">

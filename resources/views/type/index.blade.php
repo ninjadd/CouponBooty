@@ -6,12 +6,12 @@
 
 @section('content')
     <div class="container">
+        @include('shared.session')
+        @include('shared.navbar')
         <div class="row">
             <div class="col-md-12">
 
-                @include('shared.session')
-
-                <div class="panel panel-default">
+                <div class="panel panel-primary">
                     <div class="panel-heading">
                         <h3 class="panel-title">
                             Types
@@ -19,8 +19,6 @@
                     </div>
 
                     <div class="panel-body">
-
-                        @include('shared.navbar')
 
                         <table class="table table-striped table-bordered" cellspacing="0" width="100%">
                             <thead>
@@ -64,15 +62,17 @@
                                         </td>
                                         <td>
                                             <form action="/type/{{ $type->id }}" method="POST">
-                                                <a href="/type/{{ $type->id }}/edit" class="btn btn-success btn-xs"  data-toggle="tooltip" title="Edit Type">
-                                                    <span class="glyphicon glyphicon-pencil" aria-hidden="true"></span>
-                                                </a>
+                                                <div class="btn-group">
+                                                    <a href="/type/{{ $type->id }}/edit" class="btn btn-success btn-xs"  data-toggle="tooltip" title="Edit Type">
+                                                        <span class="glyphicon glyphicon-pencil" aria-hidden="true"></span>
+                                                    </a>
 
-                                                <button type="submit" class="btn btn-danger btn-xs"  data-toggle="tooltip" title="Delete Type">
-                                                    <span class="glyphicon glyphicon-trash" aria-hidden="true"></span>
-                                                </button>
-                                                {{ method_field('DELETE') }}
-                                                {{ csrf_field() }}
+                                                    <button type="submit" class="btn btn-danger btn-xs"  data-toggle="tooltip" title="Delete Type">
+                                                        <span class="glyphicon glyphicon-trash" aria-hidden="true"></span>
+                                                    </button>
+                                                    {{ method_field('DELETE') }}
+                                                    {{ csrf_field() }}
+                                                </div>
                                             </form>
                                         </td>
                                     </tr>
