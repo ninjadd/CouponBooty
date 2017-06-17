@@ -25,12 +25,6 @@ Purchase: http://themeforest.net/user/DigiSamaritan
     <!-- end theme style -->
 
 @yield('head')
-<!-- Scripts -->
-    <script>
-        window.Laravel = {!! json_encode([
-            'csrfToken' => csrf_token(),
-        ]) !!};
-    </script>
 </head>
 <body>
 <!--Loader Start -->

@@ -113,3 +113,6 @@ Route::get('quad/{quad}/edit', 'QuadController@edit');
 Route::put('quad/{quad}', 'QuadController@update');
 
 Route::delete('quad/{quad}', 'QuadController@destroy');
+
+// Store Routes
+Route::get('store', 'StoreController@index');

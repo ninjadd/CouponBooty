@@ -34,6 +34,19 @@
                     </ul>
                 </li>
             </ul>
+            {{--stores--}}
+            <ul class="nav navbar-nav">
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+                        Stores
+                        <span class="caret"></span>
+                    </a>
+                    <ul class="dropdown-menu">
+                        <li><a href="/store">All Stores</a></li>
+                        <li><a href="/store/create">New Store</a></li>
+                    </ul>
+                </li>
+            </ul>
             {{-- users --}}
             {{--<ul class="nav navbar-nav">--}}
                 {{--<li class="dropdown">--}}

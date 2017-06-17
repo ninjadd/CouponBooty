@@ -60,5 +60,5 @@
             @include('shared.blog-sidebar')
 
         </div>
-
+    </div>
 @endsection
