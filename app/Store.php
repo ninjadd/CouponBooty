@@ -43,4 +43,11 @@ class Store extends Model
     {
         return $this->hasMany('App\Offer');
     }
+
+    public static function offersFromStores()
+    {
+        $store_ids = Offer::selectRaw('store_id')->whereNotNull('store_id')->groupBy('store_id')->pluck('store_id');
+
+        return static::whereIn('id', $store_ids)->get();
+    }
 }

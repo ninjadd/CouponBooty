@@ -120,6 +120,10 @@ class PageController extends Controller
         return view('pages.terms');
     }
 
+    /**
+     * @param Request $request
+     * @return \Illuminate\Http\RedirectResponse
+     */
     public function sendMessage(Request $request)
     {
         $this->validate($request, [
@@ -141,5 +145,10 @@ class PageController extends Controller
         Mail::to('contact@couponbooty.com')->send(new ContactUs($message));
 
         return back()->with('message', 'You message has been sent');
+    }
+
+    public function viewSlug($slug)
+    {
+        return $slug;
     }
 }

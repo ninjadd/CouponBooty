@@ -31,6 +31,5 @@ class Category extends Model
         $category_names = static::pluck('name')->unique()->toArray();
 
         return implode(', ', $category_names);
-
     }
 }

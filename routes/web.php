@@ -31,6 +31,8 @@ Route::get('terms', 'PageController@viewTerms');
 
 Route::post('send', 'PageController@sendMessage');
 
+Route::get('{slug}', 'PageController@viewSlug');
+
 Auth::routes();
 
 Route::get('dashboard', 'DashBoardController@index')->name('dashboard');

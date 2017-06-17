@@ -1,13 +1,9 @@
-<div class="container">
-    <nav class="navbar navbar-default">
-        <div class="container-fluid">
-            <div id="navbar" class="navbar-collapse collapse">
-                <ul class="nav nav-tabs nav-justified">
-                    <li class="active"><a href="#">Home</a></li>
-                    <li><a href="#">About</a></li>
-                    <li><a href="#">Contact</a></li>
-                </ul>
-            </div>
-        </div>
-    </nav>
-</div>
+@if($stores->count() > 0)
+    <div class="container">
+        <ul class="nav nav-tabs nav-justified">
+            @foreach($stores as $store)
+                <li><a {!! (str_contains(public_path(), $store->slug)) ? 'class"active"' : null !!} href="/{{ $store->slug }}">{{ $store->name }}</a></li>
+            @endforeach
+        </ul>
+    </div>
+@endif

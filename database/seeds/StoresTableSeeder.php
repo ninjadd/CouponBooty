@@ -18,7 +18,7 @@ class StoresTableSeeder extends Seeder
         foreach (range(1, 10) as $index) {
             $store = new Store();
             $store->user_id = $faker->numberBetween(1, 4);
-            $name = $faker->sentence(3, true);
+            $name = $faker->word();
             $store->name = $name;
             $store->slug = str_slug($name);
             $store->title = $faker->sentence(3);
