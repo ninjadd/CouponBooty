@@ -61,19 +61,22 @@
                                                 {{ $type->offers->count() }}
                                             </td>
                                             <td>
-                                                <form action="/type/{{ $type->id }}" method="POST">
-                                                    <div class="btn-group">
-                                                        <a href="/type/{{ $type->id }}/edit" class="btn btn-success btn-xs"  data-toggle="tooltip" title="Edit Type">
-                                                            <span class="glyphicon glyphicon-pencil" aria-hidden="true"></span>
-                                                        </a>
+                                                <a href="/type/{{ $type->id }}/edit" class="btn btn-success btn-xs"  data-toggle="tooltip" title="Edit Type">
+                                                    <span class="glyphicon glyphicon-pencil" aria-hidden="true"></span>
+                                                </a>
+                                                {{--<form action="/type/{{ $type->id }}" method="POST">--}}
+                                                    {{--<div class="btn-group">--}}
+                                                        {{--<a href="/type/{{ $type->id }}/edit" class="btn btn-success btn-xs"  data-toggle="tooltip" title="Edit Type">--}}
+                                                            {{--<span class="glyphicon glyphicon-pencil" aria-hidden="true"></span>--}}
+                                                        {{--</a>--}}
 
-                                                        <button type="submit" class="btn btn-danger btn-xs"  data-toggle="tooltip" title="Delete Type">
-                                                            <span class="glyphicon glyphicon-trash" aria-hidden="true"></span>
-                                                        </button>
-                                                        {{ method_field('DELETE') }}
-                                                        {{ csrf_field() }}
-                                                    </div>
-                                                </form>
+                                                        {{--<button type="submit" class="btn btn-danger btn-xs"  data-toggle="tooltip" title="Delete Type">--}}
+                                                            {{--<span class="glyphicon glyphicon-trash" aria-hidden="true"></span>--}}
+                                                        {{--</button>--}}
+                                                        {{--{{ method_field('DELETE') }}--}}
+                                                        {{--{{ csrf_field() }}--}}
+                                                    {{--</div>--}}
+                                                {{--</form>--}}
                                             </td>
                                         </tr>
                                     @endforeach

@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Offer;
 use Illuminate\Http\Request;
 use App\Store;
 
@@ -113,6 +114,8 @@ class StoreController extends Controller
      */
     public function destroy(Store $store)
     {
+        Offer::where('store_id', $store->id)->update(['store_id' => null]);
+
         $store->delete();
 
         return redirect('store')->with('status', 'Store removed!');
