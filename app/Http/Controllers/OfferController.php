@@ -5,9 +5,8 @@ namespace App\Http\Controllers;
 use App\Offer;
 use App\Type;
 use App\Category;
+use App\Store;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Auth;
-use Carbon\Carbon;
 
 
 class OfferController extends Controller
@@ -41,8 +40,9 @@ class OfferController extends Controller
     public function create()
     {
         $types = Type::all();
+        $stores = Store::all();
 
-        return view('offer.create', compact('types'));
+        return view('offer.create', compact('types', 'stores'));
     }
 
     /**
@@ -59,7 +59,8 @@ class OfferController extends Controller
             'body' => 'required',
             'url' => 'required|url',
             'image_url' => 'required|url',
-            'type_id' => 'sometimes|required|integer'
+            'type_id' => 'required|integer',
+            'store_id' => 'integer'
         ]);
 
         $offer = new Offer();
@@ -70,6 +71,7 @@ class OfferController extends Controller
         $offer->image_url = $request->image_url;
         $offer->body = $request->body;
         $offer->coupon = $request->coupon;
+        $offer->store_id = $request->store_id;
 
         $offer->start_date = $request->start_date;
         $offer->end_date = $request->end_date;
@@ -112,18 +114,22 @@ class OfferController extends Controller
         // return view('offer.show', compact('offer'));
     }
 
+
     /**
      * Show the form for editing the specified resource.
-     *
-     * @param  \App\Offer  $offer
-     * @return \Illuminate\Http\Response
+     * @param Offer $offer
+     * @param Type $type
+     * @param Store $store
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
-    public function edit(Offer $offer, Type $type)
+    public function edit(Offer $offer, Type $type, Store $store)
     {
         $types = $type->all();
         $categories = Category::byOffer($offer->id)->get();
+        $stores = $store->all();
 
-        return view('offer.edit', compact('offer', 'types', 'categories'));
+
+        return view('offer.edit', compact('offer', 'types', 'categories', 'stores'));
     }
 
     /**
@@ -140,7 +146,8 @@ class OfferController extends Controller
             'body' => 'required',
             'url' => 'required|url',
             'image_url' => 'required|url',
-            'type_id' => 'required|integer'
+            'type_id' => 'required|integer',
+            'store_id' => 'integer'
         ]);
 
         $offer->user_id = auth()->id();
@@ -150,6 +157,7 @@ class OfferController extends Controller
         $offer->image_url = $request->image_url;
         $offer->body = $request->body;
         $offer->coupon = $request->coupon;
+        $offer->store_id = $request->store_id;
 
 
         $offer->start_date = $request->start_date;

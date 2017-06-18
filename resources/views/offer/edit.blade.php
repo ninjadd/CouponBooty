@@ -99,6 +99,23 @@
                                 </div>
 
                                 <div class="form-group">
+                                    <label for="storeLable" class="col-lg-2 control-label">Store</label>
+                                    <div class="col-lg-10">
+                                        <select class="form-control" name="store_id" id="select">
+                                            @if($stores->count() > 0)
+                                                <option>Select</option>
+                                                @foreach($stores as $store)
+                                                    <option {!! ($store->id == $offer->store_id) ? 'selected="selected"' : null !!} value="{{ $store->id }}">{{ $store->name }}</option>
+                                                @endforeach
+                                            @else
+                                                <option>Please Create Store First</option>
+                                            @endif
+                                        </select>
+                                        <span class="help-block">Select Store to provide some awesome details</span>
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
                                     <label for="coupon" class="col-lg-2 control-label">Coupon</label>
                                     <div class="col-lg-10">
                                         <input
