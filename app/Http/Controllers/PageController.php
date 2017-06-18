@@ -11,6 +11,7 @@ use App\Contact;
 use App\Message;
 use App\Category;
 use App\Type;
+use App\Store;
 use App\Mail\ContactUs;
 
 class PageController extends Controller
@@ -149,6 +150,14 @@ class PageController extends Controller
 
     public function viewSlug($slug)
     {
-        return $slug;
+        // check stores first
+        $store = Store::slug($slug)->first();
+        if ($store->count() > 0) {
+            $offers = Offer::where('store_id', $store->id)->paginate(20);
+
+            return view('pages.store-slug', compact('store', 'offers'));
+        }
+
+        return redirect('welcome');
     }
 }

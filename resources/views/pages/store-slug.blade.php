@@ -23,14 +23,30 @@
 
         @if(count($offers) > 0)
 
-            <div class="col-md-12">
-                <h2>{{ config('app.name') }}</h2>
-                <h3 class="lead">
-                    Most Recent Deals
-                </h3>
-                <hr>
-            </div>
+            <h2>{{ $store->name }} Coupons &amp; Promo Codes</h2>
+            <p class="lead">
+                Most Recent Deals
+            </p>
 
+            @if((!empty($store->title)) && (!empty($store->body)))
+                <div class="panel panel-primary">
+                    <div class="panel-heading">
+                        <h3 class="panel-title">
+                            {{ $store->title }}
+                        </h3>
+                    </div>
+
+                    <div class="panel-body">
+                        {!! $store->body !!}
+                    </div>
+
+                    <div class="panel-footer">
+                        Total <em>{{ $store->name }}</em> Deals <span class="badge">{{ $offers->count() }}</span>
+                    </div>
+                </div>
+            @endif
+
+            <hr>
             <section class="col-xs-12 col-sm-6 col-md-12">
 
                 @foreach($offers as $offer)
@@ -43,8 +59,8 @@
                             <p>{!! $offer->body !!}</p>
                             @if($offer->coupon)
                                 <a class="btn btn-primary pull-right"
-                                data-toggle="modal" title="View {{ $offer->title }}"
-                                data-target="#myModal{{ $offer->id }}">Use Coupon</a>
+                                   data-toggle="modal" title="View {{ $offer->title }}"
+                                   data-target="#myModal{{ $offer->id }}">Use Coupon</a>
                                 @include('shared.view')
                             @else
                                 <a class="btn btn-primary pull-right" href="{{ $offer->url }}" target="_blank">Get Deal</a>

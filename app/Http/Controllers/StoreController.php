@@ -46,7 +46,7 @@ class StoreController extends Controller
     public function store(Request $request)
     {
         $this->validate($request, [
-           'name' => 'required|string'
+           'name' => 'required|string|unique:stores'
         ]);
 
         $store = new Store();
@@ -68,7 +68,7 @@ class StoreController extends Controller
      */
     public function show(Store $store)
     {
-        //
+        return view('store.show', compact('store'));
     }
 
     /**
@@ -79,7 +79,7 @@ class StoreController extends Controller
      */
     public function edit(Store $store)
     {
-        //
+        return view('store.edit', compact('store'));
     }
 
     /**
@@ -91,7 +91,18 @@ class StoreController extends Controller
      */
     public function update(Request $request, Store $store)
     {
-        //
+        $this->validate($request, [
+           'name' => 'required|string'
+        ]);
+
+        $store->user_id = auth()->id();
+        $store->name = $request->name;
+        $store->slug = str_slug($request->name);
+        $store->title = $request->title;
+        $store->body = $request->body;
+        $store->save();
+
+        return redirect('store')->with('status', 'Updated Store created I am so proud!');
     }
 
     /**
@@ -102,6 +113,8 @@ class StoreController extends Controller
      */
     public function destroy(Store $store)
     {
-        //
+        $store->delete();
+
+        return redirect('store')->with('status', 'Store removed!');
     }
 }

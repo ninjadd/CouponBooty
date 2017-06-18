@@ -31,7 +31,8 @@ Route::get('terms', 'PageController@viewTerms');
 
 Route::post('send', 'PageController@sendMessage');
 
-Route::get('{slug}', 'PageController@viewSlug');
+// Sluggers
+Route::get('view/{slug}', 'PageController@viewSlug');
 
 Auth::routes();
 
@@ -122,3 +123,11 @@ Route::get('store', 'StoreController@index');
 Route::get('store/create', 'StoreController@create');
 
 Route::post('store', 'StoreController@store');
+
+Route::get('store/{store}', 'StoreController@show');
+
+Route::get('store/{store}/edit', 'StoreController@edit');
+
+Route::put('store/{store}', 'StoreController@update');
+
+Route::delete('store/{store}', 'StoreController@destroy');
