@@ -73,6 +73,9 @@
                     <li>
                         <a class="fa fa-twitter-square" aria-hidden="true" href="https://twitter.com/couponbooty" target="_blank"></a>
                     </li>
+                    <li>
+                        <a class="fa fa-instagram" aria-hidden="true" href="https://www.instagram.com/Couponbooty/" target="_blank"></a>
+                    </li>
 
                     <!-- Authentication Links -->
                     @if (Auth::guest())
