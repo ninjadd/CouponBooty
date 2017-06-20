@@ -1,10 +1,12 @@
 @if($stores->count() > 0)
-    <div class="container">
-        <ul class="nav nav-pills nav-justified">
+    <li class="dropdown">
+        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+            By Store <span class="caret"></span>
+        </a>
+        <ul class="dropdown-menu" role="menu">
             @foreach($stores as $store)
-                <li {!! (str_contains(url()->current(), $store->slug)) ? 'class="active"' : null !!}><a href="/view/{{ $store->slug }}">{{ $store->name }}</a></li>
+                <li><a href="/view/{{ $store->slug }}">{{ $store->name }}</a></li>
             @endforeach
         </ul>
-    </div>
-    <br>
+    </li>
 @endif

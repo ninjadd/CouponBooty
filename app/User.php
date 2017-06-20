@@ -57,4 +57,12 @@ class User extends Authenticatable
     {
         return $this->hasMany('App\Quad');
     }
+
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
+    public function stores()
+    {
+        return $this->hasMany('App\Store');
+    }
 }

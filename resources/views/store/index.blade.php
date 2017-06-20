@@ -25,7 +25,7 @@
                             <tr>
                                 <th>ID</th>
                                 <th>Name</th>
-                                <th>Created</th>
+                                <th>Created By</th>
                                 <th>Updated</th>
                                 <th>Offers</th>
                                 <th></th>
@@ -35,7 +35,7 @@
                             <tr>
                                 <th>ID</th>
                                 <th>Name</th>
-                                <th>Created</th>
+                                <th>Created By</th>
                                 <th>Updated</th>
                                 <th>Offers</th>
                                 <th></th>
@@ -52,10 +52,10 @@
                                             {{ $store->name }}
                                         </td>
                                         <td>
-                                            {{ $store->created_at->diffForHumans() }}
+                                            {{ $store->user->name }}
                                         </td>
                                         <td>
-                                            {{ $store->updated_at }}
+                                            {{ $store->updated_at->diffForHumans() }}
                                         </td>
                                         <td>
                                             {{ $store->offers->count() }}

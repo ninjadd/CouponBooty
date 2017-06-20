@@ -23,7 +23,7 @@
                         <table class="table table-striped table-bordered table-condensed" cellspacing="0" width="100%">
                             <thead>
                                 <tr>
-                                    <th>ID</th>
+                                    <th>Store</th>
                                     <th>Title</th>
                                     <th>Type</th>
                                     <th>Created By</th>
@@ -36,7 +36,7 @@
                             </thead>
                             <tfoot>
                                 <tr>
-                                    <th>ID</th>
+                                    <th>Store</th>
                                     <th>Title</th>
                                     <th>Type</th>
                                     <th>Updated</th>
@@ -52,7 +52,7 @@
                                 @foreach($offers as $offer)
                                     <tr>
                                         <td>
-                                            {{ $offer->id }}
+                                            {{ ($offer->store['name']) ? $offer->store['name'] : 'N/A' }}
                                         </td>
                                         <td>
                                             {{ str_limit($offer->title, 25, '...') }}

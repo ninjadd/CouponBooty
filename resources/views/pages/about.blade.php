@@ -13,10 +13,6 @@
     </script>
 @endsection
 
-@section('sub-nav')
-    @include('shared.store-nav')
-@endsection
-
 @section('content')
 
     <div class="container">

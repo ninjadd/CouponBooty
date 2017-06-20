@@ -36,8 +36,6 @@ class DashBoardController extends Controller
 
         $archived = Offer::archive(1)->get();
 
-        $types = Type::all();
-
-        return view('dashboard.index', compact('offers', 'archived', 'types'));
+        return view('dashboard.index', compact('offers', 'archived'));
     }
 }

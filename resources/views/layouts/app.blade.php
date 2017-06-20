@@ -55,6 +55,7 @@
                             <li><a href="/privacy">Privacy Policy</a></li>
                         </ul>
                     </li>
+                    @include('shared.store-nav')
                 </ul>
 
                 <!-- Right Side Of Navbar -->
@@ -68,10 +69,10 @@
                         <button type="submit" class="btn btn-default"><i class="fa fa-search" aria-hidden="true"></i></button>
                     </form>
                     <li>
-                        <a class="fa fa-facebook-square" aria-hidden="true" href="https://www.facebook.com/CouponBooty/" target="_blank"></a>
+                        <a class="fa fa-facebook" aria-hidden="true" href="https://www.facebook.com/CouponBooty/" target="_blank"></a>
                     </li>
                     <li>
-                        <a class="fa fa-twitter-square" aria-hidden="true" href="https://twitter.com/couponbooty" target="_blank"></a>
+                        <a class="fa fa-twitter" aria-hidden="true" href="https://twitter.com/couponbooty" target="_blank"></a>
                     </li>
                     <li>
                         <a class="fa fa-instagram" aria-hidden="true" href="https://www.instagram.com/Couponbooty/" target="_blank"></a>
@@ -114,8 +115,6 @@
             </div>
         </div>
     </nav>
-
-    @yield('sub-nav')
 
     @yield('content')
 </div>
