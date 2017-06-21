@@ -22,8 +22,9 @@ class PageController extends Controller
     public function welcome()
     {
         $offers = Offer::orderBy('updated_at', 'desc')->paginate(20);
+        $types = Type::all();
 
-        return view('pages.welcome', compact('offers'));
+        return view('pages.welcome', compact('offers', 'types'));
     }
 
     public function splash()

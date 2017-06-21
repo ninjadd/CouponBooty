@@ -17,7 +17,7 @@ class AppServiceProvider extends ServiceProvider
             $view->with('side_blogs', \App\Blog::sideBar());
         });
 
-        view()->composer('layouts.app', function ($view) {
+        view()->composer('layouts.out', function ($view) {
             $view->with('keywords', \App\Category::metaKeywords());
         });
 

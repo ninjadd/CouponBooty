@@ -1,49 +1,49 @@
 <!DOCTYPE html>
-<!--
-Template Name:Restored Multipurpose Responsive HTML Template
-Version: 1.0
-Author: DigiSamaritan
-Website: digisamaritan.com
-Purchase: http://themeforest.net/user/DigiSamaritan
--->
-<!--[if IE 8]> <html lang="en" class="ie8 no-js"> <![endif]-->
-<!--[if IE 9]> <html lang="en" class="ie9 no-js"> <![endif]-->
-<!--[if !IE]><!-->
-<html lang="en">
-<!--<![endif]-->
-<!-- BEGIN HEAD -->
+<html lang="{{ config('app.locale') }}">
 <head>
     <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="keywords" content="{!! $keywords !!}"/>
+
+    <!-- CSRF Token -->
+    <meta name="csrf-token" content="{{ csrf_token() }}">
+
     <title>{{ config('app.name') }}</title>
-    <meta content="width=device-width, initial-scale=1.0" name="viewport">
-    <meta name="description" content="">
-    <meta name="keywords" content="">
-    <meta name="author" content="">
-    <meta name="MobileOptimized" content="320">
-    <!--srart theme style -->
+
+    <!-- Styles -->
+    <link href="{{ asset('css/app.css') }}" rel="stylesheet">
     <link href="{{ asset('restored/css/main.css') }}" rel="stylesheet" type="text/css">
-    <!-- end theme style -->
+    <!-- Scripts -->
+    <script src="{{ asset('js/app.js') }}"></script>
 
-    @yield('head')
+@yield('head')
 
+<!-- Scripts -->
+    <script>
+        window.Laravel = {!! json_encode([
+            'csrfToken' => csrf_token(),
+        ]) !!};
+    </script>
 </head>
 <body>
 <!--Loader Start -->
-<div class="rs_preloaded">
-    <div class="rs_preloader">
-        <div class="lines">
-        </div>
-        <div class="loading-text">LOADING...</div>
-    </div>
-</div>
+{{--<div class="rs_preloaded">--}}
+    {{--<div class="rs_preloader">--}}
+        {{--<div class="lines">--}}
+        {{--</div>--}}
+        {{--<div class="loading-text">LOADING...</div>--}}
+    {{--</div>--}}
+{{--</div>--}}
 <!--Loader End -->
+{{--nav start--}}
 <header>
     <div class="rs_graybg rs_toppadder20 rs_bottompadder20">
         <div class="container">
             <div class="row">
                 <div class="col-lg-3 col-md-3 col-sm-2 col-xs-12">
                     <div class="rs_index3_logo">
-                        <a href="#"><img src="{{ asset('images/logo.png') }}" class="img-responsive" alt="logo"></a>
+                        <a href="/"><img src="{{ asset('images/CouponBooty Logo_Horizontal_2.png') }}" class="img-responsive" alt="logo"></a>
                         <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#rs_index3_menu" aria-expanded="false">
                             <span class="sr-only">Toggle navigation</span>
                             <span class="icon-bar"></span>
@@ -56,11 +56,19 @@ Purchase: http://themeforest.net/user/DigiSamaritan
                     <div class="rs_index3_menu">
                         <div class="collapse navbar-collapse" id="rs_index3_menu">
                             <ul class="nav navbar-nav">
-                                <li><a href="#">Home</a></li>
-                                <li><a href="#">Blog</a></li>
-                                <li><a href="#">About Us</a></li>
-                                <li><a href="#">Terms</a></li>
-                                <li><a href="#">Privacy Policy</a></li>
+                                <li><a href="/">Home</a></li>
+                                <li><a href="javascript:;">More</a>
+                                    <ul class="sub-menu">
+                                        <li><a href="/blog">Blog</a></li>
+                                        <li><a href="/about">About Us</a></li>
+                                        <li><a href="/terms">Terms</a></li>
+                                        <li><a href="/privacy">Privacy Policy</a></li>
+                                    </ul>
+                                </li>
+                                @include('shared.store-nav')
+                                <li><a href="https://www.facebook.com/CouponBooty" target="_blank"><i class="fa fa-facebook"></i></a></li>
+                                <li><a href="https://twitter.com/couponbooty" target="_blank"><i class="fa fa-twitter"></i></a></li>
+                                <li><a href="https://www.instagram.com/Couponbooty" target="_blank"><i class="fa fa-instagram"></i></a></li>
                             </ul>
                         </div>
                     </div>
@@ -69,6 +77,60 @@ Purchase: http://themeforest.net/user/DigiSamaritan
         </div>
     </div>
 </header>
+{{--nav end--}}
+
+{{--blue nav start--}}
+<div class="rs_index2_topheader rs_toppadder50 rs_bottompadder30">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-10 col-md-10 col-sm-12 col-xs-12 col-lg-offset-1 col-md-offset-1">
+                <div class="row">
+                    <div class="rs_index3_searchform">
+
+                            <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
+                                <div class="form-group">
+                                    <select name="timepass" class="rs-custom-select">
+                                        <option>Buy Some</option>
+                                        <option>1</option>
+                                        <option>2</option>
+                                        <option>3</option>
+                                        <option>4</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="col-lg-2 col-md-2 col-sm-6 col-xs-12">
+                                <div class="form-group">
+                                    <select name="timepass" class="rs-custom-select">
+                                        <option>Stuff</option>
+                                        <option>1</option>
+                                        <option>2</option>
+                                        <option>3</option>
+                                        <option>4</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="col-lg-7 col-md-7 col-sm-12 col-xs-12">
+                                <div class="form-group">
+                                    <div class="input-group">
+                                        <div class="input-group-addon">
+                                            <span class="glyphicon glyphicon-option-vertical"></span>
+                                        </div>
+                                        <form action="/results" method="POST">
+                                            {{ csrf_field() }}
+                                            <input type="text" class="form-control" name="search_text" placeholder="Enter the keyword that you need">
+                                            <button type="submit" class="rs_index3_search_btn"><i class="fa fa-search"></i></button>
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{{--blue nav end--}}
 
 @yield('content')
 
@@ -77,21 +139,19 @@ Purchase: http://themeforest.net/user/DigiSamaritan
         <div class="row">
             <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                 <div class="rs_index2_footerdiv">
-                    <img src="images/logo2.png" class="img-responsive" alt="logo">
+                    <img width="75" src="{{ asset('images/CouponBooty_Logo_Round-01.png') }}" class="img-responsive" alt="logo">
                 </div>
                 <div class="rs_index2_footerdiv">
                     <ul>
-                        <li><a href="#">Privacy Policy</a></li>
-                        <li><a href="#">Terms & Conditions</a></li>
-                        <li><a href="#">Secured Payments</a></li>
-                        <li><a href="#">My Profile</a></li>
+                        <li><a href="/about">About Us</a></li>
+                        <li><a href="/terms">Terms</a></li>
+                        <li><a href="/privacy">Privacy Policy</a></li>
                     </ul>
                 </div>
                 <div class="rs_index2_footerdiv">
                     <div class="rs_footer_textdata">
-                        <p><i class="fa fa-map-marker"></i> 13, Roil Colony, Vodagupalymi, Maholunga, CA</p>
-                        <p><i class="fa fa-phone"></i> 022-2648-9347</p>
-                        <p><a href="#"><i class="fa fa-envelope"></i> info@digitalheaps.com</a></p>
+                        <p><i class="fa fa-map-marker"></i> San Diego, California</p>
+                        <p><a href="#"><i class="fa fa-envelope"></i> contact@couponbooty.com</a></p>
                     </div>
                 </div>
             </div>
@@ -103,17 +163,15 @@ Purchase: http://themeforest.net/user/DigiSamaritan
         <div class="row">
             <div class="col-lg-5 col-md-6 col-sm-12 col-xs-12">
                 <div class="rs_index2_copyright">
-                    <p>&copy; <a href="#">Restored.</a> All rights reserved. Designed with Love by DigitalHeaps</p>
+                    <p>&copy; <a href="/">CouponBooty</a> All rights reserved. {{ date('Y') }}</p>
                 </div>
             </div>
             <div class="col-lg-3 col-md-3 col-sm-12 col-xs-12 pull-right">
                 <div class="rs_index2_footer_link">
                     <ul>
-                        <li><a href="#"><i class="fa fa-facebook"></i></a></li>
-                        <li><a href="#"><i class="fa fa-twitter"></i></a></li>
-                        <li><a href="#"><i class="fa fa-google-plus"></i></a></li>
-                        <li><a href="#"><i class="fa fa-pinterest"></i></a></li>
-                        <li><a href="#"><i class="fa fa-dribbble"></i></a></li>
+                        <li><a href="https://www.facebook.com/CouponBooty" target="_blank"><i class="fa fa-facebook"></i></a></li>
+                        <li><a href="https://twitter.com/couponbooty" target="_blank"><i class="fa fa-twitter"></i></a></li>
+                        <li><a href="https://www.instagram.com/Couponbooty" target="_blank"><i class="fa fa-instagram"></i></a></li>
                     </ul>
                 </div>
             </div>
