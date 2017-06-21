@@ -1,4 +1,4 @@
-@extends('layouts.app')
+@extends('layouts.out')
 
 @section('head')
     <script>
@@ -15,50 +15,65 @@
 
 @section('content')
 
+    <div class="rs_graybg rs_toppadder100 rs_bottompadder50">
+        <div class="container">
+            <div class="row">
+                @foreach($blogs as $blog)
 
-    <!-- Page Content -->
-    <div class="container">
+                    @if($loop->iteration % 2 == 0)
+                        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 rs_bottompadder60">
+                            <div class="rs_blog_wrapper">
+                                <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+                                    <div class="row">
+                                        <div class="rs_blog_content_img">
+                                            <img width="570" height="323" src="{{ $blog->image_url }}">
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+                                    <div class="row">
+                                        <div class="rs_blog_content">
+                                            <span>{{ $blog->created_at->toFormattedDateString() }}</span>
+                                            <h4><a href="/blog/{{ $blog->title_slug }}">{{ $blog->title }}</a></h4>
+                                            <p>{{ str_limit(strip_tags($blog->body), 256, '...') }}</p>
+                                            <div class="rs_btn_div">
+                                                <a href="/blog/{{ $blog->title_slug }}" class="rs_button rs_button_orange pull-right">read</a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    @else
+                        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 rs_bottompadder60">
+                            <div class="rs_blog_wrapper">
+                                <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12 col-lg-push-6 col-md-push-6 col-sm-push-0 col-xs-push-0">
+                                    <div class="row">
+                                        <div class="rs_blog_content_img">
+                                            <img width="570" height="323" src="{{ $blog->image_url }}">
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12 col-lg-pull-6 col-md-pull-6 col-sm-pull-0 col-xs-pull-0">
+                                    <div class="row">
+                                        <div class="rs_blog_content">
+                                            <span>{{ $blog->created_at->toFormattedDateString() }}</span>
+                                            <h4><a href="/blog/{{ $blog->title_slug }}">{{ $blog->title }}</a></h4>
+                                            <p>{{ str_limit(strip_tags($blog->body), 256, '...') }}</p>
+                                            <div class="rs_btn_div">
+                                                <a href="/blog/{{ $blog->title_slug }}" class="rs_button rs_button_orange pull-right">read</a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
 
-        <div class="row">
+                            </div>
+                        </div>
+                    @endif
 
-            <!-- Blog Entries Column -->
-            <div class="col-md-8">
-
-                <h1 class="page-header">
-                    <a class="text-muted" href="/blog">{{ config('app.name') }}</a>
-                    <small></small>
-                </h1>
-
-                <!-- Blog Posts -->
-                @if(count($blogs) > 0)
-                    @foreach($blogs as $blog)
-                        <h2>
-                            <a href="/blog/{{ $blog->title_slug }}">{{ $blog->title }}</a>
-                        </h2>
-                        {{--<p class="lead">--}}
-                            {{--by {{ $blog->user->name }}--}}
-                        {{--</p>--}}
-                        <p><span class="glyphicon glyphicon-time"></span> Posted {{ $blog->created_at->diffForHumans() }}</p>
-                        <hr>
-                        {{--<img class="img-responsive" src="http://placehold.it/900x300" alt="">--}}
-                        {{--<hr>--}}
-                        <p>
-                            {{ strip_tags($blog->body) }}
-                        </p>
-                        <a class="btn btn-primary" href="/blog/{{ $blog->title_slug }}">Read More <span class="glyphicon glyphicon-chevron-right"></span></a>
-
-                        <hr>
-                    @endforeach
-                @endif
-
-
-                <!-- Pager -->
-                {{ $blogs->links('shared.simple-pager') }}
-
+                @endforeach
             </div>
-
-            @include('shared.blog-sidebar')
-
         </div>
     </div>
+
 @endsection

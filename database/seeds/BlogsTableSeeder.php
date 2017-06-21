@@ -25,6 +25,7 @@ class BlogsTableSeeder extends Seeder
             $blog->title_slug = str_slug($title);
             $blog->body = $faker->paragraph(12, true);
             $blog->archive = $faker->numberBetween(0, 1);
+            $blog->image_url = $faker->imageUrl(570, 323);
             $blog->save();
         }
     }

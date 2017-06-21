@@ -55,7 +55,7 @@
                             <li><a href="/privacy">Privacy Policy</a></li>
                         </ul>
                     </li>
-                    @include('shared.store-nav')
+                    {{--@include('shared.store-nav')--}}
                 </ul>
 
                 <!-- Right Side Of Navbar -->

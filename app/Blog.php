@@ -27,7 +27,8 @@ class Blog extends Model
         'title',
         'title_slug',
         'body',
-        'archive'
+        'archive',
+        'image_url'
     ];
 
     /**

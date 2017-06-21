@@ -70,10 +70,10 @@
                                             {{ $offer->coupon }}
                                         </td>
                                         <td>
-                                            {{ (!empty($offer->start_date)) ? $offer->start_date->format('Y-m-d') : '' }}
+                                            {{ (!empty($offer->start_date)) ? $offer->start_date : '' }}
                                         </td>
                                         <td>
-                                            {{ (!empty($offer->end_date)) ? $offer->end_date->format('Y-m-d') : '' }}
+                                            {{ (!empty($offer->end_date)) ? $offer->end_date : '' }}
                                         </td>
                                         <td>
                                             <form action="/offer/{{ $offer->id }}" method="POST">

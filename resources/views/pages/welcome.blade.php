@@ -15,6 +15,56 @@
 
 @section('content')
 
+    <div class="rs_graybg rs_toppadder80 rs_bottompadder100">
+        <div class="container">
+            <div class="row">
+
+                <div class="col-lg-12 col-md-9 col-sm-12 col-xs-12 pull-right">
+                    <div class="rs_index3_recommended_offer">
+                        <h4>Recommended Offers For You</h4>
+                    </div>
+                    <div class="row">
+
+                        <div class="col-lg-12 col-md-9 col-sm-12 col-xs-12 rs_toppadder30">
+                            <div class="rs_index3_product_slider">
+                                <div class="owl-carousel owl-theme">
+                                    @foreach($offers as $offer)
+                                        <div class="item">
+                                            <div class="rs_index3_productdiv">
+                                                <div class="rs_index3_product_img">
+                                                    <img width="350" height="555" src="{{ $offer->image_url }}" class="" alt="">
+                                                    <div class="rs_product_price"><h2><small>Sexy</small></h2></div>
+                                                </div>
+                                                <div class="rs_index3_product_data">
+                                                    <div class="rs_index3_productdata_left">
+                                                        <h5><a href="{{ $offer->url }}" target="_blank">{{ $offer->title }}</a></h5>
+                                                        <p>{{ str_limit($offer->body, 200, '...') }}</p>
+                                                        <span>Ending on: {{ $offer->end_date }}</span>
+                                                    </div>
+                                                    <div class="rs_index3_productdata_right">
+                                                        @if($offer->coupon)
+                                                            <p><span>Use this Code</span></p>
+                                                            <a href="{{ $offer->url }}" target="_blank" class="rs_button rs_button_orange">{{ $offer->coupon }}</a>
+                                                        @else
+                                                            <a href="{{ $offer->url }}" target="_blank" class="rs_button rs_button_orange">Get Deal</a>
+                                                        @endif
+                                                    </div>
+
+                                                </div>
+                                            </div>
+                                        </div>
+                                    @endforeach
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
     <div class="rs_graybg rs_toppadder100 rs_bottompadder100">
         <div class="container">
             <div class="row">
@@ -155,6 +205,56 @@
                                 </div>
                             </div>
                         @endforeach
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="rs_transprantbg rs_toppadder100 rs_bottompadder50">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12 col-md-9 col-sm-12 col-xs-12 rs_bottompadder20">
+                    <div class="rs_hot_coupon_heading">
+                        <h3>Hot Coupon Offers</h3>
+                        <span><i class="fa fa-heart"></i></span>
+                    </div>
+                </div>
+                <div class="col-lg-12 col-md-9 col-sm-12 col-xs-12">
+                    <div class="woocommerce_wrapper">
+                        <div class="row">
+
+                            @foreach($offers as $offer)
+                                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 rs_toppadder30 rs_hot_coupon">
+                                    <div class="rs_product_div">
+                                        <div class="rs_featureddiv"><p>{{ $offer->type->label }}</p></div>
+                                        <div class="rs_product_img">
+                                            <img src="{{ $offer->image_url }}" class="img-responsive" alt="">
+                                            <div class="rs_product_price"><h2><small></small>Hot</h2></div>
+                                        </div>
+
+                                        <div class="rs_product_detail">
+                                            <h5><a href="#">{{ $offer->title }}</a></h5>
+                                            {!! $offer->body !!}
+                                            <span><i class="fa fa-clock-o"></i> Ending on: {{ $offer->end_date }}</span>
+                                        </div>
+                                        <div class="rs_product_div_footer">
+                                            @if($offer->coupon)
+                                                <p>Use this Code</p>
+                                                <div class="rs_btn_div">
+                                                    <a href="#" class="rs_button rs_button_orange">{{ $offer->coupon }}</a>
+                                                </div>
+                                            @else
+                                                <div class="rs_btn_div">
+                                                    <a href="{{ $offer->url }}" target="_blank" class="rs_button rs_button_orange">Get Deal</a>
+                                                </div>
+                                            @endif
+                                        </div>
+                                    </div>
+                                </div>
+                            @endforeach
+
+                        </div>
                     </div>
                 </div>
             </div>
