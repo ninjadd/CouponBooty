@@ -1,38 +1,45 @@
 @include('shared.errors')
 @include('shared.session')
-<form action="/send" method="POST" class="form-horizontal">
-    {{ csrf_field() }}
-    <fieldset>
-        <legend>Let us know if there is anything you need</legend>
-        <div class="form-group">
-            <label for="inputName" class="col-lg-2 control-label">Your Name</label>
-            <div class="col-lg-10">
-                <input name="name" type="text" required="required" class="form-control" id="inputName" placeholder="Who are you?">
+<div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+    <div class="rs_contact_form">
+        <div class="rs_submitform">
+
+            <form action="/send" method="POST">
+                {{ csrf_field() }}
+                <div class="form-group">
+                    <input type="text" class="form-control" required="required" id="ur_name" name="name" placeholder="Enter your name">
+                </div>
+
+                <div class="form-group">
+                    <input type="email" class="form-control" required="required" id="ur_mail" name="email" placeholder="Enter your mail address">
+                </div>
+
+                <textarea class="form-control" rows="10" id="msg" required="required" name="body" placeholder="Enter your message"></textarea>
+
+                <div class="rs_btn_div rs_toppadder30">
+                    <button type="submit" id="send_btn" class="rs_button rs_button_orange">send</button>
+                    <p id="err"></p>
+                </div>
+            </form>
+
+        </div>
+    </div>
+</div>
+<div class="col-lg-5 col-md-6 col-sm-12 col-xs-12 pull-right">
+    <div class="rs_contact_section">
+        <div class="rs_contact_heading rs_green_heading rs_bottompadder50">
+            <h3>Find Us Here</h3>
+            <div><span><i class="fa fa-heart"></i></span></div>
+        </div>
+        <div class="rs_contact_info">
+            <div class="rs_contact_data">
+                <span class="fa fa-map-marker"> San Diego, California</span>
             </div>
         </div>
-
-        <div class="form-group">
-            <label for="inputEmail" class="col-lg-2 control-label">Your Email</label>
-            <div class="col-lg-10">
-                <input name="email" type="email" required="required" class="form-control" id="inputEmail" placeholder="Email address">
+        <div class="rs_contact_info">
+            <div class="rs_contact_data">
+                <span class="fa fa-envelope"> <a href="mailto:contact@couponbooty">contact@couponbooty</a></span>
             </div>
         </div>
-
-
-        <div class="form-group">
-            <label for="textContent" class="col-lg-2 control-label">
-                Message
-            </label>
-            <div class="col-lg-10">
-                <textarea class="form-control" name="body" required="required" placeholder="Message... In a bottle? No, Just a message to {{ config('app.name') }}." rows="4" id="textContent"></textarea>
-            </div>
-        </div>
-
-
-        <div class="form-group">
-            <div class="col-lg-10 col-lg-offset-2">
-                <button type="submit" class="btn btn-primary">Send</button>
-            </div>
-        </div>
-    </fieldset>
-</form>
+    </div>
+</div>

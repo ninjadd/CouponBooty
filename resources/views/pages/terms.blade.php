@@ -1,4 +1,4 @@
-@extends('layouts.app')
+@extends('layouts.out')
 
 @section('head')
     <script>
@@ -15,17 +15,12 @@
 
 @section('content')
 
-    <div class="container">
-        <div class="row">
+    <div class="rs_graybg rs_toppadder100 rs_bottompadder100">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12 col-md-6 col-sm-12 col-xs-12">
+                    <h3>Terms and Conditions (&quot;Terms&quot;)</h3>
 
-            <div class="panel panel-success">
-                <div class="panel-heading">
-                    <h3 class="panel-title">
-                        Terms and Conditions (&quot;Terms&quot;)
-                    </h3>
-                </div>
-
-                <div class="panel-body">
                     <p class="text-muted">
                         <small>Last updated: <cite title="Last Updated">May 28, 2017</cite></small>
                     </p>
@@ -108,17 +103,9 @@
                     <p>
                         If you have any questions about this Privacy Policy, please contact us.
                     </p>
-
-                    @include('shared.contact')
-
                 </div>
-
-                <div class="panel-footer">
-
-                </div>
-
+                @include('shared.contact')
             </div>
-
         </div>
     </div>
 

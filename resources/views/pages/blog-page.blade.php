@@ -15,81 +15,79 @@
 
 @section('content')
 
-    <!-- Page Content -->
-    <div class="container">
-
-        <div class="row">
-
+    <div class="rs_graybg rs_toppadder100 rs_bottompadder100">
+        <div class="container">
             @include('shared.errors')
-
-            <!-- Blog Post Content Column -->
-            <div class="col-lg-8">
-
-                <!-- Blog Post -->
-
-                <!-- Title -->
-                <h1>{{ $blog->title }}</h1>
-
-                <!-- Author -->
-                {{--<p class="lead">--}}
-                    {{--by {{ $blog->user->name }}--}}
-                {{--</p>--}}
-
-                <hr>
-
-                <!-- Date/Time -->
-                <p><span class="glyphicon glyphicon-time"></span> Posted {{ $blog->created_at->diffForHumans() }}</p>
-
-                <hr>
-
-                <!-- Preview Image -->
-                {{--<img class="img-responsive" src="http://placehold.it/900x300" alt="">--}}
-
-                {{--<hr>--}}
-
-                <!-- Post Content -->
-                {!! $blog->body !!}
-                <hr>
-
-                <!-- Comments Form -->
-                <div class="well">
-                    <h5>Leave a Comment:</h5>
-                    <form action="/blog/{{ $blog->id }}" method="POST" role="form">
-                        {{ csrf_field() }}
-                        <div class="form-group">
-                            <textarea name="body" required="required" class="form-control" rows="3"></textarea>
+            <div class="row">
+                <div class="col-lg-9 col-md-8 col-sm-12 col-xs-12">
+                    <div class="rs_single_blog_section">
+                        <div class="rs_single_blog_wrapper rs_bottompadder40">
+                            <h4>{{ $blog->title }}</h4>
+                            <ul>
+                                <li>{{ $blog->created_at->toDayDateTimeString() }}</li>
+                                <li>{{ $blog->comments->count() }} comments</li>
+                                <li>By {{ $blog->user->name }}</li>
+                            </ul>
+                            <img src="{{ $blog->image_url }}" class="img-responsive">
                         </div>
-                        <button type="submit" class="btn btn-primary">Submit</button>
-                    </form>
-                </div>
 
-                <hr>
+                        <div class="rs_single_blog_content rs_bottompadder50">
+                            {!! $blog->body !!}
+                        </div>
 
-                <!-- Posted Comments -->
-
-                <!-- Comment -->
-                @if(count($blog->comments) > 0)
-                    @foreach($blog->comments as $blog_comment)
-
-                        <div class="media">
-                            <div class="media-body">
-                                <p class="media-heading"><strong>Posted</strong>
-                                    <small>{{ $blog_comment->created_at->toDayDateTimeString() }}</small>
-                                </p>
-                                <p class="well well-sm">
-                                    {{ $blog_comment->body }}
-                                </p>
+                    </div>
+                    <div class="rs_single_blog_comments rs_bottompadder30">
+                        <div class="row">
+                            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                                <div class="rs_single_blog_comments_title">
+                                    <h4>Comments ({{ $blog->comments->count() }})</h4>
+                                </div>
+                                <div class="rs_single_blog_comments_show">
+                                    <ol class="comment">
+                                        @foreach($blog->comments as $comment)
+                                            <li>
+                                                <div class="rs_commentdiv">
+                                                    <div class="rs_comment_data">
+                                                        <h5>Posted: {{ $comment->created_at->toDayDateTimeString() }}</h5>
+                                                        <p>{{ $comment->body }}</p>
+                                                    </div>
+                                                </div>
+                                            </li>
+                                        @endforeach
+                                    </ol>
+                                </div>
+                            </div>
+                            <div class="rs_blog_comments_form">
+                                <div class="row">
+                                    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                                        <div class="rs_comments_form_title">
+                                            <h4>Write your comment</h4>
+                                        </div>
+                                        <form action="/blog/{{ $blog->id }}" method="POST" role="form">
+                                            {{ csrf_field() }}
+                                            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                                                <div class="row">
+                                                    <textarea name="body" required="required" class="form-control" rows="10" placeholder="Message*"></textarea>
+                                                </div>
+                                            </div>
+                                            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                                                <div class="rs_btn_div rs_toppadder30">
+                                                    <button type="submit" class="rs_button rs_button_orange">send</button>
+                                                </div>
+                                            </div>
+                                        </form>
+                                    </div>
+                                </div>
                             </div>
                         </div>
 
-                    @endforeach
-                @endif
-
+                    </div>
+                </div>
+                @include('shared.blog-sidebar')
             </div>
-
-            @include('shared.blog-sidebar')
-
         </div>
-        <!-- /.row -->
     </div>
+
+
+
 @endsection

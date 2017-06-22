@@ -1,4 +1,4 @@
-@extends('layouts.app')
+@extends('layouts.out')
 
 @section('head')
     <script>

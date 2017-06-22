@@ -1,4 +1,4 @@
-@extends('layouts.app')
+@extends('layouts.out')
 
 @section('head')
     <script>
@@ -15,33 +15,34 @@
 
 @section('content')
 
-    <div class="container">
-        <div class="row">
-
-            <div class="panel panel-success">
-                <div class="panel-heading">
-                    <h3 class="panel-title">
-                        About Us {{ config('app.name') }}
-                    </h3>
+    <div class="rs_graybg rs_toppadder100 rs_bottompadder70">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                    <div class="rs_main_heading rs_darkgreen_heading rs_bottompadder60">
+                        <h3>About US</h3>
+                        <div><span><i class="fa fa-heart"></i></span></div>
+                    </div>
                 </div>
-
-                <div class="panel-body">
-                    <p>
-                        CouponBooty is dedicated to provide a positive user experience for online shoppers. We partner with brands to give users the best and most reliable coupons.
-                    </p>
-
-
-                    <p>
-                        Located in Southern California our team aims to take the complexity out of getting discounts for the products you want to buy.
-                    </p>
-                </div>
-
-                <div class="panel-footer">
-
-                </div>
-
             </div>
-
+            <div class="row">
+                <div class="col-lg-10 col-md-10 col-sm-12 col-xs-12 col-lg-offset-1 col-md-offset-1">
+                    <div class="rs_about_testimonial_slider">
+                        <div id="owl-demo" class="owl-carousel owl-theme">
+                            <div class="item">
+                                <div class="rs_about_testimoni">
+                                    <p>CouponBooty is dedicated to provide a positive user experience for online shoppers. We partner with brands to give users the best and most reliable coupons.</p>
+                                </div>
+                            </div>
+                            <div class="item">
+                                <div class="rs_about_testimoni">
+                                    <p>Located in Southern California our team aims to take the complexity out of getting discounts for the products you want to buy.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
 

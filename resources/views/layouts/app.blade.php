@@ -60,24 +60,6 @@
 
                 <!-- Right Side Of Navbar -->
                 <ul class="nav navbar-nav navbar-right">
-
-                    <form class="navbar-form navbar-left" action="/results" method="POST">
-                        {{ csrf_field() }}
-                        <div class="form-group">
-                            <input type="text" name="search_text" required="required" class="form-control" placeholder="Search">
-                        </div>
-                        <button type="submit" class="btn btn-default"><i class="fa fa-search" aria-hidden="true"></i></button>
-                    </form>
-                    <li>
-                        <a class="fa fa-facebook" aria-hidden="true" href="https://www.facebook.com/CouponBooty/" target="_blank"></a>
-                    </li>
-                    <li>
-                        <a class="fa fa-twitter" aria-hidden="true" href="https://twitter.com/couponbooty" target="_blank"></a>
-                    </li>
-                    <li>
-                        <a class="fa fa-instagram" aria-hidden="true" href="https://www.instagram.com/Couponbooty/" target="_blank"></a>
-                    </li>
-
                     <!-- Authentication Links -->
                     @if (Auth::guest())
                         {{--<li><a href="{{ route('login') }}">Login</a></li>--}}

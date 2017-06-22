@@ -69,6 +69,9 @@
                                 <li><a href="https://www.facebook.com/CouponBooty" target="_blank"><i class="fa fa-facebook"></i></a></li>
                                 <li><a href="https://twitter.com/couponbooty" target="_blank"><i class="fa fa-twitter"></i></a></li>
                                 <li><a href="https://www.instagram.com/Couponbooty" target="_blank"><i class="fa fa-instagram"></i></a></li>
+                                @if(Auth::user())
+                                    <li><a href="/dashboard">Das board</a></li>
+                                @endif
                             </ul>
                         </div>
                     </div>
@@ -151,7 +154,7 @@
                 <div class="rs_index2_footerdiv">
                     <div class="rs_footer_textdata">
                         <p><i class="fa fa-map-marker"></i> San Diego, California</p>
-                        <p><a href="#"><i class="fa fa-envelope"></i> contact@couponbooty.com</a></p>
+                        <p><a href="mailto:contact@couponbooty.com"><i class="fa fa-envelope"></i> contact@couponbooty.com</a></p>
                     </div>
                 </div>
             </div>
