@@ -29,6 +29,11 @@
                             </div>
 
                             <div class="form-group">
+                                <label for="imageUrlInput">Image URL</label>
+                                <input value="{{ $blog->image_url }}" class="form-control" type="text" name="image_url" required="required" id="imageUrlInput" placeholder="Have to have an image for the title card">
+                            </div>
+
+                            <div class="form-group">
                                 <label for="bodyTextarea">Blog Body</label>
                                 <textarea id="summernote" class="form-control" rows="10" name="body" required="required" id="bodyTextarea">
                                     {!! $blog->body !!}

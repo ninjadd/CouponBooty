@@ -77,7 +77,7 @@
                                         </td>
                                         <td>
                                             <form action="/offer/{{ $offer->id }}" method="POST">
-                                                <div class="btn-group">
+                                                <div class="btn-group-vertical">
                                                     <button type="button" class="btn btn-default btn-xs"  data-toggle="modal" title="View Offer" data-target="#myModal{{ $offer->id }}">
                                                         <span class="glyphicon glyphicon-eye-open" aria-hidden="true"></span>
                                                     </button>

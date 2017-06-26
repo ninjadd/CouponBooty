@@ -114,12 +114,14 @@ class BlogController extends Controller
     {
         $this->validate($request ,[
             'title' => 'required',
-            'body' => 'required'
+            'body' => 'required',
+            'image_url' => 'required|url'
         ]);
 
         $blog->user_id = auth()->id();
         $blog->title = $request->title;
         $blog->body = $request->body;
+        $blog->image_url = $request->image_url;
         $blog->save();
 
         return redirect('blogger')->with('status',  $blog->title.' page updated!');

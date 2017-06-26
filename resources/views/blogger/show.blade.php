@@ -16,7 +16,7 @@
                     </div>
 
                     <div class="panel-body">
-
+                        <img src="{{ $blog->image_url }}">
                         {!! $blog->body !!}
 
                     </div>
