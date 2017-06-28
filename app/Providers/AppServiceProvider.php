@@ -28,6 +28,10 @@ class AppServiceProvider extends ServiceProvider
         view()->composer('shared.store-nav', function ($view) {
             $view->with('stores', \App\Store::offersFromStores());
         });
+
+        view()->composer('shared.type-nav', function ($view) {
+           $view->with('type_list', \App\Type::typesForMenu());
+        });
     }
 
     /**

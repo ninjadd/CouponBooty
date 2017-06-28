@@ -21,19 +21,10 @@ class PageController extends Controller
      */
     public function welcome()
     {
-        $offers = Offer::orderBy('updated_at', 'desc')->paginate(20);
+        $offers = Offer::where('archive', 0)->orderBy('updated_at', 'desc')->paginate(20);
         $types = Type::all();
 
         return view('pages.welcome', compact('offers', 'types'));
-    }
-
-    public function splash()
-    {
-        $offers = Offer::orderBy('updated_at', 'desc')->paginate(12);
-        $categories = Category::distinct('name')->get();
-        $types = Type::all();
-
-        return view('pages.splash', compact('offers', 'categories', 'types'));
     }
 
     /**
@@ -43,7 +34,7 @@ class PageController extends Controller
     public function results(Request $request)
     {
         if (!empty($request->search_text)) {
-            $offers = Offer::search($request->search_text)->get();
+            $offers = Offer::where('archive', 0)->search($request->search_text)->get();
 
             if ($offers->count() == 0) {
                 return redirect('/');
@@ -54,6 +45,40 @@ class PageController extends Controller
         } else {
             return redirect('/');
         }
+    }
+
+    public function viewSlug($slug)
+    {
+        // check stores first
+        $store = Store::slug($slug)->first();
+        if ($store->count() > 0) {
+            $offers = Offer::where([
+                ['store_id', $store->id],
+                ['archive', 0]
+            ])->get();
+
+            return view('pages.store-slug', compact('store', 'offers'));
+        }
+
+        return redirect('/');
+    }
+
+    public function viewType($slug)
+    {
+        $slug = urldecode($slug);
+
+        $type = Type::where('label', $slug)->first();
+        if ($type)
+        {
+
+            $offers = Offer::where([
+                ['type_id', $type->id],
+                ['archive', 0]
+            ])->get();
+
+            return view('pages.type-slug', compact('type', 'offers'));
+        }
+        return redirect('/');
     }
 
     /**
@@ -147,18 +172,5 @@ class PageController extends Controller
         Mail::to('contact@couponbooty.com')->send(new ContactUs($message));
 
         return back()->with('message', 'You message has been sent');
-    }
-
-    public function viewSlug($slug)
-    {
-        // check stores first
-        $store = Store::slug($slug)->first();
-        if ($store->count() > 0) {
-            $offers = Offer::where('store_id', $store->id)->paginate(20);
-
-            return view('pages.store-slug', compact('store', 'offers'));
-        }
-
-        return redirect('welcome');
     }
 }

@@ -30,6 +30,9 @@
         <ul id="dropdown1" class="dropdown-content">
             @include('shared.store-nav')
         </ul>
+        <ul id="dropdown2" class="dropdown-content">
+            @include('shared.type-nav')
+        </ul>
         {{--<a href="/" class="brand-logo"><img height="50" src="{{ asset('images/CouponBooty_Logo_Horizontal_2.png') }}"></a>--}}
         <a href="/" class="brand-logo"> CouponBooty</a>
         <ul class="right hide-on-med-and-down">
@@ -37,6 +40,9 @@
             <!-- Dropdown Trigger -->
             <li>
                 <a class="dropdown-button waves-effect waves-light btn" href="#!" data-activates="dropdown1">Shop By Store<i class="material-icons right">arrow_drop_down</i></a>
+            </li>
+            <li>
+                <a class="dropdown-button waves-effect waves-light btn" href="#!" data-activates="dropdown2">Shop By Type<i class="material-icons right">arrow_drop_down</i></a>
             </li>
             <li><a href="/blog">Blog</a></li>
             <li><a href="/about">About Us</a></li>
@@ -72,6 +78,7 @@
         </div>
     </form>
 </div>
+
 @yield('content')
 
 <footer class="page-footer teal lighten-2">

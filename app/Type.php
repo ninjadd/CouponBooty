@@ -34,4 +34,9 @@ class Type extends Model
     {
         return $this->hasMany('App\Offer');
     }
+
+    public static function typesForMenu()
+    {
+        return static::all();
+    }
 }
