@@ -14,6 +14,9 @@ const { mix } = require('laravel-mix');
 mix.js('resources/assets/js/app.js', 'public/js')
    .sass('resources/assets/sass/app.scss', 'public/css');
 
+// mix.js('resources/assets/js/out.js', 'public/js')
+//     .sass('resources/assets/sass/out.scss', 'public/css');
+
 mix.webpackConfig({
     resolve: {
         alias: {
@@ -32,3 +35,8 @@ mix.sass('node_modules/datatables.net-dt/css/jquery.dataTables.css', 'public/css
 
 mix.js('node_modules/datatables.net-bs/js/dataTables.bootstrap.js', 'public/js')
     .sass('node_modules/datatables.net-bs/css/dataTables.bootstrap.css', 'public/css');
+
+mix.sass('node_modules/materialize-css/dist/css/materialize.css', 'public/css');
+
+mix.js('node_modules/materialize-css/dist/js/materialize.js', 'public/js');
+

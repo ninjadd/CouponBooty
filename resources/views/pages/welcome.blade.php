@@ -14,252 +14,32 @@
 @endsection
 
 @section('content')
-
-    <div class="rs_graybg rs_toppadder80 rs_bottompadder100">
-        <div class="container">
-            <div class="row">
-
-                <div class="col-lg-12 col-md-9 col-sm-12 col-xs-12 pull-right">
-                    <div class="rs_index3_recommended_offer">
-                        <h4>Recommended Offers For You</h4>
-                    </div>
-                    <div class="row">
-
-                        <div class="col-lg-12 col-md-9 col-sm-12 col-xs-12 rs_toppadder30">
-                            <div class="rs_index3_product_slider">
-                                <div class="owl-carousel owl-theme">
-                                    @foreach($offers as $offer)
-                                        <div class="item">
-                                            <div class="rs_index3_productdiv">
-                                                <div class="rs_index3_product_img">
-                                                    <img width="350" height="555" src="{{ $offer->image_url }}" class="" alt="">
-                                                    <div class="rs_product_price"><h2><small>Sexy</small></h2></div>
-                                                </div>
-                                                <div class="rs_index3_product_data">
-                                                    <div class="rs_index3_productdata_left">
-                                                        <h5><a href="{{ $offer->url }}" target="_blank">{{ $offer->title }}</a></h5>
-                                                        <p>{{ str_limit($offer->body, 200, '...') }}</p>
-                                                        <span>Ending on: {{ $offer->end_date }}</span>
-                                                    </div>
-                                                    <div class="rs_index3_productdata_right">
-                                                        @if($offer->coupon)
-                                                            <p><span>Use this Code</span></p>
-                                                            <a href="{{ $offer->url }}" target="_blank" class="rs_button rs_button_orange">{{ $offer->coupon }}</a>
-                                                        @else
-                                                            <a href="{{ $offer->url }}" target="_blank" class="rs_button rs_button_orange">Get Deal</a>
-                                                        @endif
-                                                    </div>
-
-                                                </div>
-                                            </div>
-                                        </div>
-                                    @endforeach
-                                </div>
-                            </div>
+    <div class="container">
+        <div class="row">
+            @foreach($offers as $offer)
+                <div class="col s3">
+                    <div class="card hoverable">
+                        <div class="card-image">
+                            <img src="{{ $offer->image_url }}">
+                            <span class="card-title grey-text text-lighten-3">{{ $offer->type->label }}</span>
                         </div>
-
-                    </div>
-                </div>
-
-            </div>
-        </div>
-    </div>
-
-    <div class="rs_graybg rs_toppadder100 rs_bottompadder100">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                    <div class="rs_main_heading rs_pink_heading rs_bottompadder60">
-                        <h3>Latest Deals</h3>
-                        <div><span><i class="fa fa-heart"></i></span></div>
-                    </div>
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                    <div class="rs_filte">
-                        <div class="row">
-                            <div class="col-lg-9 col-md-9 col-sm-9 col-xs-12">
-                                <ul class="rs_sorting">
-                                    <li><a href="#" class="filter" data-filter="all">All </a></li>
-                                    @foreach($types as $type)
-                                        <li><a href="#" class="filter" data-filter=".{{ str_slug($type->label).$type->id }}">{{ $type->label }}</a></li>
-                                    @endforeach
-                                </ul>
-                            </div>
-                            <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12">
-                                <div class="rs_sort"><i class="fa fa-sort"></i> By Store <i class="glyphicon glyphicon-option-vertical" aria-hidden="true"></i></div>
-                                <div class="rs_product_sorting">
-                                    <ul>
-                                        <li><a href="#" class="filter" data-filter=".psd">PSD</a></li>
-                                        <li><a href="">Trending</a></li>
-                                        <li><a href="">Release Date</a></li>
-                                        <li><a href="">Best Sellers</a></li>
-                                        <li><a href="">Best Rated</a></li>
-                                    </ul>
-                                </div>
-                            </div>
+                        <div class="card-content">
+                            <span class="card-title truncate">{{ $offer->title }}</span>
+                            <p class="truncate">{{ strip_tags($offer->body) }}</p>
+                            @if($offer->coupon)
+                                COUPON:
+                                <span class="z-depth-1-half">{{ $offer->coupon }}</span>
+                            @else
+                                <br>
+                            @endif
+                        </div>
+                        <div class="card-action">
+                            <a class="" href="{{ $offer->url }}" target="_blank">Get Deal</a>
                         </div>
                     </div>
                 </div>
-            </div>
-            <div class="row">
-                <div id="rs_grid">
-                    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                        <div class="woocommerce_wrapper">
-                            <div class="row">
-                                @foreach($offers as $offer)
-                                    <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12 rs_toppadder30 mix {{ str_slug($offer->type->label).$offer->type->id }}" data-value="{{ $loop->iteration }}">
-                                        <div class="rs_product_div">
-                                            <div class="rs_featureddiv">{{ $offer->type->label }}</div>
-                                            <div class="rs_product_img">
-                                                <img width="253" height="172" src="{{ $offer->image_url }}" class="" alt="">
-                                                <div class="rs_overlay">
-                                                    <div class="rs_overlay_inner">
-                                                        <ul>
-                                                            <li><a class="fancybox animated slideInDown" data-fancybox-group="product" href="images/500X343.png" title="Use"><i class="fa fa-eye"></i></a></li>
-                                                            <li><a href="{{ $offer->url }}" target="_blank" title="Get Deal" class="animated slideInDown" ><i class="fa fa-compass"></i></a></li>
-                                                        </ul>
-                                                    </div>
-                                                </div>
-                                                {{--<div class="rs_product_price"><h2><small>$</small>24</h2></div>--}}
-                                            </div>
-
-                                            <div class="rs_product_detail">
-                                                <h5>{{ str_limit($offer->title, 25, '...') }}</h5>
-                                            </div>
-                                            <div class="rs_product_div_footer">
-                                                <div class="rs_author_div">
-                                                    <div>
-                                                        <p><a href="#" class="filter" data-filter=".{{ str_slug($offer->type->label).$offer->type->id }}">Type: {{ $offer->type->label }}</a></p>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                @endforeach
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                    <div class="rs_btn_div rs_toppadder60">
-                        <a href="#" class="rs_button rs_button_orange filter" data-filter="all">View All Products</a>
-                    </div>
-                </div>
-            </div>
+            @endforeach
         </div>
+        {{ $offers->links('shared.pager') }}
     </div>
-
-    <div class="rs_graybg rs_knowledgebase_page_shadow rs_toppadder100 rs_bottompadder100">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                    <div class="rs_main_heading rs_green_heading rs_bottompadder60">
-                        <h3>Featured Deals</h3>
-                        <div><span><i class="fa fa-heart"></i></span></div>
-                    </div>
-                </div>
-            </div>
-            <div class="row">
-                <div class="rs_featured_deals_silder">
-                    <div class="owl-carousel owl-theme">
-                        @foreach($offers as $offer)
-                            <div class="item">
-                                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                                    <div class="rs_index2_product_div">
-                                        <div class="rs_index2_product_img">
-                                            <div class="rs_index2_offer_div">{{ $offer->type->label  }}</div>
-                                            <img width="360" height="216" src="{{ $offer->image_url }}" class="" alt="{{ $offer->title }}">
-                                            <div class="rs_index2_product_price"><h2><small></small>Hot</h2></div>
-                                        </div>
-                                        <div class="rs_index2_product_detail">
-                                            <h5>{{ $offer->title }}</h5>
-                                            {{--<p>{{ strip_tags($offer->body) }}</p>--}}
-                                        </div>
-                                        {{--<div class="rs_index2_product_detail_footer">--}}
-                                            {{--<div class="product_date">--}}
-                                                {{--<span>Ending on: {{ $offer->end_date }}</span>--}}
-                                                {{--<p></p>--}}
-                                            {{--</div>--}}
-                                            {{--<div class="product_share">--}}
-                                                {{--<ul>--}}
-                                                    {{--<li><a href="#"><i class="fa fa-heart"></i> <span>28</span></a></li>--}}
-                                                    {{--<li><a href="#"><i class="fa fa-comment"></i> <span>4</span></a></li>--}}
-                                                {{--</ul>--}}
-                                            {{--</div>--}}
-                                        {{--</div>--}}
-                                        <div class="rs_index2_inner_product_div">
-                                            <h5>{{ $offer->title }}</h5>
-                                            {{--<div class="rs_inner_product_price"><h2><small>$</small>12</h2></div>--}}
-                                            <div class="detail_btn">
-                                                @if($offer->coupon)
-                                                    <a class="rs_button rs_button_orange" href="{{ $offer->url }}" target="_blank">Use Coupon</a>
-                                                @else
-                                                    <a class="rs_button rs_button_orange" href="{{ $offer->url }}" target="_blank">Get Deal</a>
-                                                @endif
-                                            </div>
-                                            {!! $offer->body !!}
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        @endforeach
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <div class="rs_transprantbg rs_toppadder100 rs_bottompadder50">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-12 col-md-9 col-sm-12 col-xs-12 rs_bottompadder20">
-                    <div class="rs_hot_coupon_heading">
-                        <h3>Hot Coupon Offers</h3>
-                        <span><i class="fa fa-heart"></i></span>
-                    </div>
-                </div>
-                <div class="col-lg-12 col-md-9 col-sm-12 col-xs-12">
-                    <div class="woocommerce_wrapper">
-                        <div class="row">
-
-                            @foreach($offers as $offer)
-                                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 rs_toppadder30 rs_hot_coupon">
-                                    <div class="rs_product_div">
-                                        <div class="rs_featureddiv"><p>{{ $offer->type->label }}</p></div>
-                                        <div class="rs_product_img">
-                                            <img src="{{ $offer->image_url }}" class="img-responsive" alt="">
-                                            <div class="rs_product_price"><h2><small></small>Hot</h2></div>
-                                        </div>
-
-                                        <div class="rs_product_detail">
-                                            <h5><a href="#">{{ $offer->title }}</a></h5>
-                                            {!! $offer->body !!}
-                                            <span><i class="fa fa-clock-o"></i> Ending on: {{ $offer->end_date }}</span>
-                                        </div>
-                                        <div class="rs_product_div_footer">
-                                            @if($offer->coupon)
-                                                <p>Use this Code</p>
-                                                <div class="rs_btn_div">
-                                                    <a href="#" class="rs_button rs_button_orange">{{ $offer->coupon }}</a>
-                                                </div>
-                                            @else
-                                                <div class="rs_btn_div">
-                                                    <a href="{{ $offer->url }}" target="_blank" class="rs_button rs_button_orange">Get Deal</a>
-                                                </div>
-                                            @endif
-                                        </div>
-                                    </div>
-                                </div>
-                            @endforeach
-
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-
-
 @endsection
