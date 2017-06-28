@@ -5,7 +5,7 @@
                 <img class="activator" src="{{ $offer->image_url }}">
             </div>
             <div class="card-content valign-wrapper">
-                <span class="card-title activator grey-text text-darken-4">{{ $offer->title }}<i class="material-icons right">play_for_work</i></span>
+                <span class="card-title activator grey-text text-darken-4">{{ $offer->title }}<i class="material-icons right">more_vert</i></span>
             </div>
             <div class="card-action">
                 <a class="waves-effect waves-light btn deep-orange" href="{{ $offer->url }}" target="_blank">Get Deal</a>
