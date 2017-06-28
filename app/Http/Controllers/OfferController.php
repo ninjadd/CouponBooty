@@ -110,8 +110,7 @@ class OfferController extends Controller
      */
     public function show(Offer $offer)
     {
-        // handled by modal
-        // return view('offer.show', compact('offer'));
+         return view('offer.show', compact('offer'));
     }
 
 

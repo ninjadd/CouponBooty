@@ -16,65 +16,30 @@
 @section('content')
 
     <div class="container">
-
-        @if(count($offers) > 0)
-
-            <h2>{{ $store->name }} Coupons &amp; Promo Codes</h2>
-            <p class="lead">
-                Most Recent Deals
-            </p>
-
-            @if((!empty($store->title)) && (!empty($store->body)))
-                <div class="panel panel-primary">
-                    <div class="panel-heading">
-                        <h3 class="panel-title">
-                            {{ $store->title }}
-                        </h3>
-                    </div>
-
-                    <div class="panel-body">
+        <div class="row">
+            <blockquote>
+                <h2>{{ $store->name }} Coupons &amp; Promo Codes</h2>
+                <p class="lead">
+                    Most Recent Deals
+                </p>
+            </blockquote>
+        </div>
+        @if((!empty($store->title)) && (!empty($store->body)))
+        <div class="row">
+            <div class="col s12">
+                <div class="card blue-grey darken-1 hoverable">
+                    <div class="card-content white-text">
+                        <span class="card-title">{{ $store->title }}</span>
                         {!! $store->body !!}
                     </div>
-
-                    <div class="panel-footer">
-                        Total <em>{{ $store->name }}</em> Deals <span class="badge">{{ $offers->count() }}</span>
-                    </div>
                 </div>
-            @endif
-
-            <hr>
-            <section class="col-xs-12 col-sm-6 col-md-12">
-
-                @foreach($offers as $offer)
-                    <article class="search-result row">
-                        <div class="col-xs-12 col-sm-12 col-md-2 thumbnail">
-                            <img src="{{ $offer->image_url }}">
-                        </div>
-                        <div class="col-xs-12 col-sm-12 col-md-10 excerpet">
-                            <h4 class="bg-primary" style="padding: 5px;">{{ $offer->title }}</h4>
-                            <p>{!! $offer->body !!}</p>
-                            @if($offer->coupon)
-                                <a class="btn btn-primary pull-right"
-                                   data-toggle="modal" title="View {{ $offer->title }}"
-                                   data-target="#myModal{{ $offer->id }}">Use Coupon</a>
-                                @include('shared.view')
-                            @else
-                                <a class="btn btn-primary pull-right" href="{{ $offer->url }}" target="_blank">Get Deal</a>
-                            @endif
-                        </div>
-                    </article>
-                @endforeach
-
-            </section>
-
+            </div>
+        </div>
         @endif
 
         <div class="row">
-            <div class="col-md-12">
-                {{ $offers->links('shared.simple-pager') }}
-            </div>
+            @include('shared.offer-cards')
         </div>
-
     </div>
 
 @endsection

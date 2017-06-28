@@ -30,17 +30,24 @@
         <ul id="dropdown1" class="dropdown-content">
             @include('shared.store-nav')
         </ul>
-        <a href="/" class="brand-logo"><img height="50" src="{{ asset('images/CouponBooty_Logo_Horizontal_2.png') }}"></a>
+        {{--<a href="/" class="brand-logo"><img height="50" src="{{ asset('images/CouponBooty_Logo_Horizontal_2.png') }}"></a>--}}
+        <a href="/" class="brand-logo"> CouponBooty</a>
         <ul class="right hide-on-med-and-down">
+            <li><a href="/">Home</a></li>
+            <!-- Dropdown Trigger -->
+            <li>
+                <a class="dropdown-button waves-effect waves-light btn" href="#!" data-activates="dropdown1">Shop By Store<i class="material-icons right">arrow_drop_down</i></a>
+            </li>
             <li><a href="/blog">Blog</a></li>
             <li><a href="/about">About Us</a></li>
             <li><a href="/terms">Terms</a></li>
             <li><a href="/privacy">Privacy Policy</a></li>
-            <!-- Dropdown Trigger -->
-            <li><a class="dropdown-button" href="#!" data-activates="dropdown1">By Store<i class="material-icons left">arrow_drop_down</i></a></li>
             <li><a class="fa fa-facebook" aria-hidden="true" href="https://www.facebook.com/CouponBooty/" target="_blank"></a></li>
             <li><a class="fa fa-twitter" aria-hidden="true" href="https://twitter.com/couponbooty" target="_blank"></a></li>
             <li><a class="fa fa-instagram" aria-hidden="true" href="https://www.instagram.com/Couponbooty/" target="_blank"></a></li>
+            @if(Auth::user())
+                <li><a href="/dashboard">Dasboard</a></li>
+            @endif
         </ul>
         <a href="#" data-activates="mobile-demo" class="button-collapse"><i class="material-icons">menu</i></a>
         <ul class="side-nav" id="mobile-demo">
@@ -103,7 +110,14 @@
 <script src="{{ asset('js/app.js') }}"></script>
 <script src="{{ asset('js/materialize.js') }}"></script>
 <script>
-    $(".button-collapse").sideNav();
+    $('.button-collapse').sideNav({
+        menuWidth: 300, // Default is 300
+        edge: 'right', // Choose the horizontal origin
+        closeOnClick: true, // Closes side-nav on <a> clicks, useful for Angular/Meteor
+        draggable: true // Choose whether you can drag to open on touch screens,
+    }
+  );
+
 </script>
 <!-- Script end -->
 </body>

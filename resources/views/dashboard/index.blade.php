@@ -78,11 +78,9 @@
                                         <td>
                                             <form action="/offer/{{ $offer->id }}" method="POST">
                                                 <div class="btn-group-vertical">
-                                                    <button type="button" class="btn btn-default btn-xs"  data-toggle="modal" title="View Offer" data-target="#myModal{{ $offer->id }}">
+                                                    <a href="/offer/{{ $offer->id }}" type="button" class="btn btn-default btn-xs" data-toggle="tooltip" title="View Offer">
                                                         <span class="glyphicon glyphicon-eye-open" aria-hidden="true"></span>
-                                                    </button>
-
-                                                    @include('offer.show')
+                                                    </a>
 
                                                     <a href="/offer/{{ $offer->id }}/edit" class="btn btn-success btn-xs"  data-toggle="tooltip" title="Edit Offer">
                                                         <span class="glyphicon glyphicon-pencil" aria-hidden="true"></span>

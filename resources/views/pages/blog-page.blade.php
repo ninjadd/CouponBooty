@@ -22,7 +22,7 @@
                 </div>
                 <div class="card-content">
                     <span class="card-title">{{ $blog->title }}</span>
-                    <p>{{ $blog->body }}</p>
+                    <p>{!! $blog->body  !!}</p>
                     <ul>
                         <li>{{ $blog->created_at->toDayDateTimeString() }}</li>
                         <li>{{ $blog->comments->count() }} comments</li>
