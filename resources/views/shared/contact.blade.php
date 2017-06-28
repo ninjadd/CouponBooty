@@ -1,45 +1,19 @@
 @include('shared.errors')
 @include('shared.session')
-<div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
-    <div class="rs_contact_form">
-        <div class="rs_submitform">
-
-            <form action="/send" method="POST">
-                {{ csrf_field() }}
-                <div class="form-group">
-                    <input type="text" class="form-control" required="required" id="ur_name" name="name" placeholder="Enter your name">
-                </div>
-
-                <div class="form-group">
-                    <input type="email" class="form-control" required="required" id="ur_mail" name="email" placeholder="Enter your mail address">
-                </div>
-
-                <textarea class="form-control" rows="10" id="msg" required="required" name="body" placeholder="Enter your message"></textarea>
-
-                <div class="rs_btn_div rs_toppadder30">
-                    <button type="submit" id="send_btn" class="rs_button rs_button_orange">send</button>
-                    <p id="err"></p>
-                </div>
-            </form>
-
-        </div>
-    </div>
-</div>
-<div class="col-lg-5 col-md-6 col-sm-12 col-xs-12 pull-right">
-    <div class="rs_contact_section">
-        <div class="rs_contact_heading rs_green_heading rs_bottompadder50">
-            <h3>Find Us Here</h3>
-            <div><span><i class="fa fa-heart"></i></span></div>
-        </div>
-        <div class="rs_contact_info">
-            <div class="rs_contact_data">
-                <span class="fa fa-map-marker"> San Diego, California</span>
+    <form class="col s12" action="/send" method="POST">
+        <div class="row">
+            <div class="input-field col s6">
+                <input required="required" id="name" name="name" type="text" class="validate">
+                <label for="name">Name</label>
+            </div>
+            <div class="input-field col s6">
+                <input id="email" type="email" required="required" name="email" class="validate">
+                <label for="email">Email</label>
             </div>
         </div>
-        <div class="rs_contact_info">
-            <div class="rs_contact_data">
-                <span class="fa fa-envelope"> <a href="mailto:contact@couponbooty">contact@couponbooty</a></span>
-            </div>
+        <div class="input-field col s12">
+            <textarea id="textarea1" required="required" name="body" class="materialize-textarea"></textarea>
+            <label for="textarea1">Enter your message</label>
+            <button type="submit" class="waves-effect waves-light btn">Send</button>
         </div>
-    </div>
-</div>
+    </form>

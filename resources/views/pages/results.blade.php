@@ -16,48 +16,37 @@
 @section('content')
 
     <div class="container">
-
-        @if(count($offers) > 0)
-
-            <div class="col-md-12">
-                <h1>Search Results</h1>
-                <h2 class="lead">
-                    <strong class="text-danger">
-                        {{ $offers->count() }}
-                    </strong>
-                    results were found for the search for
-                    <strong class="text-danger">
-                        {{ $request->search_text }}
-                    </strong>
-                </h2>
-                <hr>
-            </div>
-
-        <section class="col-xs-12 col-sm-6 col-md-12">
-
+        <div class="row">
+            <blockquote>
+                Total results for <strong class="red-text">{{ $request->search_text }}</strong>
+            </blockquote>
+        </div>
+        <div class="row">
             @foreach($offers as $offer)
-                <article class="search-result row">
-                    <div class="col-xs-12 col-sm-12 col-md-2 thumbnail">
-                        <img src="{{ $offer->image_url }}">
+                <div class="col s3">
+                    <div class="card card-small hoverable">
+                        <div class="card-image waves-effect waves-block waves-light">
+                            <img class="activator" src="{{ $offer->image_url }}">
+                        </div>
+                        <div class="card-content valign-wrapper">
+                            <span class="card-title activator grey-text text-darken-4 truncate">{{ $offer->title }}</span>
+                            <span class="card-title activator grey-text text-darken-4"><i class="material-icons right">more_vert</i></span>
+                        </div>
+                        <div class="card-action">
+                            <a class="waves-effect waves-light btn" href="{{ $offer->url }}" target="_blank">Get Deal</a>
+                        </div>
+                        <div class="card-reveal">
+                            <span class="card-title grey-text text-darken-4"><i class="material-icons right">close</i></span>
+                            <span class="card-title grey-text text-darken-4">{{ $offer->title }}</span>
+                            @if($offer->coupon)
+                                <a class="waves-effect waves-light btn" href="{{ $offer->url }}" target="_blank">USE COUPON</a>
+                                <span class="z-depth-1-half ">COPY: {{ $offer->coupon }}</span>
+                            @endif
+                            <p>{{ strip_tags($offer->body) }}</p>
+                        </div>
                     </div>
-                    <div class="col-xs-12 col-sm-12 col-md-10 excerpet">
-                        <h4 class="bg-primary" style="padding: 5px;">{{ $offer->title }}</h4>
-                        <p>{!! $offer->body !!}</p>
-                        @if($offer->coupon)
-                            <a class="btn btn-primary pull-right"
-                               data-toggle="modal" title="View {{ $offer->title }}"
-                               data-target="#myModal{{ $offer->id }}">Use Coupon</a>
-                            @include('shared.view')
-                        @else
-                            <a class="btn btn-primary pull-right" href="{{ $offer->url }}" target="_blank">Get Deal</a>
-                        @endif
-                    </div>
-                </article>
+                </div>
             @endforeach
-
-        </section>
-
-        @endif
-
+        </div>
     </div>
 @endsection

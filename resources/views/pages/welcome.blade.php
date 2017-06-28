@@ -16,25 +16,32 @@
 @section('content')
     <div class="container">
         <div class="row">
+            <blockquote>
+                <h3>Most Recent Deals</h3>
+            </blockquote>
+        </div>
+        <div class="row">
             @foreach($offers as $offer)
                 <div class="col s3">
-                    <div class="card hoverable">
-                        <div class="card-image">
-                            <img src="{{ $offer->image_url }}">
-                            <span class="card-title grey-text text-lighten-3">{{ $offer->type->label }}</span>
+                    <div class="card card-small hoverable">
+                        <div class="card-image waves-effect waves-block waves-light">
+                            <img class="activator" src="{{ $offer->image_url }}">
                         </div>
-                        <div class="card-content">
-                            <span class="card-title truncate">{{ $offer->title }}</span>
-                            <p class="truncate">{{ strip_tags($offer->body) }}</p>
-                            @if($offer->coupon)
-                                COUPON:
-                                <span class="z-depth-1-half">{{ $offer->coupon }}</span>
-                            @else
-                                <br>
-                            @endif
+                        <div class="card-content valign-wrapper">
+                            <span class="card-title activator grey-text text-darken-4 truncate">{{ $offer->title }}</span>
+                            <span class="card-title activator grey-text text-darken-4"><i class="material-icons right">more_vert</i></span>
                         </div>
                         <div class="card-action">
-                            <a class="" href="{{ $offer->url }}" target="_blank">Get Deal</a>
+                            <a class="waves-effect waves-light btn" href="{{ $offer->url }}" target="_blank">Get Deal</a>
+                        </div>
+                        <div class="card-reveal">
+                            <span class="card-title grey-text text-darken-4"><i class="material-icons right">close</i></span>
+                            <span class="card-title grey-text text-darken-4">{{ $offer->title }}</span>
+                            @if($offer->coupon)
+                                <a class="waves-effect waves-light btn" href="{{ $offer->url }}" target="_blank">USE COUPON</a>
+                                <span class="z-depth-1-half ">COPY: {{ $offer->coupon }}</span>
+                            @endif
+                            <p>{{ strip_tags($offer->body) }}</p>
                         </div>
                     </div>
                 </div>

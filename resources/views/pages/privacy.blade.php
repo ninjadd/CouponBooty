@@ -15,16 +15,18 @@
 
 @section('content')
 
-    <div class="rs_graybg rs_toppadder100 rs_bottompadder100">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-12 col-md-6 col-sm-12 col-xs-12">
-                    <h3>Privacy Policy</h3>
+    <div class="container">
+        <div class="row">
+            <div class="col s12">
+                <div class="card blue-grey darken-1 hoverable">
+                    <div class="card-content white-text">
 
-                    <div class="panel-body">
+                        <h3>Privacy Policy</h3>
+
                         <p class="text-muted">
                             <small>Last updated: <cite title="Last Updated">May 28, 2017</cite></small>
                         </p>
+                        <br>
 
                         <p>
                             {{ config('app.name') }}
@@ -161,10 +163,10 @@
                         <p>
                             If you have any questions about this Privacy Policy, please contact us.
                         </p>
+                    </div>
                 </div>
-                @include('shared.contact')
             </div>
+            @include('shared.contact')
         </div>
     </div>
-
 @endsection

@@ -38,15 +38,9 @@
             <li><a href="/privacy">Privacy Policy</a></li>
             <!-- Dropdown Trigger -->
             <li><a class="dropdown-button" href="#!" data-activates="dropdown1">By Store<i class="material-icons left">arrow_drop_down</i></a></li>
-            <li>
-                <a class="fa fa-facebook" aria-hidden="true" href="https://www.facebook.com/CouponBooty/" target="_blank"></a>
-            </li>
-            <li>
-                <a class="fa fa-twitter" aria-hidden="true" href="https://twitter.com/couponbooty" target="_blank"></a>
-            </li>
-            <li>
-                <a class="fa fa-instagram" aria-hidden="true" href="https://www.instagram.com/Couponbooty/" target="_blank"></a>
-            </li>
+            <li><a class="fa fa-facebook" aria-hidden="true" href="https://www.facebook.com/CouponBooty/" target="_blank"></a></li>
+            <li><a class="fa fa-twitter" aria-hidden="true" href="https://twitter.com/couponbooty" target="_blank"></a></li>
+            <li><a class="fa fa-instagram" aria-hidden="true" href="https://www.instagram.com/Couponbooty/" target="_blank"></a></li>
         </ul>
         <a href="#" data-activates="mobile-demo" class="button-collapse"><i class="material-icons">menu</i></a>
         <ul class="side-nav" id="mobile-demo">
@@ -59,8 +53,18 @@
         </ul>
     </div>
 </nav>
-
-
+<div class="row">
+    <form class="col s12" action="/results" method="POST">
+        {{ csrf_field() }}
+        <div class="row">
+            <div class="input-field col s6">
+                <i class="material-icons prefix">search</i>
+                <input id="icon_telephone" type="text" name="search_text" class="validate">
+                <label for="icon_telephone">Search coupons, codes, deals etc.</label>
+            </div>
+        </div>
+    </form>
+</div>
 @yield('content')
 
 <footer class="page-footer teal lighten-2">
