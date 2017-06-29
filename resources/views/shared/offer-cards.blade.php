@@ -1,5 +1,5 @@
 @foreach($offers as $offer)
-    <div class="col s3 m6 l3">
+    <div class="col s12 m6 l3">
         <div class="card medium hoverable">
             <div class="card-image waves-effect waves-block waves-light">
                 <img class="activator" src="{{ $offer->image_url }}">
