@@ -5,7 +5,7 @@
 @endsection
 
 @section('content')
-    <div class="container">
+
         @include('shared.session')
         @include('shared.navbar')
         <div class="row">
@@ -89,5 +89,5 @@
                 </div>
             </div>
         </div>
-    </div>
+
 @endsection

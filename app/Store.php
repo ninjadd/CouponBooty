@@ -56,7 +56,7 @@ class Store extends Model
     {
         $store_ids = Offer::selectRaw('store_id')->whereNotNull('store_id')->groupBy('store_id')->pluck('store_id');
 
-        return static::whereIn('id', $store_ids)->get();
+        return static::whereIn('id', $store_ids)->orderBy('name')->get();
     }
 
     /**

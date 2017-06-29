@@ -16,7 +16,7 @@
                     <br>
                     COPY:
                     <br>
-                    <h5 class="z-depth-1-half ">{{ $offer->coupon }}</h5>
+                    <h5 class="z-depth-1-half teal-text text-darken-3 bold center-align">{{ $offer->coupon }}</h5>
                     <br>
                     <a class="waves-effect waves-light deep-purple btn" href="{{ $offer->url }}" target="_blank">USE COUPON</a>
                     <br>

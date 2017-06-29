@@ -32,7 +32,7 @@ Route::post('send', 'PageController@sendMessage');
 // Sluggers
 Route::get('view/{slug}', 'PageController@viewSlug');
 
-Route::get('type/{slug}', 'PageController@viewType');
+Route::get('types/{slug}', 'PageController@viewType');
 
 Auth::routes();
 

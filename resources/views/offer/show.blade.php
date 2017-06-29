@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('content');
-    <div class="container">
+
         <div class="panel panel-primary">
             <div class="panel-heading">
                 <h3 class="panel-title">{{ $offer->title }}</h3>
@@ -30,5 +30,5 @@
                 {{ $offer->type->label }}
             </div>
         </div>
-    </div>
+
 @endsection
