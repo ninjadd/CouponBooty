@@ -33,8 +33,7 @@
         <ul id="dropdown2" class="dropdown-content">
             @include('shared.type-nav')
         </ul>
-        <a href="/" class="brand-logo"><img height="50" src="{{ asset('images/CouponBooty_Logo_Horizontal_2.png') }}"></a>
-        {{--<a href="/" class="brand-logo">CouponBooty</a>--}}
+        <a href="/" class="brand-logo"><img height="50" src="{{ asset('images/CouponBooty_Logo_Horizontal_2.png') }}" alt="CouponBooty"></a>
         <ul class="right hide-on-med-and-down">
 
             <li><a href="/">Home</a></li>
