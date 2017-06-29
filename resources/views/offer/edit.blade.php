@@ -150,7 +150,7 @@
                                                class="form-control"
                                                id="startDate"
                                                placeholder="YYYY-MM-DD"
-                                               value="{{ (!empty($offer->start_date)) ? $offer->start_date->format('Y-m-d') : '' }}">
+                                               value="{{ (!empty($offer->start_date)) ? $offer->start_date : '' }}">
                                         <span class="help-block">Not required. I think it will help us better manage our coupons so we only have active ones. We don’t want AdAssured coming after us.</span>
                                     </div>
                                 </div>
