@@ -98,7 +98,9 @@
         </div>
     </nav>
 
+    <div class="col-md-10 col-md-offset-1">
     @yield('content')
+    </div>
 </div>
 <hr>
 
@@ -117,5 +119,6 @@
     <!-- /.row -->
 </footer>
 </div>
+    <script src="{{ asset('js/textcounter.min.js') }}"></script>
 </body>
 </html>

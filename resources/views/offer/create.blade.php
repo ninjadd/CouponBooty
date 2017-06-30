@@ -31,10 +31,10 @@
                                         <input required="required"
                                                 name="title"
                                                 type="text"
-                                                class="form-control"
+                                                class="form-control counter"
                                                 id="offerTitle"
+                                                value="{{ old('title') }}"
                                                 placeholder="All great offers start with great title">
-                                        <span class="help-block">This is a required field so don't mess it up</span>
                                     </div>
                                 </div>
 
@@ -46,6 +46,7 @@
                                                type="url"
                                                class="form-control"
                                                id="offerUrl"
+                                               value="{{ old('url') }}"
                                                placeholder="This is where the advertiser URL goes">
                                         <span class="help-block">This one is also required</span>
                                     </div>
@@ -59,6 +60,7 @@
                                                type="url"
                                                class="form-control"
                                                id="imageUrl"
+                                               value="{{ old('image_url') }}"
                                                placeholder="This is where the URL for the Advertiser's image goes">
                                         <span class="help-block">This is also required</span>
                                     </div>
@@ -71,7 +73,7 @@
                                                   name="body"
                                                   class="form-control"
                                                   rows="3"
-                                                  id="summernote"></textarea>
+                                                  id="summernote">{{ old('body') }}</textarea>
                                         <span class="help-block">You guessed it, this one is required</span>
                                     </div>
                                 </div>
@@ -81,7 +83,7 @@
                                     <div class="col-lg-10">
                                         @foreach($types as $type)
                                             <label class="radio-inline">
-                                                <input type="radio" name="type_id" value="{{ $type->id }}">
+                                                <input {{ (old('type_id') == $type->id) ? 'checked="checked"' : null }} type="radio" name="type_id" value="{{ $type->id }}">
                                                 {{ $type->label }}
                                             </label>
                                         @endforeach
@@ -96,7 +98,7 @@
                                             @if($stores->count() > 0)
                                                 <option>Select</option>
                                                 @foreach($stores as $store)
-                                                    <option value="{{ $store->id }}">{{ $store->name }}</option>
+                                                    <option {{ (old('store_id') == $store->id) ? 'selected="selected"' : null }} value="{{ $store->id }}">{{ $store->name }}</option>
                                                 @endforeach
                                             @else
                                                 <option>Please Create Store First</option>
@@ -114,6 +116,7 @@
                                                type="text"
                                                class="form-control"
                                                id="coupon"
+                                               value="{{ old('coupon') }}"
                                                placeholder="This is the Coupon or Code or whatever you want to call it">
                                         <span class="help-block">This is not required so you could call it optional if you like</span>
                                     </div>
@@ -127,7 +130,7 @@
                                                   class="form-control"
                                                   rows="3"
                                                   placeholder="Comma separated for more than one"
-                                                  id="offerCategories"></textarea>
+                                                  id="offerCategories">{{ old('categories') }}</textarea>
                                         <span class="help-block">This will help with search and filtering later on</span>
                                     </div>
                                 </div>
@@ -139,6 +142,7 @@
                                                type="text"
                                                class="form-control"
                                                id="startDate"
+                                               value="{{ old('start_date') }}"
                                                placeholder="YYYY-MM-DD">
                                         <span class="help-block">Not required. I think it will help us better manage our coupons so we only have active ones. We don’t want AdAssured coming after us.</span>
                                     </div>
@@ -151,6 +155,7 @@
                                                type="text"
                                                class="form-control"
                                                id="endDate"
+                                               value="{{ old('end_date') }}"
                                                placeholder="YYYY-MM-DD">
                                         <span class="help-block">Not required. I think it will help us better manage our coupons so we only have active ones. We don’t want AdAssured coming after us.</span>
                                     </div>
@@ -179,6 +184,13 @@
             });
             $('#endDate').datepicker({
                 dateFormat: "yy-mm-dd"
+            });
+            $('input.counter').textcounter({
+                type: "character",
+                max: 100,
+                countDown: true,
+                countSpaces: true,
+                stopInputAtMaximum: true,
             });
         });
     </script>

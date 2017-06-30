@@ -32,7 +32,7 @@
                                         <input required="required"
                                                name="title"
                                                type="text"
-                                               class="form-control"
+                                               class="form-control counter"
                                                id="offerTitle"
                                                value="{{ $offer->title }}"
                                                placeholder="All great offers start with great title">
@@ -210,6 +210,13 @@
             });
             $('#endDate').datepicker({
                 dateFormat: "yy-mm-dd"
+            });
+            $('input.counter').textcounter({
+                type: "character",
+                max: 100,
+                countDown: true,
+                countSpaces: true,
+                stopInputAtMaximum: true,
             });
         });
     </script>
