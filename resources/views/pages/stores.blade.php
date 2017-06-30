@@ -35,7 +35,7 @@
                                 <div class="collapsible-body">
                                     <ul>
                                         @for ($i = 0; $i < sizeof($value); $i++)
-                                            <li><i class="fa fa-dot-circle-o" aria-hidden="true"></i> <a href="">{{ $value[$i]['name'] }}</a></li>
+                                            <li><i class="fa fa-dot-circle-o" aria-hidden="true"></i> <a href="/view/{{ $value[$i]['slug'] }}">{{ $value[$i]['name'] }}</a></li>
                                         @endfor
                                     </ul>
                                 </div>
