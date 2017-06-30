@@ -88,7 +88,7 @@
             <div class="input-field col s3">
                 <form id="search_text" class="col s12" action="/results" method="POST">
                     {{ csrf_field() }}
-                    <i class="material-icons prefix">textsms</i>
+                    <i class="material-icons prefix">search</i>
                     <input type="text" id="autocomplete" name="search_text" class="autocomplete">
                     <label for="autocomplete">Search</label>
                 </form>
