@@ -33,23 +33,31 @@
         <ul id="dropdown2" class="dropdown-content">
             @include('shared.type-nav')
         </ul>
-        <a href="/" class="brand-logo"><img style="padding-top: 10px; padding-left: 5px;" height="50" src="{{ asset('images/CouponBooty_Logo_Background_3.png') }}" alt="CouponBooty"></a>
-        <ul class="right hide-on-med-and-down">
-
-            <li><a href="/">Home</a></li>
+        <ul id="dropdown3" class="dropdown-content">
             <li><a href="/blog">Blog</a></li>
             <li><a href="/about">About Us</a></li>
             <li><a href="/terms">Terms</a></li>
             <li><a href="/privacy">Privacy Policy</a></li>
+        </ul>
+        <a href="/" class="brand-logo"><img style="padding-top: 10px; padding-left: 5px;" height="50" src="{{ asset('images/CouponBooty_Logo_Background_3.png') }}" alt="CouponBooty"></a>
+        <ul class="right hide-on-med-and-down">
+
+            <li><a href="/">Home</a></li>
+            <li><a href="/stores">Stores</a></li>
+            <li><a class="dropdown-button" href="#!" data-activates="dropdown3">More<i class="material-icons right">arrow_drop_down</i></a></li>
+            <li>
+                <a class="dropdown-button waves-effect waves-light btn" href="#!" data-activates="dropdown1">
+                    Shop By Store<i class="material-icons right">arrow_drop_down</i>
+                </a>
+            </li>
+            <li>
+                <a class="dropdown-button waves-effect waves-light btn" href="#!" data-activates="dropdown2">
+                    Shop By Type<i class="material-icons right">arrow_drop_down</i>
+                </a>
+            </li>
             <li><a class="fa fa-facebook" aria-hidden="true" href="https://www.facebook.com/CouponBooty/" target="_blank"></a></li>
             <li><a class="fa fa-twitter" aria-hidden="true" href="https://twitter.com/couponbooty" target="_blank"></a></li>
             <li><a class="fa fa-instagram" aria-hidden="true" href="https://www.instagram.com/Couponbooty/" target="_blank"></a></li>
-            <li>
-                <a class="dropdown-button waves-effect waves-light btn" href="#!" data-activates="dropdown1">Shop By Store<i class="material-icons right">arrow_drop_down</i></a>
-            </li>
-            <li>
-                <a class="dropdown-button waves-effect waves-light btn" href="#!" data-activates="dropdown2">Shop By Type<i class="material-icons right">arrow_drop_down</i></a>
-            </li>
             @if(Auth::user())
                 <li><a href="/dashboard">Dasboard</a></li>
             @endif
@@ -57,11 +65,19 @@
         <a href="#" data-activates="mobile-demo" class="button-collapse"><i class="material-icons">menu</i></a>
         <ul class="side-nav" id="mobile-demo">
             <li><a href="/">Home</a></li>
+            <li><a href="/stores">Stores</a></li>
             <li><a href="/blog">Blog</a></li>
             <li><a href="/about">About Us</a></li>
             <li><a href="/terms">Terms</a></li>
             <li><a href="/privacy">Privacy Policy</a></li>
+            <li class="divider"></li>
+            <li><a href="!#">Stores</a></li>
+            <li class="divider"></li>
             @include('shared.store-nav')
+            <li class="divider"></li>
+            <li><a href="!#">Types</a></li>
+            <li class="divider"></li>
+            @include('shared.type-nav')
         </ul>
     </div>
 </nav>
@@ -72,7 +88,7 @@
             <div class="input-field col s6">
                 <i class="material-icons prefix">search</i>
                 <input id="icon_telephone" type="text" name="search_text" class="validate">
-                <label for="icon_telephone">Search coupons, codes, deals etc.</label>
+                <label for="icon_telephone">Search</label>
             </div>
         </div>
     </form>
@@ -125,6 +141,7 @@
   );
 
 </script>
+@yield('foot')
 <!-- Script end -->
 </body>
 </html>

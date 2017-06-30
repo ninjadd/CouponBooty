@@ -30,6 +30,12 @@
                             </div>
                             <div class="card-action">
                                 <a class="waves-effect waves-light btn" href="/blog/{{ $blog->title_slug }}">View</a>
+                                <a class="right" href="https://twitter.com/home?status={{ $blog->title_slug }}" target="_blank">
+                                    <i class="fa fa-twitter-square fa-3x blue-grey-text" aria-hidden="true"></i>
+                                </a>
+                                <a class="right" href="https://www.facebook.com/sharer/sharer.php?u={{ $blog->title_slug }}" target="_blank">
+                                    <i class="fa fa-facebook-square fa-3x blue-grey-text" aria-hidden="true"></i>
+                                </a>
                             </div>
                         </div>
                     </div>

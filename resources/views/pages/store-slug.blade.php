@@ -18,7 +18,7 @@
     <div class="container">
         <div class="row">
             <blockquote>
-                <h2>{{ $store->name }} Coupons &amp; Promo Codes</h2>
+                <h2 class="flow-text">{{ $store->name }} Coupons &amp; Promo Codes</h2>
                 <p class="lead">
                     Most Recent Deals
                 </p>

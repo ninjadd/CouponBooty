@@ -55,7 +55,9 @@ class PageController extends Controller
             $offers = Offer::where([
                 ['store_id', $store->id],
                 ['archive', 0]
-            ])->get();
+            ])
+                ->orderBy('updated_at', 'desc')
+                ->get();
 
             return view('pages.store-slug', compact('store', 'offers'));
         }
@@ -79,6 +81,18 @@ class PageController extends Controller
             return view('pages.type-slug', compact('type', 'offers'));
         }
         return redirect('/');
+    }
+
+    public function viewStores()
+    {
+        $initials = Store::selectRaw('DISTINCT SUBSTRING(name,1,1) as initial')->orderBy('initial')->get();
+        foreach ($initials as $initial) {
+            $initial_stores[$initial->initial] = Store::where('name', 'like', $initial->initial.'%')->get()->toArray();
+        }
+
+//        return $initial_stores;
+
+        return view('pages.stores', compact( 'initial_stores'));
     }
 
     /**

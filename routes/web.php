@@ -29,6 +29,8 @@ Route::get('terms', 'PageController@viewTerms');
 
 Route::post('send', 'PageController@sendMessage');
 
+Route::get('stores', 'PageController@viewStores');
+
 // Sluggers
 Route::get('view/{slug}', 'PageController@viewSlug');
 
