@@ -39,7 +39,6 @@ class PageController extends Controller
                 ->whereIn('id', $categories)
                 ->orWhere('title', 'like', $request->search_text)
                 ->orWhere('body', 'like', $request->search_text)
-                ->groupBy('id')
                 ->get();
             return view('pages.results', compact('offers', 'request'));
         } else {
