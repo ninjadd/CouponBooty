@@ -24,7 +24,7 @@
             <div class="col s12">
                 <ul class="pagination">
                     @foreach($initial_stores as $key => $value)
-                        <li class="waves-effect"><a href="#{{ $key }}">{{ is_int($key) ? '#' : strtoupper($key) }}</a></li>
+                        <li class="waves-effect hoverable"><a href="#{{ $key }}">{{ is_int($key) ? '#' : strtoupper($key) }}</a></li>
                     @endforeach
                 </ul>
                 <div id="popout">
