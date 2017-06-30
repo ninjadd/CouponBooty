@@ -18,7 +18,7 @@
     <div class="container">
         <div class="row">
             <blockquote>
-                Total results for <strong class="red-text">{{ $request->search_text }}</strong>
+                Total results for <strong class="red-text">{{ $request->search_text }}</strong> {{ $offers->count() }}
             </blockquote>
         </div>
         <div class="row">

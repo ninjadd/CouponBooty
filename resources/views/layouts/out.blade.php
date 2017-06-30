@@ -81,17 +81,20 @@
         </ul>
     </div>
 </nav>
+
 <div class="row">
-    <form class="col s12" action="/results" method="POST">
-        {{ csrf_field() }}
+    <div class="col s12">
         <div class="row">
-            <div class="input-field col s6">
-                <i class="material-icons prefix">search</i>
-                <input id="icon_telephone" type="text" name="search_text" class="validate">
-                <label for="icon_telephone">Search</label>
+            <div class="input-field col s3">
+                <form id="search_text" class="col s12" action="/results" method="POST">
+                    {{ csrf_field() }}
+                    <i class="material-icons prefix">textsms</i>
+                    <input type="text" id="autocomplete" name="search_text" class="autocomplete">
+                    <label for="autocomplete">Search</label>
+                </form>
             </div>
         </div>
-    </form>
+    </div>
 </div>
 
 @yield('content')
@@ -132,13 +135,27 @@
 <script src="{{ asset('js/app.js') }}"></script>
 <script src="{{ asset('js/out.js') }}"></script>
 <script>
-    $('.button-collapse').sideNav({
-        menuWidth: 300, // Default is 300
-        edge: 'left', // Choose the horizontal origin
-        closeOnClick: true, // Closes side-nav on <a> clicks, useful for Angular/Meteor
-        draggable: true // Choose whether you can drag to open on touch screens,
-    }
-  );
+    $(document).ready(function() {
+        $('.button-collapse').sideNav({
+                menuWidth: 300, // Default is 300
+                edge: 'left', // Choose the horizontal origin
+                closeOnClick: true, // Closes side-nav on <a> clicks, useful for Angular/Meteor
+                draggable: true // Choose whether you can drag to open on touch screens,
+            }
+        );
+
+        $('input.autocomplete').autocomplete({
+            data: {
+                @foreach($autoFillKeywords as $autoFillKeyword)
+                    {!!   '"'.$autoFillKeyword.'" : null,' !!}
+                @endforeach
+            },
+            onAutocomplete: function(val) {
+                $('#search_text').submit();
+            },
+            limit: 20, // The max amount of results that can be shown at once. Default: Infinity.
+        });
+    });
 
 </script>
 @yield('foot')

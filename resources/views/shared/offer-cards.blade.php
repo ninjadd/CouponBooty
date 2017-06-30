@@ -19,13 +19,12 @@
                     <h5 class="z-depth-1-half teal-text text-darken-3 bold center-align">{{ $offer->coupon }}</h5>
                     <br>
                     <a class="waves-effect waves-light deep-purple btn" href="{{ $offer->url }}" target="_blank">USE COUPON</a>
-                    <br>
                     <p>{{ strip_tags($offer->body) }}</p>
                 @else
-                    <p>{{ strip_tags($offer->body) }}</p>
+                    <br>
                     <a class="waves-effect waves-light btn deep-orange" href="{{ $offer->url }}" target="_blank">Get Deal</a>
+                    <p>{{ strip_tags($offer->body) }}</p>
                 @endif
-                <br>
                 <a href="https://twitter.com/home?status={{ $offer->url }}" target="_blank">
                     <i class="fa fa-twitter-square fa-2x blue-grey-text" aria-hidden="true"></i>
                 </a>

@@ -21,6 +21,10 @@ class AppServiceProvider extends ServiceProvider
             $view->with('keywords', \App\Category::metaKeywords());
         });
 
+        view()->composer('layouts.out', function ($view) {
+            $view->with('autoFillKeywords', \App\Category::autoFillKeywords());
+        });
+
         view()->composer('layouts.app', function ($view) {
             $view->with('keywords', \App\Category::metaKeywords());
         });

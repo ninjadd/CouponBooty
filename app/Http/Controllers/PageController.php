@@ -34,14 +34,14 @@ class PageController extends Controller
     public function results(Request $request)
     {
         if (!empty($request->search_text)) {
-            $offers = Offer::where('archive', 0)->search($request->search_text)->get();
-
-            if ($offers->count() == 0) {
-                return redirect('/');
-            } elseif (!empty($offers)) {
-                return view('pages.results', compact('offers', 'request'));
-            }
-            
+            $categories = Category::where('name', 'like', $request->search_text)->pluck('offer_id')->unique();
+            $offers = Offer::where('archive', 0)
+                ->whereIn('id', $categories)
+                ->orWhere('title', 'like', $request->search_text)
+                ->orWhere('body', 'like', $request->search_text)
+                ->groupBy('id')
+                ->get();
+            return view('pages.results', compact('offers', 'request'));
         } else {
             return redirect('/');
         }
@@ -89,8 +89,6 @@ class PageController extends Controller
         foreach ($initials as $initial) {
             $initial_stores[$initial->initial] = Store::where('name', 'like', $initial->initial.'%')->get()->toArray();
         }
-
-//        return $initial_stores;
 
         return view('pages.stores', compact( 'initial_stores'));
     }

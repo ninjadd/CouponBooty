@@ -32,4 +32,14 @@ class Category extends Model
 
         return implode(', ', $category_names);
     }
+
+    /**
+     * @return string
+     */
+    public static function autoFillKeywords()
+    {
+        return $category_names = static::selectRaw('lower(name) as name')->groupBy('name')->pluck('name');
+
+//        return $category_names = static::pluck('name')->unique();
+    }
 }
