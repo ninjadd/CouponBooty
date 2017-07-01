@@ -85,9 +85,15 @@
                                                         <span class="glyphicon glyphicon-pencil" aria-hidden="true"></span>
                                                     </a>
 
-                                                    <a href="/offer/archive/{{ $offer->id }}" class="btn btn-warning btn-xs"  data-toggle="tooltip" title="Archive Offer">
-                                                        <span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
-                                                    </a>
+                                                    @if($offer->archive == 0)
+                                                        <a href="/offer/archive/{{ $offer->id }}" class="btn btn-warning btn-xs"  data-toggle="tooltip" title="Archive Offer">
+                                                            <span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
+                                                        </a>
+                                                    @else
+                                                        <a href="/offer/archive/{{ $offer->id }}" class="btn btn-info btn-xs"  data-toggle="tooltip" title="Un-Archive Offer">
+                                                            <span class="glyphicon glyphicon-ok" aria-hidden="true"></span>
+                                                        </a>
+                                                    @endif
 
                                                     <button type="submit" class="btn btn-danger btn-xs"  data-toggle="tooltip" title="Delete Offer">
                                                         <span class="glyphicon glyphicon-trash" aria-hidden="true"></span>
