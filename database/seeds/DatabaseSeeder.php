@@ -21,5 +21,6 @@ class DatabaseSeeder extends Seeder
          $this->call(MessagesTableSeeder::class);
          $this->call(QuadsTableSeeder::class);
          $this->call(StoresTableSeeder::class);
+         $this->call(NetworksTableSeeder::class);
     }
 }
