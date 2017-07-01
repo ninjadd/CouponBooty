@@ -3,8 +3,10 @@
 namespace App\Http\Controllers;
 
 use App\Offer;
+use App\User;
 use Illuminate\Http\Request;
 use App\Store;
+use App\Network;
 
 class StoreController extends Controller
 {
@@ -35,7 +37,10 @@ class StoreController extends Controller
      */
     public function create()
     {
-        return view('store.create');
+        $networks = Network::all();
+        $users = User::all();
+
+        return view('store.create', compact('networks', 'users'));
     }
 
     /**
@@ -47,7 +52,10 @@ class StoreController extends Controller
     public function store(Request $request)
     {
         $this->validate($request, [
-           'name' => 'required|string|unique:stores'
+            'name' => 'required|string|unique:stores',
+            'network_id' => 'required|integer',
+            'manager_id' => 'required|integer',
+            'image_url' => 'required|url'
         ]);
 
         $store = new Store();
@@ -56,6 +64,9 @@ class StoreController extends Controller
         $store->slug = str_slug($request->name);
         $store->title = $request->title;
         $store->body = $request->body;
+        $store->network_id = $request->network_id;
+        $store->manager_id = $request->manager_id;
+        $store->image_url = $request->image_url;
         $store->save();
 
         return redirect('store')->with('status', 'New Store created I am so proud!');
@@ -80,7 +91,10 @@ class StoreController extends Controller
      */
     public function edit(Store $store)
     {
-        return view('store.edit', compact('store'));
+        $networks = Network::all();
+        $users = User::all();
+
+        return view('store.edit', compact('store', 'networks', 'users'));
     }
 
     /**
@@ -93,7 +107,10 @@ class StoreController extends Controller
     public function update(Request $request, Store $store)
     {
         $this->validate($request, [
-           'name' => 'required|string'
+            'name' => 'required|string',
+            'network_id' => 'required|integer',
+            'manager_id' => 'required|integer',
+            'image_url' => 'required|url'
         ]);
 
         $store->user_id = auth()->id();
@@ -101,6 +118,9 @@ class StoreController extends Controller
         $store->slug = str_slug($request->name);
         $store->title = $request->title;
         $store->body = $request->body;
+        $store->network_id = $request->network_id;
+        $store->manager_id = $request->manager_id;
+        $store->image_url = $request->image_url;
         $store->save();
 
         return redirect('store')->with('status', 'Updated Store created I am so proud!');

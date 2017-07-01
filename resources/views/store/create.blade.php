@@ -7,6 +7,7 @@
 @section('content')
 
         <div class="row">
+            @include('shared.errors')
             <div class="col-md-12">
                 <div class="panel panel-primary">
                     <div class="panel-heading">
@@ -20,8 +21,36 @@
                             {{ csrf_field() }}
                             <div class="form-group">
                                 <label for="storeName">Name</label>
-                                <input class="form-control" required="required" type="text" name="name" id="storeName"  placeholder="All Stores need a name">
-                                <span class="help-block">Give a store a name the only required field</span>
+                                <input class="form-control" value="{{ old('name') }}" required="required" type="text" name="name" id="storeName"  placeholder="All Stores need a name">
+                                <span class="help-block">A required field</span>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="network">Network</label>
+                                <select class="form-control" name="network_id" id="network">
+                                    <option>Select Network</option>
+                                    @foreach($networks as $network)
+                                        <option {{ (old('network_id') == $network->id) ? 'selected="selected"' : null }} value="{{ $network->id }}">{{ $network->name }}</option>
+                                    @endforeach
+                                </select>
+                                <span class="help-block">A required field</span>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="brandManager">Brand Manager</label>
+                                <select class="form-control" name="manager_id" id="brandManager">
+                                    <option>Select Brand Manager</option>
+                                    @foreach($users as $user)
+                                        <option {{ (old('manager_id') == $user->id) ? 'selected="selected"' : null }} value="{{ $user->id }}">{{ $user->name }}</option>
+                                    @endforeach
+                                </select>
+                                <span class="help-block">A required field</span>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="imageUrl">Image URL</label>
+                                <input class="form-control" value="{{ old('image_url') }}" required="required" type="url" name="image_url" id="imageUrl"  placeholder="This will make a great image one day">
+                                <span class="help-block">A required field</span>
                             </div>
 
                             <div class="form-group">

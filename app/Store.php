@@ -26,7 +26,10 @@ class Store extends Model
         'name',
         'slug',
         'title',
-        'body'
+        'body',
+        'network_id',
+        'manager_id',
+        'image_url'
     ];
 
     /**
