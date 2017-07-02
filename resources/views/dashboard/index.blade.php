@@ -11,10 +11,11 @@
             <div class="col-md-12">
 
                 <div class="panel panel-primary">
-                    <div class="panel-heading">
-                        <h3 class="panel-title">
+                    <div class="panel-heading clearfix">
+                        <h3 class="panel-title pull-left">
                             Dashboard
                         </h3>
+                        <span class="badge pull-right">{{ $offers->count() }}</span>
                     </div>
 
                     <div class="panel-body">
@@ -23,7 +24,7 @@
                             <thead>
                                 <tr>
                                     <th>Store</th>
-                                    <th>Title</th>
+                                    <th width="250px;">Title</th>
                                     <th>Type</th>
                                     <th>Created By</th>
                                     <th>Updated</th>
@@ -54,7 +55,7 @@
                                             {{ ($offer->store['name']) ? $offer->store['name'] : 'N/A' }}
                                         </td>
                                         <td>
-                                            {{ str_limit($offer->title, 25, '...') }}
+                                            {{ $offer->title }}
                                         </td>
                                         <td>
                                             {{ $offer->type->label }}
@@ -76,8 +77,8 @@
                                         </td>
                                         <td>
                                             <form action="/offer/{{ $offer->id }}" method="POST">
-                                                <div class="btn-group-vertical">
-                                                    <a href="/offer/{{ $offer->id }}" type="button" class="btn btn-default btn-xs" data-toggle="tooltip" title="View Offer">
+                                                <div class="btn-group" role="group" aria-label="...">
+                                                <a href="/offer/{{ $offer->id }}" type="button" class="btn btn-default btn-xs" data-toggle="tooltip" title="View Offer">
                                                         <span class="glyphicon glyphicon-eye-open" aria-hidden="true"></span>
                                                     </a>
 
