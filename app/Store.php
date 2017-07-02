@@ -71,4 +71,14 @@ class Store extends Model
     {
         return $query->where('slug', $slug);
     }
+
+    public function network()
+    {
+        return $this->belongsTo('App\Network');
+    }
+
+    public function manager()
+    {
+        return $this->belongsTo('App\User', 'manager_id', 'id');
+    }
 }

@@ -31,4 +31,9 @@ class Network extends Model
      * @var array
      */
     protected $hidden = [];
+
+    public function store()
+    {
+        return $this->hasOne('App\Store');
+    }
 }

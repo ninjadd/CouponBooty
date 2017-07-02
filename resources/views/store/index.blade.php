@@ -25,7 +25,8 @@
                             <tr>
                                 <th>ID</th>
                                 <th>Name</th>
-                                <th>Created By</th>
+                                <th>Network</th>
+                                <th>Managed By</th>
                                 <th>Updated</th>
                                 <th>Offers</th>
                                 <th></th>
@@ -35,7 +36,8 @@
                             <tr>
                                 <th>ID</th>
                                 <th>Name</th>
-                                <th>Created By</th>
+                                <th>Network</th>
+                                <th>Managed By</th>
                                 <th>Updated</th>
                                 <th>Offers</th>
                                 <th></th>
@@ -52,7 +54,10 @@
                                             {{ $store->name }}
                                         </td>
                                         <td>
-                                            {{ $store->user->name }}
+                                            {{ $store->network['name'] }}
+                                        </td>
+                                        <td>
+                                            {{ $store->manager['name'] }}
                                         </td>
                                         <td>
                                             {{ $store->updated_at->diffForHumans() }}
