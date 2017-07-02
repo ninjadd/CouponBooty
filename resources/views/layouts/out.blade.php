@@ -86,7 +86,7 @@
 <div class="row">
     <div class="col s12">
         <div class="row">
-            <div class="input-field col s3">
+            <div class="input-field col s12 l3">
                 <form id="search_text" class="col s12" action="/results" method="POST">
                     {{ csrf_field() }}
                     <i class="material-icons prefix">search</i>
