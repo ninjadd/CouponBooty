@@ -75,7 +75,7 @@ class OfferController extends Controller
         $offer->body = $request->body;
         $offer->coupon = $request->coupon;
         $offer->store_id = $request->store_id;
-        $offer->nerwork_id = $request->network_id;
+        $offer->network_id = $request->network_id;
         $offer->start_date = $request->start_date;
         $offer->end_date = $request->end_date;
 

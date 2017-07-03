@@ -25,6 +25,18 @@
             'csrfToken' => csrf_token(),
         ]) !!};
     </script>
+    <style>
+        nav.nav-center ul {
+            text-align: center;
+        }
+        nav.nav-center ul li {
+            display: inline;
+            float: none;
+        }
+        nav.nav-center ul li a {
+            display: inline-block;
+        }
+    </style>
 </head>
 <body>
 <nav class="teal lighten-2">
@@ -83,6 +95,16 @@
         </ul>
     </div>
 </nav>
+
+{{--<nav class="nav-center">--}}
+    {{--<div class="nav-wrapper container">--}}
+        {{--<ul>--}}
+            {{--<li><a href="/about">About</a></li>--}}
+            {{--<li><a href="/contact">Contact</a></li>--}}
+            {{--<li><a href="/help">Help</a></li>--}}
+        {{--</ul>--}}
+    {{--</div>--}}
+{{--</nav>--}}
 
 <div class="row">
     <div class="col s12">

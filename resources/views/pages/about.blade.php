@@ -19,9 +19,9 @@
             <div class="col s12">
                 <div class="card blue-grey darken-1 hoverable">
                     <div class="card-content white-text">
-                        <span class="card-title">About US</span>
+                        <span class="card-title">About Us</span>
                         <p>CouponBooty is dedicated to provide a positive user experience for online shoppers. We partner with brands to give users the best and most reliable coupons.</p>
-                        <p>Located in Southern California our team aims to take the complexity out of getting discounts for the products you want to buy.</p>
+                        <p>Located in Southern California, our team aims to take the complexity out of getting discounts for the products you want to buy.</p>
                     </div>
                 </div>
             </div>
