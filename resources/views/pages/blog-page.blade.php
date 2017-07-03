@@ -26,7 +26,7 @@
                     <ul>
                         <li>{{ $blog->created_at->toDayDateTimeString() }}</li>
                         <li>{{ $blog->comments->count() }} comments</li>
-                        <li>By {{ $blog->user->name }}</li>
+                        <li>By {{ config('app.name') }}</li>
                     </ul>
                     <a href="https://twitter.com/home?status={{ url()->current() }}" target="_blank">
                         <i class="fa fa-twitter-square fa-3x blue-grey-text" aria-hidden="true"></i>

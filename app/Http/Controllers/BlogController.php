@@ -67,8 +67,9 @@ class BlogController extends Controller
     public function store(Request $request)
     {
         $this->validate($request, [
-           'title' => 'required|unique:blogs',
-           'body' => 'required'
+            'title' => 'required|unique:blogs',
+            'body' => 'required',
+            'image_url' => 'required|url'
         ]);
 
         $blog = new Blog();
@@ -76,6 +77,7 @@ class BlogController extends Controller
         $blog->title = $request->title;
         $blog->title_slug = str_slug($request->title);
         $blog->body = $request->body;
+        $blog->image_url = $request->image_url;
         $blog->save();
 
         return redirect('blogger')->with('status', 'New Blog post created!');
