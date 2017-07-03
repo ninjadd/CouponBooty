@@ -69,9 +69,6 @@
         <ul class="hide-on-med-and-down">
             <li><a href="/blog">Blog</a></li>
             <li><a href="/stores">Stores</a></li>
-            <li><a href="/about">About Us</a></li>
-            <li><a href="/terms">Terms</a></li>
-            <li><a href="/privacy">Privacy Policy</a></li>
             <li>
                 <a class="dropdown-button waves-effect waves-light" href="#!" data-activates="dropdown1">
                     Shop By Store<i class="material-icons right">arrow_drop_down</i>

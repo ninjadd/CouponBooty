@@ -16,9 +16,7 @@
 @section('content')
     <div class="container">
         <div class="row">
-            <blockquote>
-                <h3>Most Recent Deals</h3>
-            </blockquote>
+            <h3 class="teal-text text-darken-3">Most Recent Deals</h3>
         </div>
         <div class="row">
             @include('shared.offer-cards')

@@ -8,7 +8,11 @@
                 <h6 class="card-title activator grey-text text-darken-4">{{ $offer->title }}<i class="material-icons right">more_vert</i></h6>
             </div>
             <div class="card-action">
-                <a class="waves-effect waves-light btn deep-orange" href="{{ $offer->url }}" target="_blank">Get Deal</a>
+                @if($offer->coupon)
+                    <a class="waves-effect activator waves-light btn deep-purple">See Details</a>
+                @else
+                    <a class="waves-effect waves-light btn deep-orange" href="{{ $offer->url }}" target="_blank">Get Deal</a>
+                @endif
             </div>
             <div class="card-reveal">
                 <span class="card-title grey-text text-darken-4">{{ $offer->title }}<i class="material-icons right">close</i></span>
@@ -25,10 +29,10 @@
                     <a class="waves-effect waves-light btn deep-orange" href="{{ $offer->url }}" target="_blank">Get Deal</a>
                     <p>{{ strip_tags($offer->body) }}</p>
                 @endif
-                <a href="https://twitter.com/home?status={{ $offer->url }}" target="_blank">
+                <a href="https://twitter.com/home?status={{ urlencode($offer->url) }}" target="_blank">
                     <i class="fa fa-twitter-square fa-2x blue-grey-text" aria-hidden="true"></i>
                 </a>
-                <a href="https://www.facebook.com/sharer/sharer.php?u={{ $offer->url }}" target="_blank">
+                <a href="https://www.facebook.com/sharer/sharer.php?u={{ urlencode($offer->url) }}" target="_blank">
                     <i class="fa fa-facebook-square fa-2x blue-grey-text" aria-hidden="true"></i>
                 </a>
             </div>

@@ -17,12 +17,10 @@
 
     <div class="container">
         <div class="row">
-            <blockquote>
-                <h2 class="flow-text">{{ $store->name }} Coupons &amp; Promo Codes</h2>
-                <p class="lead">
-                    Most Recent Deals <span class="red-text">{{ $offers->count() }}</span>
-                </p>
-            </blockquote>
+            <h2 class="teal-text text-darken-3">{{ $store->name }} Coupons &amp; Promo Codes</h2>
+            <p class="teal-text text-darken-3">
+                Most Recent Deals <span class="red-text">{{ $offers->count() }}</span>
+            </p>
         </div>
         @if((!empty($store->title)) && (!empty($store->body)))
         <div class="row">
