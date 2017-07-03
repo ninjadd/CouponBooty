@@ -31,7 +31,9 @@ class Offer extends Model
         'coupon',
         'archive',
         'start_date',
-        'end_date'
+        'end_date',
+        'store_id',
+        'network_id'
     ];
 
     /**

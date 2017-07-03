@@ -29,7 +29,7 @@
 
                             <div class="form-group">
                                 <label for="network">Network</label>
-                                <select class="form-control" name="network_id" id="network">
+                                <select class="form-control" required="required" name="network_id" id="network">
                                     <option>Select Network</option>
                                     @foreach($networks as $network)
                                         <option {{ ($store->network_id == $network->id) ? 'selected="selected"' : null }} value="{{ $network->id }}">{{ $network->name }}</option>
@@ -40,7 +40,7 @@
 
                             <div class="form-group">
                                 <label for="brandManager">Brand Manager</label>
-                                <select class="form-control" name="manager_id" id="brandManager">
+                                <select class="form-control" required="required" name="manager_id" id="brandManager">
                                     <option>Select Brand Manager</option>
                                     @foreach($users as $user)
                                         <option {{ ($store->manager_id == $user->id) ? 'selected="selected"' : null }} value="{{ $user->id }}">{{ $user->name }}</option>

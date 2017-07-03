@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Network;
 use App\Offer;
 use App\Type;
 use App\Category;
@@ -41,8 +42,9 @@ class OfferController extends Controller
     {
         $types = Type::all();
         $stores = Store::all();
+        $networks = Network::all();
 
-        return view('offer.create', compact('types', 'stores'));
+        return view('offer.create', compact('types', 'stores', 'networks'));
     }
 
     /**
@@ -60,7 +62,8 @@ class OfferController extends Controller
             'url' => 'required|url',
             'image_url' => 'required|url',
             'type_id' => 'required|integer',
-            'store_id' => 'integer'
+            'store_id' => 'integer',
+            'network_id' => 'integer'
         ]);
 
         $offer = new Offer();
@@ -72,7 +75,7 @@ class OfferController extends Controller
         $offer->body = $request->body;
         $offer->coupon = $request->coupon;
         $offer->store_id = $request->store_id;
-
+        $offer->nerwork_id = $request->network_id;
         $offer->start_date = $request->start_date;
         $offer->end_date = $request->end_date;
 
@@ -121,14 +124,15 @@ class OfferController extends Controller
      * @param Store $store
      * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
-    public function edit(Offer $offer, Type $type, Store $store)
+    public function edit(Offer $offer)
     {
-        $types = $type->all();
+        $types = Type::all();
         $categories = Category::byOffer($offer->id)->get();
-        $stores = $store->all();
+        $stores = Store::all();
+        $networks = Network::all();
 
 
-        return view('offer.edit', compact('offer', 'types', 'categories', 'stores'));
+        return view('offer.edit', compact('offer', 'types', 'categories', 'stores', 'networks'));
     }
 
     /**
@@ -146,7 +150,8 @@ class OfferController extends Controller
             'url' => 'required|url',
             'image_url' => 'required|url',
             'type_id' => 'required|integer',
-            'store_id' => 'integer'
+            'store_id' => 'integer',
+            'network_id' => 'integer'
         ]);
 
         $offer->user_id = auth()->id();
@@ -157,8 +162,7 @@ class OfferController extends Controller
         $offer->body = $request->body;
         $offer->coupon = $request->coupon;
         $offer->store_id = $request->store_id;
-
-
+        $offer->network_id = $request->network_id;
         $offer->start_date = $request->start_date;
         $offer->end_date = $request->end_date;
 

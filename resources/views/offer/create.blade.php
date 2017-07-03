@@ -94,7 +94,7 @@
                                 <div class="form-group">
                                     <label for="storeLable" class="col-lg-2 control-label">Store</label>
                                     <div class="col-lg-10">
-                                        <select class="form-control" name="store_id" id="select">
+                                        <select class="form-control" required="required" name="store_id" id="select">
                                             @if($stores->count() > 0)
                                                 <option>Select</option>
                                                 @foreach($stores as $store)
@@ -105,6 +105,19 @@
                                             @endif
                                         </select>
                                         <span class="help-block">Select Store to provide some awesome details</span>
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="network" class="col-lg-2 control-label">Network</label>
+                                    <div class="col-lg-10">
+                                        <select class="form-control" name="network_id" id="network">
+                                            <option>Select Network</option>
+                                            @foreach($networks as $network)
+                                                <option {{ (old('network_id') == $network->id) ? 'selected="selected"' : null }} value="{{ $network->id }}">{{ $network->name }}</option>
+                                            @endforeach
+                                        </select>
+                                        <span class="help-block">You know why this is here</span>
                                     </div>
                                 </div>
 
