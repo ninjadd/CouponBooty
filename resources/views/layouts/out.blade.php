@@ -33,13 +33,31 @@
             display: inline;
             float: none;
         }
-        nav.nav-center ul li a {
+        nav.nav-center ul li {
             display: inline-block;
         }
     </style>
 </head>
 <body>
-<nav class="teal lighten-2">
+
+<div class="section teal lighten-4">
+    <div class="center-align">
+        <div class="row">
+            <div class="col s6 l6">
+                <a href="/" class="brand-logo"><img  style="padding-top: 10px; padding-left: 5px;" height="75" src="{{ asset('images/CouponBooty_Logo_Background_3.png') }}" alt="CouponBooty"></a>
+            </div>
+            <div class="input-field col s6 l3">
+                <form id="search_text"  action="/results" method="POST">
+                    {{ csrf_field() }}
+                    <input type="text" id="autocomplete" name="search_text" class="autocomplete" value="">
+                    <label for="autocomplete">Search</label>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+<nav class="nav-center teal lighten-2">
     <div class="nav-wrapper">
         <ul id="dropdown1" class="dropdown-content">
             @include('shared.store-nav')
@@ -47,25 +65,20 @@
         <ul id="dropdown2" class="dropdown-content">
             @include('shared.type-nav')
         </ul>
-        <ul id="dropdown3" class="dropdown-content">
+        {{--<a href="/" class="brand-logo"><img style="padding-top: 10px; padding-left: 5px;" height="50" src="{{ asset('images/CouponBooty_Logo_Background_3.png') }}" alt="CouponBooty"></a>--}}
+        <ul class="hide-on-med-and-down">
             <li><a href="/blog">Blog</a></li>
+            <li><a href="/stores">Stores</a></li>
             <li><a href="/about">About Us</a></li>
             <li><a href="/terms">Terms</a></li>
             <li><a href="/privacy">Privacy Policy</a></li>
-        </ul>
-        <a href="/" class="brand-logo"><img style="padding-top: 10px; padding-left: 5px;" height="50" src="{{ asset('images/CouponBooty_Logo_Background_3.png') }}" alt="CouponBooty"></a>
-        <ul class="right hide-on-med-and-down">
-
-            <li><a href="/">Home</a></li>
-            <li><a href="/stores">Stores</a></li>
-            <li><a class="dropdown-button" href="#!" data-activates="dropdown3">More<i class="material-icons right">arrow_drop_down</i></a></li>
             <li>
-                <a class="dropdown-button waves-effect waves-light btn" href="#!" data-activates="dropdown1">
+                <a class="dropdown-button waves-effect waves-light" href="#!" data-activates="dropdown1">
                     Shop By Store<i class="material-icons right">arrow_drop_down</i>
                 </a>
             </li>
             <li>
-                <a class="dropdown-button waves-effect waves-light btn" href="#!" data-activates="dropdown2">
+                <a class="dropdown-button waves-effect waves-light" href="#!" data-activates="dropdown2">
                     Shop By Type<i class="material-icons right">arrow_drop_down</i>
                 </a>
             </li>
@@ -96,30 +109,6 @@
     </div>
 </nav>
 
-{{--<nav class="nav-center">--}}
-    {{--<div class="nav-wrapper container">--}}
-        {{--<ul>--}}
-            {{--<li><a href="/about">About</a></li>--}}
-            {{--<li><a href="/contact">Contact</a></li>--}}
-            {{--<li><a href="/help">Help</a></li>--}}
-        {{--</ul>--}}
-    {{--</div>--}}
-{{--</nav>--}}
-
-<div class="row">
-    <div class="col s12">
-        <div class="row">
-            <div class="input-field col s12 l3">
-                <form id="search_text" class="col s12" action="/results" method="POST">
-                    {{ csrf_field() }}
-                    <i class="material-icons prefix">search</i>
-                    <input type="text" id="autocomplete" name="search_text" class="autocomplete">
-                    <label for="autocomplete">Search</label>
-                </form>
-            </div>
-        </div>
-    </div>
-</div>
 
 @yield('content')
 
@@ -136,6 +125,7 @@
             </div>
             <div class="col l4 offset-l2 s12">
                 <ul>
+                    <li><a class="grey-text text-lighten-3" href="/blog">Blog</a></li>
                     <li><a class="grey-text text-lighten-3" href="/about">About Us</a></li>
                     <li><a class="grey-text text-lighten-3" href="/terms">Terms</a></li>
                     <li><a class="grey-text text-lighten-3" href="/privacy">Privacy Policy</a></li>
@@ -161,7 +151,7 @@
 <script>
     $(document).ready(function() {
         $('.button-collapse').sideNav({
-                menuWidth: 300, // Default is 300
+                menuWidth: 150, // Default is 300
                 edge: 'left', // Choose the horizontal origin
                 closeOnClick: true, // Closes side-nav on <a> clicks, useful for Angular/Meteor
                 draggable: true // Choose whether you can drag to open on touch screens,
@@ -177,7 +167,7 @@
             onAutocomplete: function(val) {
                 $('#search_text').submit();
             },
-            limit: 20, // The max amount of results that can be shown at once. Default: Infinity.
+            limit: 3, // The max amount of results that can be shown at once. Default: Infinity.
         });
     });
 
