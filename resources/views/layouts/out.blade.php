@@ -47,7 +47,7 @@
                 <a href="/" class="brand-logo"><img  style="padding-top: 10px; padding-left: 5px;" height="75" src="{{ asset('images/CouponBooty_Logo_Background_3.png') }}" alt="CouponBooty"></a>
             </div>
             <div class="input-field col s6 l3">
-                <form id="search_text"  action="/results" method="POST">
+                <form id="search_text"  action="/results" method="POST"  autocomplete="off">
                     {{ csrf_field() }}
                     <input type="text" id="autocomplete" name="search_text" class="autocomplete" value="">
                     <label for="autocomplete">Search</label>
