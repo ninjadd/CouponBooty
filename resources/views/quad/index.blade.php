@@ -38,10 +38,10 @@
                                     Created By
                                 </th>
                                 <th>
-                                    Created At
+                                    Created Date
                                 </th>
                                 <th>
-                                    Updated At
+                                    Last Modified
                                 </th>
                                 <th>
 
@@ -62,7 +62,7 @@
                                             {{ $quad->user->name }}
                                         </td>
                                         <td>
-                                            {{ $quad->created_at->diffForHumans() }}
+                                            {{ $quad->created_at }}
                                         </td>
                                         <td>
                                             {{ $quad->updated_at->diffForHumans() }}

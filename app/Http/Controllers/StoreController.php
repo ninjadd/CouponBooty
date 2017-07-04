@@ -37,7 +37,7 @@ class StoreController extends Controller
      */
     public function create()
     {
-        $networks = Network::all();
+        $networks = Network::orderBy('name')->get();
         $users = User::all();
 
         return view('store.create', compact('networks', 'users'));
@@ -91,7 +91,7 @@ class StoreController extends Controller
      */
     public function edit(Store $store)
     {
-        $networks = Network::all();
+        $networks = Network::orderBy('name')->get();
         $users = User::all();
 
         return view('store.edit', compact('store', 'networks', 'users'));

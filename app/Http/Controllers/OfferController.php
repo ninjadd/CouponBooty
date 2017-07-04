@@ -42,7 +42,7 @@ class OfferController extends Controller
     {
         $types = Type::all();
         $stores = Store::all();
-        $networks = Network::all();
+        $networks = Network::orderBy('name')->get();
 
         return view('offer.create', compact('types', 'stores', 'networks'));
     }
@@ -129,7 +129,7 @@ class OfferController extends Controller
         $types = Type::all();
         $categories = Category::byOffer($offer->id)->get();
         $stores = Store::all();
-        $networks = Network::all();
+        $networks = Network::orderBy('name')->get();
 
 
         return view('offer.edit', compact('offer', 'types', 'categories', 'stores', 'networks'));

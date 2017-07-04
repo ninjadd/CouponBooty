@@ -24,29 +24,17 @@
                             <thead>
                                 <tr>
                                     <th>Store</th>
-                                    <th width="250px;">Title</th>
-                                    <th>Type</th>
-                                    <th>Created By</th>
-                                    <th>Updated</th>
-                                    <th>Coupon</th>
-                                    <th>Start Date</th>
-                                    <th>End Date</th>
-                                    <th></th>
-                                </tr>
-                            </thead>
-                            <tfoot>
-                                <tr>
-                                    <th>Store</th>
                                     <th>Title</th>
                                     <th>Type</th>
-                                    <th>Updated</th>
-                                    <th>Created</th>
-                                    <th>Updated</th>
-                                    <th>Start Date</th>
-                                    <th>End Date</th>
-                                    <th></th>
+                                    <th width="100px;">Last Modified By</th>
+                                    <th width="125px;">Created Date</th>
+                                    <th>Last Modified</th>
+                                    <th>Coupon</th>
+                                    <th width="60px;">Start Date</th>
+                                    <th width="60px;">End Date</th>
+                                    <th width="75px;"></th>
                                 </tr>
-                            </tfoot>
+                            </thead>
                             @if(count($offers))
                                 <tbody>
                                 @foreach($offers as $offer)
@@ -62,6 +50,9 @@
                                         </td>
                                         <td>
                                             {{ $offer->user->name }}
+                                        </td>
+                                        <td>
+                                            {{ $offer->created_at }}
                                         </td>
                                         <td>
                                             {{ $offer->updated_at->diffForHumans() }}
