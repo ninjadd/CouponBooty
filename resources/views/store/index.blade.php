@@ -12,10 +12,11 @@
             <div class="col-md-12">
 
                 <div class="panel panel-primary">
-                    <div class="panel-heading">
-                        <h3 class="panel-title">
+                    <div class="panel-heading clearfix">
+                        <h3 class="panel-title pull-left">
                             Stores
                         </h3>
+                        <span class="pull-right badge">{{ $stores->count() }}</span>
                     </div>
 
                     <div class="panel-body">

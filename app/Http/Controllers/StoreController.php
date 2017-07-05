@@ -69,6 +69,8 @@ class StoreController extends Controller
         $store->image_url = $request->image_url;
         $store->save();
 
+        Offer::where('store_id', $store->id)->update(['image_url' => $request->image_url]);
+
         return redirect('store')->with('status', 'New Store created I am so proud!');
     }
 
@@ -122,6 +124,8 @@ class StoreController extends Controller
         $store->manager_id = $request->manager_id;
         $store->image_url = $request->image_url;
         $store->save();
+
+        Offer::where('store_id', $store->id)->update(['image_url' => $request->image_url]);
 
         return redirect('store')->with('status', 'Updated Store created I am so proud!');
     }
