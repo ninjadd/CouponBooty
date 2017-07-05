@@ -64,7 +64,7 @@ class OfferController extends Controller
             'store_id' => 'integer'
         ]);
 
-        $store = Store::find($request->store_id)->first();
+        $store = Store::where('id', $request->store_id)->first();
 
         $offer = new Offer();
         $offer->user_id = auth()->id();
@@ -151,7 +151,7 @@ class OfferController extends Controller
             'store_id' => 'integer'
         ]);
 
-        $store = Store::find($request->store_id)->first();
+        $store = Store::where('id', $request->store_id)->first();
 
         $offer->user_id = auth()->id();
         $offer->type_id = $request->type_id;
