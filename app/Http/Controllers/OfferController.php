@@ -61,8 +61,7 @@ class OfferController extends Controller
             'body' => 'required',
             'url' => 'required|url',
             'type_id' => 'required|integer',
-            'store_id' => 'integer',
-            'network_id' => 'integer'
+            'store_id' => 'integer'
         ]);
 
         $store = Store::find($request->store_id)->first();
@@ -76,7 +75,6 @@ class OfferController extends Controller
         $offer->body = $request->body;
         $offer->coupon = $request->coupon;
         $offer->store_id = $request->store_id;
-        $offer->network_id = $request->network_id;
         $offer->start_date = $request->start_date;
         $offer->end_date = $request->end_date;
 
@@ -150,8 +148,7 @@ class OfferController extends Controller
             'body' => 'required',
             'url' => 'required|url',
             'type_id' => 'required|integer',
-            'store_id' => 'integer',
-            'network_id' => 'integer'
+            'store_id' => 'integer'
         ]);
 
         $store = Store::find($request->store_id)->first();
@@ -164,7 +161,6 @@ class OfferController extends Controller
         $offer->body = $request->body;
         $offer->coupon = $request->coupon;
         $offer->store_id = $request->store_id;
-        $offer->network_id = $request->network_id;
         $offer->start_date = $request->start_date;
         $offer->end_date = $request->end_date;
 
