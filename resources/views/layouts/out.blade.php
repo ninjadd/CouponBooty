@@ -41,17 +41,21 @@
 <body>
 
 <div class="section teal lighten-4">
-    <div class="center-align">
+    <div>
         <div class="row">
-            <div class="col s12 l6">
+            <div class="col s3">
+            </div>
+            <div class="col s3">
                 <a href="/" class="brand-logo"><img  style="padding-top: 10px; padding-left: 5px;" height="75" src="{{ asset('images/CouponBooty_Logo_Background_3.png') }}" alt="CouponBooty"></a>
             </div>
-            <div class="input-field col s3 l3">
+            <div class="input-field col s2">
                 <form id="search_text"  action="/results" method="POST"  autocomplete="off">
                     {{ csrf_field() }}
                     <input type="text" id="autocomplete" name="search_text" class="autocomplete" value="">
                     <label for="autocomplete">Search</label>
                 </form>
+            </div>
+            <div class="col s4">
             </div>
         </div>
     </div>

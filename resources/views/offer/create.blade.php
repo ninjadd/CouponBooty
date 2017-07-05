@@ -53,16 +53,19 @@
                                 </div>
 
                                 <div class="form-group">
-                                    <label for="imageUrl" class="col-lg-2 control-label">Image URL</label>
+                                    <label for="storeLable" class="col-lg-2 control-label">Store</label>
                                     <div class="col-lg-10">
-                                        <input required="required"
-                                               name="image_url"
-                                               type="url"
-                                               class="form-control"
-                                               id="imageUrl"
-                                               value="{{ old('image_url') }}"
-                                               placeholder="This is where the URL for the Advertiser's image goes">
-                                        <span class="help-block">This is also required</span>
+                                        <select class="form-control" required="required" name="store_id" id="select">
+                                            @if($stores->count() > 0)
+                                                <option>Select</option>
+                                                @foreach($stores as $store)
+                                                    <option {{ (old('store_id') == $store->id) ? 'selected="selected"' : null }} value="{{ $store->id }}">{{ $store->name }}</option>
+                                                @endforeach
+                                            @else
+                                                <option>Please Create Store First</option>
+                                            @endif
+                                        </select>
+                                        <span class="help-block">Select Store this is required</span>
                                     </div>
                                 </div>
 
@@ -88,23 +91,6 @@
                                             </label>
                                         @endforeach
                                         <span class="help-block">Select one please these are required as well</span>
-                                    </div>
-                                </div>
-
-                                <div class="form-group">
-                                    <label for="storeLable" class="col-lg-2 control-label">Store</label>
-                                    <div class="col-lg-10">
-                                        <select class="form-control" required="required" name="store_id" id="select">
-                                            @if($stores->count() > 0)
-                                                <option>Select</option>
-                                                @foreach($stores as $store)
-                                                    <option {{ (old('store_id') == $store->id) ? 'selected="selected"' : null }} value="{{ $store->id }}">{{ $store->name }}</option>
-                                                @endforeach
-                                            @else
-                                                <option>Please Create Store First</option>
-                                            @endif
-                                        </select>
-                                        <span class="help-block">Select Store to provide some awesome details</span>
                                     </div>
                                 </div>
 

@@ -60,18 +60,19 @@ class OfferController extends Controller
             'title' => 'required',
             'body' => 'required',
             'url' => 'required|url',
-            'image_url' => 'required|url',
             'type_id' => 'required|integer',
             'store_id' => 'integer',
             'network_id' => 'integer'
         ]);
+
+        $store = Store::find($request->store_id)->first();
 
         $offer = new Offer();
         $offer->user_id = auth()->id();
         $offer->type_id = $request->type_id;
         $offer->title = $request->title;
         $offer->url = $request->url;
-        $offer->image_url = $request->image_url;
+        $offer->image_url = $store->image_url;
         $offer->body = $request->body;
         $offer->coupon = $request->coupon;
         $offer->store_id = $request->store_id;
@@ -148,17 +149,18 @@ class OfferController extends Controller
             'title' => 'required',
             'body' => 'required',
             'url' => 'required|url',
-            'image_url' => 'required|url',
             'type_id' => 'required|integer',
             'store_id' => 'integer',
             'network_id' => 'integer'
         ]);
 
+        $store = Store::find($request->store_id)->first();
+
         $offer->user_id = auth()->id();
         $offer->type_id = $request->type_id;
         $offer->title = $request->title;
         $offer->url = $request->url;
-        $offer->image_url = $request->image_url;
+        $offer->image_url = $store->image_url;
         $offer->body = $request->body;
         $offer->coupon = $request->coupon;
         $offer->store_id = $request->store_id;
