@@ -28,10 +28,10 @@
                     @endforeach
                 </ul>
                 <div id="popout">
-                    <ul class="collapsible collapsible-accordion hoverable" data-collapsible="expandable">
+                    <ul class="collapsible popout" data-collapsible="accordion">
                         @foreach($initial_stores as $key => $value)
                             <li>
-                                <div id="{{ $key }}" class="collapsible-header active"><i class="material-icons right">view_list</i>{{ is_int($key) ? '#' : strtoupper($key) }}</div>
+                                <div id="{{ $key }}" class="collapsible-header"><i class="material-icons right">view_list</i>{{ is_int($key) ? '#' : strtoupper($key) }}</div>
                                 <div class="collapsible-body">
                                     <ul>
                                         @for ($i = 0; $i < sizeof($value); $i++)
@@ -52,9 +52,9 @@
 @section('foot');
 <script>
     $(document).ready(function(){
-        $('ul.tabs').tabs('select_tab', 'tab_id');
         $(document).ready(function(){
             $('.collapsible').collapsible();
+            $( ".collapsible div" ).mouseover(function() { $(this).trigger('click'); })
         });
     });
 </script>
