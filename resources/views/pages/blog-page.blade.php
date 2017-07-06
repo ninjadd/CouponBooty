@@ -28,10 +28,10 @@
                         <li>{{ $blog->comments->count() }} comments</li>
                         <li>By {{ config('app.name') }}</li>
                     </ul>
-                    <a href="https://twitter.com/home?status={{ url()->current() }}" target="_blank">
+                    <a href="https://twitter.com/home?status={{ url()->current().'/'.$blog->title_slug }}" target="_blank">
                         <i class="fa fa-twitter-square fa-3x blue-grey-text" aria-hidden="true"></i>
                     </a>
-                    <a href="https://www.facebook.com/sharer/sharer.php?u={{ url()->current() }}" target="_blank">
+                    <a href="https://www.facebook.com/sharer/sharer.php?u={{ url()->current().'/'.$blog->title_slug }}" target="_blank">
                         <i class="fa fa-facebook-square fa-3x blue-grey-text" aria-hidden="true"></i>
                     </a>
                 </div>
