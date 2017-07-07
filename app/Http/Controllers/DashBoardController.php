@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Store;
 use Illuminate\Http\Request;
 use App\Offer;
 use App\Type;
@@ -36,6 +37,8 @@ class DashBoardController extends Controller
 
         $archived = Offer::archive(1)->get();
 
-        return view('dashboard.index', compact('offers', 'archived'));
+        $menuStores = Store::offersFromStores();
+
+        return view('dashboard.index', compact('offers', 'archived', 'menuStores'));
     }
 }

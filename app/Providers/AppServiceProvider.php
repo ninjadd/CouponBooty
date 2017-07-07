@@ -25,10 +25,6 @@ class AppServiceProvider extends ServiceProvider
             $view->with('autoFillKeywords', \App\Category::autoFillKeywords());
         });
 
-        view()->composer('layouts.app', function ($view) {
-            $view->with('keywords', \App\Category::metaKeywords());
-        });
-
         view()->composer('shared.store-nav', function ($view) {
             $view->with('stores', \App\Store::offersFromStores());
         });
