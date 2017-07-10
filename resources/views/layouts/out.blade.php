@@ -26,90 +26,91 @@
         ]) !!};
     </script>
     <style>
-        nav.nav-center ul {
-            text-align: center;
+        .nav-wrapper .input-field input[type=search] {
+            height: 64px;
         }
-        nav.nav-center ul li {
-            display: inline;
-            float: none;
-        }
-        nav.nav-center ul li {
-            display: inline-block;
+        .input-field label {
+            max-height: 64px;
         }
     </style>
 </head>
 <body>
 
 <div class="section teal lighten-4">
-    <div>
+    <div class="container">
         <div class="row">
             <div class="col s3">
-            </div>
-            <div class="col s3">
                 <a href="/" class="brand-logo"><img  style="padding-top: 10px; padding-left: 5px;" height="75" src="{{ asset('images/CouponBooty_Logo_Background_3.png') }}" alt="CouponBooty"></a>
-            </div>
-            <div class="input-field col s2">
-                <form id="search_text"  action="/results" method="POST"  autocomplete="off">
-                    {{ csrf_field() }}
-                    <input type="text" id="autocomplete" name="search_text" class="autocomplete" value="">
-                    <label for="autocomplete">Search</label>
-                </form>
-            </div>
-            <div class="col s4">
             </div>
         </div>
     </div>
 </div>
 
-<nav class="nav-center teal lighten-2">
-    <div class="nav-wrapper">
-        <ul id="dropdown1" class="dropdown-content">
-            @include('shared.store-nav')
-        </ul>
-        <ul id="dropdown2" class="dropdown-content">
-            @include('shared.type-nav')
-        </ul>
-        {{--<a href="/" class="brand-logo"><img style="padding-top: 10px; padding-left: 5px;" height="50" src="{{ asset('images/CouponBooty_Logo_Background_3.png') }}" alt="CouponBooty"></a>--}}
-        <ul class="hide-on-med-and-down">
-            <li><a href="/blog">Blog</a></li>
-            <li><a href="/stores">Stores</a></li>
-            <li>
-                <a class="dropdown-button waves-effect waves-light" href="#!" data-activates="dropdown1">
-                    Shop By Store<i class="material-icons right">arrow_drop_down</i>
-                </a>
-            </li>
-            <li>
-                <a class="dropdown-button waves-effect waves-light" href="#!" data-activates="dropdown2">
-                    Shop By Type<i class="material-icons right">arrow_drop_down</i>
-                </a>
-            </li>
-            <li><a class="fa fa-facebook" aria-hidden="true" href="https://www.facebook.com/CouponBooty/" target="_blank"></a></li>
-            <li><a class="fa fa-twitter" aria-hidden="true" href="https://twitter.com/couponbooty" target="_blank"></a></li>
-            <li><a class="fa fa-instagram" aria-hidden="true" href="https://www.instagram.com/Couponbooty/" target="_blank"></a></li>
-            @if(Auth::user())
-                <li><a href="/dashboard">Dasboard</a></li>
-            @endif
-        </ul>
-        <a href="#" data-activates="mobile-demo" class="button-collapse"><i class="material-icons">menu</i></a>
-        <ul class="side-nav" id="mobile-demo">
-            <li><a href="/">Home</a></li>
-            <li><a href="/stores">Stores</a></li>
-            <li><a href="/blog">Blog</a></li>
-            <li><a href="/about">About Us</a></li>
-            <li><a href="/terms">Terms</a></li>
-            <li><a href="/privacy">Privacy Policy</a></li>
-            <li class="divider"></li>
-            <li><a href="!#">Stores</a></li>
-            <li class="divider"></li>
-            @include('shared.store-nav')
-            <li class="divider"></li>
-            <li><a href="!#">Types</a></li>
-            <li class="divider"></li>
-            @include('shared.type-nav')
-        </ul>
+<nav class="nav-border">
+    <div class="nav-wrapper teal lighten-2">
+        <div class="container">
+
+            <div class="row">
+                <a href="#" data-activates="mobile-menu" class="button-collapse"><i class="material-icons">menu</i></a>
+
+                <div class="col s6 hide-on-med-and-down">
+                    <ul id="dropdown1" class="dropdown-content">
+                        @include('shared.store-nav')
+                    </ul>
+                    <ul id="dropdown2" class="dropdown-content">
+                        @include('shared.type-nav')
+                    </ul>
+                    <ul class="hide-on-med-and-down">
+                        <li><a href="/stores">Stores</a></li>
+                        <li>
+                            <a class="dropdown-button waves-effect waves-light" href="#!" data-activates="dropdown1">
+                                Shop By Store<i class="material-icons right">arrow_drop_down</i>
+                            </a>
+                        </li>
+                        <li>
+                            <a class="dropdown-button waves-effect waves-light" href="#!" data-activates="dropdown2">
+                                Shop By Type<i class="material-icons right">arrow_drop_down</i>
+                            </a>
+                        </li>
+                        <li><a href="/blog">Blog</a></li>
+                        @if(Auth::user())
+                            <li><a href="/dashboard">Dasboard</a></li>
+                        @endif
+                    </ul>
+                </div>
+
+                <div class="right col s6 hide-on-med-and-down">
+                    <form id="search_text"  action="/results" method="POST"  autocomplete="off">
+                        {{ csrf_field() }}
+                        <div class="input-field">
+                            <input class="search" id="search" type="search" name="search_text" required>
+                            <label class="label-icon" for="search"><i class="material-icons">search</i>
+                            </label>
+                        </div>
+                    </form>
+                </div>
+            </div>
+
+            <ul class="side-nav" id="mobile-menu">
+                <li><a href="/">Home</a></li>
+                <li><a href="/stores">Stores</a></li>
+                <li><a href="/blog">Blog</a></li>
+                <li><a href="/about">About Us</a></li>
+                <li><a href="/terms">Terms</a></li>
+                <li><a href="/privacy">Privacy Policy</a></li>
+                <li class="divider"></li>
+                <li><a href="!#">Stores</a></li>
+                <li class="divider"></li>
+                @include('shared.store-nav')
+                <li class="divider"></li>
+                <li><a href="!#">Types</a></li>
+                <li class="divider"></li>
+                @include('shared.type-nav')
+            </ul>
+
+        </div>
     </div>
 </nav>
-
 
 @yield('content')
 
@@ -152,14 +153,14 @@
 <script>
     $(document).ready(function() {
         $('.button-collapse').sideNav({
-                menuWidth: 150, // Default is 300
+                menuWidth: 300, // Default is 300
                 edge: 'left', // Choose the horizontal origin
                 closeOnClick: true, // Closes side-nav on <a> clicks, useful for Angular/Meteor
                 draggable: true // Choose whether you can drag to open on touch screens,
             }
         );
 
-        $('input.autocomplete').autocomplete({
+        $('input.search').autocomplete({
             data: {
                 @foreach($autoFillKeywords as $autoFillKeyword)
                     {!!   '"'.$autoFillKeyword.'" : null,' !!}

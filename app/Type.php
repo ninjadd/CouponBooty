@@ -37,6 +37,6 @@ class Type extends Model
 
     public static function typesForMenu()
     {
-        return static::all();
+        return static::orderBy('label')->get();
     }
 }

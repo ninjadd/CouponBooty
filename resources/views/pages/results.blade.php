@@ -17,9 +17,9 @@
 
     <div class="container">
         <div class="row">
-            <blockquote>
+            <h3 class="teal-text text-darken-3">
                 Total results for <strong class="red-text">{{ $request->search_text }}</strong> {{ $offers->count() }}
-            </blockquote>
+            </h3>
         </div>
         <div class="row">
             @include('shared.offer-cards')

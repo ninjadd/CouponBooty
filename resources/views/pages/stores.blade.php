@@ -16,9 +16,9 @@
 @section('content')
     <div class="container">
         <div class="row">
-            <blockquote>
-                <h3>Stores</h3>
-            </blockquote>
+            <h3 class="teal-text text-darken-3">
+                Stores
+            </h3>
         </div>
         <div class="row">
             <div class="col s12">
@@ -27,35 +27,22 @@
                         <li class="waves-effect hoverable"><a href="#{{ $key }}">{{ is_int($key) ? '#' : strtoupper($key) }}</a></li>
                     @endforeach
                 </ul>
-                <div id="popout">
-                    <ul class="collapsible popout" data-collapsible="accordion">
+                <div>
+                    <ul class="collection">
                         @foreach($initial_stores as $key => $value)
-                            <li>
-                                <div id="{{ $key }}" class="collapsible-header"><i class="material-icons right">view_list</i>{{ is_int($key) ? '#' : strtoupper($key) }}</div>
-                                <div class="collapsible-body">
-                                    <ul>
-                                        @for ($i = 0; $i < sizeof($value); $i++)
-                                            <li><i class="fa fa-dot-circle-o" aria-hidden="true"></i> <a href="/view/{{ $value[$i]['slug'] }}">{{ $value[$i]['name'] }}</a></li>
-                                        @endfor
-                                    </ul>
-                                </div>
-                            </li>
+                        <li class="collection-item avatar">
+                            <i class="material-icons circle">view_list</i>
+                            <span class="title">{{ is_int($key) ? '#' : strtoupper($key) }}</span>
+                            <ul id="{{ $key }}">
+                                @for ($i = 0; $i < sizeof($value); $i++)
+                                    <li><a href="/view/{{ $value[$i]['slug'] }}">{{ $value[$i]['name'] }}</a></li>
+                                @endfor
+                            </ul>
+                        </li>
                         @endforeach
                     </ul>
                 </div>
-
             </div>
         </div>
     </div>
-@endsection
-
-@section('foot');
-<script>
-    $(document).ready(function(){
-        $(document).ready(function(){
-            $('.collapsible').collapsible();
-            $( ".collapsible div" ).mouseover(function() { $(this).trigger('click'); })
-        });
-    });
-</script>
 @endsection
