@@ -31,6 +31,8 @@ Route::post('send', 'PageController@sendMessage');
 
 Route::get('stores', 'PageController@viewStores');
 
+Route::get('expiring', 'PageController@viewExpiring');
+
 // Sluggers
 Route::get('view/{slug}', 'PageController@viewSlug');
 

@@ -47,6 +47,13 @@ class PageController extends Controller
         }
     }
 
+    public function viewExpiring()
+    {
+        $offers = Offer::where('archive', 0)->whereNotNull('end_date')->orderBy('end_date')->get();
+
+        return view('pages.expiring', compact('offers'));
+    }
+
     public function viewSlug($slug)
     {
         // check stores first

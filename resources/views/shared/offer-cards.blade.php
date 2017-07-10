@@ -29,6 +29,10 @@
                     <a class="waves-effect waves-light btn deep-orange" href="{{ $offer->url }}" target="_blank">Get Deal</a>
                     <p>{{ strip_tags($offer->body) }}</p>
                 @endif
+                @if($offer->end_date)
+                    <p>Ends: {{ $offer->end_date }}</p>
+                @endif
+
                 <a href="https://twitter.com/home?status={{ urlencode($offer->url) }}" target="_blank">
                     <i class="fa fa-twitter-square fa-2x blue-grey-text" aria-hidden="true"></i>
                 </a>
