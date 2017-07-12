@@ -93,16 +93,10 @@ class PageController extends Controller
     public function viewStores()
     {
         $initials = Store::selectRaw('DISTINCT SUBSTRING(name,1,1) as initial')->orderBy('initial')->get();
-        foreach ($initials as $initial) {
-            $initial_stores[$initial->initial] = Store::where('name', 'like', $initial->initial.'%')->get()->toArray();
-        }
 
-//        $stores = Store::orderBy('name')->get();
-//        foreach ($stores as $store) {
-//            return $store->offers->count();
-//        }
+        $stores = new Store();
 
-        return view('pages.stores', compact( 'initial_stores'));
+        return view('pages.stores', compact( 'stores', 'initials'));
     }
 
     /**

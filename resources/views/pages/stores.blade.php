@@ -23,26 +23,46 @@
         <div class="row">
             <div class="col s12">
                 <ul class="pagination">
-                    @foreach($initial_stores as $key => $value)
-                        <li class="waves-effect hoverable"><a href="#{{ $key }}">{{ is_int($key) ? '#' : strtoupper($key) }}</a></li>
+                    @foreach($initials as $initial)
+                        <li class="waves-effect hoverable"><a href="#{{ (is_numeric($initial->initial)) ? '09' : strtoupper($initial->initial) }}">{{ (is_numeric($initial->initial)) ? '#' : strtoupper($initial->initial) }}</a></li>
                     @endforeach
                 </ul>
-                <div>
-                    <ul class="collection">
-                        @foreach($initial_stores as $key => $value)
-                        <li class="collection-item avatar">
-                            <i class="material-icons circle">view_list</i>
-                            <span class="title">{{ is_int($key) ? '#' : strtoupper($key) }}</span>
-                            <ul id="{{ $key }}">
-                                @for ($i = 0; $i < sizeof($value); $i++)
-                                    <li><a href="/view/{{ $value[$i]['slug'] }}">{{ $value[$i]['name'] }}</a></li>
-                                @endfor
-                            </ul>
-                        </li>
-                        @endforeach
-                    </ul>
-                </div>
             </div>
         </div>
+
+        @if($stores->byNumeric()->count() > 0)
+            <div class="row">
+                <div class="divider"></div>
+                <div class="section">
+                    <h5>#</h5>
+                    @foreach($stores->byNumeric()->get() as $store)
+                        <div class="col s3">
+                            {{ $store->name }}
+                        </div>
+                    @endforeach
+                </div>
+            </div>
+        @endif
+
+        @foreach(range('A', 'Z') as $item)
+            @if($stores->byAlpha($item)->count() > 0)
+                <div class="row">
+                    <div class="divider"></div>
+                    <div id="{{ $item }}" class="section">
+                        <h5>{{ $item }}</h5>
+                        @foreach($stores->byAlpha($item)->get() as $store)
+                            <p>
+                                <span class="col s3"><a href="/view/{{ $store->slug }}">{{ $store->name }} ({{ $store->offers->count() }})</a></span>
+                            </p>
+                        @endforeach
+                    </div>
+                </div>
+            @endif
+        @endforeach
+
+        <div class="row">
+            <div class="divider"></div>
+        </div>
+
     </div>
 @endsection

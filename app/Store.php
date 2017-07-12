@@ -72,6 +72,27 @@ class Store extends Model
         return $query->where('slug', $slug);
     }
 
+    public function scopeByNumeric($query)
+    {
+        return $query
+            ->orWhere('name', 'like', '0%')
+            ->orWhere('name', 'like', '1%')
+            ->orWhere('name', 'like', '2%')
+            ->orWhere('name', 'like', '3%')
+            ->orWhere('name', 'like', '4%')
+            ->orWhere('name', 'like', '5%')
+            ->orWhere('name', 'like', '6%')
+            ->orWhere('name', 'like', '7%')
+            ->orWhere('name', 'like', '8%')
+            ->orWhere('name', 'like', '9%')
+            ->orderBy('name');
+    }
+
+    public function scopeByAlpha($query, $character)
+    {
+        return $query->where('name', 'like', $character.'%')->orderBy('name');
+    }
+
     public function network()
     {
         return $this->belongsTo('App\Network');
