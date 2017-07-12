@@ -36,7 +36,7 @@
                 <div id="09" class="section">
                     <h5>#</h5>
                     @foreach($stores->byNumeric()->get() as $store)
-                        <div class="col s3">
+                        <div>
                             <span class="col s3"><a href="/view/{{ $store->slug }}">{{ $store->name }} ({{ $store->offers->count() }})</a></span>
                         </div>
                     @endforeach
