@@ -16,9 +16,10 @@
 @section('content')
     <div class="container">
         <div class="row">
-            <h3 class="teal-text text-darken-3">
-                Total Expiriing offers {{ $offers->count() }}
-            </h3>
+            <h2 class="teal-text text-darken-3">Expiring Soon Coupons &amp; Promo Codes</h2>
+            <p class="teal-text text-darken-3">
+                Total Expiriing offers <span class="red-text">{{ $offers->count() }}</span>
+            </p>
         </div>
         <div class="row">
             @include('shared.offer-cards')

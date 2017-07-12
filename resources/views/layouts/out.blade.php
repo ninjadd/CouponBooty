@@ -49,11 +49,10 @@
 <nav class="nav-border">
     <div class="nav-wrapper teal lighten-2">
         <div class="container">
-
+            <a href="#" data-activates="mobile-menu" class="button-collapse"><i class="material-icons">menu</i></a>
             <div class="row">
-                <a href="#" data-activates="mobile-menu" class="button-collapse"><i class="material-icons">menu</i></a>
 
-                <div class="col s6 hide-on-med-and-down">
+                <div class="col s8 hide-on-med-and-down">
                     <ul id="dropdown1" class="dropdown-content">
                         @include('shared.store-nav')
                     </ul>
@@ -72,6 +71,7 @@
                                 Shop By Type<i class="material-icons right">arrow_drop_down</i>
                             </a>
                         </li>
+                        <li><a href="/expiring">Expiring Soon<span class="new badge deep-orange"></span></a></li>
                         <li><a href="/blog">Blog</a></li>
                         @if(Auth::user())
                             <li><a href="/dashboard">Dasboard</a></li>
@@ -79,13 +79,12 @@
                     </ul>
                 </div>
 
-                <div class="right col s6 hide-on-med-and-down">
+                <div class="right col s4 hide-on-med-and-down">
                     <form id="search_text"  action="/results" method="POST"  autocomplete="off">
                         {{ csrf_field() }}
                         <div class="input-field">
                             <input class="search" id="search" type="search" name="search_text" required>
-                            <label class="label-icon" for="search"><i class="material-icons">search</i>
-                            </label>
+                            <label class="label-icon" for="search"><i class="material-icons">search</i></label>
                         </div>
                     </form>
                 </div>
@@ -94,6 +93,7 @@
             <ul class="side-nav" id="mobile-menu">
                 <li><a href="/">Home</a></li>
                 <li><a href="/stores">Stores</a></li>
+                <li><a href="/expiring">Expiring Soon<span class="new badge deep-orange"></span></a></li>
                 <li><a href="/blog">Blog</a></li>
                 <li><a href="/about">About Us</a></li>
                 <li><a href="/terms">Terms</a></li>

@@ -15,33 +15,6 @@
 
 @section('content')
     <div class="container">
-        <div class="row">
-            <h3 class="teal-text text-darken-3">Expiring Soon</h3>
-        </div>
-
-        <div class="row">
-            <div class="carousel carousel-slider center" data-indicators="true">
-                <div class="carousel-fixed-item">
-                    <a href="/expiring" class="btn waves-effect deep-orange white-text darken-text-2">View Expiring Offers</a>
-                </div>
-                @foreach($end_offers as $end_offer)
-                    <div class="carousel-item teal darken-3 white-text" href="">
-                        <h2>{{ $end_offer->title }}</h2>
-                        <p class="white-text">
-                            {{ strip_tags($end_offer->body) }}
-                        </p>
-                        <p class="white-text">
-                            @if($end_offer->coupont)
-                                Code: {{ $end_offer->coupon }}<br>
-                            @endif
-                            Expires: {{ $end_offer->end_date }}
-                        </p>
-                    </div>
-                @endforeach
-            </div>
-        </div>
-
-        <div class="divider"></div>
 
         <div class="row">
             <h3 class="teal-text text-darken-3">Most Recent Deals</h3>
@@ -54,15 +27,4 @@
         </div>
         {{ $offers->links('shared.pager') }}
     </div>
-@endsection
-
-@section('foot')
-    <script>
-        $(document).ready(function() {
-            $('.carousel.carousel-slider').carousel({
-                fullWidth: true,
-                duration: 100
-            });
-        });
-    </script>
 @endsection

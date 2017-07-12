@@ -97,6 +97,11 @@ class PageController extends Controller
             $initial_stores[$initial->initial] = Store::where('name', 'like', $initial->initial.'%')->get()->toArray();
         }
 
+//        $stores = Store::orderBy('name')->get();
+//        foreach ($stores as $store) {
+//            return $store->offers->count();
+//        }
+
         return view('pages.stores', compact( 'initial_stores'));
     }
 
