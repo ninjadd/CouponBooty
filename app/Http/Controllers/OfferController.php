@@ -106,7 +106,7 @@ class OfferController extends Controller
             }
         }
 
-        return redirect('dashboard')->with('status', 'Offer created!');
+        return back()->with('status', 'Offer created!');
     }
 
     /**
@@ -199,7 +199,9 @@ class OfferController extends Controller
             }
         }
 
-        return redirect('dashboard')->with('status', 'Offer #'. $offer->id . ' updated!');
+        return redirect()
+            ->action('StoreController@edit', ['id' => $store->id])
+            ->with('status', 'Offer #'. $offer->id . ' updated!');
     }
 
 

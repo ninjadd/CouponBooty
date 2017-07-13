@@ -52,7 +52,7 @@ class Store extends Model
      */
     public function offers()
     {
-        return $this->hasMany('App\Offer');
+        return $this->hasMany('App\Offer')->orderBy('updated_at', 'desc');
     }
 
     public static function offersFromStores()
