@@ -67,6 +67,7 @@ class StoreController extends Controller
         $store->network_id = $request->network_id;
         $store->manager_id = $request->manager_id;
         $store->image_url = $request->image_url;
+        $store->categories = $request->categories;
         $store->save();
 
         Offer::where('store_id', $store->id)->update(['image_url' => $request->image_url]);
@@ -123,6 +124,7 @@ class StoreController extends Controller
         $store->network_id = $request->network_id;
         $store->manager_id = $request->manager_id;
         $store->image_url = $request->image_url;
+        $store->categories = $request->categories;
         $store->save();
 
         Offer::where('store_id', $store->id)->update(['image_url' => $request->image_url]);

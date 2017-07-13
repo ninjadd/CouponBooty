@@ -80,8 +80,14 @@ class OfferController extends Controller
 
         $offer->save();
 
-        if (!empty($request->categories)) {
+        if (empty($store->categories)) {
             $categories = $request->categories;
+        } else {
+            $categories = $store->categories;
+        }
+
+
+        if (!empty($categories)) {
             if (str_contains($categories, ',')) {
                 $cats = explode(',', $categories);
                 foreach ($cats as $cat) {

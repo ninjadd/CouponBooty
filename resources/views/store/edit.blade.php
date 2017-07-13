@@ -71,6 +71,17 @@
                                     also not required but again could be useful
                                 </span>
                             </div>
+                            <div class="form-group">
+                                <label for="storeCategories" >Categories</label>
+                                <textarea
+                                        name="categories"
+                                        class="form-control"
+                                        rows="3"
+                                        placeholder="Comma separated for more than one"
+                                        id="storeCategories">{{ $store->categories }}</textarea>
+                                <span class="help-block">This will fill as default for offers only on new or empty</span>
+                            </div>
+
 
                             <button type="submit" class="btn btn-success">Update</button>
                         </form>
