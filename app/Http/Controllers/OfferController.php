@@ -57,7 +57,7 @@ class OfferController extends Controller
     {
 
         $this->validate($request, [
-            'title' => 'required',
+            'title' => 'required|max:50',
             'body' => 'required',
             'url' => 'required|url',
             'type_id' => 'required|integer',
@@ -86,17 +86,16 @@ class OfferController extends Controller
             $categories = $store->categories;
         }
 
-
         if (!empty($categories)) {
             if (str_contains($categories, ',')) {
                 $cats = explode(',', $categories);
                 foreach ($cats as $cat) {
                     $cat = trim($cat);
                     if (!empty($cat)) {
-                        $category = new Category();
-                        $category->offer_id = $offer->id;
-                        $category->name = $cat;
-                        $category->save();
+                        Category::updateOrCreate(
+                            ['offer_id' => $offer->id],
+                            ['name' => $cat]
+                        );
                     }
                 }
             } else {
@@ -150,7 +149,7 @@ class OfferController extends Controller
     public function update(Request $request, Offer $offer)
     {
         $this->validate($request, [
-            'title' => 'required',
+            'title' => 'required|max:50',
             'body' => 'required',
             'url' => 'required|url',
             'type_id' => 'required|integer',
@@ -172,17 +171,24 @@ class OfferController extends Controller
 
         $offer->save();
 
-        if (!empty($request->categories)) {
+        if ((empty($store->categories)) && (!empty($request->categories))) {
             $categories = $request->categories;
+        }
+
+        if ((!empty($store->categories)) && (empty($request->categories))) {
+            $categories = $store->categories;
+        }
+
+        if (!empty($categories)) {
             if (str_contains($categories, ',')) {
                 $cats = explode(',', $categories);
                 foreach ($cats as $cat) {
                     $cat = trim($cat);
                     if (!empty($cat)) {
-                        $category = new Category();
-                        $category->offer_id = $offer->id;
-                        $category->name = $cat;
-                        $category->save();
+                        Category::updateOrCreate(
+                            ['offer_id' => $offer->id],
+                            ['name' => $cat]
+                        );
                     }
                 }
             } else {

@@ -7,6 +7,23 @@ use Illuminate\Database\Eloquent\Model;
 class Category extends Model
 {
     /**
+     * The attributes that are mass assignable.
+     *
+     * @var array
+     */
+    protected $fillable = [
+        'offer_id',
+        'name'
+    ];
+
+    /**
+     * The attributes that should be hidden for arrays.
+     *
+     * @var array
+     */
+    protected $hidden = [];
+
+    /**
      * @param $query
      * @param $id
      */

@@ -199,7 +199,7 @@
             });
             $('input.counter').textcounter({
                 type: "character",
-                max: 100,
+                max: 50,
                 countDown: true,
                 countSpaces: true,
                 stopInputAtMaximum: true,
