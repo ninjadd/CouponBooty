@@ -71,7 +71,7 @@
                                 Shop By Type<i class="material-icons right">arrow_drop_down</i>
                             </a>
                         </li>
-                        <li><a href="/expiring">Expiring Soon<span class="new badge deep-orange"></span></a></li>
+                        <li><a href="/expiring">Expiring Soon</a></li>
                         <li><a href="/blog">Blog</a></li>
                         @if(Auth::user())
                             <li><a href="/dashboard">Dasboard</a></li>
