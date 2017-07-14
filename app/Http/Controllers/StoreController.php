@@ -143,7 +143,7 @@ class StoreController extends Controller
      */
     public function destroy(Store $store)
     {
-        Offer::where('store_id', $store->id)->update(['store_id' => null]);
+        Offer::where('store_id', $store->id)->delete();
 
         $store->delete();
 

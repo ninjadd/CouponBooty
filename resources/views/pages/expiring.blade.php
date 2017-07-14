@@ -16,9 +16,9 @@
 @section('content')
     <div class="container">
         <div class="row">
-            <h2 class="teal-text text-darken-3">Expiring Soon Coupons &amp; Promo Codes</h2>
+            <h2 class="teal-text text-darken-3">Offers Expiring Soon</h2>
             <p class="teal-text text-darken-3">
-                Total Expiriing offers <span class="red-text">{{ $offers->count() }}</span>
+                Total Expiring offers <span class="red-text">{{ $offers->count() }}</span>
             </p>
         </div>
         <div class="row">

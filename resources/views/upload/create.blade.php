@@ -18,13 +18,24 @@
                     <form action="/upload/{{ $network->id }}" method="POST" enctype="multipart/form-data">
                         {{ csrf_field() }}
                         <div class="form-group">
+                            <label for="networkStores">{{ $network->name }} Stores</label>
+                            <select class="form-control" required="required" name="store_id" id="networkStores">
+                                <option>Select Store</option>
+                                @foreach($stores as $store)
+                                    <option {{ (old('store_id') == $store->id) ? 'selected="selected"' : null }} value="{{ $store->id }}">{{ $store->name }}</option>
+                                @endforeach
+                            </select>
+                            <span class="help-block">A required field</span>
+                        </div>
+                        <div class="form-group">
                             <label class="control-label">Upload CSV</label>
                             <div class="input-group">
                                 <input type="file" name="csv_file" class="form-control">
-                                <span class="input-group-btn">
-                                  <button class="btn btn-primary" type="submit">Upload</button>
-                                </span>
                             </div>
+                            <span class="help-block">A required field</span>
+                        </div>
+                        <div class="form-group">
+                            <button class="btn btn-primary" type="submit">Upload</button>
                         </div>
                     </form>
                 </div>

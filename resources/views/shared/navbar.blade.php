@@ -15,7 +15,7 @@
                         <li><a href="/dashboard?filter=archived">Archived Offers</a></li>
                         <li><a href="/dashboard?filter=staged">Staged Offers</a></li>
                         <li role="separator" class="divider"></li>
-                        {{--<li><a href="/upload/1">CommissionJunction Upload</a></li>--}}
+                        <li><a href="/upload/1">CommissionJunction Upload</a></li>
                         <li role="separator" class="divider"></li>
                         <li><a href="/offer/csv">Offers Download</a></li>
                         <li role="separator" class="divider"></li>

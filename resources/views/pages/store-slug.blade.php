@@ -17,7 +17,7 @@
 
     <div class="container">
         <div class="row">
-            <h2 class="teal-text text-darken-3">{{ $store->name }} Coupons &amp; Deals</h2>
+            <h2 class="teal-text text-darken-3">{{ $store->name }} Offers</h2>
             <p class="teal-text text-darken-3">
                 Most Recent Deals <span class="red-text">{{ $offers->count() }}</span>
             </p>

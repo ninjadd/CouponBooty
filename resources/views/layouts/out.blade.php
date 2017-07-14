@@ -93,7 +93,7 @@
             <ul class="side-nav" id="mobile-menu">
                 <li><a href="/">Home</a></li>
                 <li><a href="/stores">Stores</a></li>
-                <li><a href="/expiring">Expiring Soon<span class="new badge deep-orange"></span></a></li>
+                <li><a href="/expiring">Expiring Soon</span></a></li>
                 <li><a href="/blog">Blog</a></li>
                 <li><a href="/about">About Us</a></li>
                 <li><a href="/terms">Terms</a></li>
