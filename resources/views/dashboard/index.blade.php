@@ -82,8 +82,10 @@
                                                         <a href="/offer/archive/{{ $offer->id }}" class="btn btn-warning btn-xs"  data-toggle="tooltip" title="Archive Offer">
                                                             <span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
                                                         </a>
-                                                    @else
-                                                        <a href="/offer/archive/{{ $offer->id }}" class="btn btn-info btn-xs"  data-toggle="tooltip" title="Un-Archive Offer">
+                                                    @endif
+
+                                                    @if(($offer->archive == 1))
+                                                        <a href="/offer/archive/{{ $offer->id }}" class="btn btn-info btn-xs"  data-toggle="tooltip" title="Activate Offer">
                                                             <span class="glyphicon glyphicon-ok" aria-hidden="true"></span>
                                                         </a>
                                                     @endif

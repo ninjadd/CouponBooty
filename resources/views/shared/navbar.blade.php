@@ -11,12 +11,15 @@
                         <span class="caret"></span>
                     </a>
                     <ul class="dropdown-menu">
-                        <li><a href="/offer">All Offers</a></li>
+                        <li><a href="/dashboard">All Offers</a></li>
+                        <li><a href="/dashboard?filter=archived">Archived Offers</a></li>
+                        <li><a href="/dashboard?filter=staged">Staged Offers</a></li>
                         <li role="separator" class="divider"></li>
-                        <li><a href="/dashboard">Un-Archived Offers</a></li>
-                        <li><a href="/dashboard?archive=1">Archived Offers</a></li>
+                        {{--<li><a href="/upload/1">CommissionJunction Upload</a></li>--}}
                         <li role="separator" class="divider"></li>
                         <li><a href="/offer/csv">Offers Download</a></li>
+                        <li role="separator" class="divider"></li>
+                        <li><a href="/offer">Offers Index</a></li>
                     </ul>
                 </li>
             </ul>
@@ -61,6 +64,12 @@
             {{--</ul>--}}
 
             <ul class="nav navbar-nav navbar-right">
+                {{--<li>--}}
+                    {{--<a href="/offer/create">--}}
+                        {{--New Offer--}}
+                        {{--<span class="glyphicon glyphicon-plus" aria-hidden="true"></span>--}}
+                    {{--</a>--}}
+                {{--</li>--}}
                 <li>
                     <a href="/type/create">
                         New Type

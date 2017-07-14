@@ -25,14 +25,18 @@ class DashBoardController extends Controller
      */
     public function index(Request $request)
     {
-        $archive = $request->archive;
+        $filter = $request->filter;
 
-        if (empty($archive)) {
+        if (empty($filter)) {
             $offers = Offer::archive(0)->get();
         }
 
-        if ($archive == 1) {
-            $offers = Offer::archive($archive)->get();
+        if ($filter == 'archived') {
+            $offers = Offer::archive(1)->get();
+        }
+
+        if ($filter == 'staged') {
+            $offers = Offer::archive(2)->get();
         }
 
         $archived = Offer::archive(1)->get();

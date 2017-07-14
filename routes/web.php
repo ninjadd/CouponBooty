@@ -135,3 +135,8 @@ Route::get('store/{store}/edit', 'StoreController@edit');
 Route::put('store/{store}', 'StoreController@update');
 
 Route::delete('store/{store}', 'StoreController@destroy');
+
+// Upload Routes
+Route::get('upload/{network}', 'UploadController@create');
+
+Route::post('upload/{network}', 'UploadController@store');

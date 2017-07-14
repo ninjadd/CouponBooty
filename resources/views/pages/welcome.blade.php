@@ -15,7 +15,6 @@
 
 @section('content')
     <div class="container">
-
         <div class="row">
             <h3 class="teal-text text-darken-3">Most Recent Deals</h3>
         </div>
