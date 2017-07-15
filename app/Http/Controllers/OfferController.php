@@ -92,10 +92,10 @@ class OfferController extends Controller
                 foreach ($cats as $cat) {
                     $cat = trim($cat);
                     if (!empty($cat)) {
-                        Category::updateOrCreate(
-                            ['offer_id' => $offer->id],
-                            ['name' => $cat]
-                        );
+                        $catIn = new Category();
+                        $catIn->offer_id = $offer->id;
+                        $catIn->name = $cat;
+                        $catIn->save();
                     }
                 }
             } else {
@@ -134,9 +134,11 @@ class OfferController extends Controller
         $categories = Category::byOffer($offer->id)->get();
         $stores = Store::all();
         $networks = Network::orderBy('name')->get();
+        $catStore = Store::where('id', $offer->store_id)->first();
+        $cats = $catStore->categories;
 
 
-        return view('offer.edit', compact('offer', 'types', 'categories', 'stores', 'networks'));
+        return view('offer.edit', compact('offer', 'types', 'categories', 'cats', 'stores', 'networks'));
     }
 
     /**
@@ -171,13 +173,7 @@ class OfferController extends Controller
 
         $offer->save();
 
-        if ((empty($store->categories)) && (!empty($request->categories))) {
-            $categories = $request->categories;
-        }
-
-        if ((!empty($store->categories)) && (empty($request->categories))) {
-            $categories = $store->categories;
-        }
+        $categories = $request->categories;
 
         if (!empty($categories)) {
             if (str_contains($categories, ',')) {
@@ -185,10 +181,10 @@ class OfferController extends Controller
                 foreach ($cats as $cat) {
                     $cat = trim($cat);
                     if (!empty($cat)) {
-                        Category::updateOrCreate(
-                            ['offer_id' => $offer->id],
-                            ['name' => $cat]
-                        );
+                        $catIn = new Category();
+                        $catIn->offer_id = $offer->id;
+                        $catIn->name = $cat;
+                        $catIn->save();
                     }
                 }
             } else {

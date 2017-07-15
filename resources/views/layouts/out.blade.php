@@ -99,11 +99,11 @@
                 <li><a href="/terms">Terms</a></li>
                 <li><a href="/privacy">Privacy Policy</a></li>
                 <li class="divider"></li>
-                <li><a href="!#">Stores</a></li>
+                <li><a href="#">Stores</a></li>
                 <li class="divider"></li>
                 @include('shared.store-nav')
                 <li class="divider"></li>
-                <li><a href="!#">Types</a></li>
+                <li><a href="#">Types</a></li>
                 <li class="divider"></li>
                 @include('shared.type-nav')
             </ul>

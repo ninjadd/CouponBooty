@@ -132,7 +132,9 @@ class StoreController extends Controller
 
         Offer::where('store_id', $store->id)->update(['image_url' => $request->image_url]);
 
-        return redirect('store')->with('status', 'Updated Store created I am so proud!');
+        return redirect()
+            ->action('StoreController@edit', ['id' => $store->id])
+            ->with('status', 'Updated Store created I am so proud!');
     }
 
     /**
@@ -188,10 +190,10 @@ class StoreController extends Controller
                 foreach ($cats as $cat) {
                     $cat = trim($cat);
                     if (!empty($cat)) {
-                        Category::updateOrCreate(
-                            ['offer_id' => $offer->id],
-                            ['name' => $cat]
-                        );
+                        $catIn = new Category();
+                        $catIn->offer_id = $offer->id;
+                        $catIn->name = $cat;
+                        $catIn->save();
                     }
                 }
             } else {

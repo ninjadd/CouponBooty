@@ -123,7 +123,7 @@
                                                 class="form-control"
                                                 rows="3"
                                                 placeholder="Add more here delete them below still comma separated please"
-                                                id="offerCategories"></textarea>
+                                                id="offerCategories">{{ ($categories->count() == 0) ? $cats : null }}</textarea>
                                         <span class="help-block">This will help with search and filtering later on</span>
                                     </div>
                                 </div>
