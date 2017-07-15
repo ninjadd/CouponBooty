@@ -86,7 +86,7 @@ class UploadController extends Controller
             }
         }
 
-        return $network;
+        return back();
     }
 
 }
