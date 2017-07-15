@@ -18,7 +18,7 @@
                         <span class="badge pull-right">{{ $offers->count() }}</span>
                     </div>
 
-                    <span class="panel-body">
+                    <div class="panel-body">
 
                         <table class="table table-striped table-bordered table-condensed" cellspacing="0" width="100%">
                             <thead>
@@ -67,7 +67,7 @@
                                             {{ (!empty($offer->end_date)) ? $offer->end_date : '' }}
                                         </td>
                                         <td>
-                                            <span class="hidden" ">{{ $offer->id }}</span>
+                                            <span class="hidden" ">{{ $offer->id }}</div>
                                             <form action="/offer/{{ $offer->id }}" method="POST">
                                                 <div class="btn-group" role="group" aria-label="...">
                                                 <a href="/offer/{{ $offer->id }}" type="button" class="btn btn-default btn-xs" data-toggle="tooltip" title="View Offer">
