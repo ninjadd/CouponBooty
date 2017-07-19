@@ -17,10 +17,7 @@
 
     <div class="container">
         <div class="row">
-            <h2 class="teal-text text-darken-3">{{ $type->label }} Offers</h2>
-            <p class="teal-text text-darken-3">
-                Most Recent Deals <span class="red-text">{{ $offers->count() }}</span>
-            </p>
+            <h4 class="teal-text text-darken-3">{{ $type->label }} Offers</h4>
         </div>
 
         <div class="row">

@@ -30,7 +30,7 @@
                     <p>{{ strip_tags($offer->body) }}</p>
                 @endif
                 @if($offer->end_date)
-                    <p>Ends: {{ $offer->end_date }}</p>
+                    <p>Expires: {{ $offer->end_date->format('m/d/Y') }}</p>
                 @endif
 
                 <a href="https://twitter.com/home?status={{ urlencode($offer->url) }}" target="_blank">

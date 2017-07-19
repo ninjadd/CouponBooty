@@ -14,7 +14,7 @@ class Offer extends Model
      *
      * @var array
      */
-    protected $dates = ['deleted_at'];
+    protected $dates = ['deleted_at', 'end_date', 'start_date'];
 
     /**
      * The attributes that are mass assignable.

@@ -129,7 +129,7 @@
                                                class="form-control"
                                                id="startDate"
                                                value="{{ old('start_date') }}"
-                                               placeholder="YYYY-MM-DD">
+                                               placeholder="MM/DD/YYYY">
                                         <span class="help-block">Not required. I think it will help us better manage our coupons so we only have active ones. We don’t want AdAssured coming after us.</span>
                                     </div>
                                 </div>
@@ -142,7 +142,7 @@
                                                class="form-control"
                                                id="endDate"
                                                value="{{ old('end_date') }}"
-                                               placeholder="YYYY-MM-DD">
+                                               placeholder="MM/DD/YYYY">
                                         <span class="help-block">Not required. I think it will help us better manage our coupons so we only have active ones. We don’t want AdAssured coming after us.</span>
                                     </div>
                                 </div>
@@ -166,10 +166,10 @@
                 height:300
             });
             $('#startDate').datepicker({
-                dateFormat: "yy-mm-dd"
+                dateFormat: "mm/dd/yy"
             });
             $('#endDate').datepicker({
-                dateFormat: "yy-mm-dd"
+                dateFormat: "mm/dd/yy"
             });
             $('input.counter').textcounter({
                 type: "character",

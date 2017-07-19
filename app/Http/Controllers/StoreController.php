@@ -173,8 +173,8 @@ class StoreController extends Controller
         $offer->body = $request->body;
         $offer->coupon = $request->coupon;
         $offer->store_id = $request->store_id;
-        $offer->start_date = $request->start_date;
-        $offer->end_date = $request->end_date;
+        $offer->start_date =  date('Y-m-d H:i:s', strtotime($request->start_date));
+        $offer->end_date = date('Y-m-d H:i:s', strtotime($request->end_date));
 
         $offer->save();
 

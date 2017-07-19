@@ -17,10 +17,7 @@
 
     <div class="container">
         <div class="row">
-            <h2 class="teal-text text-darken-3">{{ $store->name }} Offers</h2>
-            <p class="teal-text text-darken-3">
-                Most Recent Deals <span class="red-text">{{ $offers->count() }}</span>
-            </p>
+            <h4 class="teal-text text-darken-3">{{ $store->name }} Offers</h4>
         </div>
         @if((!empty($store->title)) && (!empty($store->body)))
         <div class="row">
@@ -35,17 +32,35 @@
         </div>
         @endif
 
-        <div class="row">
-            <div class="col s12 m8 offset-m2 l6 offset-l3">
-                <div class="card-panel z-depth-4">
-                    <div class="row valign-wrapper">
-                        <div class="col 12">
-                            <img src="{{ $store->image_url }}" alt="{{ $store->name }}" class="responsive-img">
+        @if(empty($store->body))
+            <div class="row">
+                <div class="col s12 m8 offset-m2 l6 offset-l3">
+                    <div class="card-panel z-depth-4">
+                        <div class="row valign-wrapper">
+                            <div class="col s12">
+                                <img src="{{ $store->image_url }}" alt="{{ $store->name }}" class="responsive-img">
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
-        </div>
+        @else
+            <div class="row">
+                <div class="col s6 m8 offset-m2 l6 offset-l3">
+                    <div class="card-panel z-depth-4">
+                        <div class="row">
+                            <div class="col s6">
+                                <img src="{{ $store->image_url }}" alt="{{ $store->name }}" class="responsive-img">
+                            </div>
+                            <div class="col s6">
+                                {{ $store->body }}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        @endif
+
 
         <div class="row">
             @foreach($offers as $offer)

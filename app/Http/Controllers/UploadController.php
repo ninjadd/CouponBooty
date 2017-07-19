@@ -43,7 +43,7 @@ class UploadController extends Controller
         $path = $request->file('csv_file')->storeAs('upload/csv', $network->name.'_'.Carbon::now().'.csv');
 
         if (($handle = fopen('../storage/app/'.$path, "r")) !== false) {
-            while (($data = fgetcsv($handle, 1000, ",")) !== false) {
+            while (($data = fgetcsv($handle, 1000, ',', '')) !== false) {
                 if (is_numeric($data[2])) {
                     $offer = new Offer();
                     $offer->user_id = auth()->id();
@@ -86,7 +86,7 @@ class UploadController extends Controller
             }
         }
 
-        return back();
+        return redirect('/dashboard?filter=staged');
     }
 
 }

@@ -135,8 +135,8 @@
                                                type="text"
                                                class="form-control"
                                                id="startDate"
-                                               placeholder="YYYY-MM-DD"
-                                               value="{{ (!empty($offer->start_date)) ? $offer->start_date : '' }}">
+                                               placeholder="MM/DD/YYYY"
+                                               value="{{ (!empty($offer->start_date)) ? $offer->start_date->format('m/d/Y') : '' }}">
                                         <span class="help-block">Not required. I think it will help us better manage our coupons so we only have active ones. We don’t want AdAssured coming after us.</span>
                                     </div>
                                 </div>
@@ -148,8 +148,8 @@
                                                type="text"
                                                class="form-control"
                                                id="endDate"
-                                               placeholder="YYYY-MM-DD"
-                                               value="{{ (!empty($offer->end_date)) ? $offer->end_date : '' }}">
+                                               placeholder="MM/DD/YYYY"
+                                               value="{{ (!empty($offer->end_date)) ? $offer->end_date->format('m/d/Y') : '' }}">
                                         <span class="help-block">Not required. I think it will help us better manage our coupons so we only have active ones. We don’t want AdAssured coming after us.</span>
                                     </div>
                                 </div>
@@ -192,10 +192,10 @@
                 height:300
             });
             $('#startDate').datepicker({
-                dateFormat: "yy-mm-dd"
+                dateFormat: "mm/dd/yy"
             });
             $('#endDate').datepicker({
-                dateFormat: "yy-mm-dd"
+                dateFormat: "mm/dd/yy"
             });
             $('input.counter').textcounter({
                 type: "character",

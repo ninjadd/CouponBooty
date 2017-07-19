@@ -23,9 +23,9 @@ class PageController extends Controller
     {
         $offers = Offer::where('archive', 0)->orderBy('updated_at', 'desc')->paginate(20);
         $types = Type::all();
-        $end_offers = Offer::where('archive', 0)->whereNotNull('end_date')->orderBy('end_date')->take(12)->get();
+        $stores = Store::inRandomOrder()->take(10)->get();
 
-        return view('pages.welcome', compact('offers', 'types', 'end_offers'));
+        return view('pages.welcome', compact('offers', 'types', 'stores'));
     }
 
     /**

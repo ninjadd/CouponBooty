@@ -53,19 +53,11 @@
             <div class="row">
 
                 <div class="col s8 hide-on-med-and-down">
-                    <ul id="dropdown1" class="dropdown-content">
-                        @include('shared.store-nav')
-                    </ul>
                     <ul id="dropdown2" class="dropdown-content">
                         @include('shared.type-nav')
                     </ul>
                     <ul class="hide-on-med-and-down">
                         <li><a href="/stores">Stores</a></li>
-                        <li>
-                            <a class="dropdown-button waves-effect waves-light" href="#!" data-activates="dropdown1">
-                                Shop By Store<i class="material-icons right">arrow_drop_down</i>
-                            </a>
-                        </li>
                         <li>
                             <a class="dropdown-button waves-effect waves-light" href="#!" data-activates="dropdown2">
                                 Shop By Type<i class="material-icons right">arrow_drop_down</i>
