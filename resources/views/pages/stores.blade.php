@@ -37,7 +37,7 @@
                     <h5>#</h5>
                     @foreach($stores->byNumeric()->get() as $store)
                         <div>
-                            <span class="col s2 m3 l4"><a class="deep-purple-text" href="/view/{{ $store->slug }}">{{ $store->name }} ({{ $store->offers->count() }})</a></span>
+                            <span class="col s2 m3 l4"><a class="deep-purple-text" href="/view/{{ $store->slug }}">{{ $store->name }} ({{ $store->offers->where('archive', 0)->count() }})</a></span>
                         </div>
                     @endforeach
                 </div>
@@ -52,7 +52,7 @@
                         <h5>{{ $item }}</h5>
                         @foreach($stores->byAlpha($item)->get() as $store)
                             <p>
-                                <span class="col s6 m4 l2"><a class="deep-purple-text" href="/view/{{ $store->slug }}">{{ $store->name }} ({{ $store->offers->count() }})</a></span>
+                                <span class="col s6 m4 l2"><a class="deep-purple-text" href="/view/{{ $store->slug }}">{{ $store->name }} ({{ $store->offers->where('archive', 0)->count() }})</a></span>
                             </p>
                         @endforeach
                     </div>
