@@ -17,7 +17,7 @@
     <div class="container">
         <br>
 
-        <div class="slider z-depth-3">
+        <div class="slider z-depth-3 hide-on-med-and-down">
             <ul class="slides">
                 @foreach($stores as $store)
                     <li>

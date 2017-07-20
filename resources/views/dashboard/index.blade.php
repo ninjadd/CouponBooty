@@ -61,18 +61,15 @@
                                             {{ $offer->coupon }}
                                         </td>
                                         <td>
-                                            {{ (!empty($offer->start_date)) ? $offer->start_date : '' }}
+                                            {{ (!empty($offer->start_date)) ? $offer->start_date->format('Y-m-d') : null }}
                                         </td>
                                         <td>
-                                            {{ (!empty($offer->end_date)) ? $offer->end_date : '' }}
+                                            {{ (!empty($offer->end_date)) ? $offer->end_date->format('Y-m-d') : null }}
                                         </td>
                                         <td>
                                             <div class="hidden">{{ $offer->id }}</div>
                                             <form action="/offer/{{ $offer->id }}" method="POST">
                                                 <div class="btn-group" role="group" aria-label="...">
-                                                <a href="/offer/{{ $offer->id }}" type="button" class="btn btn-default btn-xs" data-toggle="tooltip" title="View Offer">
-                                                        <span class="glyphicon glyphicon-eye-open" aria-hidden="true"></span>
-                                                    </a>
 
                                                     <a href="/offer/{{ $offer->id }}/edit" class="btn btn-success btn-xs"  data-toggle="tooltip" title="Edit Offer">
                                                         <span class="glyphicon glyphicon-pencil" aria-hidden="true"></span>
