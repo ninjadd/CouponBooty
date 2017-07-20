@@ -5,7 +5,7 @@
     $(document).ready(function() {
         $('.table').DataTable({
             "order": [[ 4, "desc" ]],
-            "lengthMenu": [[25, 50, 75, 100, 125, -1], [25, 50, 75, 100, 125, "All"]]
+            "lengthMenu": [[50, 75, 100, 125, 150, 175, 200, -1], [50, 75, 100, 125, 150, 175, 200, "All"]]
         });
     } );
 </script>

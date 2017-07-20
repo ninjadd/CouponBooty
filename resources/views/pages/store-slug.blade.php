@@ -53,7 +53,7 @@
                                 <img src="{{ $store->image_url }}" alt="{{ $store->name }}" class="responsive-img">
                             </div>
                             <div class="col s6">
-                                {{ $store->body }}
+                                {{ strip_tags($store->body) }}
                             </div>
                         </div>
                     </div>

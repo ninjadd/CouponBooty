@@ -15,18 +15,6 @@
 
 @section('content')
     <div class="container">
-        <br>
-
-        <div class="slider z-depth-3 hide-on-med-and-down">
-            <ul class="slides">
-                @foreach($stores as $store)
-                    <li>
-                        <a href="/view/{{ $store->slug }}" target="_blank"><img src="{{ $store->image_url }}"></a>
-                    </li>
-                @endforeach
-            </ul>
-        </div>
-
         <div class="row">
             <h4 class="teal-text text-darken-3">Most Recent Deals</h4>
         </div>
@@ -38,16 +26,4 @@
         </div>
         {{ $offers->links('shared.pager') }}
     </div>
-@endsection
-
-@section('foot')
-    <script>
-        $(document).ready(function(){
-            $('.slider').slider({
-                indicators: true,
-                transition: 200,
-                height: 500
-            });
-        });
-    </script>
 @endsection
