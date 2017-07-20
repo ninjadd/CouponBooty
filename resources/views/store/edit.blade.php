@@ -10,6 +10,7 @@
             <div class="col-md-12">
                 @include('shared.errors')
                 @include('shared.session')
+                @include('shared.navbar')
             </div>
             <div class="col-md-8">
                 <div class="panel panel-success">
@@ -102,6 +103,15 @@
                     @foreach($store->offers as $offer)
                         <a href="/offer/{{ $offer->id }}/edit" class="list-group-item">
                             <h4 class="list-group-item-heading">{{ $offer->title }}</h4>
+                            @if($offer->archive == 0)
+                                <span class="label label-success">Live</span>
+                            @endif
+                            @if($offer->archive == 1)
+                                <span class="label label-warning">Archived</span>
+                            @endif
+                            @if($offer->archive == 2)
+                                <span class="label label-info">Staged</span>
+                            @endif
                             <p class="list-group-item-text">
                                 {{ strip_tags($offer->body) }}
                             </p>

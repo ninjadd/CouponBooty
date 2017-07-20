@@ -25,6 +25,8 @@ class DashBoardController extends Controller
      */
     public function index(Request $request)
     {
+        Offer::whereDate('end_date', '=',  date("Y-m-d",strtotime("-1 day")))->update(['archive' => 1]);
+
         $filter = $request->filter;
 
         if (empty($filter)) {

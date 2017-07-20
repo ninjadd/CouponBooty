@@ -8,10 +8,9 @@
 
         <div class="row">
             <div class="col-md-12">
-
                 @include('shared.session')
                 @include('shared.errors')
-
+                @include('shared.navbar')
                 <div class="panel panel-success">
                     <div class="panel-heading">
                         <h3 class="panel-title">
