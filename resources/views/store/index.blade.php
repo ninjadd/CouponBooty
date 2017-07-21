@@ -69,10 +69,6 @@
                                         <td>
                                             <form action="/store/{{ $store->id }}" method="POST">
                                                 <div class="btn-group">
-                                                    <a href="/store/{{ $store->id }}" class="btn btn-default btn-xs"  data-toggle="tooltip" title="View Store">
-                                                        <span class="glyphicon glyphicon-eye-open" aria-hidden="true"></span>
-                                                    </a>
-
                                                     <a href="/store/{{ $store->id }}/edit" class="btn btn-success btn-xs"  data-toggle="tooltip" title="Edit Store">
                                                         <span class="glyphicon glyphicon-pencil" aria-hidden="true"></span>
                                                     </a>
