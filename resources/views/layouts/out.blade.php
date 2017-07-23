@@ -53,10 +53,8 @@
 <div class="back_ground_top">
     <div class="card transparent">
         <div class="container">
-            <div class="row">
-                <div class="col s3">
-                    <a href="/"><img style="height: 100px; padding-top: 10px;" src="{{ asset('images/CouponBooty_Logo.png') }}"></a>
-                </div>
+            <div class="col s3">
+                <a href="/"><img style="height: 100px; padding-top: 10px;" src="{{ asset('images/CouponBooty_Logo.png') }}"></a>
             </div>
         </div>
     </div>
