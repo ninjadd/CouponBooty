@@ -52,7 +52,13 @@
 
 <div class="back_ground_top">
     <div class="card transparent">
-        <a href="/"><img style="height: 200px; padding-left: 325px; padding-top: 10px;" src="{{ asset('images/CouponBooty_Logo.png') }}"></a>
+        <div class="container">
+            <div class="row">
+                <div class="col s3">
+                    <a href="/"><img style="height: 200px; padding-top: 10px;" src="{{ asset('images/CouponBooty_Logo.png') }}"></a>
+                </div>
+            </div>
+        </div>
     </div>
 </div>
 
@@ -100,7 +106,6 @@
                 <li><a href="/about">About Us</a></li>
                 <li><a href="/terms">Terms</a></li>
                 <li><a href="/privacy">Privacy Policy</a></li>
-                <li class="divider"></li>
                 @include('shared.store-nav')
                 <li class="divider"></li>
                 <li><a href="#">Types</a></li>
