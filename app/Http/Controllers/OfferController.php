@@ -213,11 +213,11 @@ class OfferController extends Controller
         if ($archive == 0) {
             $offer->archive = 1;
             $offer->save();
-            return redirect('dashboard')->with('status', 'Offer #'. $offer->id . ' archived!');
-        } elseif ($archive == 1) {
+            return back()->with('status', 'Offer #'. $offer->id . ' archived!');
+        } else {
             $offer->archive = 0;
             $offer->save();
-            return redirect('dashboard')->with('status', 'Offer #'. $offer->id . ' un-archived!');
+            return back()->with('status', 'Offer #'. $offer->id . ' live!');
         }
 
     }

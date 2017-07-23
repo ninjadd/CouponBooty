@@ -41,49 +41,46 @@ class UploadController extends Controller
         $store = Store::where('id', $request->store_id)->first();
 
         $path = $request->file('csv_file')->storeAs('upload/csv', $network->name.'_'.Carbon::now().'.csv');
+        $csv = array_map('str_getcsv', file('../storage/app/'.$path));
 
-        if (($handle = fopen('../storage/app/'.$path, "r")) !== false) {
-            while (($data = fgetcsv($handle, 1000, ',', '')) !== false) {
-                if (is_numeric($data[2])) {
-                    $offer = new Offer();
-                    $offer->user_id = auth()->id();
-                    $offer->type_id = 5;
-                    $offer->title = $data[3];
-                    $offer->url = $data[12];
-                    $offer->image_url = $store->image_url;
-                    $offer->body = $data[4];
-                    $offer->coupon = $data[14];
-                    $offer->store_id = $request->store_id;
-                    $offer->start_date = Carbon::parse($data[15]);
-                    $offer->end_date = Carbon::parse($data[16]);
-                    $offer->archive = 2;
+        for ($i=0; $i < sizeof($csv) ; $i++) {
+            $offer = new Offer();
+            $offer->user_id = auth()->id();
+            $offer->type_id = 5;
+            $offer->title = $csv[$i][3];
+            $offer->url = $csv[$i][12];
+            $offer->image_url = $store->image_url;
+            $offer->body = $csv[$i][4];
+            $offer->coupon = $csv[$i][14];
+            $offer->store_id = $request->store_id;
+            $offer->start_date = (!empty($csv[$i][15])) ? date('Y-m-d H:i:s', strtotime($csv[$i][15])) : null;
+            $offer->end_date = (!empty($csv[$i][16])) ? date('Y-m-d H:i:s', strtotime($csv[$i][16])) : null;
+            $offer->archive = 2;
 
-                    $offer->save();
+            $offer->save();
 
-                    $categories = str_replace(' ', ',', $data[5]);
+            $categories = str_replace(' ', ',', $csv[$i][5]);
 
-                    if (!empty($categories)) {
-                        if (str_contains($categories, ',')) {
-                            $cats = explode(',', $categories);
-                            foreach ($cats as $cat) {
-                                $cat = trim($cat);
-                                if (!empty($cat)) {
-                                    Category::updateOrCreate(
-                                        ['offer_id' => $offer->id],
-                                        ['name' => $cat]
-                                    );
-                                }
-                            }
-                        } else {
-                            $category = new Category();
-                            $category->offer_id = $offer->id;
-                            $category->name = $categories;
-                            $category->save();
+            if (!empty($categories)) {
+                if (str_contains($categories, ',')) {
+                    $cats = explode(',', $categories);
+                    foreach ($cats as $cat) {
+                        $cat = trim($cat);
+                        if (!empty($cat)) {
+                            Category::updateOrCreate(
+                                ['offer_id' => $offer->id],
+                                ['name' => $cat]
+                            );
                         }
                     }
-
+                } else {
+                    $category = new Category();
+                    $category->offer_id = $offer->id;
+                    $category->name = $categories;
+                    $category->save();
                 }
             }
+
         }
 
         return redirect('/dashboard?filter=staged');

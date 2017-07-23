@@ -13,9 +13,9 @@
                     <ul class="dropdown-menu">
                         <li><a href="/dashboard">Live Offers</a></li>
                         <li><a href="/dashboard?filter=archived">Archived Offers</a></li>
-                        {{--<li><a href="/dashboard?filter=staged">Staged Offers</a></li>--}}
-                        {{--<li role="separator" class="divider"></li>--}}
-                        {{--<li><a href="/upload/1">CommissionJunction Upload</a></li>--}}
+                        <li><a href="/dashboard?filter=staged">Staged Offers</a></li>
+                        <li role="separator" class="divider"></li>
+                        <li><a href="/upload/1">CommissionJunction Upload</a></li>
                         <li role="separator" class="divider"></li>
                         <li><a href="/offer/csv">Offers Download</a></li>
                         <li role="separator" class="divider"></li>
@@ -49,19 +49,21 @@
                     </ul>
                 </li>
             </ul>
-            {{-- users --}}
-            {{--<ul class="nav navbar-nav">--}}
-                {{--<li class="dropdown">--}}
-                    {{--<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">--}}
-                        {{--Users--}}
-                        {{--<span class="caret"></span>--}}
-                    {{--</a>--}}
-                    {{--<ul class="dropdown-menu">--}}
-                        {{--<li><a href="/user">All Users</a></li>--}}
-                        {{--<li><a href="/user/create">New User</a></li>--}}
-                    {{--</ul>--}}
-                {{--</li>--}}
-            {{--</ul>--}}
+            {{--user filters--}}
+            <ul class="nav navbar-nav">
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+                        User Filters
+                        <span class="caret"></span>
+                    </a>
+                    <ul class="dropdown-menu">
+                        <li><a href="/dashboard?filter_user=all">All</a></li>
+                        <li><a href="/dashboard?filter_user=3">Jessica Brown</a></li>
+                        <li><a href="/dashboard?filter_user=4">Larry Cunningham</a></li>
+                        <li><a href="/dashboard?filter_user=2">Chelsea Hoffman</a></li>
+                    </ul>
+                </li>
+            </ul>
 
             <ul class="nav navbar-nav navbar-right">
                 {{--<li>--}}

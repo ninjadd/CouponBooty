@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Store;
+use Illuminate\Cookie\CookieJar;
 use Illuminate\Http\Request;
 use App\Offer;
 use App\Type;
@@ -23,28 +24,49 @@ class DashBoardController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index(Request $request)
+    public function index(CookieJar $cookieJar, Request $request)
     {
         // Offer::whereDate('end_date', '=',  date("Y-m-d",strtotime("-1 day")))->update(['archive' => 1]);
 
         $filter = $request->filter;
+        $filter_user = $request->filter_user;
+        $user_filter = $request->cookie('user_filter');
+
+        if (!empty($filter_user)) {
+            $cookieJar->queue(cookie('user_filter', $filter_user, 480));
+        }
+
+        if (empty($user_filter)) {
+            $user_id = auth()->id();
+        }
+
+        if (!empty($user_filter)) {
+            $user_id = $user_filter;
+        }
+
+        if ((!empty($filter_user)) && ($filter_user != $user_filter)) {
+            $user_id = $filter_user;
+        }
 
         if (empty($filter)) {
-            $offers = Offer::archive(0)->get();
+            $archived = 0;
         }
 
         if ($filter == 'archived') {
-            $offers = Offer::archive(1)->get();
+            $archived = 1;
         }
 
         if ($filter == 'staged') {
-            $offers = Offer::archive(2)->get();
+            $archived = 2;
         }
 
-        $archived = Offer::archive(1)->get();
+        if ($user_id == 'all') {
+            $offers = Offer::archive($archived)->get();
+        } else {
+            $offers = Offer::archive($archived)->where('user_id', $user_id)->get();
+        }
 
-        $menuStores = Store::offersFromStores();
 
-        return view('dashboard.index', compact('offers', 'archived', 'menuStores'));
+        return view('dashboard.index', compact('offers'));
     }
 }

@@ -87,6 +87,12 @@
                                                         </a>
                                                     @endif
 
+                                                    @if(($offer->archive == 2))
+                                                        <a href="/offer/archive/{{ $offer->id }}" class="btn btn-info btn-xs"  data-toggle="tooltip" title="Activate Offer">
+                                                            <span class="glyphicon glyphicon-arrow-up" aria-hidden="true"></span>
+                                                        </a>
+                                                    @endif
+
                                                     <button type="submit" class="btn btn-danger btn-xs"  data-toggle="tooltip" title="Delete Offer">
                                                         <span class="glyphicon glyphicon-trash" aria-hidden="true"></span>
                                                     </button>
