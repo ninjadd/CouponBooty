@@ -44,7 +44,7 @@
             </div>
         @else
             <div class="row">
-                <div class="col s6 m8 offset-m2 l8 offset-l2">
+                <div class="col s12 m8 offset-m2 l8 offset-l2">
                     <div class="card-panel z-depth-4">
                         <div class="row">
                             <div class="col s6">

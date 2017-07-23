@@ -35,7 +35,7 @@
         .back_ground_top {
             background-image: url("{{ asset('images/CouponBooty_Background.png') }}");
             background-repeat: no-repeat;
-            height: 200px;
+            height: 100px;
             background-size: cover;
             margin-top: -15px;
         }
@@ -55,7 +55,7 @@
         <div class="container">
             <div class="row">
                 <div class="col s3">
-                    <a href="/"><img style="height: 200px; padding-top: 10px;" src="{{ asset('images/CouponBooty_Logo.png') }}"></a>
+                    <a href="/"><img style="height: 100px; padding-top: 10px;" src="{{ asset('images/CouponBooty_Logo.png') }}"></a>
                 </div>
             </div>
         </div>
