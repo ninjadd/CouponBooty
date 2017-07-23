@@ -16,9 +16,7 @@
 @section('content')
 
     <div class="container">
-        <div class="row">
-            <h4 class="teal-text text-darken-3">{{ $store->name }} Offers</h4>
-        </div>
+        <h4 class="teal-text text-darken-3">{{ $store->name }} Offers</h4>
         @if((!empty($store->title)) && (!empty($store->body)))
         <div class="row">
             <div class="col s12">
@@ -46,7 +44,7 @@
             </div>
         @else
             <div class="row">
-                <div class="col s6 m8 offset-m2 l6 offset-l3">
+                <div class="col s6 m8 offset-m2 l8 offset-l2">
                     <div class="card-panel z-depth-4">
                         <div class="row">
                             <div class="col s6">

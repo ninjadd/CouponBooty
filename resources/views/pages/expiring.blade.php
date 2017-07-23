@@ -15,9 +15,9 @@
 
 @section('content')
     <div class="container">
-        <div class="row">
-            <h4 class="teal-text text-darken-3">Offers Expiring Soon</h4>
-        </div>
+        <h4 class="teal-text text-darken-3">
+            Offers Expiring Soon
+        </h4>
         <div class="row">
             @include('shared.offer-cards')
         </div>

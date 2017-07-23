@@ -15,20 +15,18 @@
 
 @section('content')
     <div class="container">
-        <div class="row">
-            <h4 class="teal-text text-darken-3">
-                Stores
-            </h4>
+        <h4 class="teal-text text-darken-3">
+            Stores
+        </h4>
+
+        <div class="col s12">
+            <ul class="pagination">
+                @foreach($initials as $initial)
+                    <li class="waves-effect hoverable"><a href="#{{ (is_numeric($initial->initial)) ? '09' : strtoupper($initial->initial) }}">{{ (is_numeric($initial->initial)) ? '#' : strtoupper($initial->initial) }}</a></li>
+                @endforeach
+            </ul>
         </div>
-        <div class="row">
-            <div class="col s12">
-                <ul class="pagination">
-                    @foreach($initials as $initial)
-                        <li class="waves-effect hoverable"><a href="#{{ (is_numeric($initial->initial)) ? '09' : strtoupper($initial->initial) }}">{{ (is_numeric($initial->initial)) ? '#' : strtoupper($initial->initial) }}</a></li>
-                    @endforeach
-                </ul>
-            </div>
-        </div>
+
 
         @if($stores->byNumeric()->count() > 0)
             <div class="row">

@@ -15,11 +15,10 @@
 
 @section('content')
     <div class="container">
-        <div class="row">
-            <h4 class="teal-text text-darken-3">Most Recent Deals</h4>
-        </div>
+        <h4 class="teal-text text-darken-3">
+            Most Recent Deals
+        </h4>
 
-        <div class="divider"></div>
 
         <div class="row">
             @include('shared.offer-cards')

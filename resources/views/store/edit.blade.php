@@ -89,6 +89,7 @@
 
 
                             <button type="submit" class="btn btn-success">Update</button>
+                            <a href="/view/{{ $store->slug }}" target="_blank" class="btn btn-info">View Live</a>
                         </form>
                     </div>
                 </div>
@@ -231,7 +232,7 @@
                             </div>
                             <div class="modal-footer">
                                 <button type="submit" class="btn btn-primary">Save</button>
-                                <button type="reset" class="btn btn-default">Cancel</button>
+                                <button type="reset" data-dismiss="modal" class="btn btn-default">Cancel</button>
                             </div>
                         </form>
                     </div>

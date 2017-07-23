@@ -16,9 +16,9 @@
 @section('content')
 
     <div class="container">
-        <div class="row">
-            <h4 class="teal-text text-darken-3">{{ $type->label }} Offers</h4>
-        </div>
+        <h4 class="teal-text text-darken-3">
+            {{ $type->label }} Offers
+        </h4>
 
         <div class="row">
             @include('shared.offer-cards')

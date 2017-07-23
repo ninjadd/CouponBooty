@@ -32,17 +32,27 @@
         .input-field label {
             max-height: 64px;
         }
+        .back_ground_top {
+            background-image: url("{{ asset('images/CouponBooty_Background.png') }}");
+            background-repeat: no-repeat;
+            height: 200px;
+            background-size: cover;
+            margin-top: -15px;
+        }
+        .back_ground_bottom {
+            background-image: url("{{ asset('images/CouponBooty_Background.png') }}");
+            background-repeat: no-repeat;
+            height: 350px;
+            background-size: cover;
+            margin-bottom: -15px;
+        }
     </style>
 </head>
 <body>
 
-<div class="section teal lighten-4">
-    <div class="container">
-        <div class="row">
-            <div class="col s3">
-                <a href="/" class="brand-logo"><img  style="padding-top: 10px; padding-left: 5px;" height="75" src="{{ asset('images/CouponBooty_Logo_Background_3.png') }}" alt="CouponBooty"></a>
-            </div>
-        </div>
+<div class="back_ground_top">
+    <div class="card transparent">
+        <a href="/"><img style="height: 200px; padding-left: 325px; padding-top: 10px;" src="{{ asset('images/CouponBooty_Logo.png') }}"></a>
     </div>
 </div>
 
@@ -91,8 +101,6 @@
                 <li><a href="/terms">Terms</a></li>
                 <li><a href="/privacy">Privacy Policy</a></li>
                 <li class="divider"></li>
-                <li><a href="#">Stores</a></li>
-                <li class="divider"></li>
                 @include('shared.store-nav')
                 <li class="divider"></li>
                 <li><a href="#">Types</a></li>
@@ -106,7 +114,7 @@
 
 @yield('content')
 
-<footer class="page-footer teal lighten-2">
+<footer class="page-footer back_ground_bottom">
     <div class="container">
         <div class="row">
             <div class="col l6 s12">
@@ -127,15 +135,14 @@
             </div>
         </div>
     </div>
-    <div class="footer-copyright">
-        <div class="container">
-            &copy; <a class="grey-text text-lighten-3" href="/">{{ config('app.name') }}</a> All rights reserved. {{ date('Y') }}
-            <p class="right">
-                <a class="grey-text text-lighten-3" href="https://www.facebook.com/CouponBooty" target="_blank"><i class="fa fa-facebook"></i></a>
-                <a class="grey-text text-lighten-3" href="https://twitter.com/couponbooty" target="_blank"><i class="fa fa-twitter"></i></a>
-                <a class="grey-text text-lighten-3" href="https://www.instagram.com/Couponbooty" target="_blank"><i class="fa fa-instagram"></i></a>
-            </p>
-        </div>
+
+    <div class="container">
+        <p class="left grey-text text-lighten-3">&copy; <a class="grey-text text-lighten-3" href="/">{{ config('app.name') }}</a> All rights reserved. {{ date('Y') }}</p>
+        <p class="right">
+            <a class="grey-text text-lighten-3" href="https://www.facebook.com/CouponBooty" target="_blank"><i class="fa fa-facebook"></i></a>
+            <a class="grey-text text-lighten-3" href="https://twitter.com/couponbooty" target="_blank"><i class="fa fa-twitter"></i></a>
+            <a class="grey-text text-lighten-3" href="https://www.instagram.com/Couponbooty" target="_blank"><i class="fa fa-instagram"></i></a>
+        </p>
     </div>
 </footer>
 
