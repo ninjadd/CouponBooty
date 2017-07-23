@@ -89,7 +89,7 @@
 
 
                             <button type="submit" class="btn btn-success">Update</button>
-                            <a href="/view/{{ $store->slug }}" target="_blank" class="btn btn-info">View Live</a>
+                            <a href="/view/{{ $store->slug }}" target="_blank" class="btn btn-warning">View Live</a>
                         </form>
                     </div>
                 </div>
