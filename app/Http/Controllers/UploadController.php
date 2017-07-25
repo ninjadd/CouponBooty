@@ -39,9 +39,7 @@ class UploadController extends Controller
         ]);
 
         $store = Store::where('id', $request->store_id)->first();
-
-        $path = $request->file('csv_file')->storeAs('upload/csv', $network->name.'_'.Carbon::now().'.csv');
-        $csv = array_map('str_getcsv', file('../storage/app/'.$path));
+        $csv = array_map('str_getcsv', file($request->file('csv_file')));
 
         for ($i=0; $i < sizeof($csv) ; $i++) {
             $offer = new Offer();
