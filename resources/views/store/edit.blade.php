@@ -69,7 +69,7 @@
                             </div>
 
                             <div class="form-group">
-                                <label for="storeBody">Body</label>
+                                <label for="storeBody">Store Description</label>
                                 <textarea class="form-control" name="body" id="summernote">{!! $store->body !!}</textarea>
                                 <span class="help-block">
                                     This should match up the Title you can created HTML here which you can tailor to your Store

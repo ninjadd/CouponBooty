@@ -48,25 +48,14 @@ class DashBoardController extends Controller
             $user_id = $filter_user;
         }
 
-        if (empty($filter)) {
-            $archived = 0;
-        }
-
-        if ($filter == 'archived') {
-            $archived = 1;
-        }
-
-        if ($filter == 'staged') {
-            $archived = 2;
-        }
 
         if ($user_id == 'all') {
-            $offers = Offer::archive($archived)->get();
+            $stores = Store::all();
         } else {
-            $offers = Offer::archive($archived)->where('user_id', $user_id)->get();
+            $stores = Store::where('user_id', $user_id)->get();
         }
 
 
-        return view('dashboard.index', compact('offers'));
+        return view('dashboard.index', compact('stores'));
     }
 }

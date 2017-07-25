@@ -16,19 +16,12 @@
 @section('content')
 
     <div class="container">
-        <h4 class="teal-text text-darken-3">{{ $store->name }} Offers</h4>
-        @if((!empty($store->title)) && (!empty($store->body)))
-        <div class="row">
-            <div class="col s12">
-                <div class="card blue-grey darken-1 hoverable">
-                    <div class="card-content white-text">
-                        <span class="card-title">{{ $store->title }}</span>
-                        {!! $store->body !!}
-                    </div>
-                </div>
-            </div>
-        </div>
+        @if(empty($store->title))
+            <h4 class="teal-text text-darken-3">{{ $store->name }} Offers</h4>
+        @else
+            <h4 class="teal-text text-darken-3">{{ $store->title }}</h4>
         @endif
+
 
         @if(empty($store->body))
             <div class="row">

@@ -9,6 +9,7 @@ use App\Category;
 use App\Store;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
+use Illuminate\Cookie\CookieJar;
 
 
 class OfferController extends Controller
@@ -27,9 +28,48 @@ class OfferController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(CookieJar $cookieJar, Request $request)
     {
-        $offers = Offer::orderBy('created_at', 'desc')->get();
+        // Offer::whereDate('end_date', '=',  date("Y-m-d",strtotime("-1 day")))->update(['archive' => 1]);
+
+        $filter = $request->filter;
+        $filter_user = $request->filter_user;
+        $user_filter = $request->cookie('user_filter');
+
+        if (!empty($filter_user)) {
+            $cookieJar->queue(cookie('user_filter', $filter_user, 480));
+        }
+
+        if (empty($user_filter)) {
+            $user_id = auth()->id();
+        }
+
+        if (!empty($user_filter)) {
+            $user_id = $user_filter;
+        }
+
+        if ((!empty($filter_user)) && ($filter_user != $user_filter)) {
+            $user_id = $filter_user;
+        }
+
+        if (empty($filter)) {
+            $archived = 0;
+        }
+
+        if ($filter == 'archived') {
+            $archived = 1;
+        }
+
+        if ($filter == 'staged') {
+            $archived = 2;
+        }
+
+        if ($user_id == 'all') {
+            $offers = Offer::archive($archived)->get();
+        } else {
+            $offers = Offer::archive($archived)->where('user_id', $user_id)->get();
+        }
+
 
         return view('offer.index', compact('offers'));
     }
@@ -232,7 +272,7 @@ class OfferController extends Controller
     {
         $offer->delete();
 
-        return redirect('dashboard')->with('status', 'Offer #'. $offer->id . ' deleted!');
+        return back()->with('status', 'Offer #'. $offer->id . ' deleted!');
     }
 
     public function download()
@@ -265,5 +305,38 @@ class OfferController extends Controller
             fputcsv($output, $data);
         }
         fclose($output);
+    }
+
+    public function bulk(Request $request) {
+        $this->validate($request, [
+           'action_item' => 'required',
+           'offer_ids' => 'required'
+        ]);
+
+        $action_item = $request->action_item;
+        $offer_ids = $request->offer_ids;
+        
+        switch ($action_item) {
+            case 'Live':
+                Offer::whereIn('id', $offer_ids)->update(['archive' => 0]);
+                return back()->with('status', count($offer_ids) . ' Offers live!');
+                break;
+
+            case 'Archive':
+                Offer::whereIn('id', $offer_ids)->update(['archive' => 1]);
+                return back()->with('status', count($offer_ids) . ' Offers archived!');
+                break;
+
+            case 'Stage':
+                Offer::whereIn('id', $offer_ids)->update(['archive' => 2]);
+                return back()->with('status', count($offer_ids) . ' Offers staged!');
+                break;
+
+            case 'Delete':
+                Offer::destroy($offer_ids);
+                return back()->with('status', count($offer_ids) . ' Offers DELETED!');
+                break;
+
+        }
     }
 }

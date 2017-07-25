@@ -71,12 +71,12 @@
                         @include('shared.type-nav')
                     </ul>
                     <ul class="hide-on-med-and-down">
-                        <li><a href="/stores">Stores</a></li>
                         <li>
                             <a class="dropdown-button waves-effect waves-light" href="#!" data-activates="dropdown2">
                                 Shop By Type<i class="material-icons right">arrow_drop_down</i>
                             </a>
                         </li>
+                        <li><a href="/stores">Stores</a></li>
                         <li><a href="/expiring">Expiring Soon</a></li>
                         <li><a href="/blog">Blog</a></li>
                         @if(Auth::user())
