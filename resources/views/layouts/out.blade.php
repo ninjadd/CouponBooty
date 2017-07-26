@@ -101,14 +101,14 @@
                 <li><a href="/stores">Stores</a></li>
                 <li><a href="/expiring">Expiring Soon</span></a></li>
                 <li><a href="/blog">Blog</a></li>
-                <li><a href="/about">About Us</a></li>
-                <li><a href="/terms">Terms</a></li>
-                <li><a href="/privacy">Privacy Policy</a></li>
-                @include('shared.store-nav')
                 <li class="divider"></li>
                 <li><a href="#">Types</a></li>
                 <li class="divider"></li>
                 @include('shared.type-nav')
+                <li class="divider"></li>
+                <li><a href="/about">About Us</a></li>
+                <li><a href="/terms">Terms</a></li>
+                <li><a href="/privacy">Privacy Policy</a></li>
             </ul>
 
         </div>

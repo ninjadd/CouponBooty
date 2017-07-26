@@ -3,15 +3,28 @@
 @section('head')
     @include('shared.datatables')
     <script>
-        $(document).ready(function($) {
-            $(".clickable-div").click(function() {
-                window.location = $(this).data("href");
+        $(document).ready(function () {
+            $('.record_table tr').click(function (event) {
+                if (event.target.type !== 'checkbox') {
+                    $(':checkbox', this).trigger('click');
+                }
+            });
+
+            $("input[type='checkbox']").change(function (e) {
+                if ($(this).is(":checked")) {
+                    $(this).closest('tr').addClass("highlight_row");
+                } else {
+                    $(this).closest('tr').removeClass("highlight_row");
+                }
             });
         });
     </script>
     <style>
-        .clickable-div {
+        .record_table {
             cursor: pointer;
+        }
+        .highlight_row {
+            background: #eee;
         }
     </style>
 @endsection
@@ -34,7 +47,7 @@
                 <div class="panel-body">
                     <form action="/offer/bulk" method="POST">
                         {{ csrf_field() }}
-                        <table class="table table-striped table-bordered table-condensed" cellspacing="0" width="100%">
+                        <table class="table table-bordered table-condensed record_table" cellspacing="0" width="100%">
                         <thead>
                             <tr>
                                 <td colspan="10" align="center">
@@ -63,31 +76,31 @@
                             <tbody>
                             @foreach($offers as $offer)
                                 <tr>
-                                    <td class="clickable-div" data-href="/offer/{{ $offer->id }}/edit">
+                                    <td>
                                         {{ ($offer->store['name']) ? $offer->store['name'] : 'N/A' }}
                                     </td>
-                                    <td class="clickable-div" data-href="/offer/{{ $offer->id }}/edit">
+                                    <td>
                                         {{ $offer->title }}
                                     </td>
-                                    <td class="clickable-div" data-href="/offer/{{ $offer->id }}/edit">
+                                    <td>
                                         {{ $offer->type->label }}
                                     </td>
-                                    <td class="clickable-div" data-href="/offer/{{ $offer->id }}/edit">
+                                    <td>
                                         {{ $offer->user->name }}
                                     </td>
-                                    <td class="clickable-div" data-href="/offer/{{ $offer->id }}/edit">
+                                    <td>
                                         {{ $offer->created_at }}
                                     </td>
-                                    <td class="clickable-div" data-href="/offer/{{ $offer->id }}/edit">
+                                    <td>
                                         {{ $offer->updated_at->diffForHumans() }}
                                     </td>
-                                    <td class="clickable-div" data-href="/offer/{{ $offer->id }}/edit">
+                                    <td>
                                         {{ $offer->coupon }}
                                     </td>
-                                    <td class="clickable-div" data-href="/offer/{{ $offer->id }}/edit">
+                                    <td>
                                         {{ (!empty($offer->start_date)) ? $offer->start_date->format('Y-m-d') : null }}
                                     </td>
-                                    <td class="clickable-div" data-href="/offer/{{ $offer->id }}/edit">
+                                    <td>
                                         {{ (!empty($offer->end_date)) ? $offer->end_date->format('Y-m-d') : null }}
                                     </td>
                                     <td>
