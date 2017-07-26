@@ -31,7 +31,7 @@ class UploadController extends Controller
         return view('upload.create', compact('network', 'stores'));
     }
 
-    public function store(Network $network, Request $request)
+    public function store(Request $request)
     {
         $this->validate($request, [
             'csv_file' => 'required',
@@ -45,11 +45,11 @@ class UploadController extends Controller
             $offer = new Offer();
             $offer->user_id = auth()->id();
             $offer->type_id = 5;
-            $offer->title = $csv[$i][3];
-            $offer->url = $csv[$i][12];
+            $offer->title = utf8_encode($csv[$i][3]);
+            $offer->url = utf8_encode($csv[$i][12]);
             $offer->image_url = $store->image_url;
-            $offer->body = $csv[$i][4];
-            $offer->coupon = $csv[$i][14];
+            $offer->body = utf8_encode($csv[$i][4]);
+            $offer->coupon = utf8_encode($csv[$i][14]);
             $offer->store_id = $request->store_id;
             $offer->start_date = (!empty($csv[$i][15])) ? date('Y-m-d H:i:s', strtotime($csv[$i][15])) : null;
             $offer->end_date = (!empty($csv[$i][16])) ? date('Y-m-d H:i:s', strtotime($csv[$i][16])) : null;
@@ -81,7 +81,7 @@ class UploadController extends Controller
 
         }
 
-        return redirect('/dashboard?filter=staged');
+        return redirect('/offer?filter=staged');
     }
 
 }
