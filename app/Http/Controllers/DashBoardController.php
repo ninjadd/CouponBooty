@@ -52,7 +52,7 @@ class DashBoardController extends Controller
         if ($user_id == 'all') {
             $stores = Store::all();
         } else {
-            $stores = Store::where('user_id', $user_id)->get();
+            $stores = Store::where('manager_id', $user_id)->get();
         }
 
 

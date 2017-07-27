@@ -72,15 +72,15 @@
                     </ul>
                     <ul class="hide-on-med-and-down">
                         <li>
-                            <a class="dropdown-button waves-effect waves-light" href="#!" data-activates="dropdown2">
+                            <a style="width: 160px;" class="dropdown-button waves-effect waves-light" href="#!" data-activates="dropdown2">
                                 Shop By Type<i class="material-icons right">arrow_drop_down</i>
                             </a>
                         </li>
-                        <li><a href="/stores">Stores</a></li>
-                        <li><a href="/expiring">Expiring Soon</a></li>
-                        <li><a href="/blog">Blog</a></li>
+                        <li><a style="width: 160px; text-align: center;" href="/stores">Stores</a></li>
+                        <li><a style="width: 160px; text-align: center;" href="/expiring">Expiring Soon</a></li>
+                        <li><a style="width: 160px; text-align: center;" href="/blog">Blog</a></li>
                         @if(Auth::user())
-                            <li><a href="/dashboard">Dasboard</a></li>
+                            <li><a style="width: 160px; text-align: center;" href="/dashboard">Dasboard</a></li>
                         @endif
                     </ul>
                 </div>
