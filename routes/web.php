@@ -63,6 +63,8 @@ Route::get('offer/csv', 'OfferController@download');
 
 Route::post('offer/bulk', 'OfferController@bulk');
 
+Route::get('offer/bulk', 'OfferController@bulk');
+
 // Category Routes
 Route::delete('category/{category}', 'CategoryController@destroy');
 

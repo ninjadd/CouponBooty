@@ -7,7 +7,6 @@ use App\Offer;
 use App\Type;
 use App\Category;
 use App\Store;
-use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Cookie\CookieJar;
 
@@ -236,9 +235,13 @@ class OfferController extends Controller
             }
         }
 
-        return redirect()
-            ->action('StoreController@edit', ['id' => $store->id])
-            ->with('status', 'Offer #'. $offer->id . ' updated!');
+        if (empty($request->offer_ids)) {
+            return redirect()
+                ->action('StoreController@edit', ['id' => $store->id])
+                ->with('status', 'Offer #'. $offer->id . ' updated!');
+        } elseif (!empty($request->offer_ids)) {
+            return (new OfferController())->bulk($request)->with('status', 'Offer #'. $offer->id . ' updated!');
+        }
     }
 
 
@@ -330,6 +333,11 @@ class OfferController extends Controller
             case 'Stage':
                 Offer::whereIn('id', $offer_ids)->update(['archive' => 2]);
                 return back()->with('status', count($offer_ids) . ' Offers staged!');
+                break;
+
+            case 'Edit':
+                $offers = Offer::whereIn('id', $offer_ids)->get();
+                return view('offer.bulk', compact('offers', 'offer_ids'));
                 break;
 
             case 'Delete':

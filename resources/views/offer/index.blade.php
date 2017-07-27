@@ -50,11 +50,12 @@
                         <table class="table table-bordered table-condensed record_table" cellspacing="0" width="100%">
                         <thead>
                             <tr>
-                                <td colspan="10" align="center">
+                                <td colspan="11" align="center">
                                     <div class="btn-group">
                                         <input name="action_item" type="submit" class="btn btn-sm btn-success" value="Live">
                                         <input name="action_item" type="submit" class="btn btn-sm btn-warning" value="Archive">
                                         <input name="action_item" type="submit" class="btn btn-sm btn-info" value="Stage">
+                                        <input name="action_item" type="submit" class="btn btn-sm btn-default" value="Edit">
                                         <input name="action_item" type="submit" class="btn btn-sm btn-danger" value="Delete">
                                     </div>
                                 </td>
@@ -103,7 +104,7 @@
                                     <td>
                                         {{ (!empty($offer->end_date)) ? $offer->end_date->format('Y-m-d') : null }}
                                     </td>
-                                    <td>
+                                    <td valign="top">
                                         <div class="hidden">{{ $offer->id }}</div>
                                         <input type="checkbox" name="offer_ids[]" value="{{ $offer->id }}">
                                     </td>
