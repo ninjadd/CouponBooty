@@ -57,11 +57,11 @@ class UploadController extends Controller
 
             $offer->save();
 
-            $categories = str_replace(',', '|', $csv[$i][5]);
+            $categories = $csv[$i][5];
 
             if (!empty($categories)) {
-                if (str_contains($categories, '|')) {
-                    $cats = explode('|', $categories);
+                if (str_contains($categories, ' ')) {
+                    $cats = explode(' ', $categories);
                     foreach ($cats as $cat) {
                         $cat = trim($cat);
                         if (!empty($cat)) {
