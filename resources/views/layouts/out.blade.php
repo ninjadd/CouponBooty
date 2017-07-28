@@ -60,7 +60,7 @@
             <a href="#" data-activates="mobile-menu" class="button-collapse"><i class="material-icons">menu</i></a>
             <div class="row">
 
-                <div class="col s8 hide-on-med-and-down">
+                <div class="col s12 hide-on-med-and-down">
                     <ul id="dropdown2" class="dropdown-content">
                         @include('shared.type-nav')
                     </ul>
