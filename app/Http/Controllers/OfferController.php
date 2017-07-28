@@ -173,12 +173,8 @@ class OfferController extends Controller
         $types = Type::all();
         $categories = Category::byOffer($offer->id)->get();
         $stores = Store::all();
-        $networks = Network::orderBy('name')->get();
-        $catStore = Store::where('id', $offer->store_id)->first();
-        $cats = $catStore->categories;
 
-
-        return view('offer.edit', compact('offer', 'types', 'categories', 'cats', 'stores', 'networks'));
+        return view('offer.edit', compact('offer', 'types', 'categories', 'stores'));
     }
 
     /**
@@ -210,21 +206,23 @@ class OfferController extends Controller
         $offer->store_id = $request->store_id;
         $offer->start_date =  (!empty($request->start_date)) ? date('Y-m-d H:i:s', strtotime($request->start_date)) : $request->start_date;
         $offer->end_date =  (!empty($request->end_date)) ? date('Y-m-d H:i:s', strtotime($request->end_date)) : $request->end_date;
+        $offer->archive = $request->archive;
 
         $offer->save();
 
         $categories = $request->categories;
 
         if (!empty($categories)) {
+            Category::where('offer_id', $offer->id)->delete();
             if (str_contains($categories, ',')) {
                 $cats = explode(',', $categories);
                 foreach ($cats as $cat) {
                     $cat = trim($cat);
                     if (!empty($cat)) {
-                        $catIn = new Category();
-                        $catIn->offer_id = $offer->id;
-                        $catIn->name = $cat;
-                        $catIn->save();
+                        Category::updateOrCreate(
+                            ['offer_id' => $offer->id, 'name' => $cat],
+                            ['name' => $cat]
+                        );
                     }
                 }
             } else {
@@ -337,7 +335,9 @@ class OfferController extends Controller
 
             case 'Edit':
                 $offers = Offer::whereIn('id', $offer_ids)->get();
-                return view('offer.bulk', compact('offers', 'offer_ids'));
+                $types = Type::all();
+                $stores = Store::all();
+                return view('offer.bulk', compact('offers', 'offer_ids', 'types', 'stores'));
                 break;
 
             case 'Delete':

@@ -26,12 +26,6 @@
         ]) !!};
     </script>
     <style>
-        .nav-wrapper .input-field input[type=search] {
-            height: 64px;
-        }
-        .input-field label {
-            max-height: 64px;
-        }
         .back_ground_top {
             background-image: url("{{ asset('images/CouponBooty_Background.png') }}");
             background-repeat: no-repeat;
@@ -84,16 +78,6 @@
                         @endif
                     </ul>
                 </div>
-
-                <div class="right col s4 hide-on-med-and-down">
-                    <form id="search_text"  action="/results" method="POST"  autocomplete="off">
-                        {{ csrf_field() }}
-                        <div class="input-field">
-                            <input class="search" id="search" type="search" name="search_text" required>
-                            <label class="label-icon" for="search"><i class="material-icons">search</i></label>
-                        </div>
-                    </form>
-                </div>
             </div>
 
             <ul class="side-nav" id="mobile-menu">
@@ -114,6 +98,18 @@
         </div>
     </div>
 </nav>
+
+<div class="container">
+    <div class="col s12">
+        <form id="search_text"  action="/results" method="POST"  autocomplete="off">
+            {{ csrf_field() }}
+            <div class="input-field">
+                <input class="search" id="search" type="search" name="search_text" required>
+                <label for="search">Search Offers, Codes &amp; Deals</label>
+            </div>
+        </form>
+    </div>
+</div>
 
 @yield('content')
 

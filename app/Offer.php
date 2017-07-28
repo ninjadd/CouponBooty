@@ -68,6 +68,19 @@ class Offer extends Model
     }
 
     /**
+     * @return array|string
+     */
+    public function categoriesToCommaString()
+    {
+        $categories = $this->categories()->get();
+        foreach ($categories as $category) {
+            $cats[] = $category->name;
+        }
+        return implode(', ', $cats);
+
+    }
+
+    /**
      * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
      */
     public function user()

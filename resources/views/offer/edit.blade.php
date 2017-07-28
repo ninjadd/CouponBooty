@@ -122,7 +122,7 @@
                                                 class="form-control"
                                                 rows="3"
                                                 placeholder="Add more here delete them below still comma separated please"
-                                                id="offerCategories">{{ ($categories->count() == 0) ? $cats : null }}</textarea>
+                                                id="offerCategories">{{ $offer->categoriesToCommaString() }}</textarea>
                                         <span class="help-block">This will help with search and filtering later on</span>
                                     </div>
                                 </div>
@@ -150,6 +150,22 @@
                                                placeholder="MM/DD/YYYY"
                                                value="{{ (!empty($offer->end_date)) ? $offer->end_date->format('m/d/Y') : '' }}">
                                         <span class="help-block">Not required. I think it will help us better manage our coupons so we only have active ones. We don’t want AdAssured coming after us.</span>
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="typeLabel" class="col-lg-2 control-label">Status</label>
+                                    <div class="col-lg-10">
+                                        <label class="radio-inline">
+                                            <input type="radio" {{ ($offer->archive == 0) ? 'checked="checked"' : null }} name="archive" value="0"> Live
+                                        </label>
+                                        <label class="radio-inline">
+                                            <input type="radio" {{ ($offer->archive == 1) ? 'checked="checked"' : null }} name="archive" value="1"> Archive
+                                        </label>
+                                        <label class="radio-inline">
+                                            <input type="radio" {{ ($offer->archive == 2) ? 'checked="checked"' : null }} name="archive" value="2"> Stage
+                                        </label>
+                                        <span class="help-block">Select one please these are required as well</span>
                                     </div>
                                 </div>
 

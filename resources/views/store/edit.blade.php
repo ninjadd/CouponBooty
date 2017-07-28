@@ -96,31 +96,34 @@
 
             </div>
             <div class="col-md-4">
-                <div class="list-group">
-                    <a href="#" class="list-group-item active" data-toggle="modal" data-target=".new-offer-form">
-                        <h4 class="list-group-item-heading">Quick Offer</h4>
-                        <p class="list-group-item-text">Click to add a new offer to {{ $store->name }}</p>
-                    </a>
-                    @foreach($store->offers as $offer)
-                        <a href="/offer/{{ $offer->id }}/edit" class="list-group-item">
-                            <h4 class="list-group-item-heading">{{ $offer->title }}</h4>
-                            @if($offer->archive == 0)
-                                <span class="label label-success">Live</span>
-                            @endif
-                            @if($offer->archive == 1)
-                                <span class="label label-warning">Archived</span>
-                            @endif
-                            @if($offer->archive == 2)
-                                <span class="label label-info">Staged</span>
-                            @endif
-                            <p class="list-group-item-text">
-                                {{ strip_tags($offer->body) }}
-                            </p>
-                            <p class="list-group-item-text">
-                                <strong>Quick edit this offer</strong>
-                            </p>
-                        </a>
-                    @endforeach
+                <ul class="nav nav-pills">
+                    <li class="active"><a href="#live" data-toggle="tab" aria-expanded="true">Live <span class="badge">{{ $store->offers->where('archive', 0)->count() }}</span></a></li>
+                    <li><a href="#archive" data-toggle="tab" aria-expanded="false">Archived <span class="badge">{{ $store->offers->where('archive', 1)->count() }}</span></a></li>
+                    <li><a href="#stage" data-toggle="tab" aria-expanded="false">Staged <span class="badge">{{ $store->offers->where('archive', 2)->count() }}</span></a></li>
+                    <li><a href="#" data-toggle="modal" data-target=".new-offer-form">Quick Offer <i class="glyphicon glyphicon-plus" aria-hidden="true"></i></a></li>
+                </ul>
+                <div id="myTabContent" class="tab-content">
+                    <div class="tab-pane fade active in" id="live">
+                        <div class="list-group">
+                            @foreach($store->offers()->where('archive', 0)->get() as $offer)
+                                <a href="/offer/{{ $offer->id }}/edit" class="list-group-item">{{ $offer->title }}</a>
+                            @endforeach
+                        </div>
+                    </div>
+                    <div class="tab-pane fade" id="archive">
+                        <div class="list-group">
+                            @foreach($store->offers()->where('archive', 1)->get() as $offer)
+                                <a href="/offer/{{ $offer->id }}/edit" class="list-group-item">{{ $offer->title }}</a>
+                            @endforeach
+                        </div>
+                    </div>
+                    <div class="tab-pane fade" id="stage">
+                        <div class="list-group">
+                            @foreach($store->offers()->where('archive', 2)->get() as $offer)
+                                <a href="/offer/{{ $offer->id }}/edit" class="list-group-item">{{ $offer->title }}</a>
+                            @endforeach
+                        </div>
+                    </div>
                 </div>
             </div>
             <div class="modal fade new-offer-form" tabindex="-1" role="dialog" aria-labelledby="">
@@ -229,6 +232,20 @@
                                            placeholder="MM/DD/YYYY">
                                     <span class="help-block">Not required. I think it will help us better manage our coupons so we only have active ones. We don’t want AdAssured coming after us.</span>
                                 </div>
+
+                                <div class="form-group">
+                                    <label for="typeLabel" class="control-label">Status</label><br>
+                                    <label class="radio-inline">
+                                        <input type="radio" checked="checked" name="archive" value="0"> Live
+                                    </label>
+                                    <label class="radio-inline">
+                                        <input type="radio" name="archive" value="1"> Archive
+                                    </label>
+                                    <label class="radio-inline">
+                                        <input type="radio" name="archive" value="2"> Stage
+                                    </label>
+                                </div>
+
                             </div>
                             <div class="modal-footer">
                                 <button type="submit" class="btn btn-primary">Save</button>

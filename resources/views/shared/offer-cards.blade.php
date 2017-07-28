@@ -32,7 +32,7 @@
                 @if($offer->end_date)
                     <p>Expires: {{ $offer->end_date->format('m/d/Y') }}</p>
                 @endif
-
+                <a class="deep-purple-text" href="/view/{{ $offer->store->slug }}" target="_blank">See More {{ $offer->store->name }} Offers</a><br><br>
                 <a href="https://twitter.com/home?status={{ urlencode($offer->url) }}" target="_blank">
                     <i class="fa fa-twitter-square fa-2x blue-grey-text" aria-hidden="true"></i>
                 </a>

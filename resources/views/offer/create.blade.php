@@ -148,6 +148,22 @@
                                 </div>
 
                                 <div class="form-group">
+                                    <label for="typeLabel" class="col-lg-2 control-label">Status</label>
+                                    <div class="col-lg-10">
+                                        <label class="radio-inline">
+                                            <input type="radio" {{ ($offer->archive == 0) ? 'checked="checked"' : null }} name="archive" value="0"> Live
+                                        </label>
+                                        <label class="radio-inline">
+                                            <input type="radio" {{ ($offer->archive == 1) ? 'checked="checked"' : null }} name="archive" value="1"> Archive
+                                        </label>
+                                        <label class="radio-inline">
+                                            <input type="radio" {{ ($offer->archive == 2) ? 'checked="checked"' : null }} name="archive" value="2"> Stage
+                                        </label>
+                                        <span class="help-block">Select one please these are required as well</span>
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
                                     <div class="col-lg-10 col-lg-offset-2">
                                         <button type="submit" class="btn btn-primary">Save</button>
                                         <button type="reset" class="btn btn-default">Cancel</button>

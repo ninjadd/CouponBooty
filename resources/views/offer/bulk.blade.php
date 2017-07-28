@@ -48,9 +48,18 @@
                                 </div>
 
                                 <div class="form-group">
-                                    <strong for="storeLable" class="control-label">Store:</strong>
-                                    {{ $offer->store['name'] }}
-                                    <input type="hidden" name="store_id" value="{{ $offer->store_id }}" />
+                                    <strong for="storeLable" class="control-label">Store</strong>
+                                    <br>
+                                    <select class="form-control" name="store_id" id="select">
+                                        @if($stores->count() > 0)
+                                            <option>Select</option>
+                                            @foreach($stores as $store)
+                                                <option {!! ($store->id == $offer->store_id) ? 'selected="selected"' : null !!} value="{{ $store->id }}">{{ $store->name }}</option>
+                                            @endforeach
+                                        @else
+                                            <option>Please Create Store First</option>
+                                        @endif
+                                    </select>
                                 </div>
 
                                 <div class="form-group">
@@ -61,9 +70,19 @@
                                 </div>
 
                                 <div class="form-group">
-                                    <strong for="typeLabel" class="control-label">Type:</strong>
-                                    {{ $offer->type['label'] }}
-                                    <input type="hidden" name="type_id" value="{{ $offer->type_id }}" />
+                                    <strong for="typeLabel" class="control-label">Type</strong>
+                                    <br>
+                                    @foreach($types as $type)
+                                        <label class="radio-inline">
+                                            @if($offer->type_id == $type->id)
+                                                <input type="radio" name="type_id" value="{{ $type->id }}" checked="checked">
+                                            @else
+                                                <input type="radio" name="type_id" value="{{ $type->id }}">
+                                            @endif
+
+                                            {{ $type->label }}
+                                        </label>
+                                    @endforeach
                                 </div>
 
                                 <div class="form-group">
@@ -75,6 +94,17 @@
                                             id="coupon"
                                             value="{{ $offer->coupon }}"
                                             placeholder="This is the Coupon or Code or whatever you want to call it">
+                                </div>
+
+                                <div class="form-group">
+                                    <strong for="offerCategories" class="control-label">Categories</strong>
+                                    <textarea
+                                            name="categories"
+                                            class="form-control"
+                                            rows="3"
+                                            placeholder="Add more here delete them below still comma separated please"
+                                            id="offerCategories">{{ $offer->categoriesToCommaString() }}</textarea>
+                                    <span class="help-block">This will help with search and filtering later on</span>
                                 </div>
 
                                 <div class="form-group">
@@ -93,6 +123,20 @@
                                            class="form-control endDate"
                                            placeholder="MM/DD/YYYY"
                                            value="{{ (!empty($offer->end_date)) ? $offer->end_date->format('m/d/Y') : '' }}">
+                                </div>
+
+                                <div class="form-group">
+                                    <strong for="typeLabel" class="control-label">Status</strong>
+                                    <br>
+                                    <label class="radio-inline">
+                                        <input type="radio" {{ ($offer->archive == 0) ? 'checked="checked"' : null }} name="archive" value="0"> Live
+                                    </label>
+                                    <label class="radio-inline">
+                                        <input type="radio" {{ ($offer->archive == 1) ? 'checked="checked"' : null }} name="archive" value="1"> Archive
+                                    </label>
+                                    <label class="radio-inline">
+                                        <input type="radio" {{ ($offer->archive == 2) ? 'checked="checked"' : null }} name="archive" value="2"> Stage
+                                    </label>
                                 </div>
 
                                 <div class="form-group">
