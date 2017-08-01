@@ -48,6 +48,11 @@
                             </div>
 
                             <div class="form-group">
+                                <label for="url">Generic Store Homepage Link</label>
+                                <input class="form-control" value="{{ old('url') }}" type="url" name="url" id="url"  placeholder="This will should go somewhere cool">
+                            </div>
+
+                            <div class="form-group">
                                 <label for="imageUrl">Image URL</label>
                                 <input class="form-control" value="{{ old('image_url') }}" required="required" type="url" name="image_url" id="imageUrl"  placeholder="This will make a great image one day">
                                 <span class="help-block">A required field</span>

@@ -61,6 +61,11 @@
                             </div>
 
                             <div class="form-group">
+                                <label for="url">Generic Store Homepage Link</label>
+                                <input class="form-control" value="{{ $store->url }}" type="url" name="url" id="url"  placeholder="This will should go somewhere cool">
+                            </div>
+
+                            <div class="form-group">
                                 <label for="storeTitle">Title</label>
                                 <input class="form-control"
                                        value="{{ $store->title }}"

@@ -29,7 +29,7 @@
                     <div class="card-panel z-depth-4">
                         <div class="row valign-wrapper">
                             <div class="col s12">
-                                <img src="{{ $store->image_url }}" alt="{{ $store->name }}" class="responsive-img">
+                                <a href="{{ $store->url }}" target="_blank"><img src="{{ $store->image_url }}" alt="{{ $store->name }}" class="responsive-img"></a>
                             </div>
                         </div>
                     </div>
@@ -41,7 +41,7 @@
                     <div class="card-panel z-depth-4">
                         <div class="row">
                             <div class="col s6">
-                                <img src="{{ $store->image_url }}" alt="{{ $store->name }}" class="responsive-img">
+                                <a href="{{ $store->url }}" target="_blank"><img src="{{ $store->image_url }}" alt="{{ $store->name }}" class="responsive-img"></a>
                             </div>
                             <div class="col s6">
                                 {{ strip_tags($store->body) }}
