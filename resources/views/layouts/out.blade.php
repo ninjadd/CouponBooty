@@ -99,6 +99,7 @@
     </div>
 </nav>
 
+<br>
 <div class="container">
     <div class="col s12">
         <form id="search_text"  action="/results" method="POST"  autocomplete="off">
@@ -110,6 +111,7 @@
         </form>
     </div>
 </div>
+<br>
 
 @yield('content')
 

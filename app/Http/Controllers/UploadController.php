@@ -65,10 +65,10 @@ class UploadController extends Controller
                     foreach ($cats as $cat) {
                         $cat = trim($cat);
                         if (!empty($cat)) {
-                            Category::updateOrCreate(
-                                ['offer_id' => $offer->id],
-                                ['name' => $cat]
-                            );
+                            $storeCategory = new Category();
+                            $storeCategory->offer_id = $offer->id;
+                            $storeCategory->name = $cat;
+                            $storeCategory->save();
                         }
                     }
                 } else {
