@@ -76,8 +76,12 @@ class Offer extends Model
         foreach ($categories as $category) {
             $cats[] = $category->name;
         }
-        return implode(', ', $cats);
 
+        if (!empty($cats)) {
+            return implode(', ', $cats);
+        } else {
+            return null;
+        }
     }
 
     /**
