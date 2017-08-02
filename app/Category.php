@@ -45,9 +45,21 @@ class Category extends Model
      */
     public static function metaKeywords()
     {
-        $category_names = static::pluck('name')->unique()->toArray();
+        $today = date('Y-m-d');
 
-        return implode(', ', $category_names);
+        $cacheCategory = CacheCategory::where('day_created', $today);
+        if ($cacheCategory->count() < 1) {
+            $category_names = static::pluck('name')->unique()->toArray();
+            $cache = new CacheCategory();
+            $cache->day_created = $today;
+            $cache->categories = implode(', ', $category_names);
+            $cache->save();
+        }
+
+        $getCategories = CacheCategory::where('day_created', $today)->pluck('categories');
+
+
+        return $getCategories[0];
     }
 
     /**
@@ -55,8 +67,11 @@ class Category extends Model
      */
     public static function autoFillKeywords()
     {
-        return $category_names = static::selectRaw('lower(name) as name')->groupBy('name')->pluck('name');
-
-//        return $category_names = static::pluck('name')->unique();
+        $today = date('Y-m-d');
+        $getCategories = CacheCategory::where('day_created', $today)->pluck('categories');
+        $categories = $getCategories[0];
+        $categories = explode(',', $categories);
+        $categories = array_map('trim', $categories);
+        return $categories;
     }
 }
