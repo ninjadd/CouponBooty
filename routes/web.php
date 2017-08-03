@@ -40,6 +40,8 @@ Route::get('types/{slug}', 'PageController@viewType');
 
 Route::get('sitemap', 'SitemapController@index');
 
+Route::get('sitemap.xml', 'SitemapController@index');
+
 Auth::routes();
 
 Route::get('dashboard', 'DashBoardController@index')->name('dashboard');
