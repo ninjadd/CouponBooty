@@ -180,11 +180,7 @@ class StoreController extends Controller
 
         $offer->save();
 
-        if (empty($store->categories)) {
-            $categories = $request->categories;
-        } else {
-            $categories = $store->categories;
-        }
+        $categories = $request->categories;
 
         if (!empty($categories)) {
             if (str_contains($categories, ',')) {
