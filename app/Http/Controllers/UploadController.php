@@ -39,8 +39,9 @@ class UploadController extends Controller
         ]);
 
         $store = Store::where('id', $request->store_id)->first();
-        $csv = array_map('str_getcsv', file($request->file('csv_file')));
         $network_id = $store->network_id;
+        ini_set('auto_detect_line_endings', true);
+        $csv = array_map('str_getcsv', file($request->file('csv_file')));
 
         if ($network_id == 1) {
             for ($i=0; $i < sizeof($csv) ; $i++) {
@@ -89,7 +90,7 @@ class UploadController extends Controller
                 if (!empty($links[0][0])) {
                     $url = $links[0][0];
                     $body = strip_tags($csv[$i][0]);
-                    $title = $csv[$i][3];
+                    (!empty($csv[$i][3])) ? $title = $csv[$i][3] : $title = null;
 
                     $offer = new Offer();
                     $offer->user_id = auth()->id();
