@@ -34,9 +34,11 @@
                 <div id="09" class="section">
                     <h5>#</h5>
                     @foreach($stores->byNumeric()->get() as $store)
-                        <div>
-                            <span class="col s2 m3 l3"><a class="deep-purple-text" href="/view/{{ $store->slug }}">{{ $store->name }} ({{ $store->offers->where('archive', 0)->count() }})</a></span>
-                        </div>
+                        @if($store->offers->where('archive', 0)->count() > 0)
+                            <div>
+                                <span class="col s2 m3 l3"><a class="deep-purple-text" href="/view/{{ $store->slug }}">{{ $store->name }} ({{ $store->offers->where('archive', 0)->count() }})</a></span>
+                            </div>
+                        @endif
                     @endforeach
                 </div>
             </div>
@@ -49,9 +51,11 @@
                     <div id="{{ $item }}" class="section">
                         <h5>{{ $item }}</h5>
                         @foreach($stores->byAlpha($item)->get() as $store)
-                            <p>
-                                <span class="col s6 m4 l3"><a class="deep-purple-text" href="/view/{{ $store->slug }}">{{ $store->name }} ({{ $store->offers->where('archive', 0)->count() }})</a></span>
-                            </p>
+                            @if($store->offers->where('archive', 0)->count() > 0)
+                                <p>
+                                    <span class="col s6 m4 l3"><a class="deep-purple-text" href="/view/{{ $store->slug }}">{{ $store->name }} ({{ $store->offers->where('archive', 0)->count() }})</a></span>
+                                </p>
+                            @endif
                         @endforeach
                     </div>
                 </div>
