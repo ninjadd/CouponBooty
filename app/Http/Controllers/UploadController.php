@@ -84,6 +84,48 @@ class UploadController extends Controller
             }
         }
 
+        if ($network_id == 2) {
+            $handle = fopen($request->csv_file->path(), "r");
+            while (($tsv = fgetcsv($handle, 10000, "\t")) !== FALSE) {
+                $offer = new Offer();
+
+                $offer->user_id = auth()->id();
+                $offer->type_id = 5;
+                $offer->title = utf8_encode($tsv[6]);
+                $offer->url = utf8_encode($tsv[8]);
+                $offer->image_url = $store->image_url;
+                $offer->body = utf8_encode($tsv[11]);
+                $offer->store_id = $request->store_id;
+                $offer->start_date = (!empty($tsv[3])) ? date('Y-m-d H:i:s', strtotime($tsv[3])) : null;
+                $offer->end_date = (!empty($tsv[4])) ? date('Y-m-d H:i:s', strtotime($tsv[4])) : null;
+                $offer->archive = 2;
+
+                $offer->save();
+
+                $categories = $store->categories;
+
+                if (!empty($categories)) {
+                    if (str_contains($categories, ',')) {
+                        $cats = explode(',', $categories);
+                        foreach ($cats as $cat) {
+                            $cat = trim($cat);
+                            if (!empty($cat)) {
+                                $storeCategory = new Category();
+                                $storeCategory->offer_id = $offer->id;
+                                $storeCategory->name = $cat;
+                                $storeCategory->save();
+                            }
+                        }
+                    } else {
+                        $category = new Category();
+                        $category->offer_id = $offer->id;
+                        $category->name = $categories;
+                        $category->save();
+                    }
+                }
+            }
+        }
+
         if ($network_id == 3) {
             for ($i=0; $i < sizeof($csv) ; $i++) {
                 preg_match_all('#\bhttps?://[^\s()<>]+(?:\([\w\d]+\)|([^[:punct:]\s]|/))#', $csv[$i][0], $links);
