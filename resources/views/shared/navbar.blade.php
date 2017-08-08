@@ -16,7 +16,7 @@
                         <li role="separator" class="divider"></li>
                         <li><a href="/upload/1">CommissionJunction Upload</a></li>
                         <li><a href="/upload/3">LinkShare Upload</a></li>
-                        <li><a href="/upload/2">ShareaSale Upload</a></li>
+                        {{--<li><a href="/upload/2">ShareaSale Upload</a></li>--}}
                     </ul>
                 </li>
             </ul>

@@ -8,6 +8,7 @@ use App\Store;
 use App\Category;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Config;
 
 class UploadController extends Controller
 {
@@ -40,10 +41,10 @@ class UploadController extends Controller
 
         $store = Store::where('id', $request->store_id)->first();
         $network_id = $store->network_id;
-        ini_set('auto_detect_line_endings', true);
-        $csv = array_map('str_getcsv', file($request->file('csv_file')));
 
+        // CJ
         if ($network_id == 1) {
+            $csv = \Excel::load($request->csv_file->path(), function($reader) {})->noHeading()->get();
             for ($i=0; $i < sizeof($csv) ; $i++) {
                 $offer = new Offer();
                 $offer->user_id = auth()->id();
@@ -84,20 +85,22 @@ class UploadController extends Controller
             }
         }
 
+        // SS
         if ($network_id == 2) {
-            $handle = fopen($request->csv_file->path(), "r");
-            while (($tsv = fgetcsv($handle, 10000, "\t")) !== FALSE) {
+            Config::set('excel.csv.delimiter', "|");
+            $csv = \Excel::load($request->csv_file->path(), function($reader) {})->noHeading()->get();
+            for ($i=0; $i < sizeof($csv) ; $i++) {
                 $offer = new Offer();
 
                 $offer->user_id = auth()->id();
                 $offer->type_id = 5;
-                $offer->title = utf8_encode($tsv[6]);
-                $offer->url = utf8_encode($tsv[8]);
+                $offer->title = utf8_encode($csv[6]);
+                $offer->url = utf8_encode($csv[8]);
                 $offer->image_url = $store->image_url;
-                $offer->body = utf8_encode($tsv[11]);
+                $offer->body = utf8_encode($csv[11]);
                 $offer->store_id = $request->store_id;
-                $offer->start_date = (!empty($tsv[3])) ? date('Y-m-d H:i:s', strtotime($tsv[3])) : null;
-                $offer->end_date = (!empty($tsv[4])) ? date('Y-m-d H:i:s', strtotime($tsv[4])) : null;
+                $offer->start_date = (!empty($csv[3])) ? date('Y-m-d H:i:s', strtotime($csv[3])) : null;
+                $offer->end_date = (!empty($csv[4])) ? date('Y-m-d H:i:s', strtotime($csv[4])) : null;
                 $offer->archive = 2;
 
                 $offer->save();
@@ -126,7 +129,9 @@ class UploadController extends Controller
             }
         }
 
+        // LS
         if ($network_id == 3) {
+            $csv = \Excel::load($request->csv_file->path(), function($reader) {})->noHeading()->get();
             for ($i=0; $i < sizeof($csv) ; $i++) {
                 preg_match_all('#\bhttps?://[^\s()<>]+(?:\([\w\d]+\)|([^[:punct:]\s]|/))#', $csv[$i][0], $links);
                 if (!empty($links[0][0])) {
