@@ -89,6 +89,7 @@ class UploadController extends Controller
         if ($network_id == 2) {
             Config::set('excel.csv.delimiter', "|");
             $csv = \Excel::load($request->csv_file->path(), function($reader) {})->noHeading()->get();
+            return $csv;
             for ($i=0; $i < sizeof($csv) ; $i++) {
                 $offer = new Offer();
 

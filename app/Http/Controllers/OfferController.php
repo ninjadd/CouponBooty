@@ -120,7 +120,7 @@ class OfferController extends Controller
         $offer->archive = $request->archive;
 
         $offer->save();
-        
+
         $categories = $request->categories;
 
         if (!empty($categories)) {
