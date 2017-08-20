@@ -89,42 +89,41 @@ class UploadController extends Controller
         if ($network_id == 2) {
             Config::set('excel.csv.delimiter', "|");
             $csv = \Excel::load($request->csv_file->path(), function($reader) {})->noHeading()->get();
-            return $csv;
             for ($i=0; $i < sizeof($csv) ; $i++) {
-                $offer = new Offer();
+                if (  !empty($csv[$i][4])  ) {
+                    $offer = new Offer();
 
-                $offer->user_id = auth()->id();
-                $offer->type_id = 5;
-                $offer->title = utf8_encode($csv[6]);
-                $offer->url = utf8_encode($csv[8]);
-                $offer->image_url = $store->image_url;
-                $offer->body = utf8_encode($csv[11]);
-                $offer->store_id = $request->store_id;
-                $offer->start_date = (!empty($csv[3])) ? date('Y-m-d H:i:s', strtotime($csv[3])) : null;
-                $offer->end_date = (!empty($csv[4])) ? date('Y-m-d H:i:s', strtotime($csv[4])) : null;
-                $offer->archive = 2;
+                    $offer->user_id = auth()->id();
+                    $offer->type_id = 5;
+                    $offer->title = utf8_encode($csv[$i][1]);
+                    $offer->url = utf8_encode($csv[$i][3]);
+                    $offer->image_url = $store->image_url;
+                    $offer->body = utf8_encode($csv[$i][4]);
+                    $offer->store_id = $request->store_id;
+                    $offer->archive = 2;
 
-                $offer->save();
+                    $offer->save();
 
-                $categories = $store->categories;
+                    $categories = $store->categories;
 
-                if (!empty($categories)) {
-                    if (str_contains($categories, ',')) {
-                        $cats = explode(',', $categories);
-                        foreach ($cats as $cat) {
-                            $cat = trim($cat);
-                            if (!empty($cat)) {
-                                $storeCategory = new Category();
-                                $storeCategory->offer_id = $offer->id;
-                                $storeCategory->name = $cat;
-                                $storeCategory->save();
+                    if (!empty($categories)) {
+                        if (str_contains($categories, ',')) {
+                            $cats = explode(',', $categories);
+                            foreach ($cats as $cat) {
+                                $cat = trim($cat);
+                                if (!empty($cat)) {
+                                    $storeCategory = new Category();
+                                    $storeCategory->offer_id = $offer->id;
+                                    $storeCategory->name = $cat;
+                                    $storeCategory->save();
+                                }
                             }
+                        } else {
+                            $category = new Category();
+                            $category->offer_id = $offer->id;
+                            $category->name = $categories;
+                            $category->save();
                         }
-                    } else {
-                        $category = new Category();
-                        $category->offer_id = $offer->id;
-                        $category->name = $categories;
-                        $category->save();
                     }
                 }
             }
