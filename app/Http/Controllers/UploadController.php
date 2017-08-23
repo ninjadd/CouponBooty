@@ -90,7 +90,7 @@ class UploadController extends Controller
             Config::set('excel.csv.delimiter', "|");
             $csv = \Excel::load($request->csv_file->path(), function($reader) {})->noHeading()->get();
             for ($i=0; $i < sizeof($csv) ; $i++) {
-                if (  !empty($csv[$i][4])  ) {
+                if (  (!empty($csv[$i][4])) && (!empty($csv[$i][1]))  ) {
                     $offer = new Offer();
 
                     $offer->user_id = auth()->id();
