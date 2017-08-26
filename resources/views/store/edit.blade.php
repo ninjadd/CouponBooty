@@ -41,7 +41,7 @@
                                         @endforeach
                                     @else
                                         @foreach($networks as $network)
-                                            <option {{ ($store->network_id == $network->id) ? 'selected="selected"' : null }} value="{{ $network->id }}">{{ $network->name }}</option>
+                                            <option {{ (trim($store->network_id, '"') == $network->id) ? 'selected="selected"' : null }} value="{{ $network->id }}">{{ $network->name }}</option>
                                         @endforeach
                                     @endif
                                 </select>
