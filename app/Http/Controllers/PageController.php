@@ -21,11 +21,11 @@ class PageController extends Controller
      */
     public function welcome()
     {
-        $offers = Offer::where('archive', 0)->orderBy('created_at', 'desc')->paginate(20);
+        $offers = Offer::where('archive', 0)->orderBy('created_at', 'desc')->paginate(60);
         $types = Type::all();
-        // $stores = Store::inRandomOrder()->take(10)->get();
+        $stores = Store::orderBy('name', 'asc')->get();
 
-        return view('pages.welcome', compact('offers', 'types'));
+        return view('pages.welcome', compact('offers', 'types', 'stores'));
     }
 
     /**

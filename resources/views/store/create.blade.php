@@ -26,11 +26,10 @@
                             </div>
 
                             <div class="form-group">
-                                <label for="network">Network</label>
-                                <select class="form-control" required="required" name="network_id" id="network">
-                                    <option>Select Network</option>
+                                <label for="network">Networks</label>
+                                <select class="form-control" required="required" name="network_id[]" id="network" multiple="multiple">
                                     @foreach($networks as $network)
-                                        <option {{ (old('network_id') == $network->id) ? 'selected="selected"' : null }} value="{{ $network->id }}">{{ $network->name }}</option>
+                                        <option {{ (in_array($network->id, array(old('network_id')))) ? 'selected="selected"' : null }} value="{{ $network->id }}">{{ $network->name }}</option>
                                     @endforeach
                                 </select>
                                 <span class="help-block">A required field</span>

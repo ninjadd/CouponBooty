@@ -93,13 +93,29 @@ class Store extends Model
         return $query->where('name', 'like', $character.'%')->orderBy('name');
     }
 
-    public function network()
-    {
-        return $this->belongsTo('App\Network');
-    }
-
     public function manager()
     {
         return $this->belongsTo('App\User', 'manager_id', 'id');
+    }
+
+    public function getNetworks($ids)
+    {
+        if (strlen($ids) > 1) {
+            $ids = json_decode($ids);
+            if (is_array($ids)) {
+                $networks = Network::whereIn('id', $ids)->get();
+                foreach ($networks as $network) {
+                    $nets[] = $network->name;
+                }
+                $nets = implode(', ', $nets);
+                return $nets;
+            } else {
+                $network = Network::where('id', $ids)->get();
+                return $network[0]['name'];
+            }
+        } else {
+            $network = Network::where('id', $ids)->get();
+            return $network[0]['name'];
+        }
     }
 }

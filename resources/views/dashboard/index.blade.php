@@ -54,7 +54,7 @@
                                         {{ $store->name }}
                                     </td>
                                     <td>
-                                        {{ $store->network['name'] }}
+                                        {!! $store->getNetworks($store->network_id) !!}
                                     </td>
                                     <td>
                                         {{ $store->manager['name'] }}

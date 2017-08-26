@@ -25,4 +25,30 @@
         </div>
         {{ $offers->links('shared.pager') }}
     </div>
+
+    <!-- Page Layout here -->
+    {{--<div class="">--}}
+        {{--<div class="row">--}}
+            {{--<div class="col s9">--}}
+                {{--<ul class="collection with-header">--}}
+                    {{--<li class="collection-header teal-text text-darken-3"><h4>Most Recent Deals</h4></li>--}}
+                {{--</ul>--}}
+
+                {{--@include('shared.offer-cards')--}}
+                {{--{{ $offers->links('shared.pager') }}--}}
+            {{--</div>--}}
+
+            {{--<div class="col s3 hide-on-med-and-down">--}}
+                {{--<ul class="collection with-header">--}}
+                    {{--<li class="collection-header"><h4>Stores</h4></li>--}}
+                {{--</ul>--}}
+                {{--<div class="collection">--}}
+                    {{--@foreach($stores as $store)--}}
+                        {{--<a href="/view/{{ $store->slug }}" class="collection-item"><span class="badge teal white-text">{{ $store->offers->count() }}</span>{{ $store->name }}</a>--}}
+                    {{--@endforeach--}}
+                {{--</div>--}}
+            {{--</div>--}}
+
+        {{--</div>--}}
+    {{--</div>--}}
 @endsection

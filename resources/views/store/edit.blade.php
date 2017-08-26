@@ -33,12 +33,17 @@
                             </div>
 
                             <div class="form-group">
-                                <label for="network">Network</label>
-                                <select class="form-control" required="required" name="network_id" id="network">
-                                    <option>Select Network</option>
-                                    @foreach($networks as $network)
-                                        <option {{ ($store->network_id == $network->id) ? 'selected="selected"' : null }} value="{{ $network->id }}">{{ $network->name }}</option>
-                                    @endforeach
+                                <label for="network">Networks</label>
+                                <select class="form-control" required="required" name="network_id[]" id="network" multiple="multiple">
+                                    @if(strlen($store->network_id) > 3)
+                                        @foreach($networks as $network)
+                                            <option {{ (in_array($network->id, json_decode($store->network_id))) ? 'selected="selected"' : null }} value="{{ $network->id }}">{{ $network->name }}</option>
+                                        @endforeach
+                                    @else
+                                        @foreach($networks as $network)
+                                            <option {{ ($store->network_id == $network->id) ? 'selected="selected"' : null }} value="{{ $network->id }}">{{ $network->name }}</option>
+                                        @endforeach
+                                    @endif
                                 </select>
                                 <span class="help-block">A required field</span>
                             </div>

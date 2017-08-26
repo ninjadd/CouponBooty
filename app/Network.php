@@ -32,8 +32,4 @@ class Network extends Model
      */
     protected $hidden = [];
 
-    public function store()
-    {
-        return $this->hasOne('App\Store');
-    }
 }

@@ -55,7 +55,7 @@ class StoreController extends Controller
     {
         $this->validate($request, [
             'name' => 'required|string|unique:stores',
-            'network_id' => 'required|integer',
+            'network_id' => 'required|array',
             'manager_id' => 'required|integer',
             'image_url' => 'required|url'
         ]);
@@ -66,7 +66,7 @@ class StoreController extends Controller
         $store->slug = str_slug($request->name);
         $store->title = $request->title;
         $store->body = $request->body;
-        $store->network_id = $request->network_id;
+        $store->network_id = json_encode($request->network_id);
         $store->manager_id = $request->manager_id;
         $store->image_url = $request->image_url;
         $store->categories = $request->categories;
@@ -115,7 +115,7 @@ class StoreController extends Controller
     {
         $this->validate($request, [
             'name' => 'required|string',
-            'network_id' => 'required|integer',
+            'network_id' => 'required|array',
             'manager_id' => 'required|integer',
             'image_url' => 'required|url'
         ]);
@@ -125,7 +125,7 @@ class StoreController extends Controller
         $store->slug = str_slug($request->name);
         $store->title = $request->title;
         $store->body = $request->body;
-        $store->network_id = $request->network_id;
+        $store->network_id = json_encode($request->network_id);
         $store->manager_id = $request->manager_id;
         $store->image_url = $request->image_url;
         $store->categories = $request->categories;
