@@ -27,7 +27,36 @@ class UploadController extends Controller
      */
     public function create(Network $network)
     {
-        $stores = Store::where('network_id', $network->id)->orderBy('name')->get();
+        $storeArray = Store::orderBy('name')->get();
+
+        foreach ($storeArray as $storeItem) {
+            if (strlen($storeItem->network_id) == 1) {
+                $storeNetworkIds[] =
+                    [
+                        'store_id' => $storeItem->id,
+                        'network_id' => $storeItem->network_id
+                    ];
+            } else {
+                $netArray = json_decode($storeItem->network_id);
+                foreach ($netArray as $netItem) {
+                    $storeNetworkIds[] =
+                        [
+                            'store_id' => $storeItem->id,
+                            'network_id' => $netItem
+                        ];
+                }
+            }
+        }
+
+        for ($i=0; $i <sizeof($storeNetworkIds) ; $i++) {
+            $networkId = $storeNetworkIds[$i]['network_id'];
+            $storeId = $storeNetworkIds[$i]['store_id'];
+            if ($network->id == $networkId) {
+                $storeIds[]  = $storeId;
+            }
+        }
+
+        $stores = Store::whereIn('id', $storeIds)->orderBy('name')->get();
 
         return view('upload.create', compact('network', 'stores'));
     }
