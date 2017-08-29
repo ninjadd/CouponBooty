@@ -61,7 +61,7 @@ class UploadController extends Controller
         return view('upload.create', compact('network', 'stores'));
     }
 
-    public function store(Request $request)
+    public function store(Network $network, Request $request)
     {
         $this->validate($request, [
             'csv_file' => 'required',
@@ -69,7 +69,7 @@ class UploadController extends Controller
         ]);
 
         $store = Store::where('id', $request->store_id)->first();
-        $network_id = $store->network_id;
+        $network_id = $network->id;
 
         // CJ
         if ($network_id == 1) {
