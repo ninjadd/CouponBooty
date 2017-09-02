@@ -60,7 +60,7 @@
                                         {{ $store->manager['name'] }}
                                     </td>
                                     <td>
-                                        {{ $store->updated_at->diffForHumans() }}
+                                        {{ $store->updated_at }}
                                     </td>
                                     <td>
                                         {{ $store->offers->count() }}

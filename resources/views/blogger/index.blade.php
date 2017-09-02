@@ -79,10 +79,10 @@
                                             {{ $blog->user->name }}
                                         </td>
                                         <td>
-                                            {{ $blog->created_at->diffForHumans() }}
+                                            {{ $blog->created_at }}
                                         </td>
                                         <td>
-                                            {{ $blog->updated_at->diffForHumans() }}
+                                            {{ $blog->updated_at }}
                                         </td>
                                         <td>
                                             {{ $blog->comments->count() }}

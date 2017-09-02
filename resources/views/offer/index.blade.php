@@ -93,7 +93,7 @@
                                         {{ $offer->created_at }}
                                     </td>
                                     <td>
-                                        {{ $offer->updated_at->diffForHumans() }}
+                                        {{ $offer->updated_at }}
                                     </td>
                                     <td>
                                         {{ $offer->coupon }}

@@ -65,7 +65,7 @@
                                             {{ $quad->created_at }}
                                         </td>
                                         <td>
-                                            {{ $quad->updated_at->diffForHumans() }}
+                                            {{ $quad->updated_at }}
                                         </td>
                                         <td>
                                             <form action="/quad/{{ $quad->id }}" method="POST">

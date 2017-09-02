@@ -55,10 +55,10 @@
                                             {{ $contact->email }}
                                         </td>
                                         <td>
-                                            {{ $contact->created_at->diffForHumans() }}
+                                            {{ $contact->created_at }}
                                         </td>
                                         <td>
-                                            {{ $contact->messages->last()->created_at->diffForHumans() }}
+                                            {{ $contact->messages->last()->created_at }}
                                         </td>
                                         <td>
                                             {{ $contact->messages->count() }}
