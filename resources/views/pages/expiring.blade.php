@@ -14,13 +14,20 @@
 @endsection
 
 @section('content')
-    <div class="container">
-        <h4 class="teal-text text-darken-3">
-            Offers Expiring Soon
-        </h4>
-        <div class="row">
+
+    <div class="row">
+        <div class="col s12 m12 l9 xl9">
+            <ul class="collection with-header">
+                <li class="collection-header"><h4>Offers Expiring Soon</h4></li>
+            </ul>
+
             @include('shared.offer-cards')
         </div>
+
+        <div class="col s3 hide-on-med-and-down">
+            @include('shared.store-side')
+        </div>
     </div>
+
 @endsection
 

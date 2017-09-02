@@ -118,4 +118,9 @@ class Store extends Model
             return $network[0]['name'];
         }
     }
+
+    public static function sideStore()
+    {
+        return Store::orderBy('name', 'asc')->get();
+    }
 }

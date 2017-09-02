@@ -23,9 +23,8 @@ class PageController extends Controller
     {
         $offers = Offer::where('archive', 0)->orderBy('created_at', 'desc')->paginate(60);
         $types = Type::all();
-        $stores = Store::orderBy('name', 'asc')->get();
 
-        return view('pages.welcome', compact('offers', 'types', 'stores'));
+        return view('pages.welcome', compact('offers', 'types'));
     }
 
     /**
