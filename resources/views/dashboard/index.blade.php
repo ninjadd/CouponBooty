@@ -13,7 +13,7 @@
             <div class="panel panel-primary">
                 <div class="panel-heading clearfix">
                     <h3 class="panel-title pull-left">
-                        Dashboard
+                        Dashboard | {{ $data['user'] }} | {{ $data['list'] }}
                     </h3>
                     <span class="pull-right badge">{{ $stores->count() }}</span>
                 </div>

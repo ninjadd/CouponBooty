@@ -39,7 +39,7 @@
             <div class="panel panel-primary">
                 <div class="panel-heading clearfix">
                     <h3 class="panel-title pull-left">
-                        Offers
+                        Offers | {{ $data['user'] }} | {{ $data['filter'] }}
                     </h3>
                     <span class="badge pull-right">{{ $offers->count() }}</span>
                 </div>

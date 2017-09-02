@@ -75,7 +75,7 @@ class StoreController extends Controller
 
         Offer::where('store_id', $store->id)->update(['image_url' => $request->image_url]);
 
-        return redirect('store')->with('status', 'New Store created I am so proud!');
+        return redirect('dashboard')->with('status', 'New Store created I am so proud!');
     }
 
     /**
@@ -151,6 +151,6 @@ class StoreController extends Controller
 
         $store->delete();
 
-        return redirect('store')->with('status', 'Store removed!');
+        return redirect('dashboard')->with('status', 'Store removed!');
     }
 }

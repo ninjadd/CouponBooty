@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Store;
+use App\User;
 use Illuminate\Cookie\CookieJar;
 use Illuminate\Http\Request;
 use App\Offer;
@@ -26,9 +27,6 @@ class DashBoardController extends Controller
      */
     public function index(CookieJar $cookieJar, Request $request)
     {
-        // Offer::whereDate('end_date', '=',  date("Y-m-d",strtotime("-1 day")))->update(['archive' => 1]);
-
-        $filter = $request->filter;
         $filter_user = $request->filter_user;
         $user_filter = $request->cookie('user_filter');
 
@@ -51,11 +49,14 @@ class DashBoardController extends Controller
 
         if ($user_id == 'all') {
             $stores = Store::all();
+            $data = ['user' => 'All', 'list' => 'Stores'];
         } else {
             $stores = Store::where('manager_id', $user_id)->get();
+            $user = User::find($user_id);
+            $data = ['user' => $user->name, 'list' => 'Stores'];
         }
 
 
-        return view('dashboard.index', compact('stores'));
+        return view('dashboard.index', compact('stores', 'data'));
     }
 }

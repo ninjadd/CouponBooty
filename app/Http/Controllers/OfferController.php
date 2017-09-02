@@ -7,6 +7,7 @@ use App\Offer;
 use App\Type;
 use App\Category;
 use App\Store;
+use App\User;
 use Illuminate\Http\Request;
 use Illuminate\Cookie\CookieJar;
 
@@ -53,24 +54,30 @@ class OfferController extends Controller
 
         if (empty($filter)) {
             $archived = 0;
+            $data['filter'] = 'Live';
         }
 
         if ($filter == 'archived') {
             $archived = 1;
+            $data['filter'] = 'Archived';
         }
 
         if ($filter == 'staged') {
             $archived = 2;
+            $data['filter'] = 'Staged';
         }
 
         if ($user_id == 'all') {
             $offers = Offer::archive($archived)->get();
+            $data['user'] = 'All';
         } else {
             $offers = Offer::archive($archived)->where('user_id', $user_id)->get();
+            $user = User::find($user_id);
+            $data['user'] = $user->name;
         }
 
 
-        return view('offer.index', compact('offers'));
+        return view('offer.index', compact('offers', 'data'));
     }
 
     /**
