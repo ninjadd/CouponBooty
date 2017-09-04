@@ -21,7 +21,7 @@ class PageController extends Controller
      */
     public function welcome()
     {
-        $offers = Offer::where('archive', 0)->orderBy('created_at', 'desc')->paginate(60);
+        $offers = Offer::where('archive', 0)->inRandomOrder()->paginate(60);
         $types = Type::all();
 
         return view('pages.welcome', compact('offers', 'types'));
