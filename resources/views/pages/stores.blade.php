@@ -21,8 +21,19 @@
 
         <div class="col s12">
             <ul class="pagination">
+                <li class="waves-effect hoverable">
+                    <a href="#09">
+                        #
+                    </a>
+                </li>
                 @foreach($initials as $initial)
-                    <li class="waves-effect hoverable"><a href="#{{ (is_numeric($initial->initial)) ? '09' : strtoupper($initial->initial) }}">{{ (is_numeric($initial->initial)) ? '#' : strtoupper($initial->initial) }}</a></li>
+                    @if(!is_numeric($initial->initial))
+                        <li class="waves-effect hoverable">
+                            <a href="#{{ (is_numeric($initial->initial)) ? null : strtoupper($initial->initial) }}">
+                                {{ (is_numeric($initial->initial)) ? null : strtoupper($initial->initial) }}
+                            </a>
+                        </li>
+                    @endif
                 @endforeach
             </ul>
         </div>
