@@ -80,13 +80,11 @@
                                             rows="3"
                                             placeholder="Comma separated for more than one"
                                             id="storeCategories">{{ old('categories') }}</textarea>
-                                <span class="help-block">This will fill as default for offers only on new or empty</span>
+                                <span class="help-block">This will fill as default for banner ads only on new or empty</span>
                             </div>
 
                             <button type="submit" class="btn btn-primary">Save</button>
                         </form>
-
-                        @include('shared.errors')
 
                     </div>
                 </div>

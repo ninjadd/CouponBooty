@@ -16,8 +16,8 @@ class CreateMarketplacesTable extends Migration
         Schema::create('marketplaces', function (Blueprint $table) {
             $table->increments('id');
             $table->integer('user_id')->unsigned()->index('idx_id_user_id', ['id', 'user_id']);
-            $table->string('title');
-            $table->string('slug');
+            $table->string('title')->nullable();
+            $table->string('slug')->nullable();
             $table->text('body');
             $table->text('categories');
             $table->softDeletes();
