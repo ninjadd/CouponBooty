@@ -144,6 +144,9 @@ Route::put('store/{store}', 'StoreController@update');
 
 Route::delete('store/{store}', 'StoreController@destroy');
 
+// Marketplace Routes
+
+
 // Upload Routes
 Route::get('upload/{network}', 'UploadController@create');
 

@@ -38,6 +38,18 @@
             <ul class="nav navbar-nav">
                 <li class="dropdown">
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+                        Marketplaces
+                        <span class="caret"></span>
+                    </a>
+                    <ul class="dropdown-menu">
+                        <li><a href="/marketplace">All Marketplaces</a></li>
+                        <li><a href="/marketplace/create">New Marketplace</a></li>
+                    </ul>
+                </li>
+            </ul>
+            <ul class="nav navbar-nav">
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
                         Types
                         <span class="caret"></span>
                     </a>
@@ -52,6 +64,12 @@
                 <li>
                     <a href="/store/create">
                         New Store
+                        <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
+                    </a>
+                </li>
+                <li>
+                    <a href="/marketplace/create">
+                        New Marketplace
                         <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
                     </a>
                 </li>
