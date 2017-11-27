@@ -6,8 +6,6 @@ use App\Store;
 use App\User;
 use Illuminate\Cookie\CookieJar;
 use Illuminate\Http\Request;
-use App\Offer;
-use App\Type;
 
 class DashBoardController extends Controller
 {
@@ -21,9 +19,9 @@ class DashBoardController extends Controller
     }
 
     /**
-     * Show the application dashboard.
-     *
-     * @return \Illuminate\Http\Response
+     * @param CookieJar $cookieJar
+     * @param Request $request
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
     public function index(CookieJar $cookieJar, Request $request)
     {

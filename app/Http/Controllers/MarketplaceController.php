@@ -22,9 +22,9 @@ class MarketplaceController extends Controller
      */
     public function index()
     {
-        $marketPlaces = Marketplace::all();
+        $marketplaces = Marketplace::all();
 
-        return view('marketplace.index', compact('marketPlaces'));
+        return view('marketplace.index', compact('marketplaces'));
     }
 
     /**
@@ -49,15 +49,13 @@ class MarketplaceController extends Controller
             'title' => 'required|string|min:3'
         ]);
 
-        $marketPlace = new Marketplace();
-        $marketPlace->user_id = auth()->id();
-        if (!empty($request->title)) {
-            $marketPlace->title = $request->title;
-            $marketPlace->slug = str_slug($request->title);
-        }
-        $marketPlace->body = $request->body;
-        $marketPlace->categories = $request->categories;
-        $marketPlace->save();
+        $marketplace = new Marketplace();
+        $marketplace->user_id = auth()->id();
+        $marketplace->title = $request->title;
+        $marketplace->slug = str_slug($request->title);
+        $marketplace->body = $request->body;
+        $marketplace->categories = $request->categories;
+        $marketplace->save();
 
         return redirect('marketplace')->with('status', 'New Marketplace created! You go girl, or Larry.');
     }
@@ -70,7 +68,7 @@ class MarketplaceController extends Controller
      */
     public function show(Marketplace $marketplace)
     {
-        //
+        return null;
     }
 
     /**
@@ -81,7 +79,7 @@ class MarketplaceController extends Controller
      */
     public function edit(Marketplace $marketplace)
     {
-        //
+        return view('marketplace.edit', compact('marketplace'));
     }
 
     /**
@@ -93,17 +91,29 @@ class MarketplaceController extends Controller
      */
     public function update(Request $request, Marketplace $marketplace)
     {
-        //
+        $this->validate($request, [
+            'title' => 'required|string|min:3'
+        ]);
+
+        $marketplace->user_id = auth()->id();
+        $marketplace->title = $request->title;
+        $marketplace->slug = str_slug($request->title);
+        $marketplace->body = $request->body;
+        $marketplace->categories = $request->categories;
+        $marketplace->save();
+
+        return redirect('marketplace')->with('status', 'Updated Marketplace! Huzzah!!');
     }
 
     /**
-     * Remove the specified resource from storage.
-     *
-     * @param  \App\Marketplace  $marketplace
-     * @return \Illuminate\Http\Response
+     * @param Marketplace $marketplace
+     * @return \Illuminate\Http\RedirectResponse
+     * @throws \Exception
      */
     public function destroy(Marketplace $marketplace)
     {
-        //
+        $marketplace->delete();
+
+        return redirect('marketplace')->with('status',  'Marketplace deleted :(');
     }
 }

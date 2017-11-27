@@ -151,6 +151,12 @@ Route::get('marketplace/create', 'MarketplaceController@create');
 
 Route::post('marketplace', 'MarketplaceController@store');
 
+Route::get('marketplace/{marketplace}/edit', 'MarketplaceController@edit');
+
+Route::put('marketplace/{marketplace}', 'MarketplaceController@update');
+
+Route::delete('marketplace/{marketplace}', 'MarketplaceController@destroy');
+
 
 
 

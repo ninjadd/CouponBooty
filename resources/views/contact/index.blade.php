@@ -67,11 +67,11 @@
                                             <form action="/contact/{{ $contact->id }}" method="POST">
                                                 <div class="btn-group btn-group-sm pull-right">
 
-                                                    <a href="/contact/{{ $contact->id }}" class="btn btn-default btn-xs"  data-toggle="tooltip" title="View Blog Post">
+                                                    <a href="/contact/{{ $contact->id }}" class="btn btn-default btn-xs"  data-toggle="tooltip" title="View Contact">
                                                         <span class="glyphicon glyphicon-eye-open" aria-hidden="true"></span>
                                                     </a>
 
-                                                    <button type="submit" class="btn btn-danger btn-xs"  data-toggle="tooltip" title="Delete Blog Post">
+                                                    <button type="submit" class="btn btn-danger btn-xs"  data-toggle="tooltip" title="Delete Contact">
                                                         <span class="glyphicon glyphicon-trash" aria-hidden="true"></span>
                                                     </button>
 
