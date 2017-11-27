@@ -157,8 +157,20 @@ Route::put('marketplace/{marketplace}', 'MarketplaceController@update');
 
 Route::delete('marketplace/{marketplace}', 'MarketplaceController@destroy');
 
+// BannerAd Routes
+Route::get('bannerad', 'BannerAdController@index')->name('bannerad');
 
+Route::get('bannerad/create', 'BannerAdController@create');
 
+Route::post('bannerad', 'BannerAdController@store');
+
+Route::get('bannerad/{bannerAd}', 'BannerAdController@show');
+
+Route::get('bannerad/{bannerAd}/edit', 'BannerAdController@edit');
+
+Route::put('bannerad/{bannerAd}', 'BannerAdController@update');
+
+Route::delete('bannerad/{bannerAd}', 'BannerAdController@destroy');
 
 // Upload Routes
 Route::get('upload/{network}', 'UploadController@create');

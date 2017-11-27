@@ -52,15 +52,11 @@
                                         {{ $marketplace->created_at }}
                                     </td>
                                     <td>
-
+                                        {{ $marketplace->bannerAd->count() }}
                                     </td>
                                     <td>
                                         <form action="/marketplace/{{ $marketplace->id }}" method="POST">
                                             <div class="btn-group">
-                                                {{--<a href="/marketplace/{{ $marketplace->id }}" class="btn btn-default btn-xs"  data-toggle="tooltip" title="View Marketplace">--}}
-                                                    {{--<span class="glyphicon glyphicon-eye-open" aria-hidden="true"></span>--}}
-                                                {{--</a>--}}
-
                                                 <a href="/marketplace/{{ $marketplace->id }}/edit" class="btn btn-success btn-xs"  data-toggle="tooltip" title="Edit Marketplace">
                                                     <span class="glyphicon glyphicon-pencil" aria-hidden="true"></span>
                                                 </a>
@@ -68,6 +64,10 @@
                                                 <button type="submit" class="btn btn-danger btn-xs"  data-toggle="tooltip" title="Delete Marketplace">
                                                     <span class="glyphicon glyphicon-trash" aria-hidden="true"></span>
                                                 </button>
+
+                                                <a href="/bannerad/create?marketplace={{ $marketplace->id }}" class="btn btn-default btn-xs"  data-toggle="tooltip" title="Create Banner Ad">
+                                                    <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
+                                                </a>
                                                 {{ method_field('DELETE') }}
                                                 {{ csrf_field() }}
                                             </div>

@@ -44,6 +44,8 @@
                     <ul class="dropdown-menu">
                         <li><a href="/marketplace">All Marketplaces</a></li>
                         <li><a href="/marketplace/create">New Marketplace</a></li>
+                        <li role="separator" class="divider"></li>
+                        <li><a href="/bannerad">All Banner Ads</a></li>
                     </ul>
                 </li>
             </ul>

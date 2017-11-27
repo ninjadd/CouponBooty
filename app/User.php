@@ -65,4 +65,12 @@ class User extends Authenticatable
     {
         return $this->hasMany('App\Store');
     }
+
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
+    public function bannerAds()
+    {
+        return $this->hasMany('App\BannerAd');
+    }
 }

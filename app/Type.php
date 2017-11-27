@@ -30,13 +30,27 @@ class Type extends Model
      */
     protected $hidden = [];
 
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
     public function offers()
     {
         return $this->hasMany('App\Offer');
     }
 
+    /**
+     * @return \Illuminate\Database\Eloquent\Collection|static[]
+     */
     public static function typesForMenu()
     {
         return static::orderBy('label')->get();
+    }
+
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\HasOne
+     */
+    public function bannerAds()
+    {
+        return $this->hasOne('App\BannerAd');
     }
 }

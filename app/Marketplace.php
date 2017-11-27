@@ -35,4 +35,9 @@ class Marketplace extends Model
      * @var array
      */
     protected $hidden = [];
+
+    public function bannerAd()
+    {
+        return $this->hasMany('App\BannerAd');
+    }
 }
