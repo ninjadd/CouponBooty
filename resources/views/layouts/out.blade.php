@@ -71,6 +71,7 @@
                             </a>
                         </li>
                         <li><a style="width: 160px; text-align: center;" href="/stores">Stores</a></li>
+                        <li><a style="width: 160px; text-align: center;" href="/marketplaces">Marketplaces</a></li>
                         <li><a style="width: 160px; text-align: center;" href="/expiring">Expiring Soon</a></li>
                         <li><a style="width: 160px; text-align: center;" href="/blog">Blog</a></li>
                         @if(Auth::user())

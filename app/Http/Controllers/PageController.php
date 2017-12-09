@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\BannerAd;
+use App\Marketplace;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Mail;
 use App\Offer;
@@ -162,6 +164,13 @@ class PageController extends Controller
     public function viewTerms()
     {
         return view('pages.terms');
+    }
+
+    public function viewMarketplace()
+    {
+        $bannerAds = BannerAd::where('archive', '=', 0)->get();
+
+        return view('pages.marketplace', compact('bannerAds'));
     }
 
     /**

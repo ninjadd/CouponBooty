@@ -33,6 +33,8 @@ Route::get('stores', 'PageController@viewStores');
 
 Route::get('expiring', 'PageController@viewExpiring');
 
+Route::get('marketplaces', 'PageController@viewMarketplace');
+
 // Sluggers
 Route::get('view/{slug}', 'PageController@viewSlug');
 
