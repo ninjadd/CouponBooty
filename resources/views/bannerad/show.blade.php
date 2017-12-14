@@ -8,7 +8,7 @@
             <div class="panel panel-default">
                 <div class="panel-heading">
                     <h3 class="panel-title">
-                        View Banner Ad | {{ $bannerAd->title }}
+                        View Banner Ad
                     </h3>
                 </div>
 

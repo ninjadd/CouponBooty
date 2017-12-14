@@ -54,7 +54,7 @@
                                     {{ $bannerAd->marketplace->title }}
                                 </td>
                                 <td>
-                                    {{ $bannerAd->title }}
+                                    {{ (empty($bannerAd->title) ? 'N/A' : $bannerAd->title) }}
                                 </td>
                                 <td>
                                     {{ $bannerAd->type->label }}

@@ -50,7 +50,6 @@ class BannerAdController extends Controller
         $this->middleware($request, [
             'marketplace_id' => 'required|integer',
             'type_id' => 'required|integer',
-            'title' => 'required|max:50',
             'body' => 'required'
         ]);
 
@@ -106,7 +105,6 @@ class BannerAdController extends Controller
         $this->middleware($request, [
             'marketplace_id' => 'required|integer',
             'type_id' => 'required|integer',
-            'title' => 'required|max:50',
             'body' => 'required'
         ]);
 

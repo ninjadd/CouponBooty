@@ -22,19 +22,6 @@
                             <legend>New Banner Ad Form</legend>
 
                             <div class="form-group">
-                                <label for="offerTitle" class="col-lg-2 control-label">Title</label>
-                                <div class="col-lg-10">
-                                    <input required="required"
-                                           name="title"
-                                           type="text"
-                                           class="form-control counter"
-                                           id="offerTitle"
-                                           value="{{ old('title') }}"
-                                           placeholder="All great banner ads start with great title">
-                                </div>
-                            </div>
-
-                            <div class="form-group">
                                 <label for="marketplaceLable" class="col-lg-2 control-label">Marketplace</label>
                                 <div class="col-lg-10">
                                     <p>{{ $marketplace->title }}</p>
@@ -50,6 +37,18 @@
                                                   class="form-control"
                                                   rows="3">{{ old('body') }}</textarea>
                                     <span class="help-block">You guessed it, this one is required</span>
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="offerTitle" class="col-lg-2 control-label">Title</label>
+                                <div class="col-lg-10">
+                                    <input name="title"
+                                           type="text"
+                                           class="form-control counter"
+                                           id="offerTitle"
+                                           value="{{ old('title') }}"
+                                           placeholder="This is an optional field now.">
                                 </div>
                             </div>
 

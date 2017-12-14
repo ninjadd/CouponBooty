@@ -27,9 +27,11 @@
                         <div class="card-image">
                             {!! $bannerAd->body !!}
                         </div>
-                        <div class="card-content">
-                            <p>{{ $bannerAd->title }}</p>
-                        </div>
+                       @if(!empty($bannerAd->title))
+                            <div class="card-content">
+                                <p>{{ $bannerAd->title }}</p>
+                            </div>
+                        @endif
                     </div>
                 </div>
             @endforeach
