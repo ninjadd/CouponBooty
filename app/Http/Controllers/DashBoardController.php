@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Store;
 use App\User;
+use App\Offer;
 use Illuminate\Cookie\CookieJar;
 use Illuminate\Http\Request;
 
@@ -23,8 +24,14 @@ class DashBoardController extends Controller
      * @param Request $request
      * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
-    public function index(CookieJar $cookieJar, Request $request)
-    {
+    public function index(CookieJar $cookieJar, Request $request) {
+
+        $today = date('Y-m-d');
+        $tomorrow = date('Y-m-d', strtotime('+1 day', strtotime($today)));
+        Offer::where('archive', 2)->whereDate('start_date', $tomorrow)->update(['archive' => 0]);
+        Offer::where('archive', 0)->whereDate('end_date', $today)->update(['archive' => 1]);
+
+
         $filter_user = $request->filter_user;
         $user_filter = $request->cookie('user_filter');
 
