@@ -28,8 +28,10 @@ class DashBoardController extends Controller
 
         $today = date('Y-m-d');
         $tomorrow = date('Y-m-d', strtotime('+1 day', strtotime($today)));
+        $yesterday = date('Y-m-d', strtotime('-1 day', strtotime($today)));
+
         Offer::where('archive', 2)->whereDate('start_date', $tomorrow)->update(['archive' => 0]);
-        Offer::where('archive', 0)->whereDate('end_date', $today)->update(['archive' => 1]);
+        Offer::where('archive', 0)->whereDate('end_date', $yesterday)->update(['archive' => 1]);
 
 
         $filter_user = $request->filter_user;
