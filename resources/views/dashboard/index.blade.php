@@ -46,7 +46,7 @@
                         @if(count($stores))
                             <tbody>
                             @foreach($stores as $store)
-                                <tr>
+                                <tr {!! ($store->deleted_at) ? 'class="warning"' : '' !!}>
                                     <td>
                                         {{ $store->id }}
                                     </td>
@@ -71,12 +71,17 @@
                                                 <a href="/store/{{ $store->id }}/edit" class="btn btn-success btn-xs"  data-toggle="tooltip" title="Edit Store">
                                                     <span class="glyphicon glyphicon-pencil" aria-hidden="true"></span>
                                                 </a>
-
-                                                <button type="submit" class="btn btn-danger btn-xs"  data-toggle="tooltip" title="Delete Store">
-                                                    <span class="glyphicon glyphicon-trash" aria-hidden="true"></span>
-                                                </button>
-                                                {{ method_field('DELETE') }}
-                                                {{ csrf_field() }}
+                                                @if($store->deleted_at)
+                                                    <a href="/store/{{ $store->id }}/putback" class="btn btn-warning btn-xs"  data-toggle="tooltip" title="Undelete Store">
+                                                        <span class="glyphicon glyphicon-edit" aria-hidden="true"></span>
+                                                    </a>
+                                                @else
+                                                    <button type="submit" class="btn btn-danger btn-xs"  data-toggle="tooltip" title="Delete Store">
+                                                        <span class="glyphicon glyphicon-trash" aria-hidden="true"></span>
+                                                    </button>
+                                                    {{ method_field('DELETE') }}
+                                                    {{ csrf_field() }}
+                                                @endif
                                             </div>
                                         </form>
                                     </td>

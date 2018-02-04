@@ -54,10 +54,10 @@ class DashBoardController extends Controller
 
 
         if ($user_id == 'all') {
-            $stores = Store::all();
+            $stores = Store::withTrashed()->get();
             $data = ['user' => 'All', 'list' => 'Stores'];
         } else {
-            $stores = Store::where('manager_id', $user_id)->get();
+            $stores = Store::where('manager_id', $user_id)->withTrashed()->get();
             $user = User::find($user_id);
             $data = ['user' => $user->name, 'list' => 'Stores'];
         }
