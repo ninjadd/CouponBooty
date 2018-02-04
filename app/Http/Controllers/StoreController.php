@@ -139,11 +139,11 @@ class StoreController extends Controller
             ->with('status', 'Updated Store created I am so proud!');
     }
 
-
     /**
-     * @param Store $store
-     * @return \Illuminate\Http\RedirectResponse
-     * @throws \Exception
+     * Remove the specified resource from storage.
+     *
+     * @param  \App\Store  $store
+     * @return \Illuminate\Http\Response
      */
     public function destroy(Store $store)
     {
@@ -151,18 +151,6 @@ class StoreController extends Controller
 
         $store->delete();
 
-        return redirect('dashboard')->with('status', 'Store deleted!');
-    }
-
-    /**
-     * @param $store
-     * @return \Illuminate\Http\RedirectResponse
-     */
-    public function undestroy($store)
-    {
-        Store::withTrashed()->where('id', $store)->restore();
-
-        return redirect('dashboard')->with('status', 'Store restored!');
-
+        return redirect('dashboard')->with('status', 'Store removed!');
     }
 }

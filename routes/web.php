@@ -146,8 +146,6 @@ Route::put('store/{store}', 'StoreController@update');
 
 Route::delete('store/{store}', 'StoreController@destroy');
 
-Route::get('store/{store}/putback', 'StoreController@undestroy');
-
 // Marketplace Routes
 Route::get('marketplace', 'MarketplaceController@index')->name('marketplace');
 
