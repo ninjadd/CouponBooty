@@ -146,6 +146,8 @@ Route::put('store/{store}', 'StoreController@update');
 
 Route::delete('store/{store}', 'StoreController@destroy');
 
+Route::get('store/{store}/archive', 'StoreController@archive');
+
 // Marketplace Routes
 Route::get('marketplace', 'MarketplaceController@index')->name('marketplace');
 

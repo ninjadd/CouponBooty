@@ -140,10 +140,9 @@ class StoreController extends Controller
     }
 
     /**
-     * Remove the specified resource from storage.
-     *
-     * @param  \App\Store  $store
-     * @return \Illuminate\Http\Response
+     * @param Store $store
+     * @return \Illuminate\Http\RedirectResponse
+     * @throws \Exception
      */
     public function destroy(Store $store)
     {
@@ -152,5 +151,24 @@ class StoreController extends Controller
         $store->delete();
 
         return redirect('dashboard')->with('status', 'Store removed!');
+    }
+
+    /**
+     * @param Store $store
+     * @return \Illuminate\Http\RedirectResponse
+     */
+    public function archive(Store $store)
+    {
+        $archive = $store->archive;
+
+        if ($archive == 0) {
+            $store->archive = 1;
+            $store->save();
+            return back()->with('status', 'Store archived!');
+        } else {
+            $store->archive = 0;
+            $store->save();
+            return back()->with('status', 'Store unarchived!');
+        }
     }
 }

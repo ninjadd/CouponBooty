@@ -44,7 +44,7 @@
                 <div class="divider"></div>
                 <div id="09" class="section">
                     <h5>#</h5>
-                    @foreach($stores->byNumeric()->get() as $store)
+                    @foreach($stores->byNumeric()->archive(0)->get() as $store)
                         @if($store->offers->where('archive', 0)->count() > 0)
                             <div>
                                 <span class="col s2 m3 l3"><a class="deep-purple-text" href="/view/{{ $store->slug }}">{{ $store->name }} ({{ $store->offers->where('archive', 0)->count() }})</a></span>
@@ -61,7 +61,7 @@
                     <div class="divider"></div>
                     <div id="{{ $item }}" class="section">
                         <h5>{{ $item }}</h5>
-                        @foreach($stores->byAlpha($item)->get() as $store)
+                        @foreach($stores->byAlpha($item)->archive(0)->get() as $store)
                             @if($store->offers->where('archive', 0)->count() > 0)
                                 <p>
                                     <span class="col s6 m4 l3"><a class="deep-purple-text" href="/view/{{ $store->slug }}">{{ $store->name }} ({{ $store->offers->where('archive', 0)->count() }})</a></span>

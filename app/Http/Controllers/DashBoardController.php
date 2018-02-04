@@ -32,7 +32,7 @@ class DashBoardController extends Controller
         Offer::where('archive', 2)->whereDate('start_date', $today)->update(['archive' => 0]);
         Offer::where('archive', 0)->whereDate('end_date', $yesterday)->update(['archive' => 1]);
 
-
+        $filter = $request->filter;
         $filter_user = $request->filter_user;
         $user_filter = $request->cookie('user_filter');
 
@@ -52,14 +52,29 @@ class DashBoardController extends Controller
             $user_id = $filter_user;
         }
 
+        if (empty($filter)) {
+            $archived = 0;
+            $filter = 'Live';
+        }
+
+        if ($filter == 'archived') {
+            $archived = 1;
+            $filter = 'Archived';
+        }
+
+        if ($filter == 'staged') {
+            $archived = 2;
+            $filter = 'Staged';
+        }
+
 
         if ($user_id == 'all') {
-            $stores = Store::all();
-            $data = ['user' => 'All', 'list' => 'Stores'];
+            $stores = Store::archive($archived)->get();
+            $data = ['user' => 'All', 'list' => 'Stores', 'filter' => $filter];
         } else {
-            $stores = Store::where('manager_id', $user_id)->get();
+            $stores = Store::archive($archived)->where('manager_id', $user_id)->get();
             $user = User::find($user_id);
-            $data = ['user' => $user->name, 'list' => 'Stores'];
+            $data = ['user' => $user->name, 'list' => 'Stores', 'filter' => $filter];
         }
 
 

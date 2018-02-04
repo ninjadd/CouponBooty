@@ -13,7 +13,7 @@
             <div class="panel panel-primary">
                 <div class="panel-heading clearfix">
                     <h3 class="panel-title pull-left">
-                        Dashboard | {{ $data['user'] }} | {{ $data['list'] }}
+                        Dashboard | {{ $data['user'] }} | {{ $data['list'] }} | {{ $data['filter'] }}
                     </h3>
                     <span class="pull-right badge">{{ $stores->count() }}</span>
                 </div>
@@ -71,6 +71,18 @@
                                                 <a href="/store/{{ $store->id }}/edit" class="btn btn-success btn-xs"  data-toggle="tooltip" title="Edit Store">
                                                     <span class="glyphicon glyphicon-pencil" aria-hidden="true"></span>
                                                 </a>
+
+                                                @if($store->archive == 0)
+                                                    <a href="/store/{{ $store->id }}/archive" class="btn btn-warning btn-xs"  data-toggle="tooltip" title="Archive Store">
+                                                        <span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
+                                                    </a>
+                                                @endif
+
+                                                @if($store->archive == 1)
+                                                    <a href="/store/{{ $store->id }}/archive" class="btn btn-info btn-xs"  data-toggle="tooltip" title="Unarchive Store">
+                                                        <span class="glyphicon glyphicon-asterisk" aria-hidden="true"></span>
+                                                    </a>
+                                                @endif
 
                                                 <button type="submit" class="btn btn-danger btn-xs"  data-toggle="tooltip" title="Delete Store">
                                                     <span class="glyphicon glyphicon-trash" aria-hidden="true"></span>

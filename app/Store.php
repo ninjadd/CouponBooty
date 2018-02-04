@@ -72,6 +72,10 @@ class Store extends Model
         return $query->where('slug', $slug);
     }
 
+    /**
+     * @param $query
+     * @return mixed
+     */
     public function scopeByNumeric($query)
     {
         return $query
@@ -88,16 +92,28 @@ class Store extends Model
             ->orderBy('name');
     }
 
+    /**
+     * @param $query
+     * @param $character
+     * @return mixed
+     */
     public function scopeByAlpha($query, $character)
     {
         return $query->where('name', 'like', $character.'%')->orderBy('name');
     }
 
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+     */
     public function manager()
     {
         return $this->belongsTo('App\User', 'manager_id', 'id');
     }
 
+    /**
+     * @param $ids
+     * @return array|string
+     */
     public function getNetworks($ids)
     {
         if (strlen($ids) > 1) {
@@ -119,8 +135,21 @@ class Store extends Model
         }
     }
 
+    /**
+     * @return \Illuminate\Database\Eloquent\Collection|static[]
+     */
     public static function sideStore()
     {
-        return Store::orderBy('name', 'asc')->get();
+        return Store::archive(0)->orderBy('name', 'asc')->get();
+    }
+
+    /**
+     * @param $query
+     * @param int $val
+     * @return mixed
+     */
+    public function scopeArchive($query, $val=0)
+    {
+        return $query->where('archive', $val);
     }
 }
