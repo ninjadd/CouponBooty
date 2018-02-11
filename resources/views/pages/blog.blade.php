@@ -20,23 +20,24 @@
             <div class="col s9">
             @foreach($blogs as $blog)
                 <div class="col s12">
-                    <div class="card horizontal hoverable">
-                        <div class="card-image">
-                            <img src="{{ $blog->image_url }}">
+                    <div class="card">
+                        <div class="card-image waves-effect waves-block waves-light">
+                            <img class="activator" src="{{ $blog->image_url }}">
                         </div>
-                        <div class="card-stacked">
-                            <div class="card-content">
-                                <p>{{ $blog->title }}</p>
-                            </div>
-                            <div class="card-action">
-                                <a class="waves-effect waves-light btn" href="/blog/{{ $blog->title_slug }}">View</a>
-                                <a class="right" href="https://twitter.com/home?status={{ url()->current().'/'.$blog->title_slug }}" target="_blank">
-                                    <i class="fa fa-twitter-square fa-3x blue-grey-text" aria-hidden="true"></i>
-                                </a>
-                                <a class="right" href="https://www.facebook.com/sharer/sharer.php?u={{ url()->current().'/'.$blog->title_slug }}" target="_blank">
-                                    <i class="fa fa-facebook-square fa-3x blue-grey-text" aria-hidden="true"></i>
-                                </a>
-                            </div>
+                        <div class="card-content">
+                            <span class="card-title activator grey-text text-darken-4">{{ $blog->title }}<i class="material-icons right">more_vert</i></span>
+                            <a class="waves-effect waves-light btn" href="/blog/{{ $blog->title_slug }}">View</a>
+                            <a class="right" href="https://twitter.com/home?status={{ url()->current().'/'.$blog->title_slug }}" target="_blank">
+                                <i class="fa fa-twitter-square fa-3x blue-grey-text" aria-hidden="true"></i>
+                            </a>
+                            <a class="right" href="https://www.facebook.com/sharer/sharer.php?u={{ url()->current().'/'.$blog->title_slug }}" target="_blank">
+                                <i class="fa fa-facebook-square fa-3x blue-grey-text" aria-hidden="true"></i>
+                            </a>
+                        </div>
+                        <div class="card-reveal">
+                            <span class="card-title grey-text text-darken-4">{{ $blog->title }}<i class="material-icons right">close</i></span>
+                            <p>{{ strip_tags(str_limit($blog->body, 240)) }} ...</p>
+                            <a class="waves-effect waves-light btn" href="/blog/{{ $blog->title_slug }}">Read More</a>
                         </div>
                     </div>
                 </div>
