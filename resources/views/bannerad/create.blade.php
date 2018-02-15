@@ -57,7 +57,7 @@
                                 <div class="col-lg-10">
                                     @foreach($types as $type)
                                         <label class="radio-inline">
-                                            <input {{ (old('type_id') == $type->id) ? 'checked="checked"' : null }} type="radio" name="type_id" value="{{ $type->id }}">
+                                            <input {{ (old('type_id') == $type->id) ? 'checked="checked"' : null }} required="required" type="radio" name="type_id" value="{{ $type->id }}">
                                             {{ $type->label }}
                                         </label>
                                     @endforeach
