@@ -140,7 +140,8 @@ class Store extends Model
      */
     public static function sideStore()
     {
-        return Store::archive(0)->orderBy('name', 'asc')->get();
+        $cleanOffers = Offer::where('archive', 0)->pluck('store_id');
+        return Store::archive(0)->whereIn('id', $cleanOffers)->orderBy('name', 'asc')->get();
     }
 
     /**
