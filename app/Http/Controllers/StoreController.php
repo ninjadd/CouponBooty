@@ -8,7 +8,6 @@ use App\User;
 use Illuminate\Http\Request;
 use App\Store;
 use App\Network;
-use App\Category;
 
 class StoreController extends Controller
 {
@@ -164,10 +163,18 @@ class StoreController extends Controller
         if ($archive == 0) {
             $store->archive = 1;
             $store->save();
+
+            Offer::where('store_id', $store->id)
+                ->update(['archive' => 1]);
+
             return back()->with('status', 'Store archived!');
         } else {
             $store->archive = 0;
             $store->save();
+
+            Offer::where('store_id', $store->id)
+                ->update(['archive' => 0]);
+
             return back()->with('status', 'Store unarchived!');
         }
     }
